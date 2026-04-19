@@ -522,6 +522,158 @@
         "delete_customer_mandate_modal_title": "هل تريد إزالة بطاقة الدفع هذه؟",
         "delete_customer_mandate_modal_body": "إذا قمت بإزالة هذه البطاقة، ستحتاج إلى إضافتها مرة أخرى قبل استخدامها للدفع.",
         "delete_customer_mandate_modal_confirm": "إزالة البطاقة"
+      },
+      "wallets": {
+        "errors": {
+          "invalid": {
+            "email": "أدخل بريدًا إلكترونيًا صحيحًا",
+            "zone": "أدخل ولاية / مقاطعة صالحة",
+            "billing_zone": "أدخل ولاية/مقاطعة عنوان الفوترة الصالحة",
+            "emirate": "أدخل إمارة صالحة",
+            "postal_code": "أدخل رمزًا بريديًا صالحًا",
+            "phone": "أدخل رقم هاتف صحيحًا",
+            "billing_phone": "أدخل رقم هاتف صالحًا لعنوان الفوترة",
+            "reduction_code": "أدخل رمز خصم صالح أو بطاقة هدية",
+            "billing_must_match_shipping": "يجب أن يطابق عنوان الشحن",
+            "billing_zip": "أدخل رمزًا بريديًا صالحًا لعنوان الفاتورة"
+          },
+          "missing": {
+            "first_name": "أدخل الاسم الأول",
+            "billing_first_name": "أدخل الاسم الأول لعنوان الفواتير",
+            "last_name": "أدخل اسم العائلة",
+            "address1": "أدخل عنوانًا",
+            "billing_address1": "أدخل عنوان الفوترة",
+            "address2": "أدخل شقة، جناح، إلخ.",
+            "billing_address2": "أدخل رقم الشقة في عنوان الفاتورة، أو الجناح، وما إلى ذلك.",
+            "city": "ادخل المدينة",
+            "billing_city": "أدخل مدينة عنوان الفاتورة",
+            "province": "اختر ولاية / مقاطعة",
+            "billing_province": "حدد ولاية/مقاطعة عنوان الفاتورة",
+            "country": "اختر الدولة/المنطقة",
+            "zip": "أدخل الرمز البريدي",
+            "billing_zip": "أدخل الرمز البريدي لعنوان الفواتير",
+            "phone": "أدخل رقم الهاتف",
+            "contact_info": "أدخل معلومات الاتصال"
+          },
+          "formatting": {
+            "name_contains_emojis": "احذف الإيموجي من اسمك",
+            "postal_code_contains_emoji": "احذف الرموز التعبيرية من الرمز البريدي الخاص بك",
+            "first_name_too_long": "الاسم الأول يحتوي على عدد كبير جدًا من الأحرف",
+            "last_name_too_long": "اسم العائلة يحتوي على عدد كبير جدًا من الحروف",
+            "address_too_long": "سطر العنوان طويل جداً"
+          },
+          "select_different_shipping_address_to_resolve_errors": "عنوان الشحن الخاص بك غير صالح. اختر عنوانًا مختلفًا أو استخدم عنوانًا جديدًا.",
+          "processing_error_checkout_as_guest": "حدثت مشكلة أثناء معالجة دفعتك. يرجى إعادة المحاولة أو {{checkout_as_guest_link}}."
+        },
+        "scrim": {
+          "continue_purchase_in_window": "أكمل عملية الشراء في نافذة {{walletName}}",
+          "and_return_to_checkout": "والعودة إلى صفحة الدفع",
+          "cancel": "إلغاء"
+        }
+      },
+      "note": {
+        "length_exceeds_maximum": "قلل حجم الملاحظة إلى 5000 حرف أو أقل."
+      },
+      "offsite_payment_failed": {
+        "title": "فشلت عملية الدفع خارج الموقع",
+        "payment_not_processed_title": "فشلت عملية الدفع",
+        "payment_not_processed_text": "حاول مسح رمز الاستجابة السريعة (QR) مرة أخرى. إذا استمر عدم عمله، فأبلغ موظفينا وحاول استخدام طريقة دفع مختلفة.",
+        "payment_link_expired_title": "انتهت صلاحية رابط الدفع",
+        "payment_link_expired_text": "حاول مسح رمز الاستجابة السريعة مرة أخرى."
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "يجب أن يكون سعر بطاقة الهدايا أكبر من 0.",
+            "gift_card_price_must_not_exceed_limit": "يجب ألا يتجاوز سعر بطاقة الهدايا %{gift_card_limit}.",
+            "subtotal_limit_reached": "تم الوصول إلى الحد الأقصى لعدد بنود الفاتورة.",
+            "signature_mismatch": "عدم تطابق توقيع السلع للسطر %{stable_id}."
+          }
+        }
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "لا يحتوي سلة الشراء إلا على بضائع بعيدة. يلزم إعادة التوجيه إلى المتجر البعيد لإتمام عملية الشراء.",
+          "currency_mismatch": "لا يمكن إضافة هذا العنصر إلى سلة التسوق الخاصة بك لأنه من متجر يستخدم عملة مختلفة.",
+          "currency_mismatch_removal": "تمت إزالة عنصر من سلة التسوق الخاصة بك لأنه من متجر يستخدم عملة مختلفة.",
+          "max_remote_shops_exceeded": "لا يمكن إضافة هذا المنتج لأن سلة التسوق الخاصة بك تحتوي بالفعل على الحد الأقصى من المتاجر الأخرى."
+        }
+      },
+      "units": {
+        "milligram": "ملغم",
+        "kilogram": "كجم",
+        "milliliter": "مل",
+        "centiliter": "نكل",
+        "cubic_meter": "م³",
+        "millimeter": "ملم",
+        "centimeter": "سم",
+        "square_meter": "م²",
+        "ounce": "أوقية",
+        "pound": "رطل",
+        "fluid_ounce": "أونصة سائلة",
+        "pint": "نقطة",
+        "quart": "كم",
+        "gallon": "فتاة",
+        "inch": "في",
+        "foot": "قدم",
+        "yard": "يا",
+        "square_foot": "قدم مربع",
+        "item": "صنف"
+      },
+      "memberships": {
+        "delivery_promise_unfulfillable": "هذا العنوان غير مدعوم للعضوية الحالية.",
+        "items_split_across_locations_unsupported": "لا يتوفر التوصيل بـ \"برايم\" لطلبك. تم تحديث خيارات الشحن الخاصة بك."
+      },
+      "editor": {
+        "navigation": {
+          "store_logo_accessibility_label": "انتقل إلى المتجر الإلكتروني"
+        }
+      },
+      "tooltip": {
+        "accessibility_label_context": "مزيد من المعلومات عن %{context}",
+        "additional_payment_methods": "طرق دفع إضافية"
+      },
+      "too_many_requests": {
+        "title": "كثرة محاولات الدفع",
+        "body": "الرجاء الانتظار بضع دقائق ثم المحاولة مرة أخرى من سلة التسوق الخاصة بك.",
+        "body_no_cart": "الرجاء الانتظار بضع دقائق والمحاولة مرة أخرى.",
+        "return_to_cart": "العودة إلى عربة التسوق"
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "مطلوب تفاعل إضافي لإكمال عملية الدفع."
+        }
+      },
+      "taxes": {
+        "tax_details": "تفاصيل ضريبية إضافية",
+        "vat_number": {
+          "field": {
+            "label": "الرقم الضريبي (اختياري)",
+            "tooltip": "التحقق من صحة رقم ضريبة القيمة المضافة وتطبيق الرسوم العكسية تلقائيًا على الطلبات المؤهلة"
+          },
+          "add": "إضافة رقم ضريبة القيمة المضافة (VAT)",
+          "vaulted": "الرقم الضريبي: %{number}",
+          "badge": "الرقم الضريبي: %{number}",
+          "domestic_order": "ينطبق الإعفاء من آلية الاحتساب العكسي على طلبات الاتحاد الأوروبي العابرة للحدود فقط. تُفرض ضريبة القيمة المضافة العادية على الطلبات المحلية.",
+          "status": {
+            "invalid_format": {
+              "at": "تحتوي أرقام ضريبة القيمة المضافة النمساوية على الأحرف AT و 9 أحرف",
+              "be": "تحتوي أرقام ضريبة القيمة المضافة في بلجيكا على \"BE\" و 10 أحرف",
+              "bg": "تحتوي أرقام التعريف الضريبية في بلغاريا على BG و 9-10 أحرف",
+              "hr": "أرقام تعريف ضريبة القيمة المضافة الكرواتية تتكون من HR و11 خانة",
+              "cy": "تحتوي أرقام ضريبة القيمة المضافة في قبرص على CY و 9 أحرف",
+              "cz": "تحتوي أرقام تعريف ضريبة القيمة المضافة في جمهورية التشيك على \"CZ\" و8-10 أحرف.",
+              "dk": "تحتوي أرقام ضريبة القيمة المضافة الدنماركية على \"DK\" و 8 أحرف.",
+              "ee": "تحتوي أرقام ضريبة القيمة المضافة في إستونيا على EE و 9 أحرف.",
+              "fi": "تحتوي أرقام ضريبة القيمة المضافة في فنلندا على \"FI\" و 8 أحرف.",
+              "fr": "تحتوي أرقام ضريبة القيمة المضافة الفرنسية على FR و11 حرفًا",
+              "de": "تحتوي أرقام التعريف الضريبي الألمانية (VAT) على \"DE\" و 9 أحرف",
+              "gr": "تحتوي أرقام ضريبة القيمة المضافة اليونانية على EL و 9 أحرف",
+              "hu": "تتكون أرقام التعريف الضريبي المجرية من \"HU\" و 8 أحرف.",
+              "ie": "تحتوي أرقام ضريبة القيمة المضافة الأيرلندية على \"IE\" و8-9 أحرف."
+            }
+          }
+        }
       }
     },
     "notices": {
@@ -767,5 +919,135 @@
     "month_day_year": "%d %B, %Y",
     "short_month_day_year": "%d %b، %Y",
     "month_day_year_time": "%d %B %Y في %I:%M %p"
+  },
+  "customer_accounts": {
+    "order_details": {
+      "returns": {
+        "expand_events_label": "عرض التفاصيل",
+        "hide_events_label": "إخفاء التفاصيل",
+        "ineligible_return_message": "لا توجد سلع في هذا الطلب مؤهلة للإرجاع.",
+        "ineligible_return_message_when_returned": "لا توجد سلع إضافية في هذا الطلب مؤهلة للإرجاع.",
+        "print_shipping_label": "طباعة ملصق الشحن",
+        "return_and_refund_modal_header": "سياسة الاسترجاع",
+        "tracking_number": "رقم التتبع:",
+        "exchange_header": "تبادل العناصر",
+        "exchange_subheader": "سيتم إضافة المنتجات المراد استبدالها إلى الطلب بمجرد اكتمال الإرجاع."
+      },
+      "shipping": {
+        "address": "عنوان الشحن",
+        "address_map_marker": "عنوان الشحن",
+        "method": "طريقة الشحن",
+        "summary": "الشحن",
+        "free": "مجاني",
+        "free_shipping_discount": "شحن مجاني",
+        "one_time": "شحن لمرة واحدة",
+        "subscription": "شحن الاشتراك"
+      },
+      "pickup": {
+        "pickup": "التقاط",
+        "pickup_location": "موقع الالتقاء",
+        "pickup_point": "نقطة الاستلام"
+      },
+      "show_items": "عرض العناصر",
+      "total_savings": "إجمالي المدخرات",
+      "show_order_summary": "إظهار ملخص الطلب",
+      "hide_order_summary": "إخفاء ملخص الطلب",
+      "subtitle": "تم التأكيد {{date}}",
+      "subtotal": "المجموع الفرعي",
+      "subtotal_label_with_quantity": {
+        "one": "المجموع الفرعي",
+        "other": "المجموع الفرعي · {{count}} من العناصر"
+      },
+      "summary_list_title_accessibility_label": "اطلب عناصر",
+      "summary_title": "ملخص الطلب",
+      "summary_totals_title_accessibility_label": "إجماليات الطلب",
+      "shop_order_tracking": {
+        "download_shop_to_track": "حمّل تطبيق المتجر لتتبع الشحنة",
+        "track_order_with_shop": "تتبع الطلب باستخدام Shop",
+        "title_header": "امسح بهاتفك",
+        "real_time_delivery_updates": "سيرسل لك المتجر تحديثات في الوقت الفعلي عن التسليم بمجرد شحن طلبك."
+      },
+      "edit_summary": {
+        "added": "تمت الإضافة",
+        "added_with_quantity": "تمت إضافة {{quantity}}",
+        "removed": "تمت الإزالة",
+        "removed_with_quantity": "تمت إزالة {{quantity}}",
+        "updated_at": "تم تحديث طلبك بتاريخ {{date}}",
+        "returned": "تمت الإعادة",
+        "returned_with_quantities": "أُعيد {{delta}} من {{total}}",
+        "removed_with_quantities": "تمت إزالة {{delta}} من أصل {{total}}",
+        "return_line_item_removed": "تمت إزالته من المرتجعات",
+        "return_line_item_removed_with_quantities": "أزيلت {{delta}} من العائد"
+      },
+      "shop_pay": {
+        "order_completed_with": "تم إكمال الطلب مع",
+        "learn_more": "تعرف على المزيد"
+      },
+      "taxes": "الضرائب",
+      "taxes_included": "بما في ذلك {{amount}} ضرائب",
+      "duties_and_taxes_included": "يشمل السعر الإجمالي الرسوم والضرائب. لا توجد رسوم إضافية عند التسليم.",
+      "duties": "الواجبات",
+      "ok_duties_tooltip": "يتم شحن هذا الطلب من بلد آخر، لذلك تمت إضافة رسوم جمركية إلى إجمالي طلبك.",
+      "error_duties_tooltip": "يتم شحن هذا الطلب من بلد آخر، لذا قد تُفرض رسوم وضرائب عند التسليم.",
+      "zero_duties_tooltip": "يتم شحن هذا الطلب من بلد آخر. لا تُفرض رسوم جمركية على الطلبات ذات هذه القيمة.",
+      "tip": "نصيحة",
+      "title": "اطلب {{name}}",
+      "total": "الإجمالي",
+      "unit_price": "{{price}}/للوحدة",
+      "pagination": {
+        "load_more": "تحميل المزيد",
+        "load_more_accessibility_label": "تحميل المزيد من العناصر",
+        "loading_accessibility_label": "جارٍ تحميل العناصر"
+      },
+      "login_to_view_all_order_details": "سجل الدخول لعرض كافة تفاصيل الطلب.",
+      "log_in": "تسجيل الدخول",
+      "logged_in_account_no_permission_to_order": "لقد سجلت الدخول بصفتك {{email}}. لا يملك هذا الحساب صلاحية إدارة هذا الطلب.",
+      "log_in_to_a_different_account": "تسجيل الدخول إلى حساب مختلف",
+      "fees": {
+        "restocking_fee": "رسوم إعادة تخزين",
+        "return_shipping_fee": "إرجاع الشحنة"
+      },
+      "vat_invoices": {
+        "title": "فواتير ضريبة القيمة المضافة"
+      },
+      "link_sent": "تم إرسال الرابط",
+      "cash_rounding": "تقريب نقدي",
+      "adjusted_payment": "دفعة معدلة",
+      "adjusted_total": "المجموع المعدّل",
+      "due_on_date": "يجب أن يتم في {{date}}",
+      "due_on_fulfillment": "مستحق عند الاستيفاء",
+      "due_on_receipt": "تستحق الدفع فور الاستلام"
+    },
+    "addresses": {
+      "add_button": "أضف العنوان",
+      "add_button_text": "أضِف",
+      "add_button_accessibility_label": "أضف العنوان",
+      "back_button": "الظهر",
+      "back_button_accessibility_label": "العودة إلى تعديل العنوان {{address}}",
+      "add_address_banner": "أضف عناوين لاستخدامها عند الدفع",
+      "no_addresses_banner": "لم تتم إضافة عناوين",
+      "address_deleted_notification": "تم حذف العنوان",
+      "cancel_adding_address_accessibility_label": "إلغاء إضافة العنوان",
+      "cancel_deletion_button": "إلغاء",
+      "cancel_deletion_button_accessibility_label": "إلغاء حذف {{address}}",
+      "default_address": {
+        "title": "العنوان الافتراضي",
+        "title_accessibility_label": "العنوان الافتراضي: {{address}}"
+      },
+      "delete_button": "حذف",
+      "delete_button_accessibility_label": "احذف {{address}}",
+      "delete_confirmation_button": "حذف العنوان",
+      "delete_confirmation_button_accessibility_label": "احذف {{address}}",
+      "delete_confirmation_message": "هل تريد حذف العنوان؟ الطلبات الحالية لن تتأثر.",
+      "delete_confirmation_title": "حذف العنوان؟",
+      "delete_confirmation_description": "لا تتأثر الطلبات الحالية.",
+      "edit_button": "تعديل",
+      "edit_button_accessibility_label": "تعديل {{address}}",
+      "edit_section_accessibility_label": "تعديل {{address}}",
+      "edit_modal_title": {
+        "default": "تعديل العنوان",
+        "billing": "تعديل عنوان الفوترة"
+      }
+    }
   }
 }
