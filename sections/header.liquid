@@ -293,8 +293,25 @@
   {%- if section.settings.desktop_navigation_layout == 'inline' and navigation_menu.links.size > 0 -%}
     <nav class="nav-bar">
       <div class="nav-bar__inner">
-        <div class="container">
-          <ul class="nav-bar__linklist list--unstyled" data-type="menu" role="list">
+        <div class="container" style="display: flex; align-items: center;">
+          
+          <div class="nav-bar__all-categories" style="position: relative; margin-right: 30px;">
+            <button type="button" class="button button--primary" style="display: flex; align-items: center; gap: 10px; padding: 12px 24px; background: var(--primary-button-background); color: var(--primary-button-text-color); font-weight: bold; cursor: pointer; border: none; border-radius: 4px;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4h16v2H2zM2 9h16v2H2zM2 14h16v2H2z"/></svg>
+              All Categories
+            </button>
+            <div class="nav-bar__categories-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 250px; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); z-index: 20; padding: 10px 0; border-radius: 4px;">
+              <ul class="list--unstyled">
+                {%- for link in linklists[section.settings.navigation_menu].links -%}
+                  <li style="padding: 8px 20px;">
+                    <a href="{{ link.url }}" style="color: var(--text-color); text-decoration: none;">{{ link.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="nav-bar__linklist list--unstyled" data-type="menu" role="list" style="flex: 1;">
             {%- for link in navigation_menu.links -%}
               <li class="nav-bar__item">
                 {%- if link.links.size == 0 -%}
@@ -318,6 +335,15 @@
     </nav>
   {%- endif -%}
 </section>
+
+<style>
+  .nav-bar__all-categories:hover .nav-bar__categories-dropdown {
+    display: block !important;
+  }
+  .nav-bar__all-categories .nav-bar__categories-dropdown li:hover {
+    background: #f5f5f5;
+  }
+</style>
 
 <style>
   :root {
@@ -474,7 +500,7 @@
           "label": "Inline"
         }
       ],
-      "default": "condensed"
+      "default": "inline"
     },
     {
       "type": "select",
@@ -520,7 +546,7 @@
       "type": "checkbox",
       "id": "show_condensed_search",
       "label": "Minimise search on mobile",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",

@@ -1,0 +1,57 @@
+<style>
+  .social-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 50;
+    background: #fff;
+    padding: 10px 5px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    border-radius: 0 5px 5px 0;
+  }
+  .social-sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  .social-sidebar a:hover {
+    transform: scale(1.1);
+  }
+  .social-sidebar .social-facebook { background: #3b5998; }
+  .social-sidebar .social-twitter { background: #1da1f2; }
+  .social-sidebar .social-instagram { background: #e1306c; }
+  .social-sidebar .social-whatsapp { background: #25d366; }
+</style>
+
+<div class="social-sidebar hidden-pocket">
+  {%- if settings.social_facebook != blank -%}
+    <a href="{{ settings.social_facebook }}" class="social-facebook" target="_blank" rel="noopener" aria-label="Facebook">
+      {%- render 'icon', icon: 'facebook' -%}
+    </a>
+  {%- endif -%}
+  {%- if settings.social_twitter != blank -%}
+    <a href="{{ settings.social_twitter }}" class="social-twitter" target="_blank" rel="noopener" aria-label="Twitter">
+      {%- render 'icon', icon: 'twitter' -%}
+    </a>
+  {%- endif -%}
+  {%- if settings.social_instagram != blank -%}
+    <a href="{{ settings.social_instagram }}" class="social-instagram" target="_blank" rel="noopener" aria-label="Instagram">
+      {%- render 'icon', icon: 'instagram' -%}
+    </a>
+  {%- endif -%}
+  {%- if settings.social_whatsapp != blank -%}
+    <a href="{{ settings.social_whatsapp }}" class="social-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.393 0 0 5.393 0 12.032c0 2.122.553 4.195 1.603 6.012L.15 23.473l5.584-1.464a11.986 11.986 0 0 0 6.297 1.776h.004c6.637 0 12.032-5.393 12.032-12.032C24.067 5.394 18.673 0 12.031 0z"/></svg>
+    </a>
+  {%- endif -%}
+</div>

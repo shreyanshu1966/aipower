@@ -1,0 +1,150 @@
+{%- capture section_settings -%}
+{
+  "stackable": false,
+  "layout": "vertical"
+}
+{%- endcapture -%}
+
+<section class="section" data-section-id="{{ section.id }}" data-section-type="product-grid" data-section-settings="{{ section_settings | escape_once }}">
+  <div class="container">
+    <header class="section__header">
+      <div class="section__header-stack" style="text-align: center; margin-bottom: 20px;">
+        <h2 class="section__title heading h3">{{ section.settings.title | escape }}</h2>
+      </div>
+
+      <div class="tabbed-collections__nav" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+        {%- for block in section.blocks -%}
+          <button type="button" class="tab-btn {% if forloop.first %}is-active{% endif %}" data-target="tab-{{ section.id }}-{{ forloop.index }}" style="background: none; border: none; font-size: 16px; font-weight: bold; cursor: pointer; padding-bottom: 5px; border-bottom: 2px solid {% if forloop.first %}var(--primary-button-background){% else %}transparent{% endif %}; color: {% if forloop.first %}var(--primary-button-background){% else %}var(--text-color){% endif %};">
+            {{ block.settings.title | escape }}
+          </button>
+        {%- endfor -%}
+      </div>
+    </header>
+  </div>
+
+  <div class="container container--flush">
+    {%- for block in section.blocks -%}
+      {%- assign collection = collections[block.settings.collection] -%}
+      <div id="tab-{{ section.id }}-{{ forloop.index }}" class="tab-content" style="display: {% if forloop.first %}block{% else %}none{% endif %};">
+        {%- capture product_list -%}
+          <div class="product-list product-list--vertical product-list--scrollable">
+            {%- assign use_placeholder = true -%}
+            {%- if collection == blank -%}
+              {%- assign products = (1..section.settings.products_count) -%}
+            {%- else -%}
+              {%- assign products = collection.products -%}
+              {%- assign use_placeholder = false -%}
+            {%- endif -%}
+
+            {%- for product in products limit: section.settings.products_count -%}
+              {%- assign products_per_row = section.settings.products_count | at_most: 6 -%}
+              {%- capture grid_classes -%}1/4--lap 1/{{ products_per_row | minus: 1 }}--desk 1/{{ products_per_row }}--wide{%- endcapture -%}
+
+              {%- if use_placeholder -%}
+                {%- render 'product-item-placeholder', product: product, grid_classes: grid_classes, show_add_to_cart: true -%}
+              {%- else -%}
+                {%- render 'product-item', product: product, grid_classes: grid_classes, show_add_to_cart: true -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endcapture -%}
+
+        <div class="scroller">
+          <div class="scroller__inner">
+            {{ product_list }}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var tabs = document.querySelectorAll('#shopify-section-{{ section.id }} .tab-btn');
+    var contents = document.querySelectorAll('#shopify-section-{{ section.id }} .tab-content');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tabs.forEach(function(t) {
+          t.classList.remove('is-active');
+          t.style.borderBottomColor = 'transparent';
+          t.style.color = 'var(--text-color)';
+        });
+        contents.forEach(function(c) { c.style.display = 'none'; });
+
+        var targetId = tab.getAttribute('data-target');
+        var targetContent = document.getElementById(targetId);
+
+        tab.classList.add('is-active');
+        tab.style.borderBottomColor = 'var(--primary-button-background)';
+        tab.style.color = 'var(--primary-button-background)';
+        if(targetContent) {
+          targetContent.style.display = 'block';
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Tabbed collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Discovery"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "label": "Products to show per tab",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Title",
+          "default": "Featured"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Collections",
+      "name": "Tabbed collections",
+      "blocks": [
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Featured"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "New Arrivals"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
