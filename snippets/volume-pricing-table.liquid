@@ -1,0 +1,20 @@
+
+
+{%- if variant.quantity_price_breaks.size > 0 -%}
+  <table class="table table--tight table--bordered">
+    <caption class="text--strong">{{ 'product.volume_pricing.title' | t }}</caption>
+
+    <tbody>
+      {%- for quantity_break in variant.quantity_price_breaks -%}
+        <tr>
+          <td>{{ 'product.volume_pricing.minimum' | t: minimum_quantity: quantity_break.minimum_quantity }}</td>
+
+          <td>
+            {%- assign break_price = quantity_break.price | money -%}
+            {{- 'product.volume_pricing.price_at_each' | t: price: break_price -}}
+          </td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+{%- endif -%}

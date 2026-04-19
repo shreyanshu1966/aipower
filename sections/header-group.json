@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "background": "#1e2d7d",
+        "text_color": "#ffffff",
+        "text": "Announce something here",
+        "link": "",
+        "newsletter_button": "Subscribe & Save",
+        "newsletter_title": "Newsletter",
+        "newsletter_content": "<p>Subscribe to get notified about product launches, special offers and news<\/p>"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo": "",
+        "logo_max_width": 140,
+        "mobile_logo_max_width": 100,
+        "navigation_menu": "main-menu",
+        "desktop_navigation_layout": "inline",
+        "desktop_navigation_open_trigger": "hover",
+        "navigation_phone_number": "Call us 000-000-0000",
+        "navigation_email": "info@yourwebsite.com",
+        "search_menu": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

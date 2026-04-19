@@ -1,0 +1,337 @@
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- assign color_label = 'color,colour,couleur,cor,colore,farbe,색,色,カラー,färg,farve,szín,barva' | split: ',' -%}
+
+{%- unless product.has_only_default_variant -%}
+  <variant-picker handle="{{ product.handle }}" section-id="{{ section.id }}" form-id="{{ product_form_id }}" {% if update_url %}update-url{% endif %} {% if block.settings.hide_sold_out_variants %}hide-sold-out-variants{% endif %} class="product-form__variants" {{ block.shopify_attributes }}>
+    {%- comment -%}
+    The variant data is outputted as a JSON, which allows the theme to emit an event with the data when the variant changes. This must not be removed.
+    {%- endcomment -%}
+    <script data-variant type="application/json">
+      {{- product.selected_or_first_available_variant | json -}}
+    </script>
+
+    {%- for option in product.options_with_values -%}
+      {%- assign downcase_option = option.name | downcase -%}
+      {%- capture option_name -%}option{{ option.position }}{%- endcapture -%}
+
+      {%- assign option_selector_type = block.settings.selector_mode -%}
+      {%- assign variant_image_options = block.settings.variant_image_options | replace: ', ', ',' | downcase | split: ',' -%}
+
+      {%- assign swatch_count = option.values | map: 'swatch' | compact | size -%}
+
+      {%- if swatch_count > 0 and block.settings.color_mode == 'swatch' %}
+        {%- assign option_selector_type = 'swatch' -%}
+      {%- endif -%}
+
+      {% if swatch_count == 0 and color_label contains downcase_option and block.settings.color_mode != 'none' %}
+        {%- assign option_selector_type = 'swatch' -%}
+      {%- endif -%}
+
+      {%- if variant_image_options contains downcase_option -%}
+        {%- assign option_selector_type = 'variant' -%}
+      {%- endif -%}
+
+      <div class="product-form__option">
+        {%- case option_selector_type -%}
+          {%- when 'swatch' -%}
+            <span class="product-form__option-name text--strong">{{ option.name }}: <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+
+            <div class="color-swatch-list color-swatch-list--large">
+              {%- assign color_swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />' -%}
+
+              {%- for value in option.values -%}
+                {%- assign downcased_value = value | downcase -%}
+                {%- capture color_id -%}{{ product_form_id }}-{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
+
+                <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} {% unless value.available %}color-swatch--disabled{% endunless %}">
+                  {%- if value.product_url != blank -%}
+                    {%- if value == option.selected_value -%}
+                      <input type="hidden" name="{{ option_name }}" form="{{ product_form_id }}" value="{{ value.id }}" data-option-position="{{ option.position }}">
+                    {%- endif -%}
+
+                    <a href="{{ value.product_url }}" class="color-swatch__item {% if value == option.selected_value %}is-selected{% endif %}" style="{% render 'color-swatch-style', swatch: value.swatch, color_swatch_config: color_swatch_config, value: downcased_value %}" title="{{ value | escape }}">
+                      <span class="visually-hidden">{{ value }}</span>
+                      {%- render 'icon', icon: 'cross-sold-out' -%}
+                    </a>
+                  {%- else -%}
+                    <input class="color-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ color_id }}" value="{{ value.id }}" {% if option.selected_value == value %}checked{% endif %} data-option-position="{{ option.position }}" form="{{ product_form_id }}">
+                    <label class="color-swatch__item" for="{{ color_id }}" style="{% render 'color-swatch-style', swatch: value.swatch, color_swatch_config: color_swatch_config, value: downcased_value %}" title="{{ value | escape }}">
+                      <span class="visually-hidden">{{ value }}</span>
+                      {%- render 'icon', icon: 'cross-sold-out' -%}
+                    </label>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+
+          {%- when 'variant' -%}
+            <span class="product-form__option-name text--strong">{{ option.name }}: <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+
+            <div class="variant-swatch-list">
+              {%- for value in option.values -%}
+                {%- capture variant_swatch_id -%}{{ product_form_id }}-{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
+
+                {%- liquid
+                  assign image = value.variant.featured_media
+                  assign option_name = 'option' | append: option.position
+                
+                  if value.variant.featured_media == blank
+                    for variant in product.variants
+                      if variant[option_name] == value
+                        assign image = variant.featured_media
+                        break
+                      endif
+                    endfor
+                  endif
+
+                  assign image = image | default: product.featured_media
+                -%}
+
+                <div class="variant-swatch {% unless value.available %}variant-swatch--disabled{% endunless %}">
+                  {%- if value.product_url != blank -%}
+                    {%- if value == option.selected_value -%}
+                      <input type="hidden" name="{{ option_name }}" form="{{ product_form_id }}" value="{{ value.id }}" data-option-position="{{ option.position }}">
+                    {%- endif -%}
+
+                    <a href="{{ value.product_url }}" class="variant-swatch__item {% if value == option.selected_value %}is-selected{% endif %}" title="{{ value | escape }}">
+                      <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: image.aspect_ratio }}%">
+                        {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '120px', widths: '120,240' -}}
+                      </div>
+
+                      {% render 'icon', icon: 'cross-sold-out' %}
+                    </a>
+                  {%- else -%}
+                    <input class="variant-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ variant_swatch_id }}" value="{{ value.id }}" form="{{ product_form_id }}" {% if option.selected_value == value %}checked{% endif %} data-option-position="{{ option.position }}">
+
+                    <label class="variant-swatch__item" for="{{ variant_swatch_id }}" title="{{ value | escape }}">
+                      <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: image.aspect_ratio }}%">
+                        {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '120px', widths: '120,240' -}}
+                      </div>
+
+                      {% render 'icon', icon: 'cross-sold-out' %}
+                    </label>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+
+          {%- when 'block' -%}
+            <span class="product-form__option-name text--strong">{{ option.name }}: <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+
+            <div class="block-swatch-list">
+              {%- for value in option.values -%}
+                {%- capture block_swatch_id -%}{{ product_form_id }}-{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
+
+                <div class="block-swatch {% unless value.available %}block-swatch--disabled{% endunless %}">
+                  {%- if value.product_url != blank -%}
+                    {%- if value == option.selected_value -%}
+                      <input type="hidden" name="{{ option_name }}" form="{{ product_form_id }}" value="{{ value.id }}" data-option-position="{{ option.position }}">
+                    {%- endif -%}
+
+                    <a href="{{ value.product_url }}" class="block-swatch__item {% if value == option.selected_value %}is-selected{% endif %}" title="{{ value | escape }}">
+                      <span class="block-swatch__item-text">{{ value }}</span>
+                    </a>
+                  {%- else -%}
+                    <input class="block-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ block_swatch_id }}" value="{{ value.id }}" form="{{ product_form_id }}" {% if option.selected_value == value %}checked{% endif %} data-option-position="{{ option.position }}">
+                    <label class="block-swatch__item" for="{{ block_swatch_id }}" title="{{ value | escape }}">
+                      <span class="block-swatch__item-text">{{ value }}</span>
+                    </label>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+
+          {%- when 'dropdown' -%}
+            {%- capture dropdown_id -%}{{ product_form_id }}-{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
+
+            <label for="{{ dropdown_id }}" class="product-form__option-name text--strong">{{ option.name }}: <span class="product-form__selected-value">{{ option.selected_value }}</span></label>
+
+            <div class="select-wrapper select-wrapper--primary">
+              {%- render 'icon', icon: 'arrow-bottom' -%}
+
+              <select class="product-form__single-selector" name="{{ option_name }}" form="{{ product_form_id }}" id="{{ dropdown_id }}" data-option-position="{{ option.position }}">
+                {%- for value in option.values -%}
+                  <option {% if value.product_url != blank %}data-update-url="{{ value.product_url | escape }}"{% endif %} value="{{ value.id }}" {% if value == option.selected_value %}selected="selected"{% endif %}>{{ value }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+        {%- endcase -%}
+      </div>
+    {%- endfor -%}
+
+    <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}" value="{{ selected_variant.id }}">
+  </variant-picker>
+{%- else -%}
+  <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}" value="{{ selected_variant.id }}">
+{%- endunless -%}
+
+<div class="product-form__info-list">
+  {%- if product.selected_or_first_available_variant != nil -%}
+    <div class="product-form__info-item">
+      <span class="product-form__info-title text--strong">{{ 'product.form.price' | t }}:</span>
+
+      <div class="product-form__info-content" role="region" aria-live="polite">
+        <div class="price-list">
+          {%- if selected_variant.compare_at_price > selected_variant.price -%}
+            <span class="price price--highlight">
+              <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
+
+              {%- if settings.currency_code_enabled -%}
+                {{- selected_variant.price | money_with_currency -}}
+              {%- else -%}
+                {{- selected_variant.price | money -}}
+              {%- endif -%}
+            </span>
+
+            <span class="price price--compare">
+              <span class="visually-hidden">{{ 'product.general.regular_price' | t }}</span>
+
+              {%- if settings.currency_code_enabled -%}
+                {{- selected_variant.compare_at_price | money_with_currency -}}
+              {%- else -%}
+                {{- selected_variant.compare_at_price | money -}}
+              {%- endif -%}
+            </span>
+          {%- else -%}
+            <span class="price">
+              <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
+
+              {%- if settings.currency_code_enabled -%}
+                {{- selected_variant.price | money_with_currency -}}
+              {%- else -%}
+                {{- selected_variant.price | money -}}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+        </div>
+
+        {%- assign variant_to_use = selected_variant | default: product.selected_or_first_available_variant -%}
+
+        {%- if variant_to_use.unit_price -%}
+          <div class="product-form__price-info">
+            <div class="unit-price-measurement">
+              {{- variant_to_use.unit_price | unit_price_with_measurement: variant_to_use.unit_price_measurement -}}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {{- form | payment_terms -}}
+
+        {%- if block.settings.show_taxes_included -%}
+          {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+            <p class="product-form__price-info">
+              {%- if cart.taxes_included -%}
+                {{ 'product.general.include_taxes' | t }}
+              {%- endif -%}
+
+              {%- if shop.shipping_policy.body != blank -%}
+                {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if block.settings.show_inventory_quantity and product.template_suffix != 'pre-order' and product.selected_or_first_available_variant != nil -%}
+    <div class="product-form__info-item">
+      <span class="product-form__info-title text--strong">{{ 'product.form.inventory' | t }}:</span>
+
+      <div class="product-form__info-content">
+        {%- if selected_variant.inventory_management -%}
+          {%- if selected_variant.available -%}
+            {%- if selected_variant.inventory_quantity <= 0 and selected_variant.requires_shipping -%}
+              {%- if selected_variant.incoming -%}
+                {%- capture next_incoming_date -%}{{ selected_variant.next_incoming_date | date: format: 'date' }}{%- endcapture -%}
+                <span class="product-form__inventory inventory inventory--high">{{ 'product.form.incoming_stock' | t: next_incoming_date: next_incoming_date }}</span>
+              {%- else -%}
+                <span class="product-form__inventory inventory inventory--high">{{ 'product.form.oversell_stock' | t }}</span>
+              {%- endif -%}
+            {%- elsif block.settings.low_inventory_threshold > 0 -%}
+              {%- if selected_variant.inventory_quantity <= block.settings.low_inventory_threshold -%}
+                <span class="product-form__inventory inventory inventory--low">{{ 'product.form.low_stock_with_quantity_count' | t: count: selected_variant.inventory_quantity }}</span>
+              {%- else -%}
+                <span class="product-form__inventory inventory inventory--high">{{ 'product.form.in_stock_with_quantity_count' | t: count: selected_variant.inventory_quantity }}</span>
+              {%- endif -%}
+            {%- else -%}
+              <span class="product-form__inventory inventory inventory--high">{{ 'product.form.in_stock' | t }}</span>
+            {%- endif -%}
+          {%- else -%}
+            {%- if selected_variant.incoming -%}
+              {%- capture next_incoming_date -%}{{ selected_variant.next_incoming_date | date: format: 'date' }}{%- endcapture -%}
+              <span class="product-form__inventory inventory">{{ 'product.form.incoming_stock' | t: next_incoming_date: next_incoming_date }}</span>
+            {%- else -%}
+              <span class="product-form__inventory inventory">{{ 'product.form.sold_out' | t }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        {%- else -%}
+          <span class="product-form__inventory inventory inventory--high">{{ 'product.form.in_stock' | t }}</span>
+        {%- endif -%}
+
+        {%- for tag in product.tags -%}
+          {%- if tag contains '__stock:' -%}
+            {%- assign stock_countdown_max = tag | split: '__stock:' | last | times: 1.0 -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%}
+        Historically the theme used a tag based approach instead of a setting. We keep this for compatibility, but then fallback to the setting,
+        which allows a simpler setup
+        {%- endcomment -%}
+        {%- assign stock_countdown_max = stock_countdown_max | default: block.settings.progress_bar_max_value | times: 1.0 -%}
+
+        <progress-bar class="inventory-bar" data-variant-inventory="{{ selected_variant.inventory_quantity }}" data-stock-countdown-max="{{ stock_countdown_max }}">
+          <span class="inventory-bar__progress" style="width: 100%"></span>
+        </progress-bar>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if product.template_suffix != 'contact' -%}
+    {%- if block.settings.show_quantity_selector -%}
+      <div class="product-form__info-item product-form__info-item--quantity">
+        <label for="{{ section.id }}-{{ product.id }}-quantity" class="product-form__info-title text--strong">{{ 'product.form.quantity' | t }}:</label>
+
+        <div class="product-form__info-content">
+          {%- assign variant = product.selected_or_first_available_variant -%}
+          
+          <div class="product-form__quantity-with-rules">
+            <quantity-picker class="quantity-selector quantity-selector--product">
+              <button type="button" class="quantity-selector__button" data-action="decrease-picker-quantity" aria-label="{{ 'cart.items.decrease_quantity' | t }}" title="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon', icon: 'minus' %}</button>
+              <input id="{{ section.id }}-{{ product.id }}-quantity" type="number" name="quantity" aria-label="{{ 'product.form.quantity' | t }}" class="quantity-selector__value" inputmode="numeric" value="{{ variant.quantity_rule.min | default: 1 }}" step="{{ variant.quantity_rule.increment }}" min="{{ variant.quantity_rule.min }}" {% if variant.quantity_rule.max != nil %}max="{{ variant.quantity_rule.max }}"{% endif %}>
+              <button type="button" class="quantity-selector__button" data-action="increase-picker-quantity" aria-label="{{ 'cart.items.increase_quantity' | t }}" title="{{ 'cart.items.increase_quantity' | t }}">{% render 'icon', icon: 'plus' %}</button>
+            </quantity-picker>
+  
+            {%- liquid
+              assign variant = product.selected_or_first_available_variant
+              assign quantity_rules = ''
+  
+              if variant.quantity_rule.min > 1
+                assign rule = 'product.quantity.minimum_of' | t: min: variant.quantity_rule.min
+                assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+              endif
+  
+              if variant.quantity_rule.max != nil
+                assign rule = 'product.quantity.maximum_of' | t: max: variant.quantity_rule.max
+                assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+              endif
+  
+              if variant.quantity_rule.increment > 1
+                assign rule = 'product.quantity.increment_of' | t: step: variant.quantity_rule.increment
+                assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+              endif
+            -%}
+  
+            {%- if quantity_rules != blank -%}
+              <p class="product-form__quantity-rules text--small">{{ quantity_rules | remove_first: ' / ' | capitalize }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- else -%}
+      <input type="hidden" name="quantity" value="1">
+    {%- endif -%}
+  {%- endif -%}
+</div>

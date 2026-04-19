@@ -1,0 +1,35 @@
+<div class="{% if section.settings.include_margins %}container{% endif %}">
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom section",
+  "class": "shopify-section--blocks",
+  "disabled_on": {
+    "groups": ["custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "label": "Include margins",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom section",
+      "category": "Layout"
+    }
+  ]
+}
+{% endschema %}
