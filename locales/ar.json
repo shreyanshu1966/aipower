@@ -523,6 +523,249 @@
         "delete_customer_mandate_modal_body": "إذا قمت بإزالة هذه البطاقة، ستحتاج إلى إضافتها مرة أخرى قبل استخدامها للدفع.",
         "delete_customer_mandate_modal_confirm": "إزالة البطاقة"
       }
+    },
+    "notices": {
+      "cart": {
+        "maximum_available_quantity_reached": "لقد بلغتَ الحد الأقصى من كمية هذا المنتج في سلة التسوق الخاصة بك.",
+        "less_than_minimum": "الحد الأدنى لهذا العنصر هو %{min}.",
+        "more_than_maximum": "الحد الأقصى لهذا العنصر هو %{max}.",
+        "not_respect_step": "لا يمكنك إضافة هذا العنصر إلا بزيادات قدرها %{step}.",
+        "all_items_in_cart": "كل %{count} من %{name} موجودة في سلة مشترياتك.",
+        "empty_update": "لا يمكن تحديث سلة التسوق الفارغة",
+        "missing_parameters": "لا يوجد معرّف صالح أو معلمة سطر",
+        "generic_error": "خطأ في سلة التسوق",
+        "invalid_input": "المعلمة %{parameter} غير صالحة.",
+        "product_not_available": "المنتج غير متوفر",
+        "too_many_line_items_error": "لا يمكن أن تحتوي سلتك على أكثر من %{max} من العناصر.",
+        "link_expired": "الرابط منتهي الصلاحية",
+        "link_no_longer_exists": "الرابط لم يعد موجوداً.",
+        "stock_problems_html": "واحد أو أكثر من المنتجات غير متوفرة. لقد قمنا بتوفير <a href='%{link}'>عربة تسوق محدثة</a>.",
+        "changed": "تم تغيير سلة التسوق",
+        "items_changed": "لقد تغير عنصر واحد أو أكثر.",
+        "product_sold_out": "المنتج '%{name}' تم بيعه بالكامل.",
+        "variant_not_found": "تعذر العثور على المتغير",
+        "variant_requires_selling_plan": "لا يمكن شراء المتغير إلا من خلال خطة بيع.",
+        "selling_plan_not_available_for_company_locations": "تتوفر للطلبات بين الشركات (B2B) عملية شراء لمرة واحدة فقط",
+        "digital_product_not_available_for_company_locations": "لا يمكن إضافة هذا العنصر إلى طلب B2B.",
+        "buyer_cannot_purchase_for_company_locations": "لا يمكنك الشراء لهذا الموقع",
+        "selling_plan_not_applicable": "لا يمكن تطبيق خطة البيع على هذا المتغير",
+        "shipping_address_not_required": "هذه العربة لا تتطلب الشحن",
+        "shipping_address_invalid": "حدثت مشكلة أثناء حساب تكاليف الشحن. تابع عملية الدفع لاختيار طريقة الشحن قبل إتمام طلبك.",
+        "bundle_requires_components": "لا يمكن إضافة المنتج المجمع '%{name}' إلى عربة التسوق.",
+        "gift_card_with_components_not_supported": "لا يمكن إضافة المنتج المجمع '%{name}' إلى عربة التسوق.",
+        "gift_card_price_must_be_greater_than_zero": "لا يمكن إضافة المنتج المجمع '%{name}' إلى عربة التسوق.",
+        "gift_card_recipient_validation_error": "المستلم المحدد لبطاقة الهدايا غير صالح",
+        "view_lines_limit_reached": "يجب ألا تتجاوز السطور %{limit}",
+        "cart_too_large": "السلة كبيرة جدًا.",
+        "cart_attributes_error": "تحتوي سمات سلة التسوق على بيانات غير صالحة.",
+        "merchandise_line_transformers": {
+          "run_error": "حدث خطأ في سلة مشترياتك."
+        },
+        "merchandise_not_applicable": "لا يمكن شراء هذا المنتج بالتكوين المحدد."
+      },
+      "storefront": {
+        "invalid_password": "كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى."
+      },
+      "tags": {
+        "add_articles": "تضييق البحث ليشمل المقالات التي تحتوي أيضًا على الوسم %{tag}",
+        "add_products": "تضييق التحديد على المنتجات المطابقة للوسم %{tag}",
+        "remove_articles": "توسيع البحث ليشمل المقالات غير الموسومة بـ %{tag}",
+        "remove_products": "إزالة العلامة %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "نشكرك على الاشتراك في قائمتنا البريدية.",
+        "disclaimer": "يمكنك إلغاء الاشتراك في أي وقت.",
+        "unsubscribe": "إلغاء الاشتراك"
+      },
+      "unsubscribed": {
+        "confirmation": "لقد ألغيت اشتراكك من قائمتنا البريدية.",
+        "disclaimer": "لن تصلك أي تحديثات تسويقية أخرى منّا. يمكنك الاشتراك مرة أخرى في أي وقت.",
+        "preview": "أنت تستعرض ما سيراه العملاء عند إلغاء الاشتراك."
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "هل أنت متأكد أنك تريد إلغاء الاشتراك في التسويق عبر الرسائل النصية القصيرة؟",
+        "button": "إلغاء الاشتراك"
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>لقد وافقت على تتبع فتح البريد الإلكتروني.</b>",
+          "visibility": "سيتم الإبلاغ عن معدلات فتح البريد الإلكتروني بشكل مجهول. لن نتمكن إلا من معرفة ما إذا كنت قد فتحت رسالة بريد إلكتروني كجزء من معدل فتح البريد الإلكتروني الإجمالي.",
+          "opt_out_html": "يمكنك <a style='text-decoration:underline;' href='%{link}'>إلغاء الاشتراك</a> في تتبع فتح الرسائل الإلكترونية إذا كنت لا ترغب في مشاركة هذه المعلومات.",
+          "preview_bar": "أنت تشاهد معاينة لما سيراه العملاء عند الاشتراك في تتبع فتح البريد الإلكتروني."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>لقد ألغيت الاشتراك في تتبع فتح البريد الإلكتروني.</b>",
+          "visibility": "لن نرى ما إذا كنت قد فتحت رسائل البريد الإلكتروني الخاصة بنا.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>الاشتراك</a> في تتبّع فتح الرسائل الإلكترونية.",
+          "preview_bar": "أنت تستعرض ما سيراه العملاء عند إلغاء الاشتراك في تتبع فتح البريد الإلكتروني."
+        },
+        "no_longer_track": {
+          "status_html": "<b>لم نعد نتتبع أي فتح للبريد الإلكتروني.</b>",
+          "privacy_policy": "بعد إرسال هذا البريد الإلكتروني، قمنا بتحديث سياسة الخصوصية الخاصة بنا ولم نعد نتتبع عمليات الفتح."
+        },
+        "track": {
+          "status_html": "<b>تم الإبلاغ عن تتبع فتح البريد الإلكتروني.</b>",
+          "visibility": "لن نرى سوى ما إذا كنت قد فتحت رسالة البريد الإلكتروني، كجزء من إجمالي معدل فتح البريد الإلكتروني."
+        },
+        "updated_policy": {
+          "status_html": "<b>تم الإبلاغ عن تتبع فتح البريد الإلكتروني.</b>",
+          "visibility": "لقد قمنا بتحديث سياستنا، ونقوم الآن بتتبع فتح رسائل البريد الإلكتروني. سيتم الإبلاغ عن معدلات فتح البريد الإلكتروني بشكل مجهول. وسنرى ما إذا كنت قد فتحت رسالة بريد إلكتروني كجزء من إجمالي معدل فتح البريد الإلكتروني.",
+          "opt_out_html": "إذا كنت لا ترغب في مشاركة هذه المعلومات، يمكنك <a style='text-decoration:underline;' href='%{link}'>إلغاء الاشتراك.</a>"
+        }
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "متوفر بالمخزون",
+          "out_of_stock": "نفد المخزون"
+        }
+      },
+      "boolean": {
+        "true_label": "نعم",
+        "false_label": "لا"
+      }
+    },
+    "search": {
+      "error": "حدثت مشكلة في تحميل نتائج البحث. يُرجى تحديث الصفحة أو المحاولة مرة أخرى لاحقًا.",
+      "sorting": {
+        "relevance": "الأهمية",
+        "price_ascending": "السعر، من الأقل للأعلى",
+        "price_descending": "السعر، من الأعلى إلى الأقل"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "خطأ - %{title}",
+      "products": "المنتجات",
+      "shopping_cart": "عربة التسوق الخاصة بك",
+      "account": "حساب",
+      "create_account": "إنشاء حساب",
+      "reset_account": "إعادة تعيين الحساب",
+      "addresses": "العناوين",
+      "order": "اطلب %{name}",
+      "search": "بحث",
+      "search_results": {
+        "one": "بحث: تم العثور على %{count} نتيجة لـ \"%{terms}\"",
+        "other": "بحث: تم العثور على %{count} نتيجة لـ \"%{terms}\""
+      },
+      "collections": "المجموعات",
+      "not_found": "404 غير موجود",
+      "challenge": "تحدي",
+      "checkpoint": "نقطة تفتيش"
+    },
+    "cart": {
+      "discounts_with_count": "تم تطبيق %{count} من الخصومات"
+    },
+    "challenge": {
+      "message": "للمتابعة، يرجى تأكيد أنك لست روبوتًا.",
+      "error": "إجابتك لم تكن صحيحة، يرجى المحاولة مرة أخرى.",
+      "submit_button_text": "إرسال"
+    },
+    "checkpoint": {
+      "message": "حل الكابتشا للمتابعة",
+      "error": "فشل التحقق من الكابتشا",
+      "submit_button_text": "إرسال"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "جاهز عادة في غضون ساعة واحدة",
+        "two_hours": "عادة ما يكون جاهزًا خلال ساعتين.",
+        "four_hours": "عادة ما يكون جاهزًا خلال 4 ساعات",
+        "twenty_four_hours": "عادة ما تكون جاهزة خلال 24 ساعة",
+        "two_to_four_days": "جاهز عادةً في غضون 2-4 أيام",
+        "five_or_more_days": "عادةً ما تكون جاهزة في غضون 5 أيام أو أكثر",
+        "zero_to_two_hours": "عادة ما يكون جاهزًا خلال ساعتين.",
+        "two_to_four_hours": "عادة ما يكون جاهزًا خلال 4 ساعات"
+      }
     }
+  },
+  "product": {
+    "form": {
+      "pre_order": "طلب مسبق",
+      "unavailable": "غير متاح",
+      "contact_us": "اتصل بنا",
+      "added": "تمت إضافة المنتج إلى عربة التسوق الخاصة بك",
+      "added_short": "أُضيف!"
+    },
+    "quantity": {
+      "minimum_of": "الحد الأدنى {{ min }}",
+      "maximum_of": "الحد الأقصى {{ max }}",
+      "increment_of": "زيادة {{ step }}"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "عرض معلومات المتجر",
+      "check_other_stores": "التحقق من التوفر في المتاجر الأخرى",
+      "pick_up_available": "الاستلام متاح",
+      "pick_up_currently_unavailable": "خدمة الاستلام غير متاحة حالياً",
+      "pick_up_available_at": "الاستلام متاح في {{ location_name }}",
+      "pick_up_unavailable_at": "الاستلام غير متاح حاليًا في {{ location_name }}"
+    }
+  },
+  "gift_card": {
+    "issued": {
+      "subtext": "إليك بطاقة الهدية الخاصة بك!",
+      "disabled": "بطاقتك الهدية معطلة.",
+      "expired": "انتهت صلاحية بطاقة الهدية الخاصة بك في {{expiry}}.",
+      "expires_on": "تنتهي صلاحيته: {{expiry}}",
+      "redeem": "استخدم هذا الرمز عند الدفع لاسترداد بطاقة الهدية الخاصة بك:",
+      "remaining_amount": "متبقي {{amount}}",
+      "shop_link": "ابدأ التسوق",
+      "print": "طباعة",
+      "add_to_apple_wallet": "أضف إلى Apple Wallet"
+    },
+    "recipient": {
+      "checkbox": "أريد إرسال هذا كهدية",
+      "email_label": "البريد الإلكتروني للمستلم",
+      "name_label": "اسم المستلم (اختياري)",
+      "send_on_label": "أرسل في (اختياري)",
+      "message_label": "رسالة (اختياري)"
+    }
+  },
+  "blog": {
+    "general": {
+      "empty": "هذه المدونة لا تحتوي على مقالات",
+      "empty_button": "اذهب إلى الصفحة الرئيسية",
+      "categories": "التصنيفات",
+      "all_tag": "الكل"
+    },
+    "article": {
+      "tags": "العلامات:",
+      "share": "مشاركة",
+      "previous_article": "المقالة السابقة",
+      "next_article": "المقالة التالية",
+      "comments_count": {
+        "zero": "{{count}} تعليق",
+        "one": "{{count}} تعليق",
+        "other": "{{count}} تعليق"
+      }
+    },
+    "comments": {
+      "leave_comment": "اترك تعليقًا",
+      "name": "الاسم",
+      "email": "بريد إلكتروني",
+      "content": "المحتوى",
+      "approval_notice": "تتم مراجعة جميع التعليقات قبل نشرها",
+      "submit": "انشر تعليقًا",
+      "success": "تم نشر تعليقك.",
+      "success_moderated": "تم إرسال تعليقك. سيصبح مرئيًا بمجرد موافقة صاحب المتجر عليه!"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "ما اسمك",
+      "email": "بريدك الإلكتروني",
+      "message": "رسالتك",
+      "submit": "إرسال رسالة",
+      "successfully_sent": "تم إرسال رسالتك بنجاح."
+    }
+  },
+  "date_formats": {
+    "month_day_year": "%d %B, %Y",
+    "short_month_day_year": "%d %b، %Y",
+    "month_day_year_time": "%d %B %Y في %I:%M %p"
   }
 }
