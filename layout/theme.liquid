@@ -1,6 +1,11 @@
 <!doctype html>
 
-<html class="no-js" lang="{{ request.locale.iso_code }}">
+{%- assign direction = 'ltr' -%}
+{%- case request.locale.iso_code -%}
+  {%- when 'ar' or 'he' or 'ur' or 'fa' -%}
+    {%- assign direction = 'rtl' -%}
+{%- endcase -%}
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ direction }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
@@ -36,6 +41,16 @@
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
 
     {% render 'microdata-schema' %}
+
+    {%- if direction == 'rtl' -%}
+      <style>
+        body { text-align: right; }
+        [dir="rtl"] .header__action-list { margin-right: auto; margin-left: 0; }
+        [dir="rtl"] .nav-bar__all-categories { margin-left: 30px !important; margin-right: 0 !important; }
+        [dir="rtl"] .nav-bar__categories-dropdown { left: auto; right: 0; }
+        [dir="rtl"] .product-item__info { text-align: right; }
+      </style>
+    {%- endif -%}
 
     <script>
       // This allows to expose several variables to the global scope, to be used in scripts

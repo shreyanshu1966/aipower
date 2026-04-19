@@ -1,1 +1,27 @@
-{"sections":{"main":{"type":"main-page","settings":{}},"contact-form":{"type":"contact-form","settings":{}}},"order":["main","contact-form"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "branches-info": {
+      "type": "rich-text",
+      "settings": {
+        "text_width": "regular",
+        "title": "Our Branches",
+        "content": "<p><strong>Kuwait Branch<\/strong><br>Address: Shuwaikh Industrial Khalifa Al Jassim Street<br>Phone: 55000200<\/p><p><strong>Working Hours:<\/strong><br>Saturday - Thursday: 07:00 AM - 07:00 PM<br>Friday: Closed<\/p>",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    "contact": {
+      "type": "contact-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "branches-info",
+    "contact"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "about-text": {
+      "type": "rich-text",
+      "settings": {
+        "text_width": "regular",
+        "title": "About Us",
+        "content": "<p>Aipower is a Kuwaiti brand specializing in the supply and sale of heavy machinery and equipment, aiming to meet the needs of individuals and companies across various sectors such as construction, contracting, and industry. We work in collaboration with approved suppliers to ensure the delivery of high-quality, reliable products that meet recognized technical standards.<\/p><p>At Aipower, we believe that trust and quality are the foundation of every successful partnership. Therefore, we carefully select our products and provide practical solutions that efficiently meet the requirements of the Kuwaiti market. We are also committed to offering a smooth and transparent purchasing experience, supported by technical assistance and customer service dedicated to helping our clients make the right decisions for their needs.<\/p><p>Our goal is to become the leading choice in the heavy machinery sector in Kuwait by upholding credibility, quality, and after-sales service, and by building long-term relationships with our customers based on trust and shared success.<\/p>",
+        "button_text": "",
+        "button_link": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "about-text"
+  ]
+}
