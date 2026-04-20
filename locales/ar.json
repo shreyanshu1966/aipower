@@ -2403,6 +2403,129 @@
         }
       },
       "add_button": "أضِف"
+    },
+    "payment_methods": {
+      "payment_delete": {
+        "payment_method_selector_no_alternative_payment": "لا توجد طريقة بديلة",
+        "replace_method_with_new_method_description": "سيتم حذف {{currentPaymentMethodName}} واستبدالها بـ {{newPaymentMethodName}}.",
+        "error_when_deleting": "نعتذر ولكن حدث خطأ ولم نتمكن من حذف طريقة الدفع هذه. يُرجى إعادة المحاولة لاحقًا أو تحديث الصفحة.",
+        "delete_and_replace_button": "حذف واستبدال",
+        "delete_and_replace_button_accessibility_label": "احذف {{currentPaymentMethodName}} واستبدله بـ {{newPaymentMethodName}}.",
+        "deleted_successfully": "تم حذف طريقة الدفع بنجاح.",
+        "loading_available_payment_methods_accessibility_label": "جاري تحميل طرق الدفع المتاحة"
+      },
+      "add_payment_method": {
+        "title": "إضافة طريقة دفع",
+        "button_title": "أضِف",
+        "payment_method_added_confirmation": "تمت إضافة طريقة الدفع",
+        "missing_customer_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال بالدعم.",
+        "replace_mode_warning": "سيؤثر حذف طريقة الدفع هذه على الاشتراكات أو الطلبات المسبقة. يُرجى استبدالها بطريقة دفع بديلة لمواصلة تلقي الطلبات القادمة.",
+        "choose_from_list": "اختر من القائمة",
+        "add_new_button": "إضافة جديد",
+        "billing_address": {
+          "title": "عنوان الفواتير",
+          "add_billing_address_button": "إضافة جديد",
+          "add_billing_address_button_accessibility_label": "إضافة عنوان فوترة جديد",
+          "choose_billing_address_from_list_button": "اختر من القائمة",
+          "choose_billing_address_from_list_button_accessibility_label": "اختر عنوان فوترة من القائمة",
+          "missing_billing_address_error_message": "الرجاء تحديد عنوان الفواتير",
+          "default_checkbox": "تعيين كوسيلة الدفع الافتراضية"
+        },
+        "subscription_contracts": {
+          "title": "استخدام وسيلة الدفع للطلبات المتكررة",
+          "more_items": {
+            "one": "منتجات إضافية: {{count}}",
+            "other": "{{count}} منتجات إضافية"
+          },
+          "product_count": {
+            "one": "{{count}} منتج",
+            "other": "{{count}} منتجات"
+          },
+          "product_details": "تفاصيل المنتج",
+          "load_more": "تحميل المزيد"
+        },
+        "updating_contracts": {
+          "one": "جاري تحديث {{count}} عقد اشتراك...",
+          "other": "جارٍ تحديث {{count}} من عقود الاشتراك..."
+        },
+        "contracts_updated": {
+          "one": "تم تحديث {{count}} عقد اشتراك بنجاح",
+          "other": "تم تحديث {{count}} عقد اشتراك بنجاح"
+        },
+        "contracts_update_failed": "فشل تحديث بعض عقود الاشتراك",
+        "subscription_contracts_updated": "تم تحديث {{succeeded}} من {{total}} اشتراكات",
+        "invalid_wallet_type_error": "نوع المحفظة غير صالح."
+      },
+      "three_d_secure": {
+        "title": "التحقق الثلاثي الأبعاد",
+        "verification_failed": "تعذر التحقق من دفعتك. يرجى إعادة المحاولة أو استخدام طريقة دفع أخرى."
+      }
+    },
+    "payment_method_brands": {
+      "visa": "تأشيرة",
+      "mastercard": "ماستركارد",
+      "americanexpress": "أمريكان إكسبريس",
+      "discover": "اكتشف",
+      "dinersclub": "داينرز كلوب",
+      "jcb": "جيه سي بي",
+      "elo": "إيلو",
+      "visaelectron": "فيزا إلكترون",
+      "maestro": "المايسترو",
+      "dankort": "دانكورت",
+      "hipercard": "هايبركارد",
+      "unionpay": "يونيون باي",
+      "laser": "ليزر",
+      "shoppay": "شوب باي",
+      "paypal": "باي بال",
+      "storecredit": "رصيد المتجر",
+      "bogus": "زائف",
+      "klarna_pay_now": "كلارنا",
+      "klarna_pay_later": "كلارنا",
+      "klarna_slice_it": "كلارنا"
+    },
+    "privacy_banner": {
+      "cookie_preferences_link": "تفضيلات الكوكيز"
+    },
+    "ui_components": {
+      "clear": "واضح",
+      "clipboardCopied": "تم النسخ",
+      "clipboardFailedToCopy": "فشل النسخ",
+      "closeNotification": "إغلاق",
+      "expandNotification": "عرض المزيد",
+      "closeModal": "إغلاق",
+      "submit": "إرسال",
+      "processing": "جارٍ المعالجة…",
+      "increase": "زيادة {{type}}",
+      "decrease": "خفض {{type}}",
+      "minimumReached": "تم الوصول للحد الأدنى البالغ {{value}}",
+      "maximumReached": "تم الوصول للحد الأقصى {{value}}",
+      "january": "يناير",
+      "february": "فبراير",
+      "march": "مارس",
+      "april": "أبريل",
+      "may": "مايو/أيار",
+      "june": "يونيو",
+      "july": "يوليو",
+      "august": "أغسطس",
+      "september": "سبتمبر",
+      "october": "أكتوبر",
+      "november": "نوفمبر",
+      "december": "ديسمبر",
+      "monday": "الاثنين",
+      "tuesday": "الثلاثاء",
+      "wednesday": "الأربعاء",
+      "thursday": "الخميس",
+      "friday": "الجمعة",
+      "saturday": "السبت",
+      "sunday": "الأحد",
+      "mondayAbbreviation": "مو",
+      "tuesdayAbbreviation": "أنت",
+      "wednesdayAbbreviation": "نحن",
+      "thursdayAbbreviation": "الخميس",
+      "fridayAbbreviation": "موافق",
+      "saturdayAbbreviation": "سا",
+      "sundayAbbreviation": "سو",
+      "showNextMonth": "عرض الشهر التالي، {{month}} {{year}}"
     }
   }
 }
