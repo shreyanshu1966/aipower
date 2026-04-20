@@ -607,7 +607,151 @@
         "split_shipping_option_custom": "مخصص",
         "add_shipping_address": "أضف عنوان الشحن",
         "add_new_delivery_address": "إضافة عنوان توصيل جديد",
-        "choose_new_address": "اختر عنوانًا جديدًا"
+        "choose_new_address": "اختر عنوانًا جديدًا",
+        "subscription_delivery_description": {
+          "first_n_order_free_with_cycle": {
+            "one": "شحن مجاني لـ %{count} عملية توصيل أخرى، ثم %{recurring_order_shipping_price}",
+            "other": "شحن مجاني لـ %{count} عملية توصيل أخرى، ثم %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "one": "شحن مجاني لـ %{count} عملية توصيل، ثم %{recurring_order_shipping_price}",
+            "other": "شحن مجاني لـ %{count} من عمليات التسليم، ثم %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "one": "%{count} عملية توصيل إضافية مقابل %{shipping_price}",
+            "other": "%{count} عمليات توصيل إضافية بسعر %{shipping_price} لكل واحدة"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "one": "%{count} توصيل مقابل %{shipping_price}",
+            "other": "%{count} عمليات توصيل إضافية بسعر %{shipping_price} لكل واحدة"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "one": "شحن مجاني لأول %{cycle}، يليه %{recurring_order_shipping_price}",
+            "other": "شحن مجاني لأول %{cycle}، يليه %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "one": "%{shipping_price} لـ %{count} عملية توصيل إضافية",
+            "other": "%{shipping_price} مقابل %{count} عملية توصيل أخرى (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "one": "%{shipping_price} مقابل %{count} توصيل",
+            "other": "%{shipping_price} لـ %{count} عملية توصيل (%{per_delivery_cost} لكل عملية توصيل)"
+          },
+          "prepaid_order_no_cycle": {
+            "one": "%{shipping_price} لشحن %{count} إضافية، يتبعها %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} لـ %{count} عملية توصيل أخرى (%{per_delivery_cost})، ثم %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "one": "%{shipping_price} لعدد %{count} من عمليات التسليم، يليها %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} لـ %{count} من عمليات التسليم (%{per_delivery_cost})، متبوعًا بـ %{recurring_order_shipping_price}"
+          },
+          "subscription_free_with_frequency_label": "شحن مجاني %{delivery_frequency}",
+          "prepaid_delivery_frequency": {
+            "one": "لتوصيل %{count}",
+            "other": "لـ %{count} عملية تسليم"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "كل يوم",
+              "other": "كل %{count} أيام"
+            },
+            "week": {
+              "one": "كل أسبوع",
+              "other": "كل %{count} أسابيع"
+            },
+            "month": {
+              "one": "كل شهر",
+              "other": "كل %{count} أشهر"
+            },
+            "year": {
+              "one": "كل عام",
+              "other": "كل %{count} سنوات"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} لكل عملية تسليم",
+          "prepaid_shipping_price_label": "%{shipping_price} لكل عملية توصيل × %{delivery_interval_count}",
+          "initial_order_discounted": "أول تكلفة شحن %{discounted_shipping_cost}، ثم %{frequency_description}",
+          "prepaid_initial_order_discounted": "تكلفة الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "رسوم الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "تكلفة الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency}، ثم %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "تكلفة الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})، ثم %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "مضمّن",
+          "recurring_order_shipping_price": "تليها %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "الطلب الأول مشمول، يليه %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} لكل عملية تسليم)، يتبعها %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "الطلب الأول مجاني",
+            "other": "أول %{count} طلبات مجانية"
+          },
+          "free_for_first_n_order": {
+            "one": "للرتبة الأولى",
+            "other": "لأول %{count} طلبات"
+          }
+        },
+        "one_time_purchase_shipping": "شحن لمرة واحدة",
+        "duties_and_taxes_title": "الرسوم والضرائب",
+        "shipping_information_required_notice": "معلومات الشحن مطلوبة. {{link}}.",
+        "shipping_information_redirect_link": "أدخل معلوماتك هنا",
+        "loading_progressive_rates": "البحث عن المزيد من الأسعار...",
+        "no_other_methods_available": "لا توجد طرق أخرى متاحة",
+        "duties_and_taxes_options": {
+          "ddu_title": "الدفع عند الاستلام",
+          "ddu_caption": "قد تُطبق رسوم إضافية",
+          "ddp_title": "ادفع الآن",
+          "ddp_caption": "لا توجد رسوم إضافية عند التسليم"
+        },
+        "shipping_method_combinations": {
+          "combination": "%{rest} و %{current}"
+        },
+        "shipping_used_as_billing_notice": "سيتم استخدام هذا أيضًا كعنوان للفوترة لطلبك هذا.",
+        "address_update": "تحديث العنوان",
+        "shipping_address_title": "شحن إلى",
+        "shipping_address_rollup_accessibility_label": "خيارات عنوان الشحن",
+        "third_party_address_timeout": "تعذّر تحميل العناوين. أعد المحاولة أو استخدم عنوانًا آخر.",
+        "third_party_address_error": "حدث خطأ أثناء تحميل تحديد العنوان. أدخل عنوانك يدويًا بالأسفل.",
+        "third_party_payment_timeout": "تعذر تحميل طرق الدفع. أعد المحاولة أو استخدم طريقة دفع مختلفة.",
+        "third_party_payment_error": "حدث خطأ أثناء تحميل اختيار الدفع. الرجاء استخدام طريقة دفع مختلفة.",
+        "add_address": "استخدم عنواناً مختلفاً",
+        "add_delivery_instructions": "أضف تعليمات التسليم",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "back": "الظهر",
+        "address_more": "إجراءات أخرى لهذا العنوان",
+        "address_edit": "تعديل العنوان",
+        "address_delete": "حذف العنوان",
+        "address_confirm": "هل أنت متأكد أنك تريد حذف هذا العنوان من حسابك؟",
+        "address_default": "تعيين كإعداد افتراضي",
+        "address_form": {
+          "add_address": "أضف العنوان",
+          "save": "حفظ",
+          "cancel": "إلغاء",
+          "edit": "تعديل العنوان",
+          "update": "حفظ التغييرات",
+          "generic_error": "حدثت مشكلة أثناء حفظ عنوانك. حاول مرة أخرى.",
+          "one_time_address_subtitle": "استخدم عنوانًا لمرة واحدة لهذا الطلب"
+        },
+        "different_shipping_method_summary": "أدخل عنوان شحن مختلفًا لعرض طرق الشحن المتاحة",
+        "invalid_shipping_method_summary": "أدخل عنوان شحن صالحًا لعرض طرق الشحن المتاحة",
+        "invalid_shipping_method_summary_selected": "اختر عنوان شحن مختلفًا لعرض طرق الشحن المتاحة",
+        "method_summary": {
+          "incomplete_address_entered": "أدخل عنوان شحن كاملاً لعرض طرق الشحن المتاحة",
+          "incomplete_address_selected": "حدد عنوان شحن كاملاً لعرض طرق الشحن المتاحة"
+        },
+        "local_pickup": {
+          "search_address": "ابحث عن عنوان",
+          "rollup_title": "موقع الالتقاء",
+          "rollup_accessibility_label": "خيارات موقع الاستلام"
+        },
+        "missing_shipping_address": "عنوان الشحن مفقود",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} عناصر",
+        "split_shipping_merchandise_quantity_label_additional": "+%{quantity} أخرى",
+        "split_shipping_merchandise_shipment_number": "الشحنة %{number} من %{total}",
+        "pre_order_ships_now": "السفن الآن",
+        "pre_order_ships_later": "تشحن لاحقًا",
+        "pre_order_ships_date": "سفن في %{date}",
+        "split_shipping_shipped_by_shop": "تم الشحن بواسطة %{shop_name}",
+        "split_shipping_multiple_shipment_label": "شحنات متعددة",
+        "split_shipping_shipping_label": "الأسلوب"
       },
       "localized_fields": {
         "additional_information": {
