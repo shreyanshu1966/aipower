@@ -3338,8 +3338,27 @@
           "pagination": {
             "load_more_label": "تحميل المزيد",
             "load_more_accessibility_label": "تحميل المزيد من المبالغ القابلة للانتهاء"
+          },
+          "title": "رصيد متجر ينتهي مفعوله",
+          "balance_label": "الرصيد",
+          "expiration_date_label": "تاريخ انتهاء الصلاحية",
+          "amount_label": "المبلغ",
+          "date_label": "تاريخ",
+          "event_label": "حدث",
+          "events": {
+            "adjustment": "تعديل",
+            "order_payment": "الدفع مقابل الطلب",
+            "order_refund": "استرداد طلب",
+            "payment_failure": "فشل الدفع",
+            "payment_returned": "تم إرجاع الدفعة",
+            "order_cancellation": "إلغاء الطلب",
+            "tax_finalization": "تسوية ضريبية"
           }
-        }
+        },
+        "label": "رصيد المتجر",
+        "accesibility_label": "رصيد المتجر - {{formattedBalance}}",
+        "expirable_amounts_button": "عرض المبالغ القابلة للانتهاء",
+        "expirable_amounts_label": "المبالغ التي توشك على الانتهاء"
       },
       "payment_details": {
         "title": "تفاصيل طريقة الدفع",
@@ -3442,6 +3461,63 @@
           "text": "لا تتوفر خدمة الدفع ببطاقات الائتمان والخصم في الوقت الحالي.",
           "link_text": "تحديث هذه الصفحة",
           "suffix": "أو حاول مرة أخرى لاحقًا."
+        }
+      },
+      "replacement_payment_method_title": "طريقة دفع بديلة",
+      "title": "طرق الدفع",
+      "add_payment_method_button": "إضافة طريقة دفع",
+      "add_payment_method_dropdown": {
+        "bank_account_consent": "بإضافة طريقة دفع، فإنك تفوض بخصم المبلغ من بطاقتك أو حسابك البنكي للمشتريات المستقبلية التي توافق عليها، وذلك إلى أن تقوم بالإلغاء."
+      },
+      "bank_account": {
+        "loading_accessibility_message": "زر الحساب البنكي قيد التحميل",
+        "iframe_title_accessibility_label": "إعداد الحساب المصرفي",
+        "display_name": "الحساب المصرفي",
+        "generic_error": "تعذرت إضافة الحساب البنكي. حاول مرة أخرى لاحقًا."
+      },
+      "add_payment_method_banner": "أضف طريقة دفع لإتمام عملية الشراء بشكل أسرع أو للخدمات المفوضة مسبقًا",
+      "no_payment_methods_banner": "لم تتم إضافة طرق دفع",
+      "edit_payment_method_button_accessibility_label": "تعديل طريقة الدفع {{paymentMethodName}} المنتهية بالرقم {{lastDigits}}",
+      "edit_payment_method_brand_button_accessibility_label": "تعديل {{paymentMethodName}}",
+      "delete_payment_method_button": "حذف",
+      "delete_payment_method_button_accessibility_label": "حذف {{paymentMethodName}}",
+      "back_button": "الظهر",
+      "back_button_accessibility_label": "العودة إلى {{paymentMethodStepTitle}}",
+      "default": "افتراضي",
+      "generic_card": "بطاقة",
+      "expiration_warning_button_accessibility_label": "إظهار تحذير انتهاء الصلاحية لـ {{paymentMethodName}} الذي ينتهي بـ {{lastDigits}}",
+      "expires_soon": "هذه البطاقة ستنتهي صلاحيتها قريباً",
+      "expired": "هذه البطاقة منتهية الصلاحية",
+      "expired_badge_label": "انتهت صلاحيته",
+      "card_update_consent": "سيتم حفظ طريقة الدفع هذه للمشتريات المستقبلية.",
+      "card_update_consent_subscriptions": "سيتم حفظ طريقة الدفع هذه للمشتريات المستقبلية، وقد تُستخدم لأي عملية شراء متكررة أو مؤجلة.",
+      "digital_wallet_title": "المحفظة الرقمية",
+      "credit_or_debit_card_title": "بطاقة ائتمان أو خصم",
+      "credit_card_title": "بطاقة ائتمان",
+      "additional_payment_methods": "طرق دفع إضافية",
+      "or": "أو",
+      "google_pay": {
+        "iframe_title_accessibility_label": "أضف طريقة دفع Google Pay",
+        "loading_accessibility_message": "جارٍ تحميل Google Pay",
+        "loading": "جارٍ تحميل Google Pay",
+        "errors": {
+          "generic": "حدثت مشكلة في Google Pay. يُرجى إعادة المحاولة أو استخدام طريقة دفع مختلفة.",
+          "missing_billing_address": "يتطلب Google Pay عنوان إرسال فواتير. يرجى إضافة واحد إلى حسابك."
+        }
+      },
+      "pay_pal": {
+        "iframe_title_accessibility_label": "أضف طريقة دفع PayPal",
+        "loading_accessibility_message": "جارٍ تحميل PayPal",
+        "errors": {
+          "generic": "حدثت مشكلة في PayPal. الرجاء المحاولة مرة أخرى أو استخدام طريقة دفع مختلفة."
+        }
+      },
+      "apple_pay": {
+        "loading": "جارٍ تحميل Apple Pay",
+        "errors": {
+          "generic": "حدثت مشكلة في Apple Pay. يُرجى إعادة المحاولة أو استخدام طريقة دفع مختلفة.",
+          "not_available": "Apple Pay غير متوفر على هذا الجهاز.",
+          "missing_billing_address": "يتطلب Apple Pay عنوان فوترة. يرجى إضافته إلى حسابك."
         }
       }
     },
@@ -3638,6 +3714,90 @@
           "invalid_email": "أدخل عنوان بريد إلكتروني صالحًا",
           "invalid_code": "أدخل الرمز الصحيح المكون من 6 أرقام"
         }
+      }
+    },
+    "B2B": {
+      "purchase_order_number": {
+        "discard_changes_modal_title": "تجاهل التغييرات؟",
+        "edit_accessibility_label": "تعديل رقم أمر الشراء",
+        "edit_modal_title": "تعديل رقم أمر الشراء",
+        "empty_state": "لا يوجد رقم أمر شراء",
+        "modal_po_number_input_label": "رقم أمر الشراء",
+        "modal_po_number_input_max_length_error": "يجب ألا تتجاوز أرقام أوامر الشراء {{maxLength}} حرفًا.",
+        "save": "حفظ",
+        "title": "أمر الشراء رقم {{poNumber}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "حدثت مشكلة أثناء حذف هذا العنوان. حاول مرة أخرى أو قم بتحديث الصفحة."
+      },
+      "addresses_loading_issue": {
+        "description": "خطأ في الاتصال. تحقق من اتصالك بالإنترنت وحاول مرة أخرى."
+      },
+      "banner_title": {
+        "one": "يوجد {{count}} خطأ",
+        "other": "يوجد {{count}} أخطاء"
+      },
+      "failed_address_creation": {
+        "description": "حدثت مشكلة أثناء إنشاء عنوانك. حاول تحديث هذه الصفحة أو تحقق من اتصالك بالإنترنت."
+      },
+      "failed_address_update": {
+        "description": "حدثت مشكلة أثناء تحديث عنوانك. حاول تحديث هذه الصفحة أو تحقق من اتصالك بالإنترنت."
+      },
+      "load_address_form_error": {
+        "title": "تعذر تحميل نموذج العنوان",
+        "description": "تعذر تحميل نموذج العنوان.",
+        "refresh_button": "تحديث الصفحة"
+      },
+      "load_orders_error": {
+        "title": "تعذر تحميل الطلبات",
+        "description": "أعد المحاولة أو عُد لاحقاً.",
+        "retry_button": "إعادة المحاولة"
+      },
+      "load_paypal_error": {
+        "description": "حدثت مشكلة في تحميل PayPal. يرجى إعادة المحاولة."
+      },
+      "logout_everywhere": {
+        "description": "حدث خطأ أثناء تسجيل الخروج. يُرجى المحاولة مرة أخرى."
+      },
+      "no_access_to_locations": {
+        "description": "لا تملك صلاحية الوصول إلى أي مواقع."
+      },
+      "not_found": {
+        "description": "تحقق من عنوان URL أو حاول مرة أخرى خلال بضع دقائق.",
+        "title": "حدثت مشكلة أثناء تحميل هذه الصفحة"
+      },
+      "order_not_found": {
+        "description": "هذا الطلب غير موجود أو ليس لديك صلاحية لعرضه.",
+        "title": "الطلب غير موجود"
+      },
+      "profile_update_error": {
+        "description": "حدثت مشكلة أثناء تحديث ملفك الشخصي. حاول تحديث هذه الصفحة أو تحقق من اتصالك بالإنترنت."
+      },
+      "profile_name_update_error": {
+        "description": "حدثت مشكلة أثناء تحديث اسمك. حاول تحديث هذه الصفحة أو تحقق من اتصالك بالإنترنت."
+      },
+      "retry_action_label": "إعادة المحاولة",
+      "resend_link": {
+        "too_many_requests": "العديد من الطلبات. حاول مرة أخرى لاحقًا.",
+        "generic": "طلب فاشل"
+      },
+      "load_extension_error": {
+        "title": "خطأ",
+        "description": "حدث هذه الصفحة أو حاول مرة أخرى خلال بضع دقائق.",
+        "refresh_button": "تحديث الصفحة"
+      },
+      "already_upgraded": "تمت ترقية حسابات العملاء بالفعل.",
+      "failed_to_upgrade": "فشل تحديث إعدادات حساب العميل.",
+      "not_upgraded": "لم تتم ترقية حسابات العملاء.",
+      "failed_to_revert": "فشل في استعادة إعدادات حساب العميل.",
+      "revert_window_expired": "انتهت صلاحية فترة التراجع."
+    },
+    "throttle": {
+      "too_many_attempts": {
+        "message": "محاولات كثيرة جداً",
+        "description": "الرجاء المحاولة مرة أخرى في غضون بضع دقائق"
       }
     }
   },
