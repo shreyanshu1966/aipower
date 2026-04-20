@@ -1965,7 +1965,134 @@
       "adjusted_total": "المجموع المعدّل",
       "due_on_date": "يجب أن يتم في {{date}}",
       "due_on_fulfillment": "مستحق عند الاستيفاء",
-      "due_on_receipt": "تستحق الدفع فور الاستلام"
+      "due_on_receipt": "تستحق الدفع فور الاستلام",
+      "shipment_timeline": {
+        "expand_events_label": "عرض التفاصيل",
+        "expand_events_accessibility_label": "عرض تفاصيل شحن الطلب",
+        "hide_events_label": "إخفاء التفاصيل",
+        "hide_events_accessibility_label": "إخفاء تفاصيل شحن الطلب"
+      },
+      "addresses_section_title": "الفواتير والشحن",
+      "order_details": "تفاصيل الطلب",
+      "order_details_skeleton_accessibility_label": "سجل الدخول لعرض كافة تفاصيل الطلب.",
+      "billing_address": "عنوان الفواتير",
+      "card_ending_with": "ينتهي بـ {{lastDigits}}",
+      "contact": "جهات الاتصال",
+      "contact_information": "معلومات الاتصال",
+      "company": "شركة",
+      "company_and_location": "الشركة والموقع",
+      "fully_refunded_label": "تم رد الأموال",
+      "group_title_label": "جزء من: {{groupTitle}}",
+      "group_title_label_with_parent": "إلى: {{groupTitle}}",
+      "view_controls": {
+        "gallery": "معرض الصور",
+        "list": "قائمة"
+      },
+      "grouped_view_components": {
+        "expand_line_items": "إظهار {{count}} عناصر",
+        "collapse_line_items": "إخفاء {{count}} عناصر",
+        "line_item_summary_list_accessibility_label": "العناصر في حزمة {{productTitle}}"
+      },
+      "discount": "خصم",
+      "discount_order_stacking": {
+        "one": "خصم على الطلب",
+        "other": "خصومات الطلبات"
+      },
+      "price_before_discount_accessibility_label": "السعر الأصلي",
+      "price_after_discount_accessibility_label": "سعر مخفَّض",
+      "compare_at_sale": "تخفيضات ({{saleAmount}})",
+      "hide_items": "إخفاء العناصر",
+      "loading": "جاري تحميل تفاصيل الطلب",
+      "loading_finished_accessibility_message": "تم تحميل تفاصيل الطلب",
+      "location": "الموقع",
+      "image_gallery": {
+        "next": "عرض العناصر التالية",
+        "previous": "عرض العناصر السابقة",
+        "load_more_items": {
+          "one": "تحميل {{count}} عناصر إضافية",
+          "other": "تحميل {{count}} عناصر إضافية"
+        }
+      },
+      "mobile_summary_toggle_button": {
+        "open": "إظهار ملخص الطلب",
+        "closed": "إخفاء ملخص الطلب"
+      },
+      "no_data": "لا يوجد",
+      "no_data_provided_accessibility_label": "{{fieldName}} فارغ",
+      "not_applicable": "غير متوفر",
+      "paid_amount": "مدفوع",
+      "partially_refunded_label": "تم استرداد جزء من المبلغ",
+      "payment_confirmation": {
+        "payment_received": "شكرًا لك! تم استلام دفعة بقيمة {{amount}}.",
+        "full_payment_received": "شكرًا لك! تم استلام دفعتك البالغة {{amount}}، وهذا الطلب مدفوع بالكامل الآن.",
+        "payment_authorized": "شكرًا لك! سيتم تحديث الرصيد عند استلام الدفعة.",
+        "dismiss_label": "تجاهل تأكيد الدفع"
+      },
+      "payment": {
+        "status_in_review": "تستحق الدفعة بعد المراجعة",
+        "status_unpaid": "تاريخ الاستحقاق: {{date}}",
+        "title": "الدفع",
+        "payment_type": {
+          "gift_card": "بطاقة هدية",
+          "store_credit": "رصيد المتجر",
+          "money_order": "حوالة بريدية",
+          "cash_on_delivery": "الدفع عند الاستلام",
+          "bank_deposit": "إيداع بنكي",
+          "manual": "دليل"
+        },
+        "card_payment_details": "تنتهي بالرقم {{lastDigits}} - {{formattedTransactionAmount}}",
+        "gift_card_payment_details": "تنتهي بالرقم {{lastDigits}} - {{formattedTransactionAmount}}",
+        "store_credit_payment_details": "رصيد المتجر - {{formattedTransactionAmount}}",
+        "shop_pay_installments": {
+          "paid_in_installments": "مدفوع على أقساط Shop Pay",
+          "view_schedule": "عرض الجدول الزمني"
+        },
+        "manual_payment_methods": {
+          "money_order": "حوالة بريدية - {{formattedTransactionAmount}}",
+          "cash_on_delivery": "الدفع عند الاستلام (COD) - {{formattedTransactionAmount}}",
+          "bank_deposit": "إيداع بنكي - {{formattedTransactionAmount}}",
+          "manual": "يدوي - {{formattedTransactionAmount}}"
+        },
+        "transactions": {
+          "show_all": "إظهار الكل",
+          "show_less": "عرض أقل",
+          "details": "التفاصيل",
+          "payment_details": "تفاصيل الدفع"
+        },
+        "emv_details": {
+          "auth": "المؤلف:",
+          "aid": "المساعدة:",
+          "source": "المصدر:"
+        }
+      },
+      "paid_with_shop_pay_installments_card": {
+        "title": "تذكيرات الدفع لأقساط Shop Pay",
+        "paid_with_shop_pay_installments": "تم الدفع باستخدام Shop Pay Installments",
+        "description": "ابقَ على اطلاع على جدول سدادك مع التذكيرات في تطبيق Shop.",
+        "payment_reminders_button": "احصل على تذكيرات بالدفع",
+        "desktop_qr_code_content": {
+          "title": "البحث عن تذكيرات",
+          "description": "احصل على تذكيرات بأقساطك مع Shop."
+        }
+      },
+      "refunded_amount": "تم رد الأموال",
+      "request_return_failed": "حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى.",
+      "login_card": {
+        "title": "الوصول إلى تفاصيل الطلب",
+        "resend_link_and_login": "لعرض تفاصيل طلبك، سجّل الدخول أو أرسل رابطاً جديداً إلى عنوان البريد الإلكتروني أو رقم الهاتف المُستخدَم عند الدفع.",
+        "resend_link_only": "لعرض تفاصيل طلبك، أرسل رابطًا جديدًا إلى البريد الإلكتروني أو رقم الهاتف المستخدم عند إتمام عملية الشراء.",
+        "log_in": "تسجيل الدخول",
+        "resend_link": "أرسل رابطًا جديدًا",
+        "link_expired": "الرابط منتهي الصلاحية"
+      },
+      "remaining_amount": "المتبقي",
+      "marketing_section_title": "الأخبار والعروض",
+      "marketing_description": "ستصلك رسائل تسويقية عبر البريد الإلكتروني. يمكنك إلغاء الاشتراك في أي وقت.",
+      "marketing_checkbox_label": "أرسل لي عبر البريد الإلكتروني آخر الأخبار والعروض",
+      "marketing_checkmark_label": "أنت مشترك في استلام أخبار وعروض البريد الإلكتروني",
+      "marketing_pending_confirmation": "انقر على الرابط في بريدك الإلكتروني للتأكيد.",
+      "marketing_resend_email": "أعد إرسال البريد الإلكتروني",
+      "marketing_resend_email_success": "تم إرسال الرابط"
     },
     "addresses": {
       "add_button": "أضف العنوان",
@@ -2283,7 +2410,14 @@
         "show_order_actions_accessibility_label": "إظهار إجراءات الطلب للطلب {{name}}",
         "view_order": "عرض الطلب",
         "view_order_accessibility_label": "عرض الطلب {{orderName}}"
-      }
+      },
+      "fulfillment_status_title": "حالة التنفيذ: {{status}}",
+      "buy_again": "اشترِ مرة أخرى",
+      "buy_again_accessibility_label": "شراء مجدداً للطلب {{orderId}}",
+      "manage": "إدارة",
+      "manage_accessiblity_label": "إدارة الطلب {{orderId}}",
+      "group_title_label": "جزء من: {{groupTitle}}",
+      "group_title_label_with_parent": "إلى: {{groupTitle}}"
     },
     "callback": {
       "try_again": "حاول مرة أخرى"
