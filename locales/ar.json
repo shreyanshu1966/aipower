@@ -2030,12 +2030,63 @@
       "unavailable": "غير متاح",
       "contact_us": "اتصل بنا",
       "added": "تمت إضافة المنتج إلى عربة التسوق الخاصة بك",
-      "added_short": "أُضيف!"
+      "added_short": "أُضيف!",
+      "variant": "متغير",
+      "price": "السعر",
+      "inventory": "المخزون",
+      "quantity": "الكمية",
+      "in_stock": "متوفر بالمخزون",
+      "oversell_stock": "ستتم إعادة التخزين قريباً",
+      "incoming_stock": "إعادة التخزين في {{ next_incoming_date }}",
+      "low_stock_with_quantity_count": {
+        "one": "تبقى وحدة واحدة فقط",
+        "other": "تبقى {{count}} وحدة فقط"
+      },
+      "in_stock_with_quantity_count": {
+        "one": "متوفر ({{count}} وحدة)، جاهز للشحن",
+        "other": "متوفر ({{count}} وحدات)، جاهز للشحن"
+      },
+      "add_to_cart": "أضف إلى عربة التسوق",
+      "sold_out": "نفد المخزون"
     },
     "quantity": {
       "minimum_of": "الحد الأدنى {{ min }}",
       "maximum_of": "الحد الأقصى {{ max }}",
       "increment_of": "زيادة {{ step }}"
+    },
+    "general": {
+      "previous_product": "السابق",
+      "next_product": "التالي",
+      "description": "الوصف",
+      "sku": "SKU:",
+      "share": "شارك هذا المنتج",
+      "reviews": "التقييمات",
+      "regular_price": "السعر الاعتيادي",
+      "sale_price": "سعر البيع",
+      "zoom": "مرّر الماوس فوق الصورة لتكبيرها",
+      "zoom_mobile": "انقر على الصورة للتكبير",
+      "view_in_space": "عرض في مساحتك",
+      "view_more": "عرض المزيد",
+      "view_less": "عرض أقل",
+      "payment": "طرق الدفع",
+      "security": "الأمن",
+      "payment_notice": "تتم معالجة معلومات الدفع الخاصة بك بشكل آمن. نحن لا نقوم بتخزين تفاصيل بطاقة الائتمان ولا نملك إمكانية الوصول إلى معلومات بطاقتك الائتمانية.",
+      "estimate_shipping": "تقدير تكلفة الشحن",
+      "refund_policy": "سياسة الاسترداد",
+      "include_taxes": "شامل للضريبة",
+      "shipping_policy_html": "<a href=\"{{ link }}\" class=\"link link--accented\">يتم احتساب رسوم الشحن</a> عند الدفع",
+      "reviews_count": {
+        "zero": "لا توجد مراجعات",
+        "one": "{{ count }} مراجعة",
+        "other": "{{ count }} مراجعات"
+      }
+    },
+    "volume_pricing": {
+      "title": "تسعير حسب الكمية",
+      "price_at_each": "{{ price }}/لكل قطعة"
+    },
+    "labels": {
+      "sold_out": "نفد المخزون"
     }
   },
   "store_availability": {
@@ -3052,6 +3103,82 @@
       "password_submit": "إدخال",
       "newsletter_input": "عنوان بريدك الإلكتروني",
       "newsletter_submit": "أعلمني"
+    }
+  },
+  "customer": {
+    "addresses": {
+      "default_address": "العنوان الافتراضي",
+      "address_number": "العنوان {{number}}",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "add_address": "إضافة عنوان جديد",
+      "edit_address": "تعديل العنوان",
+      "form_subtitle": "الرجاء تعبئة المعلومات أدناه:",
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "company": "شركة",
+      "address1": "العنوان 1",
+      "address2": "العنوان 2",
+      "city": "مدينة",
+      "country": "البلد",
+      "province": "مقاطعة",
+      "zip": "الرمز البريدي",
+      "phone": "هاتف",
+      "set_default": "تعيين كعنوان افتراضي"
+    },
+    "register": {
+      "create_account": "إنشاء حسابي",
+      "description": "الرجاء تعبئة المعلومات أدناه:",
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "email": "بريد إلكتروني",
+      "password": "كلمة المرور",
+      "submit": "إنشاء حسابي",
+      "already_have_account": "هل لديك حساب بالفعل؟",
+      "login": "سجّل الدخول من هنا"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "عربة التسوق الخاصة بي",
+      "empty": "سلة التسوق فارغة",
+      "empty_button": "تسوق منتجاتنا",
+      "search": "بحث...",
+      "view_cart": "عرض سلة التسوق",
+      "note_title": "تعليمات الطلب",
+      "edit_note": "تعديل",
+      "save_note": "حفظ",
+      "secure_payments": "مدفوعات آمنة 100%",
+      "free_shipping": "أنت مؤهل للشحن المجاني!",
+      "free_shipping_remaining_html": "أنفق {{remaining_amount}} أخرى واحصل على شحن مجاني!",
+      "amount_saved_html": "لقد وفّرت {{amount_saved}}!",
+      "free": "مجاني!",
+      "taxes_and_shipping_at_checkout": "سيتم حساب الضرائب والشحن عند إتمام الشراء",
+      "taxes_and_shipping_policy_at_checkout_html": "الضرائب و<a href=\"{{ link }}\">الشحن</a> محسوبة عند الدفع",
+      "taxes_included_but_shipping_at_checkout": "الضرائب متضمنة. الشحن محسوب عند إتمام عملية الشراء.",
+      "taxes_included_and_shipping_policy_html": "الضرائب متضمنة. <a href=\"{{ link }}\">الشحن</a> يُحسب عند إتمام الطلب",
+      "total": "الإجمالي",
+      "checkout": "الدفع"
+    },
+    "items": {
+      "decrease_quantity": "خفض الكمية",
+      "increase_quantity": "زيادة الكمية",
+      "no_more_stock": "نفد المخزون",
+      "remove": "إزالة"
+    },
+    "gift_wrap": {
+      "price_html": "فقط {{price}}"
+    },
+    "shipping_estimator": {
+      "title": "تقدير تكلفة الشحن",
+      "country": "البلد",
+      "province": "مقاطعة",
+      "zip_code": "الرمز البريدي",
+      "estimate": "تقدير",
+      "no_results_title": "يتعذر شحن طلبك إلى هذا العنوان.",
+      "one_result_title": "يوجد سعر شحن واحد لعنوانك:",
+      "multiple_results_title": "هناك {{count}} سعر شحن متاح لعنوانك:",
+      "errors": "توجد بعض الأخطاء:"
     }
   }
 }
