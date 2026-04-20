@@ -3681,7 +3681,9 @@
       "province": "مقاطعة",
       "zip": "الرمز البريدي",
       "phone": "هاتف",
-      "set_default": "تعيين كعنوان افتراضي"
+      "set_default": "تعيين كعنوان افتراضي",
+      "no_addresses": "لا توجد عناوين بعد",
+      "no_addresses_button": "أضف عنوانك الأول"
     },
     "register": {
       "create_account": "إنشاء حسابي",
@@ -3693,6 +3695,81 @@
       "submit": "إنشاء حسابي",
       "already_have_account": "هل لديك حساب بالفعل؟",
       "login": "سجّل الدخول من هنا"
+    },
+    "general": {
+      "my_account": "حسابي",
+      "orders": "طلباتي",
+      "addresses": "عناويني",
+      "logout": "تسجيل الخروج",
+      "no_orders": "لا توجد طلبات بعد",
+      "no_orders_button": "قم بأول طلب لك"
+    },
+    "login": {
+      "login": "تسجيل الدخول إلى حسابي",
+      "description": "أدخل بريدك الإلكتروني وكلمة المرور:",
+      "email": "بريد إلكتروني",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "new_customer": "عميل جديد؟",
+      "create_your_account": "أنشئ حسابك",
+      "lost_password": "هل نسيت كلمة المرور؟",
+      "recover_password": "استعادة كلمة المرور"
+    },
+    "order": {
+      "order": "أمر",
+      "order_number": "طلب رقم {{order_number}}",
+      "back_to_orders": "العودة إلى الطلبات",
+      "date": "تاريخ",
+      "payment_status": "حالة الدفع",
+      "fulfillment_status": "حالة الإنجاز",
+      "back_to_account": "العودة إلى الحساب",
+      "cancelled_at": "تم إلغاء الطلب بتاريخ {{date}}. السبب: {{reason}}.",
+      "fulfillment_with_url_and_number_html": "تم إرسال جميع المنتجات. تتبع الشحنة بالرقم {{tracking_number}} أو عن طريق <a href=\"{{tracking_url}}\" target=\"_blank\">النقر هنا</a>.",
+      "fulfillment_with_url_html": "تم إرسال جميع المنتجات. تتبع الشحنة من خلال <a href=\"{{tracking_url}}\" target=\"_blank\">الضغط هنا</a>.",
+      "fulfillment_with_number_html": "تم إرسال جميع المنتجات. تتبع الشحنة باستخدام الرقم {{tracking_number}}.",
+      "fulfillment_html": "تم إرسال جميع المنتجات.",
+      "line_fulfillment_with_url_and_number_html": "تم إرسال هذا المنتج. تتبع الشحنة بالرقم {{tracking_number}} أو عن طريق <a href=\"{{tracking_url}}\" target=\"_blank\">الضغط هنا</a>.",
+      "line_fulfillment_with_url_html": "لقد تم إرسال هذا المنتج. تتبع الشحنة من خلال <a href=\"{{tracking_url}}\" target=\"_blank\">الضغط هنا</a>.",
+      "line_fulfillment_with_number_html": "تم إرسال هذا المنتج. تتبع الشحنة بالرقم {{tracking_number}}.",
+      "line_fulfillment_html": "تم إرسال هذا المنتج.",
+      "product": "المنتج",
+      "quantity": "الكمية",
+      "refunded_amount": "المبلغ المسترد",
+      "total": "الإجمالي",
+      "subtotal": "المجموع الفرعي",
+      "discount": "خصم",
+      "shipping": "الشحن",
+      "total_duties": "الواجبات",
+      "tax_included": "شامل للضريبة",
+      "tax_excluded": "الضرائب مستثناة",
+      "shipping_address": "عنوان الشحن",
+      "billing_address": "عنوان الفواتير",
+      "no_billing_address": "لم يكن عنوان الفاتورة مطلوباً لهذا الطلب.",
+      "no_shipping_address": "لم يتطلب هذا الطلب عنوان شحن."
+    },
+    "activate_account": {
+      "activate_account": "تفعيل الحساب",
+      "description": "أدخل كلمة مرور لإنشاء حسابك:",
+      "password": "كلمة المرور",
+      "password_confirmation": "تأكيد كلمة المرور",
+      "submit": "تفعيل",
+      "decline": "رفض"
+    },
+    "recover_password": {
+      "recover_password": "استعادة كلمة المرور",
+      "description": "أدخل بريدك الإلكتروني:",
+      "email": "بريد إلكتروني",
+      "submit": "استعادة",
+      "success": "لقد أرسلنا إليك رسالة بريد إلكتروني تحتوي على تعليمات لإعادة تعيين كلمة المرور الخاصة بك.",
+      "remembered_your_password": "هل تذكرت كلمة مرورك؟",
+      "back_to_login": "العودة لتسجيل الدخول"
+    },
+    "reset_password": {
+      "reset_password": "إعادة تعيين كلمة المرور",
+      "description": "أدخل كلمة مرور جديدة:",
+      "password": "كلمة المرور",
+      "password_confirmation": "تأكيد كلمة المرور",
+      "submit": "إعادة تعيين كلمة المرور"
     }
   },
   "cart": {
@@ -3736,6 +3813,63 @@
       "one_result_title": "يوجد سعر شحن واحد لعنوانك:",
       "multiple_results_title": "هناك {{count}} سعر شحن متاح لعنوانك:",
       "errors": "توجد بعض الأخطاء:"
+    }
+  },
+  "collection": {
+    "general": {
+      "products_count": {
+        "one": "{{count}} منتج",
+        "other": "{{count}} منتجات"
+      },
+      "results_count": {
+        "zero": "{{count}} نتيجة",
+        "one": "{{count}} نتيجة",
+        "other": "{{count}} نتيجة"
+      },
+      "showing_count": {
+        "zero": "لا توجد منتجات",
+        "one": "عرض {{offset}} - {{page_size}} من أصل {{count}} منتج",
+        "other": "عرض {{offset}} - {{page_size}} من إجمالي {{count}} منتج"
+      },
+      "page_size": "{{page_size}} في الصفحة"
+    },
+    "filter": {
+      "title": "عامل تصفية",
+      "price_filter_from": "من",
+      "price_filter_to": "إلى",
+      "show_filter": "إظهار المرشحات",
+      "select_category": "اختر فئة",
+      "all": "فلاتر",
+      "clear_all": "مسح الكل",
+      "clear": "واضح",
+      "view_results": "عرض النتائج"
+    },
+    "sorting": {
+      "title": "الترتيب حسب"
+    },
+    "layout": {
+      "title": "عرض",
+      "grid": "عرض المنتجات كشبكة",
+      "list": "عرض المنتجات كقائمة"
+    },
+    "product": {
+      "from_price_html": "من {{price_min}}",
+      "add_to_cart": "أضف إلى عربة التسوق",
+      "pre_order": "طلب مسبق",
+      "quick_view": "نظرة سريعة",
+      "choose_options": "اختر الخيارات",
+      "sold_out": "نفد المخزون",
+      "in_stock": "متوفر بالمخزون",
+      "oversell_stock": "ستتم إعادة التخزين قريباً",
+      "discount_html": "وفّر {{savings}}",
+      "low_stock_with_quantity_count": {
+        "one": "تبقى وحدة واحدة فقط",
+        "other": "تبقى {{count}} وحدة فقط"
+      },
+      "in_stock_with_quantity_count": {
+        "one": "متوفر، {{count}} وحدة",
+        "other": "متوفر، {{count}} وحدات"
+      }
     }
   }
 }
