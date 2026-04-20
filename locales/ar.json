@@ -2901,7 +2901,157 @@
       "fridayAbbreviation": "موافق",
       "saturdayAbbreviation": "سا",
       "sundayAbbreviation": "سو",
-      "showNextMonth": "عرض الشهر التالي، {{month}} {{year}}"
+      "showNextMonth": "عرض الشهر التالي، {{month}} {{year}}",
+      "showPreviousMonth": "عرض الشهر السابق، {{month}} {{year}}",
+      "rangeStart": "بداية المدى",
+      "inRange": "ضمن النطاق",
+      "rangeEnd": "نهاية النطاق",
+      "autocompleteOptionsAvailable": {
+        "one": "{{count}} سلعة متاحة",
+        "other": "{{count}} قطعة متوفرة"
+      },
+      "removeItem": "إزالة {{label}}",
+      "removeTag": "إزالة الوسم",
+      "month": {
+        "one": "شهر",
+        "other": "أشهر"
+      },
+      "mapClusterTitle": {
+        "one": "مجموعة من {{number}} علامة",
+        "other": "مجموعة من {{number}} علامات"
+      },
+      "expandSheet": "توسيع",
+      "qrCode": "رمز الاستجابة السريعة",
+      "addFile": "إضافة ملف",
+      "dropzoneInvalidFileType": "نوع الملف غير مدعوم",
+      "dropzoneDraggedOver": "اسحب الملف للتحميل"
+    },
+    "profile_preview_bar": {
+      "customize_button": "تخصيص",
+      "hide_bar": "إخفاء الشريط",
+      "navigate_to_admin": "الانتقال إلى المسؤول",
+      "close_preview": "إغلاق المعاينة",
+      "previewing": "أنت تُعاين:",
+      "saved_at": "حفظ في {{date}} الساعة {{time}}",
+      "viewing": "أنت تشاهد حاليًا:",
+      "not_available": "بيانات الملف الشخصي غير متوفرة",
+      "actions_button": "إجراءات"
+    },
+    "active_inspector": {
+      "extension": {
+        "select": "حدد الملحق المسمى {{extensionName}}",
+        "unselect": "إلغاء تحديد الملحق المسمى {{extensionName}}",
+        "move_down": "انقل الإضافة إلى الموضع التالي",
+        "move_up": "نقل الملحق إلى الموضع السابق",
+        "remove": "إزالة امتداد",
+        "move_down_tooltip": "الانتقال إلى الموضع التالي",
+        "move_up_tooltip": "الانتقال إلى الموضع السابق",
+        "remove_tooltip": "إزالة"
+      }
+    },
+    "editor": {
+      "link_new_tab_confirmation": "لا يمكن فتح هذا الرابط داخل المحرر. سيتم فتحه في نافذة جديدة ({{resolved_to_link}}). انقر فوق موافق للمتابعة."
+    },
+    "settings": {
+      "title": "الإعدادات",
+      "loading_accessibility_message": "جارٍ تحميل صفحة الإعدادات",
+      "log_out_everywhere": {
+        "title": "تسجيل الخروج من كل مكان",
+        "description": "إذا فقدت جهازًا أو لديك مخاوف أمنية، سجّل الخروج من جميع الأجهزة لضمان أمان حسابك.",
+        "button": "تسجيل الخروج من جميع الأجهزة",
+        "warning_message": "سيتم تسجيل خروجك أيضًا على هذا الجهاز."
+      }
+    },
+    "shop_ads": {
+      "title": "منتجات أخرى قد تعجبك",
+      "subtitle": "متاح لفترة محدودة",
+      "button": "استكشاف على المتجر",
+      "previous_button": "السابق",
+      "next_button": "التالي"
+    },
+    "knowledge_base": {
+      "self_serve_returns": {
+        "enabled": "يمكن للعملاء طلب المرتجعات وإدارتها بأنفسهم.",
+        "disabled": "يجب على العملاء التواصل مع التاجر لطلب الإرجاع."
+      }
+    },
+    "subscriptions": {
+      "update_payment_instrument": {
+        "title": "استبدال طريقة الدفع",
+        "loading": "جارٍ تحميل طرق الدفع",
+        "no_payment_methods_available": "لا توجد طرق دفع متاحة",
+        "select_new_payment_method": "اختر طريقة دفع جديدة",
+        "current_method": "الحالي",
+        "cancel": "إلغاء",
+        "save": "حفظ",
+        "success": "تم تحديث طريقة الدفع",
+        "use_new_payment_method": "+ استخدام طريقة دفع جديدة"
+      }
+    },
+    "intents": {
+      "subscription_replace_payment_method": {
+        "card_number": "رقم البطاقة",
+        "title": "استبدال طريقة الدفع",
+        "replace_with": "استبدال بـ",
+        "add_new_payment_method": "إضافة جديد",
+        "save_button": "حفظ",
+        "close_button": "إغلاق",
+        "loading": "جارٍ تحميل نافذة استبدال طريقة الدفع المنبثقة",
+        "success": "تم تحديث طريقة الدفع",
+        "invalid_subscription_contract": "تعذر العثور على الاشتراك",
+        "expiry_date": "تاريخ الانتهاء: {{expiryDate}}",
+        "edit_current_payment_method": "تعديل طريقة الدفع الحالية",
+        "edit_selected_payment_method": "تعديل طريقة الدفع المحددة"
+      }
+    },
+    "sign_in": {
+      "brand_logo_alt_text": "شعار %{shop_name}",
+      "processing": "جارٍ المعالجة…",
+      "step_one": {
+        "page_title": "تسجيل الدخول - %{shop_name}",
+        "heading": "تسجيل الدخول",
+        "subheading": "أدخل بريدك الإلكتروني وسنرسل لك رمز التحقق",
+        "subheading_with_sign_in_options": "تسجيل الدخول أو إنشاء حساب",
+        "input_field_label": "بريد إلكتروني",
+        "button": "استمر/استمروا",
+        "or": "أو",
+        "consent_agreement": "باستمرارك، فإنك توافق على %{terms}"
+      },
+      "step_two": {
+        "page_title": "أدخل الرمز - %{shop_name}",
+        "heading": "أدخل الرمز",
+        "subheading": "أُرسلت إلى %{email}",
+        "restart_link": "تسجيل الدخول باستخدام بريد إلكتروني مختلف",
+        "input_field_label": "رمز مكون من 6 أرقام",
+        "button": "إرسال"
+      },
+      "error": {
+        "invalid": {
+          "invalid_email": "أدخل عنوان بريد إلكتروني صالحًا",
+          "invalid_code": "أدخل الرمز الصحيح المكون من 6 أرقام"
+        }
+      }
+    }
+  },
+  "general": {
+    "meta": {
+      "tags": "تم وضع علامة \"{{ tags }}\"",
+      "page": "صفحة {{ page }}"
+    },
+    "accessibility": {
+      "skip_to_content": "تجاوز إلى المحتوى",
+      "close": "إغلاق",
+      "next": "التالي",
+      "previous": "السابق",
+      "new_window": "يفتح في نافذة جديدة.",
+      "star_reviews_info": "{{ rating_value }} من أصل {{ rating_max }} نجوم"
+    },
+    "password": {
+      "enter_password": "ادخل باستخدام كلمة المرور",
+      "password_input": "كلمة المرور",
+      "password_submit": "إدخال",
+      "newsletter_input": "عنوان بريدك الإلكتروني",
+      "newsletter_submit": "أعلمني"
     }
   }
 }
