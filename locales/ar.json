@@ -3979,7 +3979,8 @@
     "general": {
       "products_count": {
         "one": "{{count}} منتج",
-        "other": "{{count}} منتجات"
+        "other": "{{count}} منتجات",
+        "zero": "{{count}} منتجات"
       },
       "results_count": {
         "zero": "{{count}} نتيجة",
@@ -3991,7 +3992,17 @@
         "one": "عرض {{offset}} - {{page_size}} من أصل {{count}} منتج",
         "other": "عرض {{offset}} - {{page_size}} من إجمالي {{count}} منتج"
       },
-      "page_size": "{{page_size}} في الصفحة"
+      "page_size": "{{page_size}} في الصفحة",
+      "all_collections": "جميع المجموعات",
+      "all_products": "جميع المنتجات",
+      "view_more": "عرض المزيد",
+      "view_less": "عرض أقل",
+      "brands": "العلامات التجارية",
+      "empty": "هذه المجموعة فارغة",
+      "empty_button": "اذهب إلى الصفحة الرئيسية",
+      "no_results": "لم تتطابق المعايير الخاصة بك مع أي منتجات.",
+      "view_products": "عرض المنتجات",
+      "display": "عرض"
     },
     "filter": {
       "title": "عامل تصفية",
@@ -4030,6 +4041,41 @@
         "one": "متوفر، {{count}} وحدة",
         "other": "متوفر، {{count}} وحدات"
       }
+    }
+  },
+  "search": {
+    "general": {
+      "showing_count": {
+        "one": "عرض {{offset}} - {{page_size}} من {{count}} نتيجة",
+        "other": "عرض {{offset}} - {{page_size}} من {{count}} النتائج"
+      }
+    }
+  },
+  "404": {
+    "general": {
+      "title": "الصفحة غير موجودة",
+      "content": "الصفحة التي تبحث عنها غير موجودة.",
+      "search": "البحث في المتجر...",
+      "continue_shopping": "انقر هنا لمتابعة التسوق"
+    }
+  },
+  "home_page": {
+    "onboarding": {
+      "vendor_title": "اسم العلامة التجارية",
+      "product_title": "اسم المنتج",
+      "product_description": "يمكن أن يُستخدم وصف المنتج لعرض ميزات منتجك ومزاياه. يمكنك الاطلاع على مدونة التجارة الإلكترونية لـ Shopify للحصول على الإلهام والنصائح لتسويق منتجاتك بشكل صحيح.",
+      "collection_title": "اسم المجموعة",
+      "article_title": "اسم المنشور",
+      "article_author": "بقلمك",
+      "article_category": "فئة",
+      "article_excerpt": "لم ينشر متجرك أي مشاركات مدونة بعد. يمكن استخدام المدونة للحديث عن إطلاق منتجات جديدة أو تقديم نصائح أو أخبار أخرى تريد مشاركتها مع عملائك. يمكنك الاطلاع على مدونة التجارة الإلكترونية الخاصة بشوبيفاي للحصول على الإلهام والنصائح لمتجرك ومدونتك.",
+      "instagram_likes": "28 إعجابًا",
+      "instagram_caption": "هذا مثال توضيحي."
+    },
+    "newsletter": {
+      "success": "لقد تم تسجيلك في قائمتنا البريدية!",
+      "input": "بريدك الإلكتروني",
+      "submit": "اشترك"
     }
   }
 }
