@@ -5182,22 +5182,6 @@ select option {
   }
 }
 
-@media screen and (max-width: 640px) {
-  #shopify-section-header {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 20;
-  }
-
-  body {
-    padding-bottom: var(--header-height);
-  }
-}
-
 @media screen and (min-width: 641px) {
   .header {
     padding: 20px 0;
@@ -5337,13 +5321,13 @@ select option {
     padding: 0 20px;
     transition: visibility .25s ease-in-out, margin-bottom .25s ease-in-out;
     position: absolute;
-    bottom: 100%;
+    bottom: 0;
     left: 0;
   }
 
   .header__search-bar-wrapper.is-visible {
     visibility: visible;
-    margin-bottom: 0;
+    margin-bottom: -59px;
   }
 
   .header__search-bar-wrapper.is-fixed {
@@ -6814,18 +6798,6 @@ shopify-account::part(signed-out-avatar) {
   position: absolute;
   bottom: 100%;
   left: 20px;
-}
-
-@media screen and (max-width: 640px) {
-  .mobile-menu {
-    top: auto;
-    bottom: 100%;
-  }
-
-  .mobile-menu .icon--nav-triangle-borderless {
-    bottom: auto;
-    top: 100%;
-  }
 }
 
 .mobile-menu__panel {
