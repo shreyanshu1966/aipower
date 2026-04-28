@@ -1,0 +1,139 @@
+{
+  "generator": {
+    "cat": "generator",
+    "url": "https://aipowerkw.com/en/category/3-generator",
+    "subcats": [],
+    "filterSnippets": [
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<ul><li id=\"filter-cat-0\"><div class=\"category-filter-row active\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_3_1767594362_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3></div></li><li id=\"filter-cat-1\"><div class=\"category-filter-row false\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_17"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_3_1767594362_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Gasoline Generator\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Gasoline Generator</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Diesel Generator\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Diesel Generator</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Inverter Generator\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Inverter Generator</h3>"
+      }
+    ]
+  },
+  "air-compressor": {
+    "cat": "air-compressor",
+    "url": "https://aipowerkw.com/en/category/6-air-compressor",
+    "subcats": [],
+    "filterSnippets": [
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<ul><li id=\"filter-cat-0\"><div class=\"category-filter-row active\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_6_1767588024_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3></div></li><li id=\"filter-cat-1\"><div class=\"category-filter-row false\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_17"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_6_1767588024_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Silent Compressor\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Silent Compressor</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Belt Compressor\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Belt Compressor</h3>"
+      }
+    ]
+  },
+  "welding-machine": {
+    "cat": "welding-machine",
+    "url": "https://aipowerkw.com/en/category/9-welding-machine",
+    "subcats": [],
+    "filterSnippets": [
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<ul><li id=\"filter-cat-0\"><div class=\"category-filter-row active\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_9_1767588368_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3></div></li></ul>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_9_1767588368_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3>"
+      }
+    ]
+  },
+  "tools": {
+    "cat": "tools",
+    "url": "https://aipowerkw.com/en/category/36-tools",
+    "subcats": [],
+    "filterSnippets": [
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<ul><li id=\"filter-cat-0\"><div class=\"category-filter-row active\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_36_1768044003_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3></div></li><li id=\"filter-cat-1\"><div class=\"category-filter-row false\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_36_1768044003_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Cordless\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Cordless</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Electric\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Electric</h3>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/product_image/11013/default_11013_1766473120.jpg\" alt=\"Air\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>Air</h3>"
+      }
+    ]
+  },
+  "accessories": {
+    "cat": "accessories",
+    "url": "https://aipowerkw.com/en/category/39-accessories",
+    "subcats": [],
+    "filterSnippets": [
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<ul><li id=\"filter-cat-0\"><div class=\"category-filter-row active\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_39_1775820568_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3></div></li></ul>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_39_1775820568_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3>"
+      }
+    ]
+  },
+  "water-pumps": {
+    "cat": "water-pumps",
+    "url": "https://aipowerkw.com/en/category/42-water-pumps",
+    "subcats": [],
+    "filterSnippets": [
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<ul><li id=\"filter-cat-0\"><div class=\"category-filter-row active\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_42_1775320664_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3></div></li></ul>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_42_1775320664_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3>"
+      }
+    ]
+  },
+  "cleaning": {
+    "cat": "cleaning",
+    "url": "https://aipowerkw.com/en/category/45-cleaning",
+    "subcats": [],
+    "filterSnippets": [
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<ul><li id=\"filter-cat-0\"><div class=\"category-filter-row active\"><img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_45_1775820046_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3></div></li></ul>"
+      },
+      {
+        "sel": "[class*=\"filter\"]",
+        "snippet": "<img src=\"https://ksacdn4.mnasaticdn.com/uploads/category_image/11013/category_45_1775820046_thumb.jpg\" alt=\"category.all\" width=\"50\" height=\"50\" fetchpriority=\"low\"><h3>All</h3>"
+      }
+    ]
+  }
+}

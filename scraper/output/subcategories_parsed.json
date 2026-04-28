@@ -1,0 +1,1576 @@
+{
+  "3": {
+    "catId": 3,
+    "catSlug": "generator",
+    "subcatMap": {
+      "3": {
+        "id": "3",
+        "name_en": "MQ4800 Electrical Start Inverter Generator 3500 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq4800-electrical-start-inverter-generator-3500-max-starting-watts"
+      },
+      "6": {
+        "id": "6",
+        "name_en": "MQ2500-OI RECOIL START INVERTER GENERATOR 2200  Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq2500-oi-recoil-start-inverter-generator-2200-max-starting-watts"
+      },
+      "9": {
+        "id": "9",
+        "name_en": "MQ5000-OI Electrical Start Inverter Generator 3700 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq5000-oi-electrical-start-inverter-generator-3700-max-starting-watts"
+      },
+      "12": {
+        "id": "12",
+        "name_en": "MQ6500 Electrical Start Inverter Generator 5500 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq6500-electrical-start-inverter-generator-5500-max-starting-watts"
+      },
+      "15": {
+        "id": "15",
+        "name_en": "MQ7500-OI Electrical Start Inverter Generator 5500 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq7500-oi-electrical-start-inverter-generator-5500-max-starting-watts"
+      },
+      "18": {
+        "id": "18",
+        "name_en": "MQ7500-SI Silent Inverter Generator 5500 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq7500-si-silent-inverter-generator-5500-max-starting-watts"
+      },
+      "21": {
+        "id": "21",
+        "name_en": "MQ12500-OI Remote Control Inverter Generator 8000 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq12500-oi-remote-control-inverter-generator-8000-max-starting-watts"
+      },
+      "24": {
+        "id": "24",
+        "name_en": "MQ13000 Electrical Start Inverter Generator 9500 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq13000-electrical-start-inverter-generator-9500-max-starting-watts"
+      },
+      "27": {
+        "id": "27",
+        "name_en": "MQ14000-SI Silent Inverter Generator 9800 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq14000-si-silent-inverter-generator-9800-max-starting-watts"
+      },
+      "30": {
+        "id": "30",
+        "name_en": "MQ15800-OI Remote Control Inverter Generator 9800 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq15800-oi-remote-control-inverter-generator-9800-max-starting-watts"
+      },
+      "33": {
+        "id": "33",
+        "name_en": "MQ10000i Diesel Inverter Generator 6500 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq10000i-diesel-inverter-generator-6500-max-starting-watts"
+      },
+      "36": {
+        "id": "36",
+        "name_en": "MQ13000i Diesel Inverter Generator 8500 Max Starting Watts",
+        "name_ar": "",
+        "slug": "mq13000i-diesel-inverter-generator-8500-max-starting-watts"
+      },
+      "63": {
+        "id": "63",
+        "name_en": "AiPOWER 13000W",
+        "name_ar": "",
+        "slug": "aipower-13000w"
+      },
+      "66": {
+        "id": "66",
+        "name_en": "AiPower SUA18000E 11,000W Gasoline Generator | Home Backup",
+        "name_ar": "",
+        "slug": "aipower-sua18000e-11000w-gasoline-generator--home-backup"
+      },
+      "69": {
+        "id": "69",
+        "name_en": "AiPower A1500Di Ultra Quiet Inverter Generator – Portable 1500W Power for Outdoor Adventures",
+        "name_ar": "",
+        "slug": "aipower-a1500di-ultra-quiet-inverter-generator--portable-1500w-power-for-outdoor-adventures"
+      },
+      "72": {
+        "id": "72",
+        "name_en": "AiPower 2000W Ultra Quiet Portable Inverter Generator – Compact, Fuel-Efficient, Clean Power for Out",
+        "name_ar": "",
+        "slug": "aipower-2000w-ultra-quiet-portable-inverter-generator--compact-fuel-efficient-clean-power-for-out"
+      },
+      "75": {
+        "id": "75",
+        "name_en": "AiPower SM2500Di 2500W Inverter Generator – Quiet \\u0026 Portable",
+        "name_ar": "",
+        "slug": "aipower-sm2500di-2500w-inverter-generator--quiet-u0026-portable"
+      },
+      "78": {
+        "id": "78",
+        "name_en": "A3500Di 3500W Silent Inverter Generator for Home \\u0026 Camping",
+        "name_ar": "",
+        "slug": "a3500di-3500w-silent-inverter-generator-for-home-u0026-camping"
+      },
+      "81": {
+        "id": "81",
+        "name_en": "AiPower A3500EDi 3.2kW Silent Inverter Generator for Home \\u0026 RV",
+        "name_ar": "",
+        "slug": "aipower-a3500edi-32kw-silent-inverter-generator-for-home-u0026-rv"
+      },
+      "84": {
+        "id": "84",
+        "name_en": "AiPower SM4500Di Inverter Generator – 4000W Max Power for RV \\u0026 Camping",
+        "name_ar": "",
+        "slug": "aipower-sm4500di-inverter-generator--4000w-max-power-for-rv-u0026-camping"
+      },
+      "87": {
+        "id": "87",
+        "name_en": "AiPower SM6500Di 6500W Silent Inverter Generator | Portable Power",
+        "name_ar": "",
+        "slug": "aipower-sm6500di-6500w-silent-inverter-generator--portable-power"
+      },
+      "90": {
+        "id": "90",
+        "name_en": "AiPower A10500Di 11.3kVA | Quiet Inverter Generator | Portable Power for RV, Home \\u0026 Job Site",
+        "name_ar": "",
+        "slug": "aipower-a10500di-113kva--quiet-inverter-generator--portable-power-for-rv-home-u0026-job-site"
+      },
+      "441": {
+        "id": "441",
+        "name_en": "SM15000Di 15kW Inverter Generator – Quiet, for RV \\u0026 Home Backup",
+        "name_ar": "",
+        "slug": "sm15000di-15kw-inverter-generator--quiet-for-rv-u0026-home-backup"
+      },
+      "444": {
+        "id": "444",
+        "name_en": "EASY POWER YH25000E3 22kW Gasoline Generator – Single / Three Phase",
+        "name_ar": "",
+        "slug": "easy-power-yh25000e3-22kw-gasoline-generator--single--three-phase"
+      },
+      "447": {
+        "id": "447",
+        "name_en": "AiPower IN8000CE Gasoline Generator 5000W | Electric Start",
+        "name_ar": "",
+        "slug": "aipower-in8000ce-gasoline-generator-5000w--electric-start"
+      },
+      "453": {
+        "id": "453",
+        "name_en": "AiPower IN6000CE 4000W Gasoline Generator | Electric Start",
+        "name_ar": "",
+        "slug": "aipower-in6000ce-4000w-gasoline-generator--electric-start"
+      },
+      "456": {
+        "id": "456",
+        "name_en": "AiPower 8KW Gasoline Generator 40L",
+        "name_ar": "",
+        "slug": "aipower-8kw-gasoline-generator-40l"
+      },
+      "459": {
+        "id": "459",
+        "name_en": "AiPOWER SC2300i-H Inverter Generator Petrol 2300 w",
+        "name_ar": "",
+        "slug": "aipower-sc2300i-h-inverter-generator-petrol-2300-w"
+      },
+      "465": {
+        "id": "465",
+        "name_en": "Senci 6000Watt Dual Fuel Digital Inverter Generators Super Slient Inverter Generator",
+        "name_ar": "",
+        "slug": "senci-6000watt-dual-fuel-digital-inverter-generators-super-slient-inverter-generator"
+      },
+      "534": {
+        "id": "534",
+        "name_en": "AiPower ADG20WS Pro 20kVA Standby Diesel Generator – Weichai Engine | for Home, Business \\u0026 Industry",
+        "name_ar": "",
+        "slug": "aipower-adg20ws-pro-20kva-standby-diesel-generator--weichai-engine--for-home-business-u0026-industry"
+      },
+      "558": {
+        "id": "558",
+        "name_en": "DCA 5000W Gasoline Generator",
+        "name_ar": "",
+        "slug": "dca-5000w-gasoline-generator"
+      },
+      "561": {
+        "id": "561",
+        "name_en": "DCA 7000W Gasoline Generator, Warranty 6 months",
+        "name_ar": "",
+        "slug": "dca-7000w-gasoline-generator-warranty-6-months"
+      },
+      "564": {
+        "id": "564",
+        "name_en": "DCA 5000W Gasoline Generator Electric Starter",
+        "name_ar": "",
+        "slug": "dca-5000w-gasoline-generator-electric-starter"
+      },
+      "567": {
+        "id": "567",
+        "name_en": "DCA 2800W Gasoline Generator",
+        "name_ar": "",
+        "slug": "dca-2800w-gasoline-generator"
+      },
+      "570": {
+        "id": "570",
+        "name_en": "DCA 2800W Electric Starter Gasoline Generator",
+        "name_ar": "",
+        "slug": "dca-2800w-electric-starter-gasoline-generator"
+      },
+      "573": {
+        "id": "573",
+        "name_en": "DCA 6500W Gasoline Generator",
+        "name_ar": "",
+        "slug": "dca-6500w-gasoline-generator"
+      },
+      "576": {
+        "id": "576",
+        "name_en": "AiPower ADG12000ES-3EP Silent Diesel Generator – 8000W | Signle/Three Phase",
+        "name_ar": "",
+        "slug": "aipower-adg12000es-3ep-silent-diesel-generator--8000w--signlethree-phase"
+      },
+      "579": {
+        "id": "579",
+        "name_en": "AiPower ADG15000ES 10000W Silent Diesel Generator | Backup Power",
+        "name_ar": "",
+        "slug": "aipower-adg15000es-10000w-silent-diesel-generator--backup-power"
+      },
+      "582": {
+        "id": "582",
+        "name_en": "DCA Heavy Duty 7.5 KVA Recoil \\u0026 Self Start Portable Petrol GeneratorThree Phase Effortless Self Reco",
+        "name_ar": "",
+        "slug": "dca-heavy-duty-75-kva-recoil-u0026-self-start-portable-petrol-generatorthree-phase-effortless-self-reco"
+      },
+      "585": {
+        "id": "585",
+        "name_en": "AiPower 20kVA Standby Diesel Generator | Perkins Engine | Backup Power",
+        "name_ar": "",
+        "slug": "aipower-20kva-standby-diesel-generator--perkins-engine--backup-power"
+      },
+      "1071": {
+        "id": "1071",
+        "name_en": "Petrol Generator SenCi 8.5kW – Heavy Duty Power Generator",
+        "name_ar": "",
+        "slug": "petrol-generator-senci-85kw--heavy-duty-power-generator"
+      },
+      "1173": {
+        "id": "1173",
+        "name_en": "Makut 2.6 kW Gasoline Generator - Portable Power Generator",
+        "name_ar": "",
+        "slug": "makut-26-kw-gasoline-generator---portable-power-generator"
+      },
+      "1215": {
+        "id": "1215",
+        "name_en": "Senci Power Station – Senci 4500W Inverter Generator",
+        "name_ar": "",
+        "slug": "senci-power-station--senci-4500w-inverter-generator"
+      },
+      "1218": {
+        "id": "1218",
+        "name_en": "A-iPower DIY200 Gasoline Welding Generator | 5kW Rated/5.5kW Max | DC 50-200A Welder with 14HP Engin",
+        "name_ar": "",
+        "slug": "a-ipower-diy200-gasoline-welding-generator--5kw-rated55kw-max--dc-50-200a-welder-with-14hp-engin"
+      },
+      "1221": {
+        "id": "1221",
+        "name_en": "Powerage PAE12STA3+ATS Silent Diesel Generator.",
+        "name_ar": "",
+        "slug": "powerage-pae12sta3ats-silent-diesel-generator"
+      }
+    },
+    "productSubcatMap": {},
+    "rawLen": 113125
+  },
+  "6": {
+    "catId": 6,
+    "catSlug": "air-compressor",
+    "subcatMap": {
+      "39": {
+        "id": "39",
+        "name_en": "Power Pro 12L Silent",
+        "name_ar": "",
+        "slug": "power-pro-12l-silent"
+      },
+      "42": {
+        "id": "42",
+        "name_en": "Power Pro 30L Silent",
+        "name_ar": "",
+        "slug": "power-pro-30l-silent"
+      },
+      "45": {
+        "id": "45",
+        "name_en": "Power Pro 50L Silent (Single Motor)",
+        "name_ar": "",
+        "slug": "power-pro-50l-silent-single-motor"
+      },
+      "48": {
+        "id": "48",
+        "name_en": "Power Pro 50 L Silent (Double Motor)",
+        "name_ar": "",
+        "slug": "power-pro-50-l-silent-double-motor"
+      },
+      "96": {
+        "id": "96",
+        "name_en": "PowerPro 120 L Silent",
+        "name_ar": "",
+        "slug": "powerpro-120-l-silent"
+      },
+      "99": {
+        "id": "99",
+        "name_en": "PowerPro 50 L With Belt",
+        "name_ar": "",
+        "slug": "powerpro-50-l-with-belt"
+      },
+      "102": {
+        "id": "102",
+        "name_en": "PowerPro 100 L With Belt",
+        "name_ar": "",
+        "slug": "powerpro-100-l-with-belt"
+      },
+      "105": {
+        "id": "105",
+        "name_en": "PowerPro 150 L With Belt",
+        "name_ar": "",
+        "slug": "powerpro-150-l-with-belt"
+      },
+      "108": {
+        "id": "108",
+        "name_en": "PowerPro 200 L With Belt",
+        "name_ar": "",
+        "slug": "powerpro-200-l-with-belt"
+      }
+    },
+    "productSubcatMap": {},
+    "rawLen": 74345
+  },
+  "9": {
+    "catId": 9,
+    "catSlug": "welding-machine",
+    "subcatMap": {
+      "51": {
+        "id": "51",
+        "name_en": "PowerPro MMA300",
+        "name_ar": "",
+        "slug": "powerpro-mma300"
+      },
+      "54": {
+        "id": "54",
+        "name_en": "PORTABLE 300 MMA INVERTER WELDING MACHINE",
+        "name_ar": "",
+        "slug": "portable-300-mma-inverter-welding-machine"
+      },
+      "57": {
+        "id": "57",
+        "name_en": "PowerPro MM400-PRO",
+        "name_ar": "",
+        "slug": "powerpro-mm400-pro"
+      },
+      "60": {
+        "id": "60",
+        "name_en": "PowerPro TIG250-PRO",
+        "name_ar": "",
+        "slug": "powerpro-tig250-pro"
+      },
+      "138": {
+        "id": "138",
+        "name_en": "PowerPro MMCT-250 4 IN 1 (MMA, MIG, TIG, CUT) Multifunctional Welding Machine",
+        "name_ar": "",
+        "slug": "powerpro-mmct-250-4-in-1-mma-mig-tig-cut-multifunctional-welding-machine"
+      },
+      "1053": {
+        "id": "1053",
+        "name_en": "DCA MMA-200(III) Intelligent Arc Welding Machine",
+        "name_ar": "",
+        "slug": "dca-mma-200iii-intelligent-arc-welding-machine"
+      },
+      "1056": {
+        "id": "1056",
+        "name_en": "DCA MMA-250(III) Intelligent Arc Welding Machine, a portable inverter welder",
+        "name_ar": "",
+        "slug": "dca-mma-250iii-intelligent-arc-welding-machine-a-portable-inverter-welder"
+      },
+      "1062": {
+        "id": "1062",
+        "name_en": "DCA MMA315DT(III) inverter welder",
+        "name_ar": "",
+        "slug": "dca-mma315dtiii-inverter-welder"
+      }
+    },
+    "productSubcatMap": {},
+    "rawLen": 73115
+  },
+  "36": {
+    "catId": 36,
+    "catSlug": "tools",
+    "subcatMap": {
+      "603": {
+        "id": "603",
+        "name_en": "Marbel Cutter 110mm 1600W MC002 Makute",
+        "name_ar": "",
+        "slug": "marbel-cutter-110mm-1600w-mc002-makute"
+      },
+      "609": {
+        "id": "609",
+        "name_en": "Pipe Melt Machine 20-63mm 1000W PW003 Makute",
+        "name_ar": "",
+        "slug": "pipe-melt-machine-20-63mm-1000w-pw003-makute"
+      },
+      "612": {
+        "id": "612",
+        "name_en": "Drill Hammer Hilti 38 mm Makute HD118 SDS Max 1500W",
+        "name_ar": "",
+        "slug": "drill-hammer-hilti-38-mm-makute-hd118-sds-max-1500w"
+      },
+      "615": {
+        "id": "615",
+        "name_en": "Makute New 255mm Electric Miter Saw MS006 - Powerful 1800W Miter Saw for Precision Cutting of Wood a",
+        "name_ar": "",
+        "slug": "makute-new-255mm-electric-miter-saw-ms006---powerful-1800w-miter-saw-for-precision-cutting-of-wood-a"
+      },
+      "618": {
+        "id": "618",
+        "name_en": "Makute Adjustable Electric Wall Sander for all types of walls, including drywall and plaster",
+        "name_ar": "",
+        "slug": "makute-adjustable-electric-wall-sander-for-all-types-of-walls-including-drywall-and-plaster"
+      },
+      "624": {
+        "id": "624",
+        "name_en": "Ingco Compact Brushless Cordless Impact Drill",
+        "name_ar": "",
+        "slug": "ingco-compact-brushless-cordless-impact-drill"
+      },
+      "627": {
+        "id": "627",
+        "name_en": "Ingco 20V Max Lithium-Ion Compact Brushless Cordless Impact Drill",
+        "name_ar": "",
+        "slug": "ingco-20v-max-lithium-ion-compact-brushless-cordless-impact-drill"
+      },
+      "630": {
+        "id": "630",
+        "name_en": "Ingco Brushless Cordless Impact Drill 13 mm Chuck Size 96 Nm Maximum Torque Brushless Motor",
+        "name_ar": "",
+        "slug": "ingco-brushless-cordless-impact-drill-13-mm-chuck-size-96-nm-maximum-torque-brushless-motor"
+      },
+      "636": {
+        "id": "636",
+        "name_en": "Ingco 12.7 mm (1/2 Inch) Cordless Impact Wrench with Integrated LED Work Light",
+        "name_ar": "",
+        "slug": "ingco-127-mm-12-inch-cordless-impact-wrench-with-integrated-led-work-light"
+      },
+      "642": {
+        "id": "642",
+        "name_en": "Ingco Cordless Brad Nailer With 105 Pcs Magazine Capacity and 3 Nails/Second Drive Rate",
+        "name_ar": "",
+        "slug": "ingco-cordless-brad-nailer-with-105-pcs-magazine-capacity-and-3-nailssecond-drive-rate"
+      },
+      "645": {
+        "id": "645",
+        "name_en": "Ingco Cordless Tile Vibration Machine 130 mm Suction Cup Diameter and 0-10000 RPM Vibrational Freque",
+        "name_ar": "",
+        "slug": "ingco-cordless-tile-vibration-machine-130-mm-suction-cup-diameter-and-0-10000-rpm-vibrational-freque"
+      },
+      "648": {
+        "id": "648",
+        "name_en": "Ingco Cordless Spray Gun with 800 ml/min Flow Rate and 0.1-0.2 Bar Spraying Pressure",
+        "name_ar": "",
+        "slug": "ingco-cordless-spray-gun-with-800-mlmin-flow-rate-and-01-02-bar-spraying-pressure"
+      },
+      "651": {
+        "id": "651",
+        "name_en": "Ingco Cordless Blower 20 V, 18000 RPM No Load Speed and 2.7 m³/min Max. Air Volume",
+        "name_ar": "",
+        "slug": "ingco-cordless-blower-20-v-18000-rpm-no-load-speed-and-27-mmin-max-air-volume"
+      },
+      "654": {
+        "id": "654",
+        "name_en": "Ingco Battery Pack 4.0 Ah Capacity, 4 A Current and 20 V",
+        "name_ar": "",
+        "slug": "ingco-battery-pack-40-ah-capacity-4-a-current-and-20-v"
+      },
+      "657": {
+        "id": "657",
+        "name_en": "Ingco 5.0 Ah 20 V Lithium-Ion Battery Pack",
+        "name_ar": "",
+        "slug": "ingco-50-ah-20-v-lithium-ion-battery-pack"
+      },
+      "669": {
+        "id": "669",
+        "name_en": "Wall Sander Makute 180Mm 850W",
+        "name_ar": "",
+        "slug": "wall-sander-makute-180mm-850w"
+      },
+      "675": {
+        "id": "675",
+        "name_en": "Ingco Cordless Drill 12 V, 10 mm Chuck Size and 750 RPM No Load Speed",
+        "name_ar": "",
+        "slug": "ingco-cordless-drill-12-v-10-mm-chuck-size-and-750-rpm-no-load-speed"
+      },
+      "678": {
+        "id": "678",
+        "name_en": "Ingco 1.5 Ah 12 V Lithium-Ion Battery Pack",
+        "name_ar": "",
+        "slug": "ingco-15-ah-12-v-lithium-ion-battery-pack"
+      },
+      "681": {
+        "id": "681",
+        "name_en": "INGCO 8V Cordless Screwdriver, 6 Nm, LED Light, Packed by Plastic Tool Box",
+        "name_ar": "",
+        "slug": "ingco-8v-cordless-screwdriver-6-nm-led-light-packed-by-plastic-tool-box"
+      },
+      "687": {
+        "id": "687",
+        "name_en": "Ingco 680 W 13 mm Reverse \\u0026 Forward Impact Drill",
+        "name_ar": "",
+        "slug": "ingco-680-w-13-mm-reverse-u0026-forward-impact-drill"
+      },
+      "690": {
+        "id": "690",
+        "name_en": "INGCO 710W 13mm Impact Drill ID7118 – Heavy Duty Rotary Hammer Drill for Concrete, Wood \\u0026 Metal with",
+        "name_ar": "",
+        "slug": "ingco-710w-13mm-impact-drill-id7118--heavy-duty-rotary-hammer-drill-for-concrete-wood-u0026-metal-with"
+      },
+      "693": {
+        "id": "693",
+        "name_en": "Ingco Impact Drill 1100 W 2800 RPM 13 mm",
+        "name_ar": "",
+        "slug": "ingco-impact-drill-1100-w-2800-rpm-13-mm"
+      },
+      "696": {
+        "id": "696",
+        "name_en": "Ingco Electric Paint Mixer Machine 1400W",
+        "name_ar": "",
+        "slug": "ingco-electric-paint-mixer-machine-1400w"
+      },
+      "699": {
+        "id": "699",
+        "name_en": "INGCO AG7118 Angle Grinder 710W",
+        "name_ar": "",
+        "slug": "ingco-ag7118-angle-grinder-710w"
+      },
+      "702": {
+        "id": "702",
+        "name_en": "Ingco Plastic Tube Welding Tool Fusion Machine 1500W",
+        "name_ar": "",
+        "slug": "ingco-plastic-tube-welding-tool-fusion-machine-1500w"
+      },
+      "705": {
+        "id": "705",
+        "name_en": "Ingco 2200W 9 Inch Corded Electric Angle Grinder",
+        "name_ar": "",
+        "slug": "ingco-2200w-9-inch-corded-electric-angle-grinder"
+      },
+      "708": {
+        "id": "708",
+        "name_en": "INGCO 2000W Heat Gun, 50 /450°C/550°C",
+        "name_ar": "",
+        "slug": "ingco-2000w-heat-gun-50-450c550c"
+      },
+      "711": {
+        "id": "711",
+        "name_en": "Ingco 570W Jig Saw 5 Variable Speed 4 Step Pendulum Function, With 3 Free Blades",
+        "name_ar": "",
+        "slug": "ingco-570w-jig-saw-5-variable-speed-4-step-pendulum-function-with-3-free-blades"
+      },
+      "714": {
+        "id": "714",
+        "name_en": "Ingco 34500 RPM 600W 6mm Electric Laminate Trimmer Mini Router",
+        "name_ar": "",
+        "slug": "ingco-34500-rpm-600w-6mm-electric-laminate-trimmer-mini-router"
+      },
+      "717": {
+        "id": "717",
+        "name_en": "Ingco Electric Sprayer 530 W Power and 130 DIN-s Maximum Viscosity",
+        "name_ar": "",
+        "slug": "ingco-electric-sprayer-530-w-power-and-130-din-s-maximum-viscosity"
+      },
+      "726": {
+        "id": "726",
+        "name_en": "INGCO 16V Compact Brushless Cordless Impact Drill 10mm",
+        "name_ar": "",
+        "slug": "ingco-16v-compact-brushless-cordless-impact-drill-10mm"
+      },
+      "729": {
+        "id": "729",
+        "name_en": "Ingco 16V Cordless tools Lithium-Ion battery pack FBLI1620",
+        "name_ar": "",
+        "slug": "ingco-16v-cordless-tools-lithium-ion-battery-pack-fbli1620"
+      },
+      "732": {
+        "id": "732",
+        "name_en": "Ingco 355 mm (14 inch) Disc Dia 2200 W Chop Saw",
+        "name_ar": "",
+        "slug": "ingco-355-mm-14-inch-disc-dia-2200-w-chop-saw"
+      },
+      "735": {
+        "id": "735",
+        "name_en": "POWERTEX |  55Nm X-Series 20V 2Ah 13mm",
+        "name_ar": "",
+        "slug": "powertex--55nm-x-series-20v-2ah-13mm"
+      },
+      "738": {
+        "id": "738",
+        "name_en": "Ingco 12V 120 PSI 18 A Auto Air Compressor",
+        "name_ar": "",
+        "slug": "ingco-12v-120-psi-18-a-auto-air-compressor"
+      },
+      "741": {
+        "id": "741",
+        "name_en": "PowerPro Angle Grinder 950 W 115 mm",
+        "name_ar": "",
+        "slug": "powerpro-angle-grinder-950-w-115-mm"
+      },
+      "744": {
+        "id": "744",
+        "name_en": "PowerTex Wall Sander Makute 180Mm 850W",
+        "name_ar": "",
+        "slug": "powertex-wall-sander-makute-180mm-850w"
+      },
+      "747": {
+        "id": "747",
+        "name_en": "PowerTex 20V Brushless Cordless Angle Grinder",
+        "name_ar": "",
+        "slug": "powertex-20v-brushless-cordless-angle-grinder"
+      },
+      "753": {
+        "id": "753",
+        "name_en": "Ingco Air Brad With 100 Pcs Nailer 15-50 mm",
+        "name_ar": "",
+        "slug": "ingco-air-brad-with-100-pcs-nailer-15-50-mm"
+      },
+      "756": {
+        "id": "756",
+        "name_en": "INGCO 20v BL 3/4",
+        "name_ar": "",
+        "slug": "ingco-20v-bl-34"
+      },
+      "759": {
+        "id": "759",
+        "name_en": "Ingco 18 Inch 1800W Gasoline Chain Saw",
+        "name_ar": "",
+        "slug": "ingco-18-inch-1800w-gasoline-chain-saw"
+      },
+      "762": {
+        "id": "762",
+        "name_en": "Rotary Hammer Drill SDS Plus System 800 Watts RGH9028 ING-PT",
+        "name_ar": "",
+        "slug": "rotary-hammer-drill-sds-plus-system-800-watts-rgh9028-ing-pt"
+      },
+      "768": {
+        "id": "768",
+        "name_en": "PowerTex 360 Multi Line Laser Level 16 Lines With 2 Battery 6000mah and Remote Control",
+        "name_ar": "",
+        "slug": "powertex-360-multi-line-laser-level-16-lines-with-2-battery-6000mah-and-remote-control"
+      },
+      "774": {
+        "id": "774",
+        "name_en": "Ingco AC 600A Digital Clamp Meter",
+        "name_ar": "",
+        "slug": "ingco-ac-600a-digital-clamp-meter"
+      },
+      "777": {
+        "id": "777",
+        "name_en": "Ingco 20V Cordless mini 3 Inch Cut-Off",
+        "name_ar": "",
+        "slug": "ingco-20v-cordless-mini-3-inch-cut-off"
+      },
+      "780": {
+        "id": "780",
+        "name_en": "Ingco 1.5 Ah 12 V Lithium-Ion Battery Pack",
+        "name_ar": "",
+        "slug": "ingco-15-ah-12-v-lithium-ion-battery-pack"
+      },
+      "783": {
+        "id": "783",
+        "name_en": "Ingco 2 In 1 Air Combo Brad \\u0026 Crown Nailer",
+        "name_ar": "",
+        "slug": "ingco-2-in-1-air-combo-brad-u0026-crown-nailer"
+      },
+      "792": {
+        "id": "792",
+        "name_en": "Electric Leaf Blower 3800W - High-power Garden Blower For Leaves, Grass, Debris Removal, Patio Maint",
+        "name_ar": "",
+        "slug": "electric-leaf-blower-3800w---high-power-garden-blower-for-leaves-grass-debris-removal-patio-maint"
+      },
+      "819": {
+        "id": "819",
+        "name_en": "POWERTEX G-Series 1/2-inch Cordless Impact Wrench With 2 Battery and Charger",
+        "name_ar": "",
+        "slug": "powertex-g-series-12-inch-cordless-impact-wrench-with-2-battery-and-charger"
+      },
+      "822": {
+        "id": "822",
+        "name_en": "POWERTEX 650W Trimmer (Rotator)  | Professional 6mm Wood Grooving and Finishing",
+        "name_ar": "",
+        "slug": "powertex-650w-trimmer-rotator--professional-6mm-wood-grooving-and-finishing"
+      },
+      "825": {
+        "id": "825",
+        "name_en": "POWERTEX Cordless Impact Driver,16V/2.0Ah*2 with 1.5A Battery,Desktop charger, 140 N.m",
+        "name_ar": "",
+        "slug": "powertex-cordless-impact-driver16v20ah2-with-15a-batterydesktop-charger-140-nm"
+      },
+      "831": {
+        "id": "831",
+        "name_en": "Ingco Cordless Screwdriver with 1500 mAh Battery Capacity and 5 Nm Maximum Torque",
+        "name_ar": "",
+        "slug": "ingco-cordless-screwdriver-with-1500-mah-battery-capacity-and-5-nm-maximum-torque"
+      },
+      "834": {
+        "id": "834",
+        "name_en": "Ingco 20v Aspirator Blower Max Volume: 2.7m3/min",
+        "name_ar": "",
+        "slug": "ingco-20v-aspirator-blower-max-volume-27m3min"
+      },
+      "837": {
+        "id": "837",
+        "name_en": "POWERTEX Jigsaw (580W)",
+        "name_ar": "",
+        "slug": "powertex-jigsaw-580w"
+      },
+      "840": {
+        "id": "840",
+        "name_en": "POWERTEX PPT-CM-110 Marble Cutter 1240W",
+        "name_ar": "",
+        "slug": "powertex-ppt-cm-110-marble-cutter-1240w"
+      },
+      "846": {
+        "id": "846",
+        "name_en": "INGCO Gasoline lawn mower 4HP self propelled",
+        "name_ar": "",
+        "slug": "ingco-gasoline-lawn-mower-4hp-self-propelled"
+      },
+      "852": {
+        "id": "852",
+        "name_en": "INGCO 12V 2X1.5AH Li-ion Drill \\u0026 Impact Driver Combo Kit",
+        "name_ar": "",
+        "slug": "ingco-12v-2x15ah-li-ion-drill-u0026-impact-driver-combo-kit"
+      },
+      "858": {
+        "id": "858",
+        "name_en": "Ingco 125mm Multi Function Saw 750w 400RPM",
+        "name_ar": "",
+        "slug": "ingco-125mm-multi-function-saw-750w-400rpm"
+      },
+      "864": {
+        "id": "864",
+        "name_en": "POWERTEX 570w 82mm Electric Planer",
+        "name_ar": "",
+        "slug": "powertex-570w-82mm-electric-planer"
+      },
+      "867": {
+        "id": "867",
+        "name_en": "POWERTEX 340W Electric Wrench Two-Way Electric Block",
+        "name_ar": "",
+        "slug": "powertex-340w-electric-wrench-two-way-electric-block"
+      },
+      "873": {
+        "id": "873",
+        "name_en": "INGCO Rotary Hammer - Chipping Gun 1050W FREE Bits and Chisels",
+        "name_ar": "",
+        "slug": "ingco-rotary-hammer---chipping-gun-1050w-free-bits-and-chisels"
+      },
+      "876": {
+        "id": "876",
+        "name_en": "INGCO 20V Brushless Chain Saw 12",
+        "name_ar": "",
+        "slug": "ingco-20v-brushless-chain-saw-12"
+      },
+      "879": {
+        "id": "879",
+        "name_en": "INGCO Demolition Breaker Hammer 1500 Watts with 2pcs Chisel",
+        "name_ar": "",
+        "slug": "ingco-demolition-breaker-hammer-1500-watts-with-2pcs-chisel"
+      },
+      "891": {
+        "id": "891",
+        "name_en": "INGCO 30 L Air Grease Lubricator",
+        "name_ar": "",
+        "slug": "ingco-30-l-air-grease-lubricator"
+      },
+      "894": {
+        "id": "894",
+        "name_en": "POWERTEX Electrical Circular Saw 190mm 1750w",
+        "name_ar": "",
+        "slug": "powertex-electrical-circular-saw-190mm-1750w"
+      },
+      "900": {
+        "id": "900",
+        "name_en": "5-in-1 Combo Drill + Impact Wrench + Grinder + Rotary Hammer + Flashlight 2x4.0ah Industrial Total",
+        "name_ar": "",
+        "slug": "5-in-1-combo-drill--impact-wrench--grinder--rotary-hammer--flashlight-2x40ah-industrial-total"
+      },
+      "903": {
+        "id": "903",
+        "name_en": "Total Battery Charger 12/24V",
+        "name_ar": "",
+        "slug": "total-battery-charger-1224v"
+      },
+      "906": {
+        "id": "906",
+        "name_en": "Total 800W Blower and Vacuum Cleaner",
+        "name_ar": "",
+        "slug": "total-800w-blower-and-vacuum-cleaner"
+      },
+      "912": {
+        "id": "912",
+        "name_en": "TOTAL Air tools 5pcs set with Europe type connector Packed by color box",
+        "name_ar": "",
+        "slug": "total-air-tools-5pcs-set-with-europe-type-connector-packed-by-color-box"
+      },
+      "915": {
+        "id": "915",
+        "name_en": "TOTAL 600cc Professional Low-Pressure Large-Capacity Sprayer with Top Bottle | Suitable for Finishin",
+        "name_ar": "",
+        "slug": "total-600cc-professional-low-pressure-large-capacity-sprayer-with-top-bottle--suitable-for-finishin"
+      },
+      "918": {
+        "id": "918",
+        "name_en": "Total Tools 1/2 inch 610N Air Drill",
+        "name_ar": "",
+        "slug": "total-tools-12-inch-610n-air-drill"
+      },
+      "924": {
+        "id": "924",
+        "name_en": "TOTAL 165-piece tool set with a 20V cordless drill",
+        "name_ar": "",
+        "slug": "total-165-piece-tool-set-with-a-20v-cordless-drill"
+      },
+      "930": {
+        "id": "930",
+        "name_en": "Total 42V Cordless Impact Wrench 2 x 2.0Ah Batteries, 1 Charger",
+        "name_ar": "",
+        "slug": "total-42v-cordless-impact-wrench-2-x-20ah-batteries-1-charger"
+      },
+      "933": {
+        "id": "933",
+        "name_en": "TOTAL 42V 4.5-inch Multi-Speed Battery Rocket + 2 Batteries + Fast Charger",
+        "name_ar": "",
+        "slug": "total-42v-45-inch-multi-speed-battery-rocket--2-batteries--fast-charger"
+      },
+      "936": {
+        "id": "936",
+        "name_en": "TOTAL 42V 2AH Lithium-Ion battery pack",
+        "name_ar": "",
+        "slug": "total-42v-2ah-lithium-ion-battery-pack"
+      },
+      "939": {
+        "id": "939",
+        "name_en": "TOTAL 42V 2A Fast Charger",
+        "name_ar": "",
+        "slug": "total-42v-2a-fast-charger"
+      },
+      "954": {
+        "id": "954",
+        "name_en": "TOTAL 20V 2-Piece Charging Kit - Brushless Drill \\u0026 Impact Wrench with 2 Batteries",
+        "name_ar": "",
+        "slug": "total-20v-2-piece-charging-kit---brushless-drill-u0026-impact-wrench-with-2-batteries"
+      },
+      "957": {
+        "id": "957",
+        "name_en": "TOTAL 42V 99N Cordless Drill with Case, Extra Battery, and Fast Charger",
+        "name_ar": "",
+        "slug": "total-42v-99n-cordless-drill-with-case-extra-battery-and-fast-charger"
+      },
+      "972": {
+        "id": "972",
+        "name_en": "TOTAL Combo 2-in-1 Impact Wrench 405nm + Flashlight 2x2.0Ah, Carrying Case + Industrial Accessories",
+        "name_ar": "",
+        "slug": "total-combo-2-in-1-impact-wrench-405nm--flashlight-2x20ah-carrying-case--industrial-accessories"
+      },
+      "975": {
+        "id": "975",
+        "name_en": "TOTAL 20V 2Ah Cordless Paint Spray Gun",
+        "name_ar": "",
+        "slug": "total-20v-2ah-cordless-paint-spray-gun"
+      },
+      "978": {
+        "id": "978",
+        "name_en": "Total Compact Brushless Cordless Impact Drill Without Battery \\u0026 Charger 20 V 13 mm Chuck Size 30000",
+        "name_ar": "",
+        "slug": "total-compact-brushless-cordless-impact-drill-without-battery-u0026-charger-20-v-13-mm-chuck-size-30000"
+      },
+      "981": {
+        "id": "981",
+        "name_en": "TOTAL 20V 66Nm Brushless Cordless Drill with 2 Batteries, 47-Piece Accessory Kit \\u0026 Carrying Case",
+        "name_ar": "",
+        "slug": "total-20v-66nm-brushless-cordless-drill-with-2-batteries-47-piece-accessory-kit-u0026-carrying-case"
+      },
+      "984": {
+        "id": "984",
+        "name_en": "TOTAL 20V Professional Ceramic Vibrator with Accessory Kit and Case",
+        "name_ar": "",
+        "slug": "total-20v-professional-ceramic-vibrator-with-accessory-kit-and-case"
+      },
+      "987": {
+        "id": "987",
+        "name_en": "POWERTEX 520W Orbital Sander Model PPT-OS-114 | Smooth and fast sanding for wood and furniture",
+        "name_ar": "",
+        "slug": "powertex-520w-orbital-sander-model-ppt-os-114--smooth-and-fast-sanding-for-wood-and-furniture"
+      },
+      "990": {
+        "id": "990",
+        "name_en": "POWERTEX Brushless Cordless Impact Wrench 20V 1/2-inch Model PPT-CL-EW-350-40",
+        "name_ar": "",
+        "slug": "powertex-brushless-cordless-impact-wrench-20v-12-inch-model-ppt-cl-ew-350-40"
+      },
+      "993": {
+        "id": "993",
+        "name_en": "TOTAL 20V Cordless tools Cordless blower",
+        "name_ar": "",
+        "slug": "total-20v-cordless-tools-cordless-blower"
+      },
+      "996": {
+        "id": "996",
+        "name_en": "PowerTex 25mm 400W Long Neck Angle Grinder – Powerful, Easy to Control, Professional Use",
+        "name_ar": "",
+        "slug": "powertex-25mm-400w-long-neck-angle-grinder--powerful-easy-to-control-professional-use"
+      },
+      "999": {
+        "id": "999",
+        "name_en": "INGCO 20V Li-Ion Cordless 4pcs Combo Kit Drill,Driver,JIgsaw, Circular Saw",
+        "name_ar": "",
+        "slug": "ingco-20v-li-ion-cordless-4pcs-combo-kit-drilldriverjigsaw-circular-saw"
+      },
+      "1002": {
+        "id": "1002",
+        "name_en": "TOTAL 20V 4AH Lithium-Ion battery pack",
+        "name_ar": "",
+        "slug": "total-20v-4ah-lithium-ion-battery-pack"
+      },
+      "1005": {
+        "id": "1005",
+        "name_en": "TOTAL Lithium- Ion Battery Pack 20V 5.0Ah Capacity",
+        "name_ar": "",
+        "slug": "total-lithium--ion-battery-pack-20v-50ah-capacity"
+      },
+      "1011": {
+        "id": "1011",
+        "name_en": "Total Angle Grinder 710W 115",
+        "name_ar": "",
+        "slug": "total-angle-grinder-710w-115"
+      },
+      "1014": {
+        "id": "1014",
+        "name_en": "Total Angle Grinder 960W 115",
+        "name_ar": "",
+        "slug": "total-angle-grinder-960w-115"
+      },
+      "1017": {
+        "id": "1017",
+        "name_en": "TOTAL Jigsaw 800W 135mm With 5 Weapons",
+        "name_ar": "",
+        "slug": "total-jigsaw-800w-135mm-with-5-weapons"
+      },
+      "1029": {
+        "id": "1029",
+        "name_en": "TOTAL Bench Grinder 150W 150 mm",
+        "name_ar": "",
+        "slug": "total-bench-grinder-150w-150-mm"
+      },
+      "1032": {
+        "id": "1032",
+        "name_en": "TOTAL Brushless 4.5 Inch 20V 4Ah Battery Angle Grinder + Battery \\u0026 Charger + 5 Disc",
+        "name_ar": "",
+        "slug": "total-brushless-45-inch-20v-4ah-battery-angle-grinder--battery-u0026-charger--5-disc"
+      },
+      "1038": {
+        "id": "1038",
+        "name_en": "TOTAL Cordless Brushless Blower + Battery + Charger  20V 8.5m³",
+        "name_ar": "",
+        "slug": "total-cordless-brushless-blower--battery--charger-20v-85m"
+      },
+      "1041": {
+        "id": "1041",
+        "name_en": "TOTAL Heat Gun TB20078, 2000W, 3 Temperature Settings 50-550°C, with 4 Nozzles",
+        "name_ar": "",
+        "slug": "total-heat-gun-tb20078-2000w-3-temperature-settings-50-550c-with-4-nozzles"
+      },
+      "1044": {
+        "id": "1044",
+        "name_en": "POWERTEX PPT-RS-30, a 590W electric reciprocating saw",
+        "name_ar": "",
+        "slug": "powertex-ppt-rs-30-a-590w-electric-reciprocating-saw"
+      },
+      "1047": {
+        "id": "1047",
+        "name_en": "Electric Hoist 900W, 250Kgs/500Kgs Lifting Capacity",
+        "name_ar": "",
+        "slug": "electric-hoist-900w-250kgs500kgs-lifting-capacity"
+      },
+      "1050": {
+        "id": "1050",
+        "name_en": "TOTAL Random Orbital Sander 320W 125MM Electric Round Hair Clipper",
+        "name_ar": "",
+        "slug": "total-random-orbital-sander-320w-125mm-electric-round-hair-clipper"
+      },
+      "1059": {
+        "id": "1059",
+        "name_en": "DCA ADMY125 Cordless Brushless Circular Saw, (Battery No Charger)",
+        "name_ar": "",
+        "slug": "dca-admy125-cordless-brushless-circular-saw-battery-no-charger"
+      },
+      "1065": {
+        "id": "1065",
+        "name_en": "DCA Cordless 4V engraver DCA ADSJ0401 (TYPE E)",
+        "name_ar": "",
+        "slug": "dca-cordless-4v-engraver-dca-adsj0401-type-e"
+      },
+      "1068": {
+        "id": "1068",
+        "name_en": "TOTAL Cordless Work Lamp 42V –2800 Lumens | 50W LED Rechargeable Work Light with Runtime Display",
+        "name_ar": "",
+        "slug": "total-cordless-work-lamp-42v-2800-lumens--50w-led-rechargeable-work-light-with-runtime-display"
+      },
+      "1077": {
+        "id": "1077",
+        "name_en": "DCA 240W 100MM Orbital Sander",
+        "name_ar": "",
+        "slug": "dca-240w-100mm-orbital-sander"
+      },
+      "1080": {
+        "id": "1080",
+        "name_en": "TOTAL 20V 3-inch Angle Grinder + 1 Battery and Charger",
+        "name_ar": "",
+        "slug": "total-20v-3-inch-angle-grinder--1-battery-and-charger"
+      },
+      "1083": {
+        "id": "1083",
+        "name_en": "Makute Gasoline Electric Drill, 52cc 2.2 HP - 1600W, Adjustable Depth, Ergonomic Handle, 1200ml Fuel",
+        "name_ar": "",
+        "slug": "makute-gasoline-electric-drill-52cc-22-hp---1600w-adjustable-depth-ergonomic-handle-1200ml-fuel"
+      },
+      "1086": {
+        "id": "1086",
+        "name_en": "DCA Jigsaw 600W 0-45 Cutting Angle 0-45 Degrees 100mm Steel 65mm Wood",
+        "name_ar": "",
+        "slug": "dca-jigsaw-600w-0-45-cutting-angle-0-45-degrees-100mm-steel-65mm-wood"
+      },
+      "1092": {
+        "id": "1092",
+        "name_en": "DCA 1100w 7-1/4 Inch Electric Circular Saw 185mm AMY02-185",
+        "name_ar": "",
+        "slug": "dca-1100w-7-14-inch-electric-circular-saw-185mm-amy02-185"
+      },
+      "1095": {
+        "id": "1095",
+        "name_en": "TOTAL 2000w Industrial Heat Gun",
+        "name_ar": "",
+        "slug": "total-2000w-industrial-heat-gun"
+      },
+      "1098": {
+        "id": "1098",
+        "name_en": "TOTAL 42V  460NM Cordless Impact Wrench with 1 x 2.0Ah Battery, 1 x Charger",
+        "name_ar": "",
+        "slug": "total-42v-460nm-cordless-impact-wrench-with-1-x-20ah-battery-1-x-charger"
+      },
+      "1101": {
+        "id": "1101",
+        "name_en": "TOTAL 16V 66NM Compact Brushless Cordless Impact Drill TIDLI166062",
+        "name_ar": "",
+        "slug": "total-16v-66nm-compact-brushless-cordless-impact-drill-tidli166062"
+      },
+      "1104": {
+        "id": "1104",
+        "name_en": "Total 16V 2Ah Lithium Battery - TFBLI1620",
+        "name_ar": "",
+        "slug": "total-16v-2ah-lithium-battery---tfbli1620"
+      },
+      "1137": {
+        "id": "1137",
+        "name_en": "TOTAL 20V 460mm Lithium-ion Hedge Trimmer  THTLI20461",
+        "name_ar": "",
+        "slug": "total-20v-460mm-lithium-ion-hedge-trimmer-thtli20461"
+      },
+      "1140": {
+        "id": "1140",
+        "name_en": "TOTAL  20V 2.0Ah Lithium-Ion Battery Pack",
+        "name_ar": "",
+        "slug": "total-20v-20ah-lithium-ion-battery-pack"
+      },
+      "1143": {
+        "id": "1143",
+        "name_en": "TOTAL 1050W Long Arm Wall Sander TWS10501-8",
+        "name_ar": "",
+        "slug": "total-1050w-long-arm-wall-sander-tws10501-8"
+      },
+      "1146": {
+        "id": "1146",
+        "name_en": "DCA 500w 82mm Max 1600rpm Electric Planer AMB82",
+        "name_ar": "",
+        "slug": "dca-500w-82mm-max-1600rpm-electric-planer-amb82"
+      },
+      "1164": {
+        "id": "1164",
+        "name_en": "Makute Electric Die Grinder 350W with No-load Speed 30000rpm Suitable for Wood, Metal, Stone Grindin",
+        "name_ar": "",
+        "slug": "makute-electric-die-grinder-350w-with-no-load-speed-30000rpm-suitable-for-wood-metal-stone-grindin"
+      },
+      "1167": {
+        "id": "1167",
+        "name_en": "MAKUTE AG017 Angle Grinder, Electric, 115mm, 800w",
+        "name_ar": "",
+        "slug": "makute-ag017-angle-grinder-electric-115mm-800w"
+      },
+      "1170": {
+        "id": "1170",
+        "name_en": "MAKUTE AG0126 Angle Grinder, Electric, 115mm, 850w Variable Speed",
+        "name_ar": "",
+        "slug": "makute-ag0126-angle-grinder-electric-115mm-850w-variable-speed"
+      },
+      "1176": {
+        "id": "1176",
+        "name_en": "DCA ADJZ1202E, a 12V Max cordless driver drill designed for both home DIY and professional use",
+        "name_ar": "",
+        "slug": "dca-adjz1202e-a-12v-max-cordless-driver-drill-designed-for-both-home-diy-and-professional-use"
+      },
+      "1179": {
+        "id": "1179",
+        "name_en": "Makute Gasoline Chainsaw Petrol Chainsaw Powered Chainsaw 2100W with 550ml Fuel Tank 20-Inch Bar for",
+        "name_ar": "",
+        "slug": "makute-gasoline-chainsaw-petrol-chainsaw-powered-chainsaw-2100w-with-550ml-fuel-tank-20-inch-bar-for"
+      },
+      "1188": {
+        "id": "1188",
+        "name_en": "DCA 12v 140nm Brushless Cordless Impact Driver ADPL04-8",
+        "name_ar": "",
+        "slug": "dca-12v-140nm-brushless-cordless-impact-driver-adpl04-8"
+      },
+      "1191": {
+        "id": "1191",
+        "name_en": "Dca 10 Inch 1800W Miter Saw 255Mm Ajx09-255",
+        "name_ar": "",
+        "slug": "dca-10-inch-1800w-miter-saw-255mm-ajx09-255"
+      },
+      "1194": {
+        "id": "1194",
+        "name_en": "DCA Mini Air Pump 12v 8.3bar - ADQE120",
+        "name_ar": "",
+        "slug": "dca-mini-air-pump-12v-83bar---adqe120"
+      },
+      "1197": {
+        "id": "1197",
+        "name_en": "DCA 580W Jig Saw Kit – High-Performance Tool for Precision Cutting AMQ85S",
+        "name_ar": "",
+        "slug": "dca-580w-jig-saw-kit--high-performance-tool-for-precision-cutting-amq85s"
+      },
+      "1203": {
+        "id": "1203",
+        "name_en": "DCA 12V Cordless Brushless Die Grinder",
+        "name_ar": "",
+        "slug": "dca-12v-cordless-brushless-die-grinder"
+      },
+      "1209": {
+        "id": "1209",
+        "name_en": "DCA Brushless 2 in 1 Cordless Blower and Vacuum Cleaner",
+        "name_ar": "",
+        "slug": "dca-brushless-2-in-1-cordless-blower-and-vacuum-cleaner"
+      }
+    },
+    "productSubcatMap": {},
+    "rawLen": 206161
+  },
+  "39": {
+    "catId": 39,
+    "catSlug": "accessories",
+    "subcatMap": {
+      "672": {
+        "id": "672",
+        "name_en": "Ingco 16 pcs Drill Bits Set Hex Shank for Metal, Masonry and Wood Drill",
+        "name_ar": "",
+        "slug": "ingco-16-pcs-drill-bits-set-hex-shank-for-metal-masonry-and-wood-drill"
+      },
+      "771": {
+        "id": "771",
+        "name_en": "Ingco 5 Pcs Reciprocating Saw Blade Set Length 9 inch (225 mm) for Cutting Wood with Nail",
+        "name_ar": "",
+        "slug": "ingco-5-pcs-reciprocating-saw-blade-set-length-9-inch-225-mm-for-cutting-wood-with-nail"
+      },
+      "795": {
+        "id": "795",
+        "name_en": "Ingco Ultra Thin Diamond Disc Size 4 inch (105 mm) and 10 mm Blade Width",
+        "name_ar": "",
+        "slug": "ingco-ultra-thin-diamond-disc-size-4-inch-105-mm-and-10-mm-blade-width"
+      },
+      "798": {
+        "id": "798",
+        "name_en": "Ingco TCT Saw Blade 140mm",
+        "name_ar": "",
+        "slug": "ingco-tct-saw-blade-140mm"
+      },
+      "801": {
+        "id": "801",
+        "name_en": "INGCO High-Quality 3-Piece Impact Socket Adaptor Set , Multi-Size Compatibility, Durable \\u0026 Ergonomic",
+        "name_ar": "",
+        "slug": "ingco-high-quality-3-piece-impact-socket-adaptor-set--multi-size-compatibility-durable-u0026-ergonomic"
+      },
+      "804": {
+        "id": "804",
+        "name_en": "INGCO Professional 6-Piece Magnetic Hex Impact Nut Set, Durable Drill Bit Accessories, 6mm-12mm",
+        "name_ar": "",
+        "slug": "ingco-professional-6-piece-magnetic-hex-impact-nut-set-durable-drill-bit-accessories-6mm-12mm"
+      },
+      "807": {
+        "id": "807",
+        "name_en": "INGCO 30 Pcs screwdriver bits set",
+        "name_ar": "",
+        "slug": "ingco-30-pcs-screwdriver-bits-set"
+      },
+      "810": {
+        "id": "810",
+        "name_en": "Ingco 118 Pcs accessories set 6pcs masonry drill",
+        "name_ar": "",
+        "slug": "ingco-118-pcs-accessories-set-6pcs-masonry-drill"
+      },
+      "816": {
+        "id": "816",
+        "name_en": "INGCO 100 Pcs Screwdriver Set CR-V Material HKSD10028 ING-HT",
+        "name_ar": "",
+        "slug": "ingco-100-pcs-screwdriver-set-cr-v-material-hksd10028-ing-ht"
+      },
+      "828": {
+        "id": "828",
+        "name_en": "INGCO 30 Pcs 76mm Cutting \\u0026 Grinding Disc Set",
+        "name_ar": "",
+        "slug": "ingco-30-pcs-76mm-cutting-u0026-grinding-disc-set"
+      },
+      "843": {
+        "id": "843",
+        "name_en": "Full Face Respirator Mask with Dual Filter System",
+        "name_ar": "",
+        "slug": "full-face-respirator-mask-with-dual-filter-system"
+      },
+      "882": {
+        "id": "882",
+        "name_en": "INGCO 8-in-1 Multi-function combination pliers",
+        "name_ar": "",
+        "slug": "ingco-8-in-1-multi-function-combination-pliers"
+      },
+      "885": {
+        "id": "885",
+        "name_en": "INGCO Tile Cutter 1200 mm Length Tungsten Carbide Ball Bearing Blade Solid Sedan Lods 15.7 Kg",
+        "name_ar": "",
+        "slug": "ingco-tile-cutter-1200-mm-length-tungsten-carbide-ball-bearing-blade-solid-sedan-lods-157-kg"
+      },
+      "888": {
+        "id": "888",
+        "name_en": "INGCO 8 Pcs jig saw blades set",
+        "name_ar": "",
+        "slug": "ingco-8-pcs-jig-saw-blades-set"
+      },
+      "927": {
+        "id": "927",
+        "name_en": "TOTAL 147 Pcs Hand Tools Set",
+        "name_ar": "",
+        "slug": "total-147-pcs-hand-tools-set"
+      },
+      "948": {
+        "id": "948",
+        "name_en": "TOTAL 168 Pcs Hand Tools Set Premium Quality",
+        "name_ar": "",
+        "slug": "total-168-pcs-hand-tools-set-premium-quality"
+      },
+      "951": {
+        "id": "951",
+        "name_en": "TOTAL 100 Pcs Screwdriver Set",
+        "name_ar": "",
+        "slug": "total-100-pcs-screwdriver-set"
+      },
+      "960": {
+        "id": "960",
+        "name_en": "TOTAL Ultrathin Diamond Cutting Disc 115mm (4-1/2″) × 22.2mm – 10mm Width, 1.4mm Thickness, High Eff",
+        "name_ar": "",
+        "slug": "total-ultrathin-diamond-cutting-disc-115mm-4-12--222mm--10mm-width-14mm-thickness-high-eff"
+      },
+      "963": {
+        "id": "963",
+        "name_en": "TOTAL Dry Diamond Cutting Disc 115mm (4.5",
+        "name_ar": "",
+        "slug": "total-dry-diamond-cutting-disc-115mm-45"
+      },
+      "966": {
+        "id": "966",
+        "name_en": "TOTAL 115mm (4½ inch) Diamond Cup Wheel",
+        "name_ar": "",
+        "slug": "total-115mm-4-inch-diamond-cup-wheel"
+      },
+      "969": {
+        "id": "969",
+        "name_en": "TOTAL Diamond Cup Wheels Double Row Segmented 115mm",
+        "name_ar": "",
+        "slug": "total-diamond-cup-wheels-double-row-segmented-115mm"
+      },
+      "1008": {
+        "id": "1008",
+        "name_en": "TOTAL Super Cutting and Grinding Disc Set - 30pcs 76mm (3",
+        "name_ar": "",
+        "slug": "total-super-cutting-and-grinding-disc-set---30pcs-76mm-3"
+      },
+      "1020": {
+        "id": "1020",
+        "name_en": "Total TPBX0142 Plastic Tool Box, 14-Inch Size",
+        "name_ar": "",
+        "slug": "total-tpbx0142-plastic-tool-box-14-inch-size"
+      },
+      "1023": {
+        "id": "1023",
+        "name_en": "Total Plastic Tool Box, 17-Inch Size",
+        "name_ar": "",
+        "slug": "total-plastic-tool-box-17-inch-size"
+      },
+      "1026": {
+        "id": "1026",
+        "name_en": "Total Tools 16-inch Canvas Tool Bag with 25 Pockets, Plastic Base, and Canvas Handle",
+        "name_ar": "",
+        "slug": "total-tools-16-inch-canvas-tool-bag-with-25-pockets-plastic-base-and-canvas-handle"
+      },
+      "1074": {
+        "id": "1074",
+        "name_en": "Jump Starter \\u0026 Air Compressor H/D 1 Year Warranty",
+        "name_ar": "",
+        "slug": "jump-starter-u0026-air-compressor-hd-1-year-warranty"
+      },
+      "1107": {
+        "id": "1107",
+        "name_en": "CONPEX 5-Ton Electric Car Jack 6-in-1 Multi-Tool with Remote",
+        "name_ar": "",
+        "slug": "conpex-5-ton-electric-car-jack-6-in-1-multi-tool-with-remote"
+      },
+      "1110": {
+        "id": "1110",
+        "name_en": "Hole Saw Set 9 Pcs Blister MS53754 Cymate",
+        "name_ar": "",
+        "slug": "hole-saw-set-9-pcs-blister-ms53754-cymate"
+      },
+      "1113": {
+        "id": "1113",
+        "name_en": "Hole Saw Set 6 Pcs Blister MS53753 Cymate",
+        "name_ar": "",
+        "slug": "hole-saw-set-6-pcs-blister-ms53753-cymate"
+      },
+      "1116": {
+        "id": "1116",
+        "name_en": "2 TON Car Jack Bottle Somafix Industrial",
+        "name_ar": "",
+        "slug": "2-ton-car-jack-bottle-somafix-industrial"
+      },
+      "1119": {
+        "id": "1119",
+        "name_en": "6 TON Car Jack Bottle Somafix Industrial",
+        "name_ar": "",
+        "slug": "6-ton-car-jack-bottle-somafix-industrial"
+      },
+      "1122": {
+        "id": "1122",
+        "name_en": "10 TON Car Jack Bottle Somafix Industrial",
+        "name_ar": "",
+        "slug": "10-ton-car-jack-bottle-somafix-industrial"
+      },
+      "1125": {
+        "id": "1125",
+        "name_en": "20 TON Car Jack Bottle Somafix Industrial",
+        "name_ar": "",
+        "slug": "20-ton-car-jack-bottle-somafix-industrial"
+      },
+      "1128": {
+        "id": "1128",
+        "name_en": "Garden Sprayer Round 4pcs set Sfs2005 Somafix",
+        "name_ar": "",
+        "slug": "garden-sprayer-round-4pcs-set-sfs2005-somafix"
+      },
+      "1149": {
+        "id": "1149",
+        "name_en": "3 TON Car Jack Stand Soma Industrial",
+        "name_ar": "",
+        "slug": "3-ton-car-jack-stand-soma-industrial"
+      },
+      "1152": {
+        "id": "1152",
+        "name_en": "6 TON Car Jack Stand Soma Industrial",
+        "name_ar": "",
+        "slug": "6-ton-car-jack-stand-soma-industrial"
+      },
+      "1158": {
+        "id": "1158",
+        "name_en": "25M Heavy Duty Extension Cable Reel with 3 Sockets, 3x2.5mm², Socket Safety Shutter,Power Extension",
+        "name_ar": "",
+        "slug": "25m-heavy-duty-extension-cable-reel-with-3-sockets-3x25mm-socket-safety-shutterpower-extension"
+      },
+      "1182": {
+        "id": "1182",
+        "name_en": "2 Ton Makute Car Jack Hydraulic",
+        "name_ar": "",
+        "slug": "2-ton-makute-car-jack-hydraulic"
+      },
+      "1185": {
+        "id": "1185",
+        "name_en": "3 Ton Makute Car Jack Hydraulic",
+        "name_ar": "",
+        "slug": "3-ton-makute-car-jack-hydraulic"
+      },
+      "1206": {
+        "id": "1206",
+        "name_en": "BOSCH X-Line Drill- and Screwdriver Bit Set TiN-coated 70 pieces",
+        "name_ar": "",
+        "slug": "bosch-x-line-drill--and-screwdriver-bit-set-tin-coated-70-pieces"
+      },
+      "1212": {
+        "id": "1212",
+        "name_en": "TOTAL Auto Darkening Welding Helmet (Model TSP9306)",
+        "name_ar": "",
+        "slug": "total-auto-darkening-welding-helmet-model-tsp9306"
+      }
+    },
+    "productSubcatMap": {},
+    "rawLen": 111190
+  },
+  "42": {
+    "catId": 42,
+    "catSlug": "water-pumps",
+    "subcatMap": {
+      "720": {
+        "id": "720",
+        "name_en": "Ingco SPD7508 750 W (1.0 HP) Sewage Submersible Pump",
+        "name_ar": "",
+        "slug": "ingco-spd7508-750-w-10-hp-sewage-submersible-pump"
+      },
+      "723": {
+        "id": "723",
+        "name_en": "Ingco VPM75068 Water pump 750W(1.0HP) Max.head:52m",
+        "name_ar": "",
+        "slug": "ingco-vpm75068-water-pump-750w10hp-maxhead52m"
+      },
+      "849": {
+        "id": "849",
+        "name_en": "INGCO Diesel Engine Water Pump 3.8HP GEP201 ING-WP",
+        "name_ar": "",
+        "slug": "ingco-diesel-engine-water-pump-38hp-gep201-ing-wp"
+      },
+      "909": {
+        "id": "909",
+        "name_en": "Total Tools 2-inch 7 HP Gasoline Water Pump",
+        "name_ar": "",
+        "slug": "total-tools-2-inch-7-hp-gasoline-water-pump"
+      },
+      "921": {
+        "id": "921",
+        "name_en": "TOTAL 2HP Water Submersible Pump WithCutting Blade 1.500w",
+        "name_ar": "",
+        "slug": "total-2hp-water-submersible-pump-withcutting-blade-1500w"
+      },
+      "1155": {
+        "id": "1155",
+        "name_en": "IntiPlus 25mtr Wall Mounted Automatic Retractable Garden Hose Reel",
+        "name_ar": "",
+        "slug": "intiplus-25mtr-wall-mounted-automatic-retractable-garden-hose-reel"
+      }
+    },
+    "productSubcatMap": {},
+    "rawLen": 68126
+  },
+  "45": {
+    "catId": 45,
+    "catSlug": "cleaning",
+    "subcatMap": {
+      "318": {
+        "id": "318",
+        "name_en": "30L 1200W Electric Power Two Motors Cyclone Vacuum Cleaner Water Filter",
+        "name_ar": "",
+        "slug": "30l-1200w-electric-power-two-motors-cyclone-vacuum-cleaner-water-filter"
+      },
+      "321": {
+        "id": "321",
+        "name_en": "60L Powerful Professional Heavy Duty Vacuum Cleaner Type 2400W Three-motor",
+        "name_ar": "",
+        "slug": "60l-powerful-professional-heavy-duty-vacuum-cleaner-type-2400w-three-motor"
+      },
+      "324": {
+        "id": "324",
+        "name_en": "80L 3200W Competitive Price Dry and Wet Vacuum Cleaner",
+        "name_ar": "",
+        "slug": "80l-3200w-competitive-price-dry-and-wet-vacuum-cleaner"
+      },
+      "336": {
+        "id": "336",
+        "name_en": "POWER PRO 7HP Gasoline High Pressure Washer 180 Bar",
+        "name_ar": "",
+        "slug": "power-pro-7hp-gasoline-high-pressure-washer-180-bar"
+      },
+      "540": {
+        "id": "540",
+        "name_en": "VTOOLS 105 Bar Electric Pressure Washer With 5 Meter Hose and Soap Dispenser",
+        "name_ar": "",
+        "slug": "vtools-105-bar-electric-pressure-washer-with-5-meter-hose-and-soap-dispenser"
+      },
+      "621": {
+        "id": "621",
+        "name_en": "VTOOLS 150 Bar 1800W Air-Cooled Induction Pressure Washer",
+        "name_ar": "",
+        "slug": "vtools-150-bar-1800w-air-cooled-induction-pressure-washer"
+      },
+      "660": {
+        "id": "660",
+        "name_en": "VTOOLS 165 Bar Electric Pressure Washer With 2 Wheels, Meter Hose and Soap Dispenser",
+        "name_ar": "",
+        "slug": "vtools-165-bar-electric-pressure-washer-with-2-wheels-meter-hose-and-soap-dispenser"
+      },
+      "663": {
+        "id": "663",
+        "name_en": "POWER PRO 15HP Gasoline High Pressure Washer 200 Bar",
+        "name_ar": "",
+        "slug": "power-pro-15hp-gasoline-high-pressure-washer-200-bar"
+      },
+      "855": {
+        "id": "855",
+        "name_en": "Ingco 2000W 160 Bar Corded High Pressure Washer Wire 5 Mtr",
+        "name_ar": "",
+        "slug": "ingco-2000w-160-bar-corded-high-pressure-washer-wire-5-mtr"
+      },
+      "861": {
+        "id": "861",
+        "name_en": "Ingco 1500W 100 Bar High-Pressure Washer With Wire 8 Mtr",
+        "name_ar": "",
+        "slug": "ingco-1500w-100-bar-high-pressure-washer-with-wire-8-mtr"
+      },
+      "870": {
+        "id": "870",
+        "name_en": "Ingco 1600w High Pressure Washer Max.140Bar",
+        "name_ar": "",
+        "slug": "ingco-1600w-high-pressure-washer-max140bar"
+      },
+      "897": {
+        "id": "897",
+        "name_en": "Electric 15L Wet and Dry Vacuum Cleaner 1200W With Wheels",
+        "name_ar": "",
+        "slug": "electric-15l-wet-and-dry-vacuum-cleaner-1200w-with-wheels"
+      },
+      "942": {
+        "id": "942",
+        "name_en": "TOTAL 1600W 140 bar electric pressure washer",
+        "name_ar": "",
+        "slug": "total-1600w-140-bar-electric-pressure-washer"
+      },
+      "945": {
+        "id": "945",
+        "name_en": "TOTAL Drill Cleaning Brush Set 11 Pcs",
+        "name_ar": "",
+        "slug": "total-drill-cleaning-brush-set-11-pcs"
+      },
+      "1035": {
+        "id": "1035",
+        "name_en": "INGCO 7.5m Pipe Cleaning Hose",
+        "name_ar": "",
+        "slug": "ingco-75m-pipe-cleaning-hose"
+      },
+      "1161": {
+        "id": "1161",
+        "name_en": "Makute 1500w 80b Car Pressure Washer HPW121-60P High Pressure Cleaner",
+        "name_ar": "",
+        "slug": "makute-1500w-80b-car-pressure-washer-hpw121-60p-high-pressure-cleaner"
+      },
+      "1200": {
+        "id": "1200",
+        "name_en": "VTOOLS 120 Bar Electric Induction Pressure Washer With 5 Meter Hose \\u0026 Soap Dispenser, 1800 Watt, Aut",
+        "name_ar": "",
+        "slug": "vtools-120-bar-electric-induction-pressure-washer-with-5-meter-hose-u0026-soap-dispenser-1800-watt-aut"
+      }
+    },
+    "productSubcatMap": {},
+    "rawLen": 79964
+  }
+}

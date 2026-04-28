@@ -1,0 +1,18 @@
+{
+  "name": "aipower-scraper",
+  "version": "1.0.0",
+  "description": "Scrapes all product data from aipowerkw.com (EN + AR)",
+  "main": "index.js",
+  "scripts": {
+    "scrape": "node index.js",
+    "scrape:en": "node index.js",
+    "scrape:ar": "node index.js --ar",
+    "scrape:all": "node index.js --all",
+    "scrape:all:details": "node index.js --all --details",
+    "shopify:csv": "node convert_to_shopify_csv.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0"
+  }
+}

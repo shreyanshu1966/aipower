@@ -1,0 +1,50 @@
+{
+  "3": {
+    "catName": "Generator",
+    "catSlug": "generator",
+    "subcats": {},
+    "productSubcatMap": {}
+  },
+  "6": {
+    "catName": "Air Compressor",
+    "catSlug": "air-compressor",
+    "subcats": {},
+    "productSubcatMap": {}
+  },
+  "9": {
+    "catName": "Welding Machine",
+    "catSlug": "welding-machine",
+    "subcats": {},
+    "productSubcatMap": {
+      "57": {
+        "subCategoryId": "0",
+        "subCategoryName": "",
+        "subCategoryNameAr": ""
+      }
+    }
+  },
+  "36": {
+    "catName": "Tools",
+    "catSlug": "tools",
+    "subcats": {},
+    "productSubcatMap": {}
+  },
+  "39": {
+    "catName": "Accessories",
+    "catSlug": "accessories",
+    "subcats": {},
+    "productSubcatMap": {}
+  },
+  "42": {
+    "catName": "Water Pumps",
+    "catSlug": "water-pumps",
+    "subcats": {},
+    "productSubcatMap": {}
+  },
+  "45": {
+    "catName": "Cleaning",
+    "catSlug": "cleaning",
+    "subcats": {},
+    "productSubcatMap": {}
+  }
+}
