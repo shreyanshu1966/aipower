@@ -863,6 +863,14 @@
           "free_for_first_n_order": {
             "one": "للرتبة الأولى",
             "other": "لأول %{count} طلبات"
+          },
+          "free_shipping_cycles": {
+            "one": "شحن مجاني لـ %{count} عملية توصيل إضافية",
+            "other": "شحن مجاني لـ %{count} عملية توصيل إضافية"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "one": "شحن مجاني عند %{count} تسليم",
+            "other": "شحن مجاني لـ %{count} من الطلبات"
           }
         },
         "one_time_purchase_shipping": "شحن لمرة واحدة",
@@ -989,7 +997,13 @@
         "shipping_line_delivery_instructions": "أدخل المعلومات الضرورية مثل رموز الدخول أو تعليمات التسليم.",
         "other_method": {
           "zero": "لا توجد طرق أخرى متاحة",
-          "one": "طرق أخرى متاحة عند %{count}"
+          "one": "طرق أخرى متاحة عند %{count}",
+          "other": "يتوفر %{count} طريقة أخرى تبدأ من"
+        },
+        "shipping_rate_discounted_amount": "كان: %{original_amount}. الآن: %{amount}",
+        "local_delivery": "توصيل محلي",
+        "prime_not_available": {
+          "default": "لا يتوفر التوصيل بـ \"برايم\" لطلبك. تم تحديث خيارات الشحن الخاصة بك."
         }
       },
       "localized_fields": {
@@ -1194,7 +1208,122 @@
         "usdc_cashback_additional_info": "ادفع باستخدام USDC على Base واسترد %{incentive_percentage}% في محفظتك في غضون 30 يومًا، بحد أقصى 100 USDC.",
         "usdc_cashback_terms": "تطبق الشروط والأحكام",
         "purchase_options_card_update_agreement_label_html": "بتحديثك طريقة الدفع، فإنك تفوض بالدفعات لأي عملية شراء متكررة أو مؤجلة وفقًا <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">لسياسة الإلغاء</a> الخاصة بهذا المتجر.",
-        "subscription_card_update_agreement_label": "سيؤدي تغيير طريقة الدفع إلى تحديث اشتراكك والدفعات المتكررة المستقبلية."
+        "subscription_card_update_agreement_label": "سيؤدي تغيير طريقة الدفع إلى تحديث اشتراكك والدفعات المتكررة المستقبلية.",
+        "subscription_agreement_label": "توجد سلعة أو أكثر في سلة مشترياتك في هيئة شراء مؤجل أو شراء باشتراك. باستمرارك في عملية الدفع، فإنك توافق على خصم قيمة الدفعة تلقائياً من طريقة الدفع الخاصة بك بالسعر والتكرار الموضحين في هذه الصفحة حتى انتهاء صلاحيتها أو إلغائها. تخضع جميع الإلغاءات إلى %{cancelled}.",
+        "subscription_agreement_cancelled": "سياسة الإلغاء",
+        "subscription_heading": "اتفاقية الاشتراك",
+        "subscription_agreement_label_html": "أتفهم أنني أوافق على اشتراك. سيتم تجديده بالسعر والوتيرة المذكورين حتى ينتهي أو يتم\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">إلغاؤه</a>.\n",
+        "purchase_options_agreement_label": "توجد سلعة أو أكثر في سلة مشترياتك ضمن فئات الدفع المؤجل أو الاشتراك أو الشراء المتكرر. بالمتابعة مع الدفع، فإنك توافق على خصم قيمة هذه السلع تلقائيًا من طريقة الدفع الخاصة بك بالسعر والتكرار الموضحين في هذه الصفحة حتى انتهاء صلاحيتها أو إلغائها من جانبك. تخضع جميع الإلغاءات إلى %{cancellation_policy_label}.",
+        "purchase_options_agreement_label_html": "أتفهم أن منتجًا واحدًا أو أكثر في سلة التسوق الخاصة بي هو عملية شراء مؤجلة أو اشتراك أو متكررة. من خلال المتابعة، أوافق على\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">سياسة الإلغاء</a>\nوأُفوضك بتحصيل المبلغ من طريقة الدفع الخاصة بي بالأسعار والتكرار والتواريخ المذكورة في هذه الصفحة حتى يتم تنفيذ طلبي أو أقوم بالإلغاء، إذا كان مسموحًا بذلك.\n",
+        "purchase_options_agreement_label_wallets": "بالمتابعة مع عملية الدفع الخاصة بك، فإنك توافق على الرسوم المستقبلية المذكورة في هذه الصفحة وعلى سياسة الإلغاء.",
+        "change_currency_section_description": "اختر خيار عملة",
+        "no_real_orders_dev_store": "لا يستطيع هذا المتجر قبول الطلبات أو المدفوعات الحقيقية.",
+        "waiting_on_payment_methods": "جاري جلب طرق الدفع المتاحة...",
+        "apple_pay_payment_error": "تعذر إكمال دفعتك. يرجى إعادة المحاولة أو استخدام طريقة دفع مختلفة.",
+        "taxes_not_included": "الضرائب غير مشمولة",
+        "no_taxes_banner_content": "لن يتم فرض ضرائب على هذا الطلب. بمجرد تحصيل الدفعة، لا يمكن إضافة الضرائب بعد الآن.",
+        "paypal": {
+          "connect": "انقر لربط حسابك في PayPal"
+        },
+        "apple": {
+          "connect": "انقر لربط حسابك في Apple Pay",
+          "not_available": "Apple Pay غير متاح في هذا المتصفح. لربط حساب Apple Pay الخاص بك، ستحتاج إلى استخدام Safari على جهاز Apple."
+        },
+        "google": {
+          "connect": "انقر للاتصال بحسابك في Google Pay",
+          "error_authorizing": "خطأ في تفويض الدفع"
+        },
+        "account_connected": "تم ربط الحساب.",
+        "mor_disclaimer_html": "بالنقر أدناه وإكمال طلبك، فإنك توافق على شراء منتجك (منتجاتك) من Global-e بصفتها التاجر المسجل\nلهذه المعاملة، وذلك بموجب <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">الشروط والأحكام</a>\nو <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">سياسة الخصوصية</a> الخاصة بشركة Global-e. تُعد Global-e مزود خدمة دولي لإنجاز الطلبات لـ %{shop_name}\n",
+        "pending_payment": {
+          "due_notice": "المبلغ المستحق للدفع هو %{amount_due}، وموعد استحقاقه هو %{due_date}.",
+          "multibanco": {
+            "buyer_action_info": "دفعك المستحق هو %{amount_due}.",
+            "instruction_html": "قم بالدفع في Multibanco أو عبر الإنترنت باستخدام التفاصيل أدناه. للأسئلة أو لتحديث تفاصيل الدفع، %{contact_us}.",
+            "entity": "كيان",
+            "reference": "مرجع",
+            "amount": "المبلغ",
+            "find_nearest_atm": "البحث عن أقرب صراف آلي"
+          }
+        },
+        "update_payment_method": "تحديث طريقة الدفع",
+        "order_covered_by_store_credit_notice": "طلبك مغطى برصيد المتجر الخاص بك.",
+        "order_covered_by_redeemables_notice": "طلبك مغطى.",
+        "store_credit": {
+          "label": "رصيد المتجر",
+          "apply_label": "استخدام رصيد المتجر",
+          "add_label": "إضافة رصيد متجر",
+          "manage_label": "إدارة رصيد المتجر",
+          "buying_gift_card": "لا يمكنك استخدام رصيد المتجر لشراء بطاقة هدايا",
+          "no_fixed_selling_plans": "لا يمكنك استخدام رصيد المتجر مع خيارات الشراء المؤجل"
+        },
+        "clear": "واضح",
+        "billing_must_match_shipping_notice": "يجب أن تتطابق فاتورة عنوان طريقة الدفع مع عنوان الشحن.",
+        "same_billing_address_checkbox_label": "استخدم عنوان الشحن كعنوان للفوترة",
+        "location_billing_address_label": "عنوان فوترة الموقع",
+        "fact_billing_address_label": "عنوان الفواتير",
+        "location_shipping_address_label": "عنوان شحن الموقع",
+        "use_order_billing_address_label": "استخدم عنوان فواتير الطلب",
+        "use_location_billing_address_label": "استخدام عنوان فاتورة الموقع",
+        "use_location_shipping_address_label": "استخدام عنوان الشحن الحالي",
+        "no_working_method_error": "لا يستطيع هذا المتجر قبول المدفوعات في الوقت الحالي. يُرجى تحديث هذه الصفحة أو العودة لاحقًا.",
+        "brand_not_available": "لا يقبل هذا المتجر {{brand}}. استخدم بطاقة أخرى للدفع.",
+        "shipping_rate_updated": "لقد تم تحديث طرق الشحن المتاحة. يرجى تأكيد اختيارك قبل إتمام عملية الدفع.",
+        "billing_address_invalid_phone": "للمتابعة، يُرجى تحديث رقم الهاتف في عنوان الفوترة لـ {{label}} {{last_digits}}.",
+        "billing_address_invalid_phone_no_card": "حدّث رقم الهاتف في عنوان الفوترة الخاص بك للمتابعة.",
+        "preview_not_available": {
+          "title": "المعاينة غير متوفرة",
+          "content": "لا تقلق، نظام الدفع السريع هذا سيعجب عملاءك.",
+          "button": "تمام"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "أدخل تاريخ إصدار صحيحًا",
+              "issue_number": "أدخل رقم مشكلة صالحًا"
+            },
+            "invalid": {
+              "verification_value": "أدخل رمز CVV أو الرمز الأمني الصحيح"
+            }
+          }
+        },
+        "simulated_checkout": "المعاينة قريباً",
+        "simulated_express_checkout": "المحافظ غير متاحة في معاينة المحرر بسبب منطقتك أو متصفحك",
+        "vaulting_agreement_label": "احفظ معلومات الدفع الخاصة بي مع %{company} لإتمام عملية الشراء بشكل أسرع.",
+        "business_customer_vaulting_payment_label": "احفظ طريقة الدفع هذه عند إتمام الشراء، وامنح %{company} تفويضًا لتحصيل الدفعات للمشتريات المستقبلية لهذا الموقع. يمكن لجميع جهات الاتصال المعيّنة لهذا الموقع استخدام طريقة الدفع.",
+        "business_customer_with_bank_account_vaulting_payment_label": "احفظ طريقة الدفع هذه عند إتمام الشراء وفوّض %{company} بخصم المبلغ من حسابك للمشتريات المستقبلية التي توافق عليها لهذا الموقع، إلى أن تلغيها. يمكن لجميع جهات الاتصال المعيّنة لهذا الموقع استخدام طريقة الدفع.",
+        "purchase_options_and_vaulting_agreement_label": "واحد أو أكثر من المنتجات في سلة التسوق الخاصة بك هو عملية شراء مؤجلة أو باشتراك. من خلال متابعتك للدفع، فإنك توافق على خصم قيمة الدفع تلقائيًا من طريقة الدفع الخاصة بك بالسعر والتكرار الموضحين في هذه الصفحة حتى تنتهي صلاحيتها أو تقوم بالإلغاء. تخضع جميع الإلغاءات إلى %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "سياسة الإلغاء",
+        "use_different_credit_card_label": "استخدم بطاقة أخرى",
+        "saved_credit_card": "بطاقة الائتمان المحفوظة",
+        "saved_credit_card_info": "الرقم السري المكون من آخر أربعة أرقام",
+        "saved_credit_card_cvv_verification": "لأغراض التحقق، أدخل رمز الأمان لبطاقتك.",
+        "saved_credit_card_actions": {
+          "edit": "تعديل",
+          "delete": "حذف"
+        },
+        "saved_credit_cards_modal": {
+          "view_all_label": "عرض جميع البطاقات المحفوظة",
+          "done": "تم",
+          "cancel": "إلغاء"
+        },
+        "add_credit_card_modal": {
+          "title": "إضافة بطاقة",
+          "save": "حفظ",
+          "cancel": "إلغاء"
+        },
+        "delete_credit_card_modal": {
+          "title": "حذف البطاقة",
+          "confirmation": "هل أنت متأكد أنك تريد حذف {{brandName}} المنتهي بـ {{lastDigits}}؟",
+          "cancel": "إلغاء",
+          "delete": "حذف"
+        },
+        "edit_credit_card_modal": {
+          "title": "تعديل البطاقة",
+          "done": "تم",
+          "cancel": "إلغاء",
+          "description": "لا يمكنك تعديل سوى عنوان فواتير بطاقتك."
+        }
       },
       "wallets": {
         "errors": {
