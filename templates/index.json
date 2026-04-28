@@ -24,7 +24,7 @@
             "button_background": "#00badb",
             "button_text_color": "#ffffff",
             "button_text": "Shop all headphones",
-            "link": "shopify:\/\/collections\/all"
+            "link": "shopify://collections/all"
           }
         },
         "image-2": {
@@ -39,7 +39,7 @@
             "button_background": "#00badb",
             "button_text_color": "#ffffff",
             "button_text": "Shop now",
-            "link": "shopify:\/\/collections\/all"
+            "link": "shopify://collections/all"
           }
         },
         "image-3": {
@@ -54,7 +54,7 @@
             "button_background": "#00badb",
             "button_text_color": "#ffffff",
             "button_text": "Shop now",
-            "link": "shopify:\/\/collections\/all"
+            "link": "shopify://collections/all"
           }
         }
       },
@@ -76,27 +76,45 @@
       "blocks": {
         "collection-1": {
           "type": "collection",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "link": ""
+          }
         },
         "collection-2": {
           "type": "collection",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "link": ""
+          }
         },
         "collection-3": {
           "type": "collection",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "link": ""
+          }
         },
         "collection-4": {
           "type": "collection",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "link": ""
+          }
         },
         "collection-5": {
           "type": "collection",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "link": ""
+          }
         },
         "collection-6": {
           "type": "collection",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -110,7 +128,7 @@
       "settings": {
         "title": "Our collections",
         "link_title": "View all",
-        "link": "shopify:\/\/collections",
+        "link": "shopify://collections",
         "round_images": true,
         "show_collection_title": true
       }
@@ -121,13 +139,15 @@
         "tab-1": {
           "type": "collection",
           "settings": {
-            "title": "Featured"
+            "title": "Featured",
+            "collection": ""
           }
         },
         "tab-2": {
           "type": "collection",
           "settings": {
-            "title": "New Arrivals"
+            "title": "New Arrivals",
+            "collection": ""
           }
         }
       },
@@ -140,27 +160,45 @@
         "products_count": 8
       }
     },
+    "featured_collection_bdybwJ": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "try",
+        "title": "Featured collection",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": ""
+      }
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "",
         "title": "Air Tools",
         "products_count": 12,
         "layout": "vertical",
         "stack_products": false,
         "show_quick_buy": true,
-        "link_title": "See all"
+        "link_title": "See all",
+        "link_url": ""
       }
     },
     "featured-collection-1": {
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
+        "collection": "",
         "title": "Top-rated products",
         "products_count": 12,
         "layout": "vertical",
         "stack_products": false,
         "show_quick_buy": false,
-        "link_title": "View all"
+        "link_title": "View all",
+        "link_url": ""
       }
     },
     "logo-list": {
@@ -168,27 +206,39 @@
       "blocks": {
         "logo-1": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "logo-2": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "logo-3": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "logo-4": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "logo-5": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "logo-6": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -201,7 +251,9 @@
       ],
       "name": "Logo list",
       "settings": {
-        "title": "Brands we distribute"
+        "title": "Brands we distribute",
+        "link_title": "",
+        "link": ""
       }
     }
   },
@@ -209,6 +261,7 @@
     "slideshow",
     "collection-list",
     "tabbed-collections",
+    "featured_collection_bdybwJ",
     "featured-collection",
     "featured-collection-1",
     "logo-list"
