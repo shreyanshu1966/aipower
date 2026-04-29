@@ -1,0 +1,187 @@
+<section class="usp-bar" data-section-id="{{ section.id }}" data-section-type="usp-bar">
+  <div class="container">
+    <div class="usp-bar__list">
+      {%- for block in section.blocks -%}
+        <div class="usp-bar__item" {{ block.shopify_attributes }}>
+          <div class="usp-bar__icon" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'delivery' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              {%- when 'shield' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              {%- when 'support' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              {%- when 'returns' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+              {%- when 'award' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {%- endcase -%}
+          </div>
+          <div class="usp-bar__text">
+            {%- if block.settings.title != blank -%}
+              <span class="usp-bar__title">{{ block.settings.title | escape }}</span>
+            {%- endif -%}
+            {%- if block.settings.subtitle != blank -%}
+              <span class="usp-bar__subtitle">{{ block.settings.subtitle | escape }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background: #1a1a1a;
+    padding: 0;
+  }
+
+  .usp-bar__list {
+    display: flex;
+    align-items: stretch;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .usp-bar__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    transition: background 0.2s ease;
+    cursor: default;
+  }
+
+  .usp-bar__item:last-child {
+    border-right: none;
+  }
+
+  .usp-bar__item:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .usp-bar__icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    color: #e60000;
+  }
+
+  .usp-bar__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .usp-bar__text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .usp-bar__title {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .usp-bar__subtitle {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.3;
+  }
+
+  @media screen and (max-width: 999px) {
+    .usp-bar__item {
+      padding: 16px 16px;
+      gap: 10px;
+    }
+
+    .usp-bar__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .usp-bar__list {
+      flex-wrap: wrap;
+    }
+
+    .usp-bar__item {
+      flex: 0 0 50%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 14px 14px;
+    }
+
+    .usp-bar__item:nth-child(even) {
+      border-right: none;
+    }
+
+    .usp-bar__title {
+      font-size: 12px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "USP Bar",
+  "max_blocks": 6,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "usp_item",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "delivery", "label": "Delivery / Truck" },
+            { "value": "shield",   "label": "Shield / Genuine" },
+            { "value": "support",  "label": "Support / Headset" },
+            { "value": "returns",  "label": "Returns / Refresh" },
+            { "value": "award",    "label": "Award / Quality" }
+          ],
+          "default": "delivery"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fast Delivery"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "On all qualifying orders"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USP Bar",
+      "blocks": [
+        { "type": "usp_item", "settings": { "icon": "delivery", "title": "Fast Delivery",    "subtitle": "On all qualifying orders" } },
+        { "type": "usp_item", "settings": { "icon": "shield",   "title": "Genuine Products", "subtitle": "100% authentic brands"    } },
+        { "type": "usp_item", "settings": { "icon": "support",  "title": "Expert Support",   "subtitle": "7 days a week"            } },
+        { "type": "usp_item", "settings": { "icon": "returns",  "title": "Easy Returns",     "subtitle": "30-day hassle-free"       } }
+      ]
+    }
+  ]
+}
+{% endschema %}

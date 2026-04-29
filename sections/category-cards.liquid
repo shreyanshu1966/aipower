@@ -1,0 +1,251 @@
+<section class="category-cards section" data-section-id="{{ section.id }}" data-section-type="category-cards">
+  {%- if section.settings.title != blank -%}
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title heading h2">{{ section.settings.title | escape }}</h2>
+        {%- if section.settings.link_title != blank and section.settings.link != blank -%}
+          <a href="{{ section.settings.link }}" class="section__action-link link">{{ section.settings.link_title | escape }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="container">
+    <div class="category-cards__grid">
+      {%- for block in section.blocks -%}
+        {%- assign coll = collections[block.settings.collection] -%}
+        {%- assign placeholder_num = forloop.index0 | modulo: 6 | plus: 1 -%}
+        {%- assign card_label = block.settings.label | default: coll.title -%}
+
+        <a href="{{ coll.url | default: '/collections/all' }}" class="category-card" {{ block.shopify_attributes }}>
+          <div class="category-card__media">
+            {%- if coll.image -%}
+              {{- coll.image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'category-card__img', alt: card_label -}}
+            {%- elsif block.settings.fallback_image != blank -%}
+              {{- block.settings.fallback_image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'category-card__img', alt: card_label -}}
+            {%- else -%}
+              {{- 'collection-' | append: placeholder_num | placeholder_svg_tag: 'category-card__img category-card__img--placeholder' -}}
+            {%- endif -%}
+          </div>
+
+          <div class="category-card__overlay"></div>
+
+          <div class="category-card__body">
+            {%- if card_label != blank -%}
+              <span class="category-card__name">{{ card_label | escape }}</span>
+            {%- endif -%}
+            {%- if coll.products_count > 0 -%}
+              <span class="category-card__count">{{ coll.products_count }} Products</span>
+            {%- endif -%}
+            <span class="category-card__cta" aria-hidden="true">Shop Now &rarr;</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .category-cards__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .category-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: #222;
+    text-decoration: none;
+    border-radius: 3px;
+    aspect-ratio: 3 / 2;
+  }
+
+  @supports not (aspect-ratio: 3 / 2) {
+    .category-card::before {
+      content: '';
+      display: block;
+      padding-bottom: 66.67%;
+    }
+  }
+
+  .category-card__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .category-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .category-card__img--placeholder {
+    opacity: 0.25;
+  }
+
+  .category-card:hover .category-card__img {
+    transform: scale(1.07);
+  }
+
+  .category-card__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.22) 50%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
+    transition: background 0.35s ease;
+  }
+
+  .category-card:hover .category-card__overlay {
+    background: linear-gradient(
+      to top,
+      rgba(198, 0, 0, 0.90) 0%,
+      rgba(198, 0, 0, 0.55) 45%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+
+  .category-card__body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 22px 18px 16px;
+    color: #ffffff;
+  }
+
+  .category-card__name {
+    display: block;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.15;
+  }
+
+  .category-card__count {
+    display: block;
+    font-size: 12px;
+    margin-top: 4px;
+    opacity: 0.7;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .category-card__cta {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+
+  .category-card:hover .category-card__cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media screen and (max-width: 999px) {
+    .category-cards__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .category-cards__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .category-card__name {
+      font-size: 13px;
+    }
+
+    .category-card__count {
+      display: none;
+    }
+
+    .category-card__body {
+      padding: 14px 12px 12px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Category Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "text",
+      "id": "link_title",
+      "label": "View all label",
+      "default": "View all categories"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "View all link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label override",
+          "info": "Leave blank to use the collection title"
+        },
+        {
+          "type": "image_picker",
+          "id": "fallback_image",
+          "label": "Fallback image",
+          "info": "Shown if the collection has no image set"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Cards",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
