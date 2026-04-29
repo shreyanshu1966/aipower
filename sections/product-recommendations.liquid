@@ -37,8 +37,13 @@
           {%- comment -%}No real complementary data — hide this section{%- endcomment -%}
           <style>#shopify-section-{{ section.id }} { display: none; }</style>
         {%- else -%}
-          {%- comment -%}Fallback for "related" intent: use collections.all{%- endcomment -%}
-          {%- assign section_products = collections.all.products -%}
+          {%- comment -%}Fallback for "related" intent: use the product's own collection{%- endcomment -%}
+          {%- assign fallback_collection = product.collections | first -%}
+          {%- if fallback_collection != blank -%}
+            {%- assign section_products = fallback_collection.products -%}
+          {%- else -%}
+            {%- assign section_products = nil -%}
+          {%- endif -%}
         {%- endif -%}
       {%- endunless -%}
 

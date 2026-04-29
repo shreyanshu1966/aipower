@@ -89,6 +89,53 @@
                   </div>
                 {%- endif -%}
 
+              {%- when 'delivery_details' -%}
+                <div class="product-block-list__item product-block-list__item--delivery" {{ block.shopify_attributes }}>
+                  <div class="card delivery-details-card">
+                    <button class="card__collapsible-button" data-action="toggle-collapsible" aria-expanded="{{ block.settings.open_by_default | json }}" aria-controls="block-delivery-{{ section.id }}-{{ block.id }}">
+                      <span class="card__title heading h3">🚚 Delivery Details</span>
+                      <span class="plus-button plus-button--large"></span>
+                    </button>
+
+                    <div id="block-delivery-{{ section.id }}-{{ block.id }}" class="card__collapsible" {% unless block.settings.open_by_default %}style="display:none"{% endunless %}>
+                      <div class="card__collapsible-content">
+                        <div class="delivery-details">
+                          <p class="delivery-details__intro">We offer fast and reliable delivery across Kuwait:</p>
+
+                          <div class="delivery-details__item">
+                            <div class="delivery-details__icon">📦</div>
+                            <div>
+                              <strong>Standard Delivery – 1.350 KD</strong>
+                              <p>Delivered within 2 working days.</p>
+                            </div>
+                          </div>
+
+                          <div class="delivery-details__item">
+                            <div class="delivery-details__icon">⚡</div>
+                            <div>
+                              <strong>Express Delivery – 2 KD</strong>
+                              <p>Delivered within 24 hours.</p>
+                            </div>
+                          </div>
+
+                          <div class="delivery-details__item">
+                            <div class="delivery-details__icon">🏠</div>
+                            <div>
+                              <strong>Smart Home Products (With Installation)</strong>
+                              <p>Installation will be scheduled within 3 working days after order confirmation.</p>
+                            </div>
+                          </div>
+
+                          <div class="delivery-details__notice">
+                            <p>We dispatch orders and schedule installations from <strong>Saturday to Thursday</strong>.</p>
+                            <p>✔ If your order is dispatched on Thursday, delivery can still happen on Friday.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               {%- when 'content' -%}
                 
 
@@ -621,6 +668,19 @@ and injected only on quick buy modal
             }
           ],
           "default": "show_all"
+        }
+      ]
+    },
+    {
+      "type": "delivery_details",
+      "name": "Delivery Details",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": true
         }
       ]
     },

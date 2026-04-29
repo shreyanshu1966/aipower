@@ -12335,3 +12335,69 @@ product-rerender {
     min-width: 0;
   }
 }
+
+/* =============================================
+   Delivery Details Block
+   ============================================= */
+
+.delivery-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.delivery-details__intro {
+  font-size: 0.9em;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+
+.delivery-details__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(var(--accent-color-rgb), 0.05);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+.delivery-details__icon {
+  font-size: 1.5em;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 28px;
+}
+
+.delivery-details__item strong {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.delivery-details__item p {
+  margin: 0;
+  font-size: 0.875em;
+  opacity: 0.8;
+}
+
+.delivery-details__notice {
+  margin-top: 4px;
+  padding: 12px 16px;
+  background: rgba(var(--text-color-rgb), 0.04);
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+.delivery-details__notice p {
+  margin: 0 0 6px;
+}
+
+.delivery-details__notice p:last-child {
+  margin-bottom: 0;
+}
+
+.delivery-details__notice strong {
+  color: var(--heading-color);
+}
