@@ -12407,10 +12407,17 @@ product-rerender {
    ============================================= */
 
 /* Equal Height Product Cards */
+.product-list__inner,
+.product-list--collage,
+.product-list__column {
+  align-items: stretch;
+}
+
 .product-item {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-height: 100% !important;
 }
 
 .product-item__info {
@@ -12423,16 +12430,52 @@ product-rerender {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: space-between;
 }
 
-/* Push standard elements so they space evenly if needed, though default usually works well when flexed */
 .product-item__title {
-  margin-top: 10px; /* Optional, just to separate from any top elements */
+  margin-top: auto;
 }
 
 /* Floating Actions Enhancements */
+.product-item__media-container {
+  overflow: hidden;
+}
+
+.product-item__action-icon {
+  position: absolute;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  color: var(--text-color);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.product-item:hover .product-item__action-icon {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .product-item__action-icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) !important;
+}
+
+.wishlist-icon {
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
 }
 
 .wishlist-icon:hover {
@@ -12440,6 +12483,28 @@ product-rerender {
   color: white !important;
 }
 
+.add-to-cart-icon {
+  bottom: 24px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-button-background, #000);
+  color: var(--primary-button-text-color, #fff);
+}
+
 .add-to-cart-icon:hover {
   background: var(--primary-button-background-hover, #333) !important;
+}
+
+.cart-icon-wrapper {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-icon-wrapper svg {
+  width: 100%;
+  height: 100%;
 }
