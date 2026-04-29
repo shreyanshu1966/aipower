@@ -10089,7 +10089,8 @@ var ProductRecommendationsSection = class {
    * This section uses the native product recommendations feature of Shopify (https://help.shopify.com/en/themes/liquid/objects/recommendations)
    */
   _loadRecommendations() {
-    const url = `${window.routes.productRecommendationsUrl}?section_id=${this.element.getAttribute("data-section-id")}&product_id=${this.options["productId"]}&limit=${this.options["recommendationsCount"]}`;
+    const intentParam = this.options["intent"] ? `&intent=${this.options["intent"]}` : "&intent=related";
+    const url = `${window.routes.productRecommendationsUrl}?section_id=${this.element.getAttribute("data-section-id")}&product_id=${this.options["productId"]}&limit=${this.options["recommendationsCount"]}${intentParam}`;
     return fetch(url).then((response) => {
       return response.text().then((content) => {
         let container = document.createElement("div");

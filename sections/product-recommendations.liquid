@@ -4,7 +4,8 @@
   "layout": "vertical",
   "productId": {{ product.id | json }},
   "useRecommendations": true,
-  "recommendationsCount": 10
+  "recommendationsCount": 10,
+  "intent": {{ section.settings.intent | json | default: '"related"' }}
 }
 {%- endcapture -%}
 
@@ -75,6 +76,22 @@
       "id": "show_quick_buy",
       "label": "Show quick buy",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "intent",
+      "label": "Recommendation intent",
+      "options": [
+        {
+          "value": "related",
+          "label": "Related"
+        },
+        {
+          "value": "complementary",
+          "label": "Complementary"
+        }
+      ],
+      "default": "related"
     }
   ],
   "presets": [
