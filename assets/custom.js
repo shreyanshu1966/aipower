@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const counters = document.querySelectorAll('.wishlist-count');
     counters.forEach(counter => {
       counter.textContent = wishlist.length;
-      counter.style.display = wishlist.length > 0 ? 'inline-block' : 'none';
+      counter.style.display = wishlist.length > 0 ? 'inline-flex' : 'none';
     });
 
     // Update active states on product cards

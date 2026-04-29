@@ -72,14 +72,22 @@
 
         <!-- Add to Cart Small Logo Icon -->
         {%- if product.available -%}
-          {%- assign form_id_quick = 'quick_add_' | append: product.id | append: '_' | append: section.id -%}
-          {%- form 'product', product, id: form_id_quick, class: 'product-item__quick-add-form' -%}
-            <input type="hidden" name="quantity" value="1">
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-            <button type="submit" class="product-item__action-icon add-to-cart-icon" aria-label="{{ 'collection.product.add_to_cart' | t }}">
+          {%- if product.variants.size == 1 -%}
+            {%- assign form_id_quick = 'quick_add_' | append: product.id | append: '_' | append: section.id -%}
+            {%- form 'product', product, id: form_id_quick, class: 'product-item__quick-add-form' -%}
+              <input type="hidden" name="quantity" value="1">
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <buy-button class="buy-button">
+                <button type="submit" class="product-item__action-icon add-to-cart-icon" aria-label="{{ 'collection.product.add_to_cart' | t }}">
+                  <div class="cart-icon-wrapper">{% render 'icon', icon: 'cart' %}</div>
+                </button>
+              </buy-button>
+            {%- endform -%}
+          {%- else -%}
+            <a href="{{ product.url }}" class="product-item__action-icon add-to-cart-icon" aria-label="{{ 'collection.product.choose_options' | t }}">
               <div class="cart-icon-wrapper">{% render 'icon', icon: 'cart' %}</div>
-            </button>
-          {%- endform -%}
+            </a>
+          {%- endif -%}
         {%- endif -%}
       </div>
     </div>
