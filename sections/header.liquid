@@ -325,7 +325,7 @@
             </div>
           </div>
           
-          <ul class="nav-bar__linklist list--unstyled" data-type="menu" role="list" style="flex: 1;">
+          <ul class="nav-bar__linklist list--unstyled" role="list" style="flex: 1;" data-type="menu">
             {%- assign mega_menu_titles = section.blocks | map: 'settings' | map: 'menu_item' -%}
             {%- for link in navigation_menu.links -%}
               {%- assign is_mega_item = false -%}
