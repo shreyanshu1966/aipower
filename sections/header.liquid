@@ -331,7 +331,8 @@
               {%- assign is_mega_item = false -%}
               {%- assign link_title_lower = link.title | downcase | strip -%}
               {%- for mega_title in mega_menu_titles -%}
-                {%- if mega_title | downcase | strip == link_title_lower -%}
+                {%- assign mega_title_lower = mega_title | downcase | strip -%}
+                {%- if mega_title_lower == link_title_lower -%}
                   {%- assign is_mega_item = true -%}
                   {%- break -%}
                 {%- endif -%}
