@@ -1,4 +1,11 @@
-<section class="tc-section" data-section-id="{{ section.id }}" data-section-type="product-grid">
+{%- capture section_settings -%}
+{
+  "stackable": false,
+  "layout": "vertical"
+}
+{%- endcapture -%}
+
+<section class="tc-section section" data-section-id="{{ section.id }}" data-section-type="product-grid" data-section-settings="{{ section_settings | escape_once }}">
 
   <div class="container">
     <div class="tc__header">
@@ -39,7 +46,8 @@
         class="tc__panel{% if forloop.first %} tc__panel--active{% endif %}"
         role="tabpanel"
         aria-labelledby="tc-tab-{{ section.id }}-{{ forloop.index }}"
-        aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+        aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+        {% unless forloop.first %}style="display: none;"{% endunless %}>
 
         <div class="tc__grid">
           {%- if collection != blank -%}
@@ -73,14 +81,11 @@
 <style>
   #shopify-section-{{ section.id }} {
     background: {{ section.settings.background }};
-  }
-
-  .tc-section {
     padding: 64px 0 72px;
   }
 
   /* ── Header ─────────────────────────────────────────── */
-  .tc__header {
+  #shopify-section-{{ section.id }} .tc__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,19 +94,18 @@
     margin-bottom: 36px;
   }
 
-  .tc__heading {
+  #shopify-section-{{ section.id }} .tc__heading {
     margin: 0;
     flex-shrink: 0;
   }
 
   /* ── Tab nav ─────────────────────────────────────────── */
-  .tc__nav {
+  #shopify-section-{{ section.id }} .tc__nav {
     display: flex;
-    gap: 0;
     border-bottom: 2px solid #e2e2e2;
   }
 
-  .tc__tab {
+  #shopify-section-{{ section.id }} .tc__tab {
     position: relative;
     background: none;
     border: none;
@@ -116,7 +120,7 @@
     white-space: nowrap;
   }
 
-  .tc__tab::after {
+  #shopify-section-{{ section.id }} .tc__tab::after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -128,49 +132,41 @@
     transition: transform 0.22s ease;
   }
 
-  .tc__tab:hover {
+  #shopify-section-{{ section.id }} .tc__tab:hover {
     color: #222;
   }
 
-  .tc__tab--active {
+  #shopify-section-{{ section.id }} .tc__tab--active {
     color: #e60000;
   }
 
-  .tc__tab--active::after {
+  #shopify-section-{{ section.id }} .tc__tab--active::after {
     transform: scaleX(1);
   }
 
-  /* ── Panels ─────────────────────────────────────────── */
-  .tc__panel {
-    display: none;
-  }
-
-  .tc__panel--active {
-    display: block;
-  }
-
   /* ── Product grid ────────────────────────────────────── */
-  .tc__grid {
+  #shopify-section-{{ section.id }} .tc__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
+    padding-top: 28px;
   }
 
-  .tc__grid .product-item.tc__card {
+  #shopify-section-{{ section.id }} .product-item.tc__card {
     width: auto !important;
     background: #ffffff;
     border-radius: 3px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     transition: box-shadow 0.24s ease, transform 0.24s ease;
     overflow: hidden;
   }
 
-  .tc__grid .product-item.tc__card:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.11);
+  #shopify-section-{{ section.id }} .product-item.tc__card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.11);
     transform: translateY(-2px);
   }
 
-  /* ── Add to Cart: show on hover ──────────────────────── */
+  /* ── Add to Cart: reveal on hover ────────────────────── */
   #shopify-section-{{ section.id }} .product-item__action-list {
     opacity: 0;
     transform: translateY(8px);
@@ -178,7 +174,6 @@
     pointer-events: none;
   }
 
-  #shopify-section-{{ section.id }} .product-item__action-list:focus-within,
   #shopify-section-{{ section.id }} .product-item.tc__card:hover .product-item__action-list,
   #shopify-section-{{ section.id }} .product-item.tc__card:focus-within .product-item__action-list {
     opacity: 1;
@@ -186,7 +181,7 @@
     pointer-events: auto;
   }
 
-  /* Always visible on touch devices */
+  /* Always show on touch devices */
   @media (hover: none) {
     #shopify-section-{{ section.id }} .product-item__action-list {
       opacity: 1;
@@ -197,27 +192,27 @@
 
   /* ── Responsive ─────────────────────────────────────── */
   @media screen and (max-width: 999px) {
-    .tc__grid {
+    #shopify-section-{{ section.id }} .tc__grid {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .tc__header {
+    #shopify-section-{{ section.id }} .tc__header {
       flex-direction: column;
       align-items: flex-start;
     }
   }
 
   @media screen and (max-width: 640px) {
-    .tc-section {
+    #shopify-section-{{ section.id }} {
       padding: 44px 0 52px;
     }
 
-    .tc__grid {
+    #shopify-section-{{ section.id }} .tc__grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
 
-    .tc__tab {
+    #shopify-section-{{ section.id }} .tc__tab {
       padding: 8px 14px 10px;
       font-size: 12px;
     }
@@ -225,26 +220,25 @@
 </style>
 
 <script>
-  (function() {
+  (function () {
     var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
     if (!sectionEl) return;
 
     var tabs = sectionEl.querySelectorAll('.tc__tab');
     var panels = sectionEl.querySelectorAll('.tc__panel');
 
-    tabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
         var targetId = tab.getAttribute('data-tc-target');
 
-        tabs.forEach(function(t) {
+        tabs.forEach(function (t) {
           t.classList.remove('tc__tab--active');
           t.setAttribute('aria-selected', 'false');
         });
 
-        panels.forEach(function(p) {
-          p.classList.remove('tc__panel--active');
+        panels.forEach(function (p) {
+          p.style.display = 'none';
           p.setAttribute('aria-hidden', 'true');
-          p.style.display = '';
         });
 
         tab.classList.add('tc__tab--active');
@@ -252,7 +246,7 @@
 
         var target = document.getElementById(targetId);
         if (target) {
-          target.classList.add('tc__panel--active');
+          target.style.display = 'block';
           target.setAttribute('aria-hidden', 'false');
         }
       });
