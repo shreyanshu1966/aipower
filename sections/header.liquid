@@ -326,8 +326,17 @@
           </div>
           
           <ul class="nav-bar__linklist list--unstyled" data-type="menu" role="list" style="flex: 1;">
+            {%- assign mega_menu_titles = section.blocks | map: 'settings' | map: 'menu_item' -%}
             {%- for link in navigation_menu.links -%}
-              <li class="nav-bar__item">
+              {%- assign is_mega_item = false -%}
+              {%- assign link_title_lower = link.title | downcase | strip -%}
+              {%- for mega_title in mega_menu_titles -%}
+                {%- if mega_title | downcase | strip == link_title_lower -%}
+                  {%- assign is_mega_item = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+              <li class="nav-bar__item {% if is_mega_item %}nav-bar__item--static{% endif %}">
                 {%- if link.links.size == 0 -%}
                   <a href="{{ link.url }}" class="nav-bar__link link" data-type="menuitem">{{ link.title }}</a>
                 {%- else -%}
