@@ -12401,3 +12401,45 @@ product-rerender {
 .delivery-details__notice strong {
   color: var(--heading-color);
 }
+
+/* =============================================
+   Product Card Enhancements
+   ============================================= */
+
+/* Equal Height Product Cards */
+.product-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-item__info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-item__info-inner {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Push standard elements so they space evenly if needed, though default usually works well when flexed */
+.product-item__title {
+  margin-top: 10px; /* Optional, just to separate from any top elements */
+}
+
+/* Floating Actions Enhancements */
+.product-item__action-icon:hover {
+  transform: scale(1.1);
+}
+
+.wishlist-icon:hover {
+  background: var(--accent-color, #ff4d4f) !important;
+  color: white !important;
+}
+
+.add-to-cart-icon:hover {
+  background: var(--primary-button-background-hover, #333) !important;
+}
