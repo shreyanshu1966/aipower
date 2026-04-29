@@ -12,9 +12,9 @@
         <h2 class="section__title heading h3">{{ section.settings.title | escape }}</h2>
       </div>
 
-      <div class="tabbed-collections__nav" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+      <div class="tabbed-collections__nav">
         {%- for block in section.blocks -%}
-          <button type="button" class="tab-btn {% if forloop.first %}is-active{% endif %}" data-target="tab-{{ section.id }}-{{ forloop.index }}" style="background: none; border: none; font-size: 16px; font-weight: bold; cursor: pointer; padding-bottom: 5px; border-bottom: 2px solid {% if forloop.first %}var(--primary-button-background){% else %}transparent{% endif %}; color: {% if forloop.first %}var(--primary-button-background){% else %}var(--text-color){% endif %};">
+          <button type="button" class="tab-btn {% if forloop.first %}is-active{% endif %}" data-target="tab-{{ section.id }}-{{ forloop.index }}" style="background: none; border: none; font-size: 16px; font-weight: bold; cursor: pointer; padding-bottom: 5px; border-bottom: 2px solid {% if forloop.first %}var(--primary-button-background){% else %}transparent{% endif %}; color: {% if forloop.first %}var(--primary-button-background){% else %}var(--text-color){% endif %}; white-space: nowrap; flex-shrink: 0;">
             {{ block.settings.title | escape }}
           </button>
         {%- endfor -%}
@@ -58,6 +58,34 @@
     {%- endfor -%}
   </div>
 </section>
+
+<style>
+  .tabbed-collections__nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 640px) {
+    .tabbed-collections__nav {
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 14px;
+      padding-bottom: 4px;
+    }
+
+    .tabbed-collections__nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      font-size: 14px !important;
+    }
+  }
+</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
