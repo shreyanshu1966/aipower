@@ -12401,3 +12401,196 @@ product-rerender {
 .delivery-details__notice strong {
   color: var(--heading-color);
 }
+
+/* =============================================
+   Premium Vertical Product Card — Overrides
+   ============================================= */
+
+/* --- Base card reset & structure --- */
+.product-item--vertical {
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--secondary-background);
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove the old 1px border-shadow hack */
+.product-item--vertical::after {
+  box-shadow: none;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: border-color 0.28s ease;
+}
+
+@media (any-hover: hover) {
+  .product-item--vertical:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+  }
+
+  .product-item--vertical:hover::after {
+    border-color: transparent;
+  }
+}
+
+/* --- Image area --- */
+.product-item--vertical .product-item__image-wrapper {
+  margin-bottom: 0;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  background: #f5f5f5;
+}
+
+/* Zoom image on hover */
+@media (any-hover: hover) {
+  .product-item--vertical .product-item__image-wrapper .product-item__primary-image {
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s ease;
+  }
+
+  .product-item--vertical .product-item__image-wrapper:hover .product-item__primary-image {
+    transform: scale(1.06);
+  }
+}
+
+/* --- Quick-buy overlay that slides up on hover --- */
+.product-item--vertical .product-item__action-list {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0 12px 12px;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.22s ease;
+  z-index: 3;
+}
+
+@media (any-hover: hover) {
+  .product-item--vertical:hover .product-item__action-list {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* On touch devices — always show the button (no hover) */
+@media (hover: none) {
+  .product-item--vertical .product-item__action-list {
+    position: static;
+    transform: none;
+    opacity: 1;
+    padding: 0 14px 14px;
+  }
+}
+
+.product-item--vertical .product-item__action-button {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+/* --- Info area --- */
+.product-item--vertical .product-item__info {
+  padding: 14px 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-item--vertical .product-item__info-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Vendor label */
+.product-item--vertical .product-item__vendor {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+
+/* Product title */
+.product-item--vertical .product-item__title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Price */
+.product-item--vertical .product-item__price-list {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.product-item--vertical .product-item__price-list .price:not(.price--compare) {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--heading-color);
+}
+
+.product-item--vertical .product-item__price-list .price--compare {
+  font-size: 12px;
+  opacity: 0.45;
+  text-decoration: line-through;
+  margin-left: 4px;
+}
+
+/* --- Badge / Labels --- */
+.product-item--vertical .product-item__label-list {
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+}
+
+.product-item--vertical .product-item__label-list > .product-label {
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* Sale badge — red accent */
+.product-item--vertical .product-label--on-sale {
+  background: #e60000;
+  color: #fff;
+}
+
+/* Custom badges */
+.product-item--vertical .product-label--custom1 {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+/* --- Ratings --- */
+.product-item--vertical .product-item__reviews-badge {
+  margin-top: 6px;
+}
+
+/* --- Stock indicator --- */
+.product-item--vertical .product-item__inventory {
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 6px;
+}
