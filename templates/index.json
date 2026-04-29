@@ -19,12 +19,14 @@
             "overlay_opacity": 40,
             "text_color": "#ffffff",
             "title": "Power Tools for Every Job",
-            "content": "Explore our full range of electric, cordless, petrol and air tools built for professionals.",
+            "content": "Over 500 professional tools, generators and compressors — built for the trade.",
             "content_position": "middle_left",
             "button_background": "#e60000",
             "button_text_color": "#ffffff",
             "button_text": "Shop Power Tools",
-            "link": "shopify://collections/tools"
+            "link": "shopify://collections/tools",
+            "secondary_button_text": "View All Categories",
+            "secondary_button_link": "/collections/all"
           }
         },
         "image-2": {
@@ -39,7 +41,9 @@
             "button_background": "#e60000",
             "button_text_color": "#ffffff",
             "button_text": "Shop Generators",
-            "link": "shopify://collections/generator"
+            "link": "shopify://collections/generator",
+            "secondary_button_text": "View All Categories",
+            "secondary_button_link": "/collections/all"
           }
         },
         "image-3": {
@@ -49,12 +53,14 @@
             "overlay_opacity": 40,
             "text_color": "#ffffff",
             "title": "Professional Air Compressors",
-            "content": "Belt, silent and air compressors for workshops, garages and job sites.",
+            "content": "Belt, silent and portable compressors — engineered for continuous professional use.",
             "content_position": "middle_center",
             "button_background": "#e60000",
             "button_text_color": "#ffffff",
             "button_text": "Shop Compressors",
-            "link": "shopify://collections/air-compressor"
+            "link": "shopify://collections/air-compressor",
+            "secondary_button_text": "View All Categories",
+            "secondary_button_link": "/collections/all"
           }
         }
       },
@@ -118,9 +124,20 @@
       },
       "block_order": ["cat-1", "cat-2", "cat-3", "cat-4", "cat-5", "cat-6", "cat-7"],
       "settings": {
-        "title": "Shop by Category",
+        "title": "What Are You Working On?",
         "link_title": "View all categories",
         "link": "/collections/all"
+      }
+    },
+    "promo-banner": {
+      "type": "promo-banner",
+      "settings": {
+        "label": "Limited Time",
+        "title": "Free Delivery on Orders Over £75 — Professional Tools & Equipment",
+        "button_text": "Shop the Deal",
+        "button_link": "/collections/all",
+        "background": "#e60000",
+        "text_color": "#ffffff"
       }
     },
     "tabbed-collections": {
@@ -136,58 +153,82 @@
         },
         "tab-3": {
           "type": "collection",
+          "settings": { "title": "Compressors", "collection": "air-compressor" }
+        },
+        "tab-4": {
+          "type": "collection",
           "settings": { "title": "Accessories", "collection": "accessories" }
         }
       },
-      "block_order": ["tab-1", "tab-2", "tab-3"],
+      "block_order": ["tab-1", "tab-2", "tab-3", "tab-4"],
       "settings": {
-        "title": "Browse Our Products",
+        "title": "Most Popular Products",
         "products_count": 8
       }
     },
-    "spotlight-cordless": {
-      "type": "image-with-text",
+    "brand-story": {
+      "type": "brand-story",
+      "blocks": {
+        "stat-1": {
+          "type": "stat",
+          "settings": { "number": "500+", "label": "Professional Products" }
+        },
+        "stat-2": {
+          "type": "stat",
+          "settings": { "number": "10+", "label": "Years Experience" }
+        },
+        "stat-3": {
+          "type": "stat",
+          "settings": { "number": "50K+", "label": "Happy Customers" }
+        }
+      },
+      "block_order": ["stat-1", "stat-2", "stat-3"],
       "settings": {
-        "image_position": "left",
-        "image_width": 55,
-        "title": "Professional Cordless Range",
-        "content": "<p>Freedom from cables without compromise. Our cordless tools deliver full professional power with long-life batteries and rapid charging — built for the job site, not the hobby shed.</p><ul><li>Industry-leading battery life</li><li>Fast charge in under 60 minutes</li><li>Full range: drills, saws, grinders and more</li></ul>",
-        "button_text": "Shop Cordless Tools",
-        "button_link": "/collections/cordless"
+        "label": "Why AI Power",
+        "title": "Built for Professionals Who Can't Afford Downtime",
+        "content": "We supply tradespeople, contractors and industrial teams with professional-grade tools and equipment. Every product is tested, genuine and backed by expert support — seven days a week.",
+        "button_text": "Learn About Us",
+        "button_link": "/pages/about",
+        "background": "#111111",
+        "text_color": "#ffffff"
       }
     },
-    "featured-generators": {
-      "type": "featured-collection",
-      "name": "Generators",
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t-1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Absolutely brilliant quality. Ordered Monday, arrived Wednesday, and they've been solid on site ever since.",
+            "name": "James T.",
+            "trade": "Electrician"
+          }
+        },
+        "t-2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "The generator has handled everything I've thrown at it. Brilliant build quality and the price was very competitive.",
+            "name": "Mark R.",
+            "trade": "Site Manager"
+          }
+        },
+        "t-3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Fast delivery, genuine products, and when I had a question the support team sorted me out straight away.",
+            "name": "Sarah K.",
+            "trade": "Workshop Owner"
+          }
+        }
+      },
+      "block_order": ["t-1", "t-2", "t-3"],
       "settings": {
-        "collection": "generator",
-        "title": "Generators",
-        "products_count": 4,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": true,
-        "link_title": "See all Generators",
-        "link_url": "shopify://collections/generator"
-      }
-    },
-    "spotlight-compressors": {
-      "type": "image-with-text",
-      "settings": {
-        "image_position": "right",
-        "image_width": 55,
-        "title": "Air Compressors for Every Workshop",
-        "content": "<p>Belt, silent and portable compressors engineered for continuous professional use. Whether you're spray painting, running air tools, or inflating — we have the right unit for your setup.</p><ul><li>Silent models for indoor workshops</li><li>High-capacity belt compressors for heavy use</li><li>Portable options for on-site work</li></ul>",
-        "button_text": "Shop Compressors",
-        "button_link": "/collections/air-compressor"
-      }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "title": "Stay in the Loop",
-        "content": "<p>Get the latest products, exclusive deals and expert advice delivered to your inbox.</p>",
-        "background": "#1a1a1a",
-        "text": "#ffffff"
+        "title": "What Tradespeople Say",
+        "subtitle": "Trusted by electricians, builders and site managers across the country.",
+        "background": "#f4f4f4"
       }
     },
     "logo-list": {
@@ -201,11 +242,32 @@
         "logo-6": { "type": "logo", "settings": { "link": "" } }
       },
       "block_order": ["logo-1", "logo-2", "logo-3", "logo-4", "logo-5", "logo-6"],
-      "name": "Logo list",
       "settings": {
-        "title": "Brands We Distribute",
+        "title": "Authorised Distributor For",
         "link_title": "",
         "link": ""
+      }
+    },
+    "blog-posts": {
+      "type": "blog-posts",
+      "settings": {
+        "title": "Guides & Expert Advice",
+        "link_title": "Read All Articles",
+        "blog_posts_count": 3,
+        "show_category": true,
+        "show_author": false,
+        "show_date": true,
+        "show_excerpt": true,
+        "stack_mobile": true
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Join 50,000 Professionals",
+        "content": "<p>Get exclusive deals, new arrivals and expert tips delivered to your inbox.</p>",
+        "background": "#1a1a1a",
+        "text": "#ffffff"
       }
     }
   },
@@ -213,11 +275,12 @@
     "slideshow",
     "usp-bar",
     "category-cards",
+    "promo-banner",
     "tabbed-collections",
-    "spotlight-cordless",
-    "featured-generators",
-    "spotlight-compressors",
-    "newsletter",
-    "logo-list"
+    "brand-story",
+    "testimonials",
+    "logo-list",
+    "blog-posts",
+    "newsletter"
   ]
 }

@@ -1,0 +1,273 @@
+<section class="testimonials section" data-section-id="{{ section.id }}" data-section-type="testimonials">
+  <div class="container">
+    {%- if section.settings.title != blank -%}
+      <div class="section__header section__header--center">
+        <h2 class="section__title heading h3">{{ section.settings.title | escape }}</h2>
+        {%- if section.settings.subtitle != blank -%}
+          <p class="testimonials__subtitle">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="testimonials__grid">
+      {%- for block in section.blocks -%}
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+          <div class="testimonial-card__stars">
+            {%- assign rating = block.settings.rating | default: 5 -%}
+            {%- for i in (1..5) -%}
+              {%- if i <= rating -%}
+                <span class="testimonial-card__star">&#9733;</span>
+              {%- else -%}
+                <span class="testimonial-card__star testimonial-card__star--empty">&#9733;</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if block.settings.quote != blank -%}
+            <blockquote class="testimonial-card__quote">
+              &ldquo;{{ block.settings.quote | escape }}&rdquo;
+            </blockquote>
+          {%- endif -%}
+
+          <div class="testimonial-card__author">
+            {%- if block.settings.name != blank -%}
+              <span class="testimonial-card__name">{{ block.settings.name | escape }}</span>
+            {%- endif -%}
+            {%- if block.settings.trade != blank -%}
+              <span class="testimonial-card__trade">{{ block.settings.trade | escape }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- else -%}
+        {%- for i in (1..3) -%}
+          <div class="testimonial-card testimonial-card--placeholder">
+            <div class="testimonial-card__stars">
+              {%- for j in (1..5) -%}
+                <span class="testimonial-card__star">&#9733;</span>
+              {%- endfor -%}
+            </div>
+            <blockquote class="testimonial-card__quote">
+              &ldquo;Add your customer testimonials here to build trust with new visitors.&rdquo;
+            </blockquote>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__name">Customer Name</span>
+              <span class="testimonial-card__trade">Trade / Role</span>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background }};
+  }
+
+  .testimonials {
+    padding: 72px 0;
+  }
+
+  .section__header--center {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .testimonials__subtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0 0;
+    line-height: 1.5;
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .testimonial-card {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .testimonial-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+    transform: translateY(-3px);
+  }
+
+  .testimonial-card__stars {
+    display: flex;
+    gap: 3px;
+  }
+
+  .testimonial-card__star {
+    color: #e6a800;
+    font-size: 17px;
+    line-height: 1;
+  }
+
+  .testimonial-card__star--empty {
+    color: #ddd;
+  }
+
+  .testimonial-card__quote {
+    font-size: 15px;
+    line-height: 1.68;
+    color: #444;
+    margin: 0;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .testimonial-card__author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .testimonial-card__name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .testimonial-card__trade {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #e60000;
+  }
+
+  .testimonial-card--placeholder {
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: 999px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .testimonials {
+      padding: 50px 0;
+    }
+
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .testimonial-card {
+      padding: 22px 18px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What Tradespeople Say"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Trusted by electricians, builders and site managers across the country."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#f4f4f4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Absolutely brilliant quality. Ordered Monday, arrived Wednesday, and they've been solid on site ever since."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name",
+          "default": "James T."
+        },
+        {
+          "type": "text",
+          "id": "trade",
+          "label": "Trade / Role",
+          "default": "Electrician"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "Social proof",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Absolutely brilliant quality. Ordered Monday, arrived Wednesday, and they've been solid on site ever since.",
+            "name": "James T.",
+            "trade": "Electrician"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "The generator has handled everything I've thrown at it. Brilliant build quality and the price was competitive.",
+            "name": "Mark R.",
+            "trade": "Site Manager"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Fast delivery, genuine products, and when I had a question the support team sorted me out straight away.",
+            "name": "Sarah K.",
+            "trade": "Workshop Owner"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
