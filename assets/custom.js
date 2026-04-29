@@ -34,3 +34,54 @@
  * }));
  */
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  const wishlistKey = 'shopify_wishlist';
+  let wishlist = JSON.parse(localStorage.getItem(wishlistKey) || '[]');
+  
+  function updateWishlistUI() {
+    // Update counter in header
+    const counters = document.querySelectorAll('.wishlist-count');
+    counters.forEach(counter => {
+      counter.textContent = wishlist.length;
+      counter.style.display = wishlist.length > 0 ? 'inline-block' : 'none';
+    });
+
+    // Update active states on product cards
+    document.querySelectorAll('.wishlist-icon').forEach(btn => {
+      const handle = btn.getAttribute('data-product-handle');
+      if (wishlist.includes(handle)) {
+        btn.classList.add('is-active');
+        btn.style.background = 'var(--accent-color, #ff4d4f)';
+        btn.style.color = 'white';
+      } else {
+        btn.classList.remove('is-active');
+        btn.style.background = '';
+        btn.style.color = '';
+      }
+    });
+  }
+
+  // Toggle wishlist item
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.wishlist-icon');
+    if (!btn) return;
+    
+    e.preventDefault();
+    const handle = btn.getAttribute('data-product-handle');
+    if (!handle) return;
+    
+    if (wishlist.includes(handle)) {
+      wishlist = wishlist.filter(h => h !== handle);
+    } else {
+      wishlist.push(handle);
+    }
+    
+    localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
+    updateWishlistUI();
+  });
+
+  // Initial update
+  updateWishlistUI();
+});
+

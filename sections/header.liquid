@@ -285,6 +285,20 @@
               {%- render 'mini-cart' -%}
             {%- endif -%}
           </div>
+
+          <div class="header__action-item header__action-item--wishlist hidden-pocket">
+            <a class="header__action-item-link" href="/pages/wishlist" data-no-instant>
+              <div class="header__action-item-content">
+                <div class="header__cart-icon icon-state" aria-expanded="false">
+                  <span class="icon-state__primary">
+                    {%- render 'icon', icon: 'heart' -%}
+                    <span class="header__cart-count wishlist-count" style="display:none;">0</span>
+                  </span>
+                </div>
+                <span class="hidden-pocket hidden-lap">Wishlist</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
