@@ -22,7 +22,12 @@
         <div class="scroller">
           <div class="scroller__inner">
             <div class="product-list product-list--vertical product-list--scrollable">
-              {%- for product in recommendations.products -%}
+              {%- assign recommended_products = recommendations.products -%}
+              {%- if recommended_products.size == 0 -%}
+                {%- assign recommended_products = collections.all.products -%}
+              {%- endif -%}
+
+              {%- for product in recommended_products limit: 10 -%}
                 {%- render 'product-item', product: product, grid_classes: '1/4--lap 1/5--desk 1/6--wide', show_add_to_cart: section.settings.show_quick_buy -%}
               {%- else -%}
                 {%- comment -%}Hide the section if there is no recommendations to show{%- endcomment -%}
