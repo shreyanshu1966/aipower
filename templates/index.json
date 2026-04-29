@@ -145,34 +145,25 @@
       "blocks": {
         "tab-1": {
           "type": "collection",
-          "settings": {
-            "title": "Bestsellers",
-            "collection": "tools",
-            "filter": "none"
-          }
+          "settings": { "title": "Power Tools", "collection": "tools" }
         },
         "tab-2": {
           "type": "collection",
-          "settings": {
-            "title": "New Arrivals",
-            "collection": "tools",
-            "filter": "none"
-          }
+          "settings": { "title": "Generators", "collection": "generator" }
         },
         "tab-3": {
           "type": "collection",
-          "settings": {
-            "title": "On Sale",
-            "collection": "tools",
-            "filter": "on_sale"
-          }
+          "settings": { "title": "Compressors", "collection": "air-compressor" }
+        },
+        "tab-4": {
+          "type": "collection",
+          "settings": { "title": "Accessories", "collection": "accessories" }
         }
       },
-      "block_order": ["tab-1", "tab-2", "tab-3"],
+      "block_order": ["tab-1", "tab-2", "tab-3", "tab-4"],
       "settings": {
         "title": "Most Popular Products",
-        "products_count": 8,
-        "background": "#f4f4f4"
+        "products_count": 8
       }
     },
     "brand-story": {
