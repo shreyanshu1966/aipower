@@ -19,32 +19,42 @@
 
     <div class="product-recommendations">
       {%- comment -%}
-        Always render a fallback product list so products are visible on initial load.
-        When recommendations.performed is true (AJAX re-render), use Shopify recommendations.
-        Otherwise fall back to collections.all so the section is never empty.
+        Logic:
+        - If Shopify returns real recommendations → show them (both sections).
+        - If Shopify returns nothing and intent is "related" → fall back to collections.all.
+        - If Shopify returns nothing and intent is "complementary" → hide this section entirely
+          (avoids showing identical products in both sections).
       {%- endcomment -%}
 
-      {%- if recommendations.performed -%}
+      {%- assign has_real_recommendations = false -%}
+      {%- if recommendations.performed and recommendations.products.size > 0 -%}
+        {%- assign has_real_recommendations = true -%}
         {%- assign section_products = recommendations.products -%}
-      {%- else -%}
-        {%- assign section_products = nil -%}
       {%- endif -%}
 
-      {%- if section_products == nil or section_products.size == 0 -%}
-        {%- assign section_products = collections.all.products -%}
-      {%- endif -%}
+      {%- unless has_real_recommendations -%}
+        {%- if section.settings.intent == 'complementary' -%}
+          {%- comment -%}No real complementary data — hide this section{%- endcomment -%}
+          <style>#shopify-section-{{ section.id }} { display: none; }</style>
+        {%- else -%}
+          {%- comment -%}Fallback for "related" intent: use collections.all{%- endcomment -%}
+          {%- assign section_products = collections.all.products -%}
+        {%- endif -%}
+      {%- endunless -%}
 
-      <div class="scroller">
-        <div class="scroller__inner">
-          <div class="product-list product-list--vertical product-list--scrollable">
-            {%- for rec_product in section_products limit: 10 -%}
-              {%- unless rec_product.id == product.id -%}
-                {%- render 'product-item', product: rec_product, grid_classes: '1/4--lap 1/5--desk 1/6--wide', show_add_to_cart: section.settings.show_quick_buy -%}
-              {%- endunless -%}
-            {%- endfor -%}
+      {%- if has_real_recommendations or section.settings.intent != 'complementary' -%}
+        <div class="scroller">
+          <div class="scroller__inner">
+            <div class="product-list product-list--vertical product-list--scrollable">
+              {%- for rec_product in section_products limit: 10 -%}
+                {%- unless rec_product.id == product.id -%}
+                  {%- render 'product-item', product: rec_product, grid_classes: '1/4--lap 1/5--desk 1/6--wide', show_add_to_cart: section.settings.show_quick_buy -%}
+                {%- endunless -%}
+              {%- endfor -%}
+            </div>
           </div>
         </div>
-      </div>
+      {%- endif -%}
     </div>
   </div>
 
