@@ -135,7 +135,7 @@
       ],
       "settings": {
         "title": "Shop by Category",
-        "link_title": "View all",
+        "link_title": "View all categories",
         "link": "shopify://collections",
         "round_images": false,
         "show_collection_title": true
@@ -172,50 +172,120 @@
         "tab-3"
       ],
       "settings": {
-        "title": "Browse Our Products",
+        "title": "Featured Products",
         "products_count": 8
       }
     },
-    "featured-cordless": {
+    "carousel-tools": {
+      "type": "featured-collection",
+      "name": "Power Tools",
+      "settings": {
+        "collection": "tools",
+        "title": "Power Tools",
+        "products_count": 10,
+        "layout": "horizontal",
+        "stack_products": false,
+        "show_quick_buy": true,
+        "link_title": "View all Power Tools",
+        "link_url": "shopify://collections/tools"
+      }
+    },
+    "carousel-cordless": {
       "type": "featured-collection",
       "name": "Cordless Tools",
       "settings": {
         "collection": "cordless",
         "title": "Cordless Tools",
-        "products_count": 8,
-        "layout": "vertical",
+        "products_count": 10,
+        "layout": "horizontal",
         "stack_products": false,
         "show_quick_buy": true,
-        "link_title": "See all Cordless Tools",
+        "link_title": "View all Cordless Tools",
         "link_url": "shopify://collections/cordless"
       }
     },
-    "featured-generators": {
+    "carousel-electric": {
+      "type": "featured-collection",
+      "name": "Electric Tools",
+      "settings": {
+        "collection": "electric",
+        "title": "Electric Tools",
+        "products_count": 10,
+        "layout": "horizontal",
+        "stack_products": false,
+        "show_quick_buy": true,
+        "link_title": "View all Electric Tools",
+        "link_url": "shopify://collections/electric"
+      }
+    },
+    "carousel-generators": {
       "type": "featured-collection",
       "name": "Generators",
       "settings": {
         "collection": "generator",
         "title": "Generators",
-        "products_count": 8,
-        "layout": "vertical",
+        "products_count": 10,
+        "layout": "horizontal",
         "stack_products": false,
         "show_quick_buy": true,
-        "link_title": "See all Generators",
+        "link_title": "View all Generators",
         "link_url": "shopify://collections/generator"
       }
     },
-    "featured-accessories": {
+    "carousel-compressors": {
+      "type": "featured-collection",
+      "name": "Air Compressors",
+      "settings": {
+        "collection": "air-compressor",
+        "title": "Air Compressors",
+        "products_count": 10,
+        "layout": "horizontal",
+        "stack_products": false,
+        "show_quick_buy": true,
+        "link_title": "View all Compressors",
+        "link_url": "shopify://collections/air-compressor"
+      }
+    },
+    "carousel-accessories": {
       "type": "featured-collection",
       "name": "Accessories",
       "settings": {
         "collection": "accessories",
         "title": "Accessories",
-        "products_count": 8,
-        "layout": "vertical",
+        "products_count": 10,
+        "layout": "horizontal",
         "stack_products": false,
         "show_quick_buy": true,
-        "link_title": "See all Accessories",
+        "link_title": "View all Accessories",
         "link_url": "shopify://collections/accessories"
+      }
+    },
+    "carousel-cleaning": {
+      "type": "featured-collection",
+      "name": "Cleaning Equipment",
+      "settings": {
+        "collection": "cleaning",
+        "title": "Cleaning Equipment",
+        "products_count": 10,
+        "layout": "horizontal",
+        "stack_products": false,
+        "show_quick_buy": true,
+        "link_title": "View all Cleaning",
+        "link_url": "shopify://collections/cleaning"
+      }
+    },
+    "carousel-welding": {
+      "type": "featured-collection",
+      "name": "Welding Machines",
+      "settings": {
+        "collection": "welding-machine",
+        "title": "Welding Machines",
+        "products_count": 8,
+        "layout": "horizontal",
+        "stack_products": false,
+        "show_quick_buy": true,
+        "link_title": "View all Welding",
+        "link_url": "shopify://collections/welding-machine"
       }
     },
     "logo-list": {
@@ -278,9 +348,14 @@
     "slideshow",
     "collection-list",
     "tabbed-collections",
-    "featured-cordless",
-    "featured-generators",
-    "featured-accessories",
+    "carousel-tools",
+    "carousel-cordless",
+    "carousel-electric",
+    "carousel-generators",
+    "carousel-compressors",
+    "carousel-accessories",
+    "carousel-cleaning",
+    "carousel-welding",
     "logo-list"
   ]
 }
