@@ -15,46 +15,46 @@
         "image-1": {
           "type": "image",
           "settings": {
-            "show_overlay": false,
-            "overlay_opacity": 30,
+            "show_overlay": true,
+            "overlay_opacity": 40,
             "text_color": "#ffffff",
-            "title": "Introducing: the Headphones Collection",
-            "content": "Discover our selection of the best headphones of the year",
-            "content_position": "middle_center",
-            "button_background": "#00badb",
+            "title": "Power Tools for Every Job",
+            "content": "Explore our full range of electric, cordless, petrol and air tools built for professionals.",
+            "content_position": "middle_left",
+            "button_background": "#e60000",
             "button_text_color": "#ffffff",
-            "button_text": "Shop all headphones",
-            "link": "shopify://collections/all"
+            "button_text": "Shop Power Tools",
+            "link": "shopify://collections/tools"
           }
         },
         "image-2": {
           "type": "image",
           "settings": {
-            "show_overlay": false,
-            "overlay_opacity": 30,
+            "show_overlay": true,
+            "overlay_opacity": 40,
             "text_color": "#ffffff",
-            "title": "New Portable Speakers",
-            "content": "Discover the brand new speakers.",
+            "title": "Reliable Generators, Anywhere",
+            "content": "Diesel, inverter, gasoline and welding generators — power you can count on.",
             "content_position": "middle_right",
-            "button_background": "#00badb",
+            "button_background": "#e60000",
             "button_text_color": "#ffffff",
-            "button_text": "Shop now",
-            "link": "shopify://collections/all"
+            "button_text": "Shop Generators",
+            "link": "shopify://collections/generator"
           }
         },
         "image-3": {
           "type": "image",
           "settings": {
-            "show_overlay": false,
-            "overlay_opacity": 30,
+            "show_overlay": true,
+            "overlay_opacity": 40,
             "text_color": "#ffffff",
-            "title": "Introducing brand new OLED TVs",
-            "content": "Discover all the masterpieces, selected by our team",
-            "content_position": "middle_left",
-            "button_background": "#00badb",
+            "title": "Professional Air Compressors",
+            "content": "Belt, silent and air compressors for workshops, garages and job sites.",
+            "content_position": "middle_center",
+            "button_background": "#e60000",
             "button_text_color": "#ffffff",
-            "button_text": "Shop now",
-            "link": "shopify://collections/all"
+            "button_text": "Shop Compressors",
+            "link": "shopify://collections/air-compressor"
           }
         }
       },
@@ -77,42 +77,49 @@
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "tools",
             "link": ""
           }
         },
         "collection-2": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "generator",
             "link": ""
           }
         },
         "collection-3": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "air-compressor",
             "link": ""
           }
         },
         "collection-4": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "welding-machine",
             "link": ""
           }
         },
         "collection-5": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "cleaning",
             "link": ""
           }
         },
         "collection-6": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "water-pumps",
+            "link": ""
+          }
+        },
+        "collection-7": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
             "link": ""
           }
         }
@@ -123,13 +130,14 @@
         "collection-3",
         "collection-4",
         "collection-5",
-        "collection-6"
+        "collection-6",
+        "collection-7"
       ],
       "settings": {
-        "title": "Our collections",
+        "title": "Shop by Category",
         "link_title": "View all",
         "link": "shopify://collections",
-        "round_images": true,
+        "round_images": false,
         "show_collection_title": true
       }
     },
@@ -139,66 +147,75 @@
         "tab-1": {
           "type": "collection",
           "settings": {
-            "title": "Featured",
-            "collection": ""
+            "title": "Power Tools",
+            "collection": "tools"
           }
         },
         "tab-2": {
           "type": "collection",
           "settings": {
-            "title": "New Arrivals",
-            "collection": ""
+            "title": "Generators",
+            "collection": "generator"
+          }
+        },
+        "tab-3": {
+          "type": "collection",
+          "settings": {
+            "title": "Accessories",
+            "collection": "accessories"
           }
         }
       },
       "block_order": [
         "tab-1",
-        "tab-2"
+        "tab-2",
+        "tab-3"
       ],
       "settings": {
-        "title": "Discovery",
+        "title": "Browse Our Products",
         "products_count": 8
       }
     },
-    "featured_collection_bdybwJ": {
+    "featured-cordless": {
       "type": "featured-collection",
-      "name": "Featured collection",
+      "name": "Cordless Tools",
       "settings": {
-        "collection": "try",
-        "title": "Featured collection",
-        "products_count": 12,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
-      }
-    },
-    "featured-collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "title": "Air Tools",
-        "products_count": 12,
+        "collection": "cordless",
+        "title": "Cordless Tools",
+        "products_count": 8,
         "layout": "vertical",
         "stack_products": false,
         "show_quick_buy": true,
-        "link_title": "See all",
-        "link_url": ""
+        "link_title": "See all Cordless Tools",
+        "link_url": "shopify://collections/cordless"
       }
     },
-    "featured-collection-1": {
+    "featured-generators": {
       "type": "featured-collection",
-      "name": "Featured collection",
+      "name": "Generators",
       "settings": {
-        "collection": "",
-        "title": "Top-rated products",
-        "products_count": 12,
+        "collection": "generator",
+        "title": "Generators",
+        "products_count": 8,
         "layout": "vertical",
         "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
+        "show_quick_buy": true,
+        "link_title": "See all Generators",
+        "link_url": "shopify://collections/generator"
+      }
+    },
+    "featured-accessories": {
+      "type": "featured-collection",
+      "name": "Accessories",
+      "settings": {
+        "collection": "accessories",
+        "title": "Accessories",
+        "products_count": 8,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": true,
+        "link_title": "See all Accessories",
+        "link_url": "shopify://collections/accessories"
       }
     },
     "logo-list": {
@@ -251,7 +268,7 @@
       ],
       "name": "Logo list",
       "settings": {
-        "title": "Brands we distribute",
+        "title": "Brands We Distribute",
         "link_title": "",
         "link": ""
       }
@@ -261,9 +278,9 @@
     "slideshow",
     "collection-list",
     "tabbed-collections",
-    "featured_collection_bdybwJ",
-    "featured-collection",
-    "featured-collection-1",
+    "featured-cordless",
+    "featured-generators",
+    "featured-accessories",
     "logo-list"
   ]
 }
