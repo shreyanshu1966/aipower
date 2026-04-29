@@ -64,22 +64,24 @@
         </div>
       </a>
 
-      <!-- Wishlist Icon -->
-      <button type="button" class="product-item__action-icon wishlist-icon" aria-label="Add to wishlist">
-        {% render 'icon', icon: 'heart' %}
-      </button>
+      <div class="product-item__floating-actions">
+        <!-- Wishlist Icon -->
+        <button type="button" class="product-item__action-icon wishlist-icon" aria-label="Add to wishlist">
+          {% render 'icon', icon: 'heart' %}
+        </button>
 
-      <!-- Add to Cart Small Logo Icon -->
-      {%- if product.available -%}
-        {%- assign form_id_quick = 'quick_add_' | append: product.id | append: '_' | append: section.id -%}
-        {%- form 'product', product, id: form_id_quick, class: 'product-item__quick-add-form' -%}
-          <input type="hidden" name="quantity" value="1">
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          <button type="submit" class="product-item__action-icon add-to-cart-icon" aria-label="{{ 'collection.product.add_to_cart' | t }}">
-            <div class="cart-icon-wrapper">{% render 'icon', icon: 'cart' %}</div>
-          </button>
-        {%- endform -%}
-      {%- endif -%}
+        <!-- Add to Cart Small Logo Icon -->
+        {%- if product.available -%}
+          {%- assign form_id_quick = 'quick_add_' | append: product.id | append: '_' | append: section.id -%}
+          {%- form 'product', product, id: form_id_quick, class: 'product-item__quick-add-form' -%}
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <button type="submit" class="product-item__action-icon add-to-cart-icon" aria-label="{{ 'collection.product.add_to_cart' | t }}">
+              <div class="cart-icon-wrapper">{% render 'icon', icon: 'cart' %}</div>
+            </button>
+          {%- endform -%}
+        {%- endif -%}
+      </div>
     </div>
   {%- endif -%}
 
