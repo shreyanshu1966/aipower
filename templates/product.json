@@ -52,6 +52,10 @@
           "settings": {
             "open_by_default": true
           }
+        },
+        "judge_me_reviews_preview_badge_83QLXP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
       "block_order": [
@@ -59,7 +63,8 @@
         "variant_selector",
         "buy_buttons",
         "description",
-        "delivery_details"
+        "delivery_details",
+        "judge_me_reviews_preview_badge_83QLXP"
       ],
       "settings": {
         "image_size": "small",
