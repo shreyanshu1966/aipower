@@ -1,48 +1,164 @@
-<style>
-  #shopify-section-{{ section.id }} {
-    background: {{ section.settings.background }};
-    color: {{ section.settings.text }};
-  }
-</style>
+<section class="newsletter-dark" data-section-id="{{ section.id }}" data-section-type="signup-form">
+  <div class="container">
+    <div class="newsletter-dark__inner">
 
-<section class="section {% if section.settings.background != settings.background %}section--isolated section--tight{% endif %} section--text-centered" data-section-id="{{ section.id }}" data-section-type="signup-form">
-  <div class="container container--giga-narrow">
-    {%- if section.settings.title != blank -%}
-      <h2 class="heading h3">{{ section.settings.title | escape }}</h2>
-    {%- endif -%}
-
-    {%- if section.settings.content != blank -%}
-      <div class="rte">
-        {{ section.settings.content }}
-      </div>
-    {%- endif -%}
-
-    {%- assign newsletter_id = 'newsletter-' | append: section.id -%}
-
-    <div class="newsletter newsletter--compact">
-      {%- form 'customer', id: newsletter_id, class: 'form newsletter__form' -%}
-        {%- if form.posted_successfully? -%}
-          <p class="alert alert--success">{{ 'home_page.newsletter.success' | t }}</p>
-        {%- else -%}
-          {%- if form.errors -%}
-            <p class="alert alert--error">{{ form.errors.messages['email'] }}</p>
-          {%- endif -%}
-
-          <input type="hidden" name="contact[tags]" value="newsletter">
-
-          <div class="form__input-row">
-            <div class="form__input-wrapper form__input-wrapper--labelled">
-              <input type="email" id="newsletter[{{ section.id }}][contact][email]" name="contact[email]" class="form__field {% if section.settings.background != settings.background %}form__field--borderless{% endif %} form__field--text" required>
-              <label for="newsletter[{{ section.id }}][contact][email]" class="form__floating-label">{{ 'home_page.newsletter.input' | t }}</label>
-            </div>
-
-            <button type="submit" class="form__submit button button--primary">{{ 'home_page.newsletter.submit' | t }}</button>
-          </div>
+      <div class="newsletter-dark__content">
+        {%- if section.settings.title != blank -%}
+          <h2 class="newsletter-dark__title">{{ section.settings.title | escape }}</h2>
         {%- endif -%}
-      {%- endform -%}
+        {%- if section.settings.content != blank -%}
+          <div class="newsletter-dark__sub">{{ section.settings.content }}</div>
+        {%- endif -%}
+      </div>
+
+      <div class="newsletter-dark__form-wrap">
+        {%- assign newsletter_id = 'newsletter-' | append: section.id -%}
+        {%- form 'customer', id: newsletter_id, class: 'newsletter-dark__form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="newsletter-dark__success">You're in. Welcome to the community.</p>
+          {%- else -%}
+            {%- if form.errors -%}
+              <p class="newsletter-dark__error">{{ form.errors.messages['email'] }}</p>
+            {%- endif -%}
+
+            <input type="hidden" name="contact[tags]" value="newsletter">
+
+            <div class="newsletter-dark__row">
+              <div class="newsletter-dark__input-wrap">
+                <input
+                  type="email"
+                  id="newsletter[{{ section.id }}][contact][email]"
+                  name="contact[email]"
+                  class="newsletter-dark__input"
+                  placeholder="{{ 'home_page.newsletter.input' | t }}"
+                  required
+                >
+              </div>
+              <button type="submit" class="newsletter-dark__btn">
+                {{ 'home_page.newsletter.submit' | t }}
+              </button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+  .newsletter-dark {
+    background: #0d0d0d;
+    padding: 100px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .newsletter-dark__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .newsletter-dark__title {
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 16px;
+  }
+
+  .newsletter-dark__sub {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0;
+  }
+
+  .newsletter-dark__sub p { margin: 0; }
+
+  /* Form */
+  .newsletter-dark__row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease;
+  }
+
+  .newsletter-dark__row:focus-within {
+    border-bottom-color: #e60000;
+  }
+
+  .newsletter-dark__input-wrap { flex: 1; }
+
+  .newsletter-dark__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 12px 0;
+    letter-spacing: 0.01em;
+  }
+
+  .newsletter-dark__input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+  }
+
+  .newsletter-dark__btn {
+    background: #e60000;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+    margin-bottom: -1px;
+  }
+
+  .newsletter-dark__btn:hover { background: #c50000; }
+
+  .newsletter-dark__success {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .newsletter-dark__error {
+    font-size: 12px;
+    color: #ff6b6b;
+    margin: 0 0 10px;
+  }
+
+  @media screen and (max-width: 999px) {
+    .newsletter-dark__inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .newsletter-dark__title { font-size: 34px; }
+    .newsletter-dark { padding: 72px 0; }
+  }
+
+  @media screen and (max-width: 640px) {
+    .newsletter-dark { padding: 56px 0; }
+    .newsletter-dark__title { font-size: 26px; }
+    .newsletter-dark__row { flex-direction: column; border-bottom: none; gap: 12px; }
+    .newsletter-dark__input-wrap {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    }
+    .newsletter-dark__btn { width: 100%; padding: 14px; text-align: center; }
+  }
+</style>
 
 {% schema %}
 {
@@ -56,13 +172,13 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Newsletter"
+      "default": "Join 50,000 Professionals"
     },
     {
       "type": "richtext",
       "id": "content",
       "label": "Text",
-      "default": "<p>A short sentence describing what someone will receive by subscribing</p>"
+      "default": "<p>Get exclusive deals, expert guides and new arrivals direct to your inbox.</p>"
     },
     {
       "type": "color",

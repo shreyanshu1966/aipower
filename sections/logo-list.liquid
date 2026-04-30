@@ -1,91 +1,145 @@
-<section class="section" data-section-id="{{ section.id }}" data-section-type="brand-logos">
-  <div class="container">
-    {%- if section.settings.title != blank -%}
-      <header class="section__header">
-        <h2 class="section__title heading h3">{{ section.settings.title | escape }}</h2>
+<section class="logo-ticker-section section" data-section-id="{{ section.id }}" data-section-type="brand-logos">
 
+  {%- if section.settings.title != blank -%}
+    <div class="container">
+      <div class="logo-ticker-header">
+        <span class="logo-ticker-label">{{ section.settings.title | escape }}</span>
         {%- if section.settings.link_title != blank and section.settings.link != blank -%}
-          <a href="{{ section.settings.link }}" class="section__action-link link">{{ section.settings.link_title | escape }} {% render 'icon', icon: 'tail-right' %}</a>
+          <a href="{{ section.settings.link }}" class="logo-ticker-link">{{ section.settings.link_title | escape }} &rarr;</a>
         {%- endif -%}
-      </header>
-    {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
 
-    <div class="quick-links">
+  <div class="logo-ticker">
+    <div class="logo-ticker__track">
+
       {%- for block in section.blocks -%}
-        <a {% if block.settings.link %}href="{{ block.settings.link }}"{% endif %} class="quick-links__link" {{ block.shopify_attributes }}>
+        <a {% if block.settings.link %}href="{{ block.settings.link }}"{% endif %} class="logo-ticker__item" {{ block.shopify_attributes }}>
           {%- if block.settings.image -%}
-            {%- assign max_height_mobile = 40 -%}
-            {%- assign max_height_desktop = 70 -%}
-            {%- assign max_width_mobile = 100 | divided_by: block.settings.image.aspect_ratio | at_most: 100 -%}
-            {%- assign max_width_desktop = 140 | divided_by: block.settings.image.aspect_ratio | at_most: 140 -%}
-
-            {%- if block.settings.image.aspect_ratio < 1.5 -%}
-              {%- if block.settings.image.height < max_height_desktop -%}
-                {%- assign max_width_desktop = block.settings.image.width | times: block.settings.image.aspect_ratio | round -%}
-              {%- else -%}
-                {%- assign max_width_desktop = max_height_desktop | times: block.settings.image.aspect_ratio | round -%}
-              {%- endif -%}
-
-              {%- if block.settings.image.height < max_height_mobile -%}
-                {%- assign max_width_mobile = block.settings.image.width | times: block.settings.image.aspect_ratio | round -%}
-              {%- else -%}
-                {%- assign max_width_mobile = max_height_mobile | times: block.settings.image.aspect_ratio | round -%}
-              {%- endif -%}
-            {%- elsif block.settings.image.aspect_ratio > 2.5 -%}
-              {%- assign max_width_mobile = 100 -%}
-              {%- assign max_width_desktop = 140 -%}
-            {%- endif -%}
-
-            <div id="block-{{ block.id }}" class="quick-links__image-container">
-              <div class="quick-links__image-ie-fix">
-                {{- block.settings.image | image_url: width: block.settings.width | image_tag: loading: 'lazy', sizes: '280px', widths: '280,560' -}}
-              </div>
-            </div>
-
-            <style>
-              #block-{{ block.id }} .quick-links__image-ie-fix {
-                max-width: {{ max_width_mobile }}px;
-              }
-
-              @media screen and (min-width: 641px) {
-                #block-{{ block.id }} .quick-links__image-ie-fix {
-                  max-width: {{ max_width_desktop }}px;
-                }
-              }
-            </style>
+            {{- block.settings.image | image_url: width: 280 | image_tag: loading: 'lazy', widths: '140,280', class: 'logo-ticker__img' -}}
           {%- else -%}
-            <div class="quick-links__image-container">
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-            </div>
+            {{ 'image' | placeholder_svg_tag: 'logo-ticker__img logo-ticker__img--placeholder' }}
           {%- endif -%}
         </a>
       {%- endfor -%}
 
-      <style>
-        /* Based on the number of logos, we have to dynamically re-calculate the width of each each */
-        @media screen and (min-width: 641px) {
-          {%- assign number_of_rows = section.blocks.size | divided_by: 3.0 | ceil -%}
-          {%- assign max_logos_per_row = section.blocks.size | times: 1.0 | divided_by: number_of_rows | ceil -%}
-          {%- assign logo_width = 100.0 | divided_by: max_logos_per_row -%}
+      {%- for block in section.blocks -%}
+        <a {% if block.settings.link %}href="{{ block.settings.link }}"{% endif %} class="logo-ticker__item" aria-hidden="true" tabindex="-1">
+          {%- if block.settings.image -%}
+            {{- block.settings.image | image_url: width: 280 | image_tag: loading: 'lazy', widths: '140,280', class: 'logo-ticker__img' -}}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'logo-ticker__img logo-ticker__img--placeholder' }}
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
 
-          #shopify-section-{{ section.id }} .quick-links__link {
-            width: {{ logo_width }}%;
-          }
-        }
-
-        @media screen and (min-width: 1000px) {
-          {%- assign number_of_rows = section.blocks.size | divided_by: 6.0 | ceil -%}
-          {%- assign max_logos_per_row = section.blocks.size | times: 1.0 | divided_by: number_of_rows | ceil -%}
-          {%- assign logo_width = 100.0 | divided_by: max_logos_per_row -%}
-
-          #shopify-section-{{ section.id }} .quick-links__link {
-            width: {{ logo_width }}%;
-          }
-        }
-      </style>
     </div>
   </div>
+
 </section>
+
+<style>
+  .logo-ticker-section {
+    padding: 60px 0;
+    background: #fafafa;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .logo-ticker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .logo-ticker-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(0, 0, 0, 0.38);
+  }
+
+  .logo-ticker-link {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #111;
+    text-decoration: none;
+    opacity: 0.45;
+    transition: opacity 0.2s;
+  }
+
+  .logo-ticker-link:hover { opacity: 1; }
+
+  /* Ticker */
+  .logo-ticker {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .logo-ticker__track {
+    display: inline-flex;
+    align-items: center;
+    animation: logo-ticker 32s linear infinite;
+    will-change: transform;
+  }
+
+  .logo-ticker-section:hover .logo-ticker__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes logo-ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .logo-ticker__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 44px;
+    flex-shrink: 0;
+    text-decoration: none;
+    opacity: 0.45;
+    transition: opacity 0.25s ease;
+    filter: grayscale(1);
+  }
+
+  .logo-ticker__item:hover {
+    opacity: 0.85;
+    filter: grayscale(0);
+  }
+
+  .logo-ticker__img {
+    display: block;
+    max-height: 52px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
+  }
+
+  .logo-ticker__img--placeholder {
+    width: 100px;
+    height: 40px;
+    opacity: 0.2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-ticker__track { animation: none; }
+  }
+
+  @media screen and (max-width: 640px) {
+    .logo-ticker-section { padding: 44px 0; }
+    .logo-ticker__item { padding: 0 28px; }
+    .logo-ticker__img { max-height: 36px; max-width: 90px; }
+  }
+</style>
 
 {% schema %}
 {
@@ -95,7 +149,7 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Logo list"
+      "default": "Authorized Distributors"
     },
     {
       "type": "text",
@@ -133,24 +187,12 @@
       "name": "Logo list",
       "settings": {},
       "blocks": [
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        }
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
       ]
     }
   ]

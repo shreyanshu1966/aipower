@@ -1,10 +1,10 @@
-<section class="category-cards section" data-section-id="{{ section.id }}" data-section-type="category-cards">
+<section class="category-cards section reveal" data-section-id="{{ section.id }}" data-section-type="category-cards">
   {%- if section.settings.title != blank -%}
     <div class="container">
-      <div class="section__header">
-        <h2 class="section__title heading h2">{{ section.settings.title | escape }}</h2>
+      <div class="category-cards__header">
+        <h2 class="category-cards__title">{{ section.settings.title | escape }}</h2>
         {%- if section.settings.link_title != blank and section.settings.link != blank -%}
-          <a href="{{ section.settings.link }}" class="section__action-link link">{{ section.settings.link_title | escape }}</a>
+          <a href="{{ section.settings.link }}" class="category-cards__viewall">{{ section.settings.link_title | escape }} &rarr;</a>
         {%- endif -%}
       </div>
     </div>
@@ -32,7 +32,10 @@
 
           <div class="category-card__body">
             {%- if card_label != blank -%}
-              <span class="category-card__name">{{ card_label | escape }}</span>
+              <span class="category-card__name">
+                <span class="category-card__name-accent"></span>
+                {{ card_label | escape }}
+              </span>
             {%- endif -%}
             {%- if coll.products_count > 0 -%}
               <span class="category-card__count">{{ coll.products_count }} Products</span>
@@ -46,19 +49,54 @@
 </section>
 
 <style>
+  /* ── Category Cards: header ───────────────────────────── */
+  .category-cards__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 28px;
+  }
+
+  .category-cards__title {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .category-cards__viewall {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #111;
+    text-decoration: none;
+    white-space: nowrap;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+  }
+
+  .category-cards__viewall:hover { opacity: 1; }
+
+  /* ── Grid ─────────────────────────────────────────────── */
   .category-cards__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
+    gap: 10px;
   }
 
+  /* ── Card ─────────────────────────────────────────────── */
   .category-card {
     position: relative;
     display: block;
     overflow: hidden;
-    background: #222;
+    background: #111;
     text-decoration: none;
-    border-radius: 3px;
     aspect-ratio: 3 / 2;
   }
 
@@ -72,10 +110,7 @@
 
   .category-card__media {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
   }
 
   .category-card__img {
@@ -83,78 +118,98 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .category-card__img--placeholder {
-    opacity: 0.25;
-  }
+  .category-card__img--placeholder { opacity: 0.2; }
 
   .category-card:hover .category-card__img {
-    transform: scale(1.07);
+    transform: scale(1.06);
   }
 
   .category-card__overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.78) 0%,
-      rgba(0, 0, 0, 0.22) 50%,
-      rgba(0, 0, 0, 0.05) 100%
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.18) 55%,
+      rgba(0, 0, 0, 0) 100%
     );
-    transition: background 0.35s ease;
+    transition: background 0.4s ease;
   }
 
   .category-card:hover .category-card__overlay {
     background: linear-gradient(
       to top,
-      rgba(198, 0, 0, 0.90) 0%,
-      rgba(198, 0, 0, 0.55) 45%,
-      rgba(0, 0, 0, 0.15) 100%
+      rgba(180, 0, 0, 0.92) 0%,
+      rgba(180, 0, 0, 0.5) 45%,
+      rgba(0, 0, 0, 0.08) 100%
     );
   }
 
   .category-card__body {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 22px 18px 16px;
-    color: #ffffff;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px 16px 18px;
+    color: #fff;
   }
 
+  /* Name with animated left accent bar */
   .category-card__name {
-    display: block;
-    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 15px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     line-height: 1.15;
+    overflow: hidden;
+  }
+
+  .category-card__name-accent {
+    display: block;
+    width: 0;
+    height: 14px;
+    background: #e60000;
+    flex-shrink: 0;
+    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-right: 0;
+    align-self: center;
+  }
+
+  .category-card:hover .category-card__name-accent {
+    width: 3px;
+    margin-right: 8px;
   }
 
   .category-card__count {
     display: block;
-    font-size: 12px;
-    margin-top: 4px;
-    opacity: 0.7;
+    font-size: 11px;
+    margin-top: 5px;
+    opacity: 0.6;
     font-weight: 500;
     letter-spacing: 0.02em;
+    padding-left: 0;
+    transition: padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .category-card:hover .category-card__count {
+    padding-left: 11px;
   }
 
   .category-card__cta {
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 10px;
+    letter-spacing: 0.12em;
+    margin-top: 12px;
+    padding-left: 11px;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.22s ease, transform 0.22s ease;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   .category-card:hover .category-card__cta {
@@ -165,27 +220,21 @@
   @media screen and (max-width: 999px) {
     .category-cards__grid {
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
+    .category-cards__title { font-size: 26px; }
   }
 
   @media screen and (max-width: 640px) {
     .category-cards__grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
-
-    .category-card__name {
-      font-size: 13px;
-    }
-
-    .category-card__count {
-      display: none;
-    }
-
-    .category-card__body {
-      padding: 14px 12px 12px;
-    }
+    .category-cards__header { margin-bottom: 18px; padding-bottom: 18px; }
+    .category-cards__title { font-size: 22px; }
+    .category-card__name { font-size: 13px; }
+    .category-card__count { display: none; }
+    .category-card__body { padding: 14px 12px 12px; }
   }
 </style>
 

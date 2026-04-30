@@ -1,179 +1,226 @@
-<section class="testimonials section" data-section-id="{{ section.id }}" data-section-type="testimonials">
-  <div class="container">
-    {%- if section.settings.title != blank -%}
-      <div class="section__header section__header--center">
-        <h2 class="section__title heading h3">{{ section.settings.title | escape }}</h2>
+<section class="testimonials-dark" data-section-id="{{ section.id }}" data-section-type="testimonials">
+
+  {%- if section.settings.title != blank -%}
+    <div class="container">
+      <div class="testimonials-dark__header">
+        <h2 class="testimonials-dark__title">{{ section.settings.title | escape }}</h2>
         {%- if section.settings.subtitle != blank -%}
-          <p class="testimonials__subtitle">{{ section.settings.subtitle | escape }}</p>
+          <p class="testimonials-dark__subtitle">{{ section.settings.subtitle | escape }}</p>
         {%- endif -%}
       </div>
-    {%- endif -%}
+    </div>
+  {%- endif -%}
 
-    <div class="testimonials__grid">
+  <div class="testimonials-dark__scroll-outer">
+    <div class="testimonials-dark__scroll" id="tscroll-{{ section.id }}">
+
       {%- for block in section.blocks -%}
-        <div class="testimonial-card" {{ block.shopify_attributes }}>
-          <div class="testimonial-card__stars">
+        <div class="tc-card" {{ block.shopify_attributes }}>
+          <span class="tc-card__qmark" aria-hidden="true">&ldquo;</span>
+
+          <div class="tc-card__stars">
             {%- assign rating = block.settings.rating | default: 5 -%}
             {%- for i in (1..5) -%}
-              {%- if i <= rating -%}
-                <span class="testimonial-card__star">&#9733;</span>
-              {%- else -%}
-                <span class="testimonial-card__star testimonial-card__star--empty">&#9733;</span>
-              {%- endif -%}
+              <span class="tc-card__star {% unless i <= rating %}tc-card__star--off{% endunless %}">&#9733;</span>
             {%- endfor -%}
           </div>
 
           {%- if block.settings.quote != blank -%}
-            <blockquote class="testimonial-card__quote">
-              &ldquo;{{ block.settings.quote | escape }}&rdquo;
-            </blockquote>
+            <blockquote class="tc-card__quote">{{ block.settings.quote | escape }}</blockquote>
           {%- endif -%}
 
-          <div class="testimonial-card__author">
+          <div class="tc-card__author">
             {%- if block.settings.name != blank -%}
-              <span class="testimonial-card__name">{{ block.settings.name | escape }}</span>
+              <span class="tc-card__name">{{ block.settings.name | escape }}</span>
             {%- endif -%}
             {%- if block.settings.trade != blank -%}
-              <span class="testimonial-card__trade">{{ block.settings.trade | escape }}</span>
+              <span class="tc-card__trade">{{ block.settings.trade | escape }}</span>
             {%- endif -%}
           </div>
         </div>
+
       {%- else -%}
         {%- for i in (1..3) -%}
-          <div class="testimonial-card testimonial-card--placeholder">
-            <div class="testimonial-card__stars">
-              {%- for j in (1..5) -%}
-                <span class="testimonial-card__star">&#9733;</span>
-              {%- endfor -%}
+          <div class="tc-card tc-card--placeholder">
+            <span class="tc-card__qmark" aria-hidden="true">&ldquo;</span>
+            <div class="tc-card__stars">
+              {%- for j in (1..5) -%}<span class="tc-card__star">&#9733;</span>{%- endfor -%}
             </div>
-            <blockquote class="testimonial-card__quote">
-              &ldquo;Add your customer testimonials here to build trust with new visitors.&rdquo;
-            </blockquote>
-            <div class="testimonial-card__author">
-              <span class="testimonial-card__name">Customer Name</span>
-              <span class="testimonial-card__trade">Trade / Role</span>
+            <blockquote class="tc-card__quote">Add your customer testimonials here to build trust with new visitors.</blockquote>
+            <div class="tc-card__author">
+              <span class="tc-card__name">Customer Name</span>
+              <span class="tc-card__trade">Trade / Role</span>
             </div>
           </div>
         {%- endfor -%}
       {%- endfor -%}
+
     </div>
   </div>
+
 </section>
 
 <style>
-  #shopify-section-{{ section.id }} {
-    background: {{ section.settings.background }};
+  .testimonials-dark {
+    background: #0d0d0d;
+    padding: 100px 0;
+    overflow: hidden;
   }
 
-  .testimonials {
-    padding: 72px 0;
+  .testimonials-dark__header {
+    margin-bottom: 56px;
   }
 
-  .section__header--center {
-    text-align: center;
-    margin-bottom: 44px;
+  .testimonials-dark__title {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #ffffff;
+    margin: 0 0 14px;
+    text-transform: uppercase;
   }
 
-  .testimonials__subtitle {
-    font-size: 16px;
-    color: #666;
-    margin: 10px 0 0;
-    line-height: 1.5;
+  .testimonials-dark__subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    line-height: 1.6;
+    max-width: 480px;
   }
 
-  .testimonials__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+  /* Scroll area */
+  .testimonials-dark__scroll-outer {
+    padding: 0 var(--container-gutter, 24px);
   }
 
-  .testimonial-card {
-    background: #ffffff;
-    border: 1px solid #e8e8e8;
-    border-radius: 3px;
-    padding: 28px 24px;
+  .testimonials-dark__scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    padding-bottom: 4px;
+  }
+
+  .testimonials-dark__scroll::-webkit-scrollbar { display: none; }
+  .testimonials-dark__scroll.is-dragging { cursor: grabbing; }
+
+  /* Card */
+  .tc-card {
+    flex: 0 0 360px;
+    scroll-snap-align: start;
+    background: #161616;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 36px 32px 32px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    gap: 20px;
+    position: relative;
+    transition: border-color 0.3s ease;
   }
 
-  .testimonial-card:hover {
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
-    transform: translateY(-3px);
+  .tc-card:hover { border-color: rgba(230, 0, 0, 0.35); }
+
+  .tc-card--placeholder { opacity: 0.35; }
+
+  .tc-card__qmark {
+    position: absolute;
+    top: 20px;
+    right: 26px;
+    font-size: 72px;
+    line-height: 1;
+    color: rgba(230, 0, 0, 0.15);
+    font-family: Georgia, serif;
+    pointer-events: none;
+    user-select: none;
   }
 
-  .testimonial-card__stars {
+  .tc-card__stars {
     display: flex;
     gap: 3px;
   }
 
-  .testimonial-card__star {
+  .tc-card__star {
     color: #e6a800;
-    font-size: 17px;
+    font-size: 14px;
     line-height: 1;
   }
 
-  .testimonial-card__star--empty {
-    color: #ddd;
-  }
+  .tc-card__star--off { color: rgba(255, 255, 255, 0.15); }
 
-  .testimonial-card__quote {
+  .tc-card__quote {
     font-size: 15px;
-    line-height: 1.68;
-    color: #444;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
     margin: 0;
-    font-style: italic;
+    font-style: normal;
     flex: 1;
   }
 
-  .testimonial-card__author {
+  .tc-card__author {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding-top: 16px;
-    border-top: 1px solid #f0f0f0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .testimonial-card__name {
-    font-size: 14px;
+  .tc-card__name {
+    font-size: 13px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #ffffff;
+    letter-spacing: 0.01em;
   }
 
-  .testimonial-card__trade {
-    font-size: 11px;
+  .tc-card__trade {
+    font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: #e60000;
   }
 
-  .testimonial-card--placeholder {
-    opacity: 0.5;
-  }
-
   @media screen and (max-width: 999px) {
-    .testimonials__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .testimonials-dark { padding: 72px 0; }
+    .testimonials-dark__title { font-size: 30px; }
+    .tc-card { flex: 0 0 300px; padding: 28px 24px 24px; }
   }
 
   @media screen and (max-width: 640px) {
-    .testimonials {
-      padding: 50px 0;
-    }
-
-    .testimonials__grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .testimonial-card {
-      padding: 22px 18px;
-    }
+    .testimonials-dark { padding: 56px 0; }
+    .testimonials-dark__title { font-size: 24px; }
+    .testimonials-dark__header { margin-bottom: 36px; }
+    .tc-card { flex: 0 0 82vw; }
+    .tc-card__qmark { font-size: 52px; }
   }
 </style>
+
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var el = document.getElementById('tscroll-{{ section.id }}');
+      if (!el) return;
+      var startX, scrollLeft, down = false;
+
+      el.addEventListener('mousedown', function(e) {
+        down = true;
+        el.classList.add('is-dragging');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+      });
+      el.addEventListener('mouseleave', function() { down = false; el.classList.remove('is-dragging'); });
+      el.addEventListener('mouseup',    function() { down = false; el.classList.remove('is-dragging'); });
+      el.addEventListener('mousemove',  function(e) {
+        if (!down) return;
+        e.preventDefault();
+        el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.4;
+      });
+    });
+  })();
+</script>
 
 {% schema %}
 {

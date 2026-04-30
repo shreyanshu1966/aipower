@@ -1,4 +1,4 @@
-<section class="brand-story section" data-section-id="{{ section.id }}" data-section-type="brand-story">
+<section class="brand-story section reveal" data-section-id="{{ section.id }}" data-section-type="brand-story">
   <div class="container">
     <div class="brand-story__inner">
 
@@ -15,7 +15,7 @@
           <div class="brand-story__stats">
             {%- for block in section.blocks -%}
               <div class="brand-story__stat" {{ block.shopify_attributes }}>
-                <span class="brand-story__stat-number">{{ block.settings.number | escape }}</span>
+                <span class="brand-story__stat-number js-counter" data-target="{{ block.settings.number | escape }}">{{ block.settings.number | escape }}</span>
                 <span class="brand-story__stat-label">{{ block.settings.label | escape }}</span>
               </div>
             {%- endfor -%}
@@ -51,77 +51,107 @@
     color: {{ section.settings.text_color }};
   }
 
-  .brand-story {
-    padding: 80px 0;
-  }
+  .brand-story { padding: 110px 0; }
 
   .brand-story__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 80px;
     align-items: center;
   }
 
   .brand-story__label {
-    display: inline-block;
-    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     color: #e60000;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
+  }
+
+  .brand-story__label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: #e60000;
   }
 
   .brand-story__title {
-    font-size: 36px;
-    font-weight: 800;
-    line-height: 1.18;
-    margin: 0 0 32px;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 36px;
     color: inherit;
   }
 
   .brand-story__stats {
     display: flex;
-    gap: 36px;
-    margin-bottom: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    gap: 0;
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .brand-story__stat {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
+    padding-right: 32px;
+    margin-right: 32px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .brand-story__stat:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
   }
 
   .brand-story__stat-number {
-    font-size: 44px;
+    font-size: 52px;
     font-weight: 900;
     line-height: 1;
     color: #e60000;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
   }
 
   .brand-story__stat-label {
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 10px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.45);
   }
 
   .brand-story__text {
     font-size: 16px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.72);
-    margin: 0 0 30px;
-    max-width: 500px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 32px;
+    max-width: 480px;
   }
 
   .brand-story__image-container {
-    border-radius: 3px;
     overflow: hidden;
     line-height: 0;
+    position: relative;
+  }
+
+  .brand-story__image-container::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: -16px;
+    bottom: -16px;
+    border: 1px solid rgba(230, 0, 0, 0.25);
+    pointer-events: none;
+    z-index: -1;
   }
 
   .brand-story__image {
@@ -133,47 +163,80 @@
 
   .brand-story__image--placeholder {
     aspect-ratio: 4 / 3;
-    opacity: 0.2;
+    opacity: 0.15;
+  }
+
+  /* CTA button overrides for dark bg */
+  .brand-story__cta {
+    display: inline-block;
+    padding: 13px 28px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border: 1px solid #e60000;
+    color: #ffffff;
+    background: #e60000;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .brand-story__cta:hover {
+    background: transparent;
+    color: #e60000;
   }
 
   @media screen and (max-width: 999px) {
-    .brand-story__inner {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-
-    .brand-story__image-container {
-      order: -1;
-    }
-
-    .brand-story__title {
-      font-size: 28px;
-    }
-
-    .brand-story__stat-number {
-      font-size: 34px;
-    }
+    .brand-story { padding: 72px 0; }
+    .brand-story__inner { grid-template-columns: 1fr; gap: 44px; }
+    .brand-story__image-container { order: -1; }
+    .brand-story__image-container::after { display: none; }
+    .brand-story__title { font-size: 30px; }
+    .brand-story__stat-number { font-size: 38px; }
   }
 
   @media screen and (max-width: 640px) {
-    .brand-story {
-      padding: 52px 0;
-    }
-
-    .brand-story__stats {
-      gap: 22px;
-    }
-
-    .brand-story__stat-number {
-      font-size: 28px;
-    }
-
-    .brand-story__title {
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
+    .brand-story { padding: 56px 0; }
+    .brand-story__stats { gap: 0; }
+    .brand-story__stat { padding-right: 20px; margin-right: 20px; }
+    .brand-story__stat-number { font-size: 30px; }
+    .brand-story__title { font-size: 26px; margin-bottom: 24px; }
   }
 </style>
+
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var counters = document.querySelectorAll('#shopify-section-{{ section.id }} .js-counter');
+      if (!counters.length || !('IntersectionObserver' in window)) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+
+          var el = entry.target;
+          var raw = el.getAttribute('data-target') || '';
+          var suffix = raw.replace(/[\d,\.]/g, '');
+          var num = parseFloat(raw.replace(/[^\d.]/g, '')) || 0;
+          var duration = 1600;
+          var start = performance.now();
+
+          function tick(now) {
+            var t = Math.min((now - start) / duration, 1);
+            var ease = 1 - Math.pow(1 - t, 4);
+            var val = Math.round(ease * num);
+            el.textContent = val + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      }, { threshold: 0.4 });
+
+      counters.forEach(function(el) { observer.observe(el); });
+    });
+  })();
+</script>
 
 {% schema %}
 {

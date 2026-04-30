@@ -3,7 +3,8 @@
     "allow": [
       "Bash(grep -E \"\\\\.\\(json|liquid\\)$\")",
       "WebFetch(domain:tasawuk.com)",
-      "Bash(xargs grep *)"
+      "Bash(xargs grep *)",
+      "Bash(grep -E \"\\\\.\\(css|scss|js\\)$\")"
     ]
   }
 }

@@ -1,9 +1,10 @@
-<section class="usp-bar" data-section-id="{{ section.id }}" data-section-type="usp-bar">
-  <div class="container">
-    <div class="usp-bar__list">
+<section class="usp-ticker-section" data-section-id="{{ section.id }}" data-section-type="usp-bar" aria-label="Store benefits">
+  <div class="usp-ticker">
+    <div class="usp-ticker__track">
+
       {%- for block in section.blocks -%}
-        <div class="usp-bar__item" {{ block.shopify_attributes }}>
-          <div class="usp-bar__icon" aria-hidden="true">
+        <div class="usp-ticker__item" {{ block.shopify_attributes }}>
+          <span class="usp-ticker__icon" aria-hidden="true">
             {%- case block.settings.icon -%}
               {%- when 'delivery' -%}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
@@ -18,119 +19,126 @@
               {%- else -%}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             {%- endcase -%}
-          </div>
-          <div class="usp-bar__text">
-            {%- if block.settings.title != blank -%}
-              <span class="usp-bar__title">{{ block.settings.title | escape }}</span>
-            {%- endif -%}
-            {%- if block.settings.subtitle != blank -%}
-              <span class="usp-bar__subtitle">{{ block.settings.subtitle | escape }}</span>
-            {%- endif -%}
-          </div>
+          </span>
+          <span class="usp-ticker__title">{{ block.settings.title | escape }}</span>
+          {%- if block.settings.subtitle != blank -%}
+            <span class="usp-ticker__subtitle">{{ block.settings.subtitle | escape }}</span>
+          {%- endif -%}
+          <span class="usp-ticker__sep" aria-hidden="true">&#9671;</span>
         </div>
       {%- endfor -%}
+
+      {%- for block in section.blocks -%}
+        <div class="usp-ticker__item" aria-hidden="true">
+          <span class="usp-ticker__icon" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'delivery' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              {%- when 'shield' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              {%- when 'support' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              {%- when 'returns' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+              {%- when 'award' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {%- endcase -%}
+          </span>
+          <span class="usp-ticker__title">{{ block.settings.title | escape }}</span>
+          {%- if block.settings.subtitle != blank -%}
+            <span class="usp-ticker__subtitle">{{ block.settings.subtitle | escape }}</span>
+          {%- endif -%}
+          <span class="usp-ticker__sep" aria-hidden="true">&#9671;</span>
+        </div>
+      {%- endfor -%}
+
     </div>
   </div>
 </section>
 
 <style>
-  #shopify-section-{{ section.id }} {
-    background: #1a1a1a;
+  .usp-ticker-section {
+    background: #111111;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+  }
+
+  .usp-ticker {
+    overflow: hidden;
     padding: 0;
   }
 
-  .usp-bar__list {
-    display: flex;
-    align-items: stretch;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  .usp-ticker__track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: usp-marquee 28s linear infinite;
+    will-change: transform;
   }
 
-  .usp-bar__item {
+  .usp-ticker-section:hover .usp-ticker__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes usp-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .usp-ticker__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 17px 32px 17px 0;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .usp-ticker__icon {
+    width: 18px;
+    height: 18px;
+    color: #e60000;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 20px 24px;
-    flex: 1;
-    border-right: 1px solid rgba(255, 255, 255, 0.07);
-    transition: background 0.2s ease;
-    cursor: default;
   }
 
-  .usp-bar__item:last-child {
-    border-right: none;
-  }
-
-  .usp-bar__item:hover {
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .usp-bar__icon {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    color: #e60000;
-  }
-
-  .usp-bar__icon svg {
+  .usp-ticker__icon svg {
     width: 100%;
     height: 100%;
     display: block;
   }
 
-  .usp-bar__text {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .usp-bar__title {
-    display: block;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.2;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-  }
-
-  .usp-bar__subtitle {
-    display: block;
+  .usp-ticker__title {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.3;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    white-space: nowrap;
   }
 
-  @media screen and (max-width: 999px) {
-    .usp-bar__item {
-      padding: 16px 16px;
-      gap: 10px;
-    }
-
-    .usp-bar__icon {
-      width: 24px;
-      height: 24px;
-    }
+  .usp-ticker__subtitle {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
-  @media screen and (max-width: 640px) {
-    .usp-bar__list {
-      flex-wrap: wrap;
-    }
+  .usp-ticker__sep {
+    font-size: 8px;
+    color: #e60000;
+    margin-left: 32px;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
 
-    .usp-bar__item {
-      flex: 0 0 50%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 14px 14px;
-    }
-
-    .usp-bar__item:nth-child(even) {
-      border-right: none;
-    }
-
-    .usp-bar__title {
-      font-size: 12px;
-    }
+  @media (prefers-reduced-motion: reduce) {
+    .usp-ticker__track { animation: none; }
   }
 </style>
 

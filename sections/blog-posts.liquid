@@ -1,13 +1,12 @@
 {%- assign blog = section.settings.blog -%}
 
-<section class="section" data-section-id="{{ section.id }}" data-section-type="article-grid">
+<section class="section blog-editorial reveal" data-section-id="{{ section.id }}" data-section-type="article-grid">
   <div class="container">
     {%- if section.settings.title != blank -%}
-      <header class="section__header">
-        <h2 class="section__title heading h3">{{ section.settings.title | escape }}</h2>
-
+      <header class="blog-editorial__header">
+        <h2 class="blog-editorial__title">{{ section.settings.title | escape }}</h2>
         {%- unless section.settings.link_title == blank -%}
-          <a href="{{ blog.url }}" class="section__action-link link">{{ section.settings.link_title }} {% render 'icon', icon: 'tail-right' %}</a>
+          <a href="{{ blog.url }}" class="blog-editorial__viewall">{{ section.settings.link_title }} &rarr;</a>
         {%- endunless -%}
       </header>
     {%- endif -%}
@@ -70,6 +69,102 @@
     {%- endif -%}
   </div>
 </section>
+
+<style>
+  /* ── Blog Posts ───────────────────────────────────────── */
+  .blog-editorial { padding-top: 90px; padding-bottom: 90px; }
+
+  .blog-editorial__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 36px;
+  }
+
+  .blog-editorial__title {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .blog-editorial__viewall {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #111;
+    text-decoration: none;
+    opacity: 0.45;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+
+  .blog-editorial__viewall:hover { opacity: 1; }
+
+  /* Override article-item styles for editorial look */
+  .blog-editorial .article-item__image-container {
+    border-radius: 0;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+
+  .blog-editorial .article-item__image-container img {
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .blog-editorial .block-list__item:hover .article-item__image-container img {
+    transform: scale(1.04);
+  }
+
+  .blog-editorial .article-item__meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .blog-editorial .article-item__meta-item {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .blog-editorial .article-item__meta-item:first-child {
+    color: #e60000;
+  }
+
+  .blog-editorial .article-item__meta-item + .article-item__meta-item::before {
+    content: '·';
+    margin-right: 10px;
+    opacity: 0.35;
+  }
+
+  .blog-editorial .article-item__title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #111;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .blog-editorial .article-item__title:hover { color: #e60000; }
+
+  @media screen and (max-width: 767px) {
+    .blog-editorial { padding-top: 60px; padding-bottom: 60px; }
+    .blog-editorial__title { font-size: 24px; }
+    .blog-editorial__header { margin-bottom: 24px; padding-bottom: 18px; }
+  }
+</style>
 
 {% schema %}
 {
