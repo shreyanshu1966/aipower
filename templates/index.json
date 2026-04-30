@@ -15,6 +15,7 @@
         "image-1": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-04-30_at_9.00.20_PM.jpg",
             "show_overlay": true,
             "overlay_opacity": 40,
             "text_color": "#ffffff",
