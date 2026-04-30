@@ -1,1 +1,123 @@
-{"sections":{"main":{"type":"main-product","blocks":{"product_meta":{"type":"product_meta","settings":{}},"variant_selector":{"type":"variant_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{}},"description":{"type":"description","settings":{"display_mode":"collapse"}},"reviews":{"type":"reviews","settings":{}},"delivery_details":{"type":"delivery_details","settings":{"open_by_default":true}}},"block_order":["product_meta","variant_selector","buy_buttons","description","reviews","delivery_details"],"settings":{}},"product-recommendations":{"type":"product-recommendations","settings":{"heading":"Similar Product You Might Like","intent":"related"}},"frequently-bought-together":{"type":"product-recommendations","settings":{"heading":"Frequently bought together","intent":"complementary"}},"recently-viewed-products":{"type":"recently-viewed-products","settings":{}}},"order":["main","product-recommendations","frequently-bought-together","recently-viewed-products"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "product_meta": {
+          "type": "product_meta",
+          "settings": {
+            "show_vendor": true,
+            "show_sku": false,
+            "show_reviews_badge": true,
+            "show_share_buttons": true
+          }
+        },
+        "variant_selector": {
+          "type": "variant_selector",
+          "settings": {
+            "selector_mode": "block",
+            "color_mode": "swatch",
+            "variant_image_options": "",
+            "show_quantity_selector": true,
+            "show_taxes_included": false,
+            "show_inventory_quantity": false,
+            "low_inventory_threshold": 0,
+            "progress_bar_max_value": 50
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "display_mode": "collapse"
+          }
+        },
+        "delivery_details": {
+          "type": "delivery_details",
+          "settings": {
+            "open_by_default": true
+          }
+        }
+      },
+      "block_order": [
+        "product_meta",
+        "variant_selector",
+        "buy_buttons",
+        "description",
+        "delivery_details"
+      ],
+      "settings": {
+        "image_size": "small",
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "zoom_effect": "outside",
+        "carousel_effect": "fade"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Similar Product You Might Like",
+        "show_quick_buy": false,
+        "intent": "related"
+      }
+    },
+    "frequently-bought-together": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Frequently bought together",
+        "show_quick_buy": false,
+        "intent": "complementary"
+      }
+    },
+    "recently-viewed-products": {
+      "type": "recently-viewed-products",
+      "settings": {
+        "title": "Recently viewed",
+        "show_quick_buy": false
+      }
+    },
+    "17775458693832b1af": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_r88xwK": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_r88xwK"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "frequently-bought-together",
+    "recently-viewed-products",
+    "17775458693832b1af"
+  ]
+}
