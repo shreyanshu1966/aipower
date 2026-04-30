@@ -1,0 +1,378 @@
+/* ==========================================================================
+   Product Reviews — Judge.me Premium Override Styles
+   Targets Judge.me widget CSS classes (.jdgm-*)
+   Uses theme CSS variables for full visual consistency.
+   ========================================================================== */
+
+/* ── Section wrapper ─────────────────────────────────────────────────── */
+#product-reviews {
+  scroll-margin-top: 120px;
+}
+
+.pr-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pr-card__inner {
+  padding: 0;
+}
+
+/* ── Judge.me root container ─────────────────────────────────────────── */
+#product-reviews .jdgm-widget,
+#product-reviews .jdgm-rev-widg {
+  font-family: var(--text-font-family) !important;
+  color: var(--text-color) !important;
+  background: var(--secondary-background) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 32px !important;
+}
+
+/* ── Widget header / title ───────────────────────────────────────────── */
+#product-reviews .jdgm-rev-widg__title,
+#product-reviews .jdgm-histogram__title {
+  font-family: var(--heading-font-family) !important;
+  font-weight: var(--heading-font-weight) !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 20px)) !important;
+  color: var(--heading-color) !important;
+  letter-spacing: 0.02em !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 20px !important;
+}
+
+/* ── Summary row: average score + histogram ──────────────────────────── */
+#product-reviews .jdgm-rev-widg__summary {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 24px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 24px !important;
+  padding-bottom: 24px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+#product-reviews .jdgm-rev-widg__summary-avg-score {
+  font-family: var(--heading-font-family) !important;
+  font-weight: var(--heading-font-weight) !important;
+  font-size: 52px !important;
+  color: var(--heading-color) !important;
+  line-height: 1 !important;
+}
+
+/* ── Stars ───────────────────────────────────────────────────────────── */
+#product-reviews .jdgm-star,
+#product-reviews .jdgm-rev__rating i,
+#product-reviews [class*="jdgm-"] .jdgm-star {
+  color: var(--product-review-star-color, #f5a623) !important;
+}
+
+#product-reviews .jdgm-star.jdgm--empty,
+#product-reviews [class*="jdgm-"] .jdgm-star.jdgm--empty {
+  color: var(--border-color) !important;
+}
+
+/* ── "Write a Review" button ─────────────────────────────────────────── */
+#product-reviews .jdgm-write-rev-link,
+#product-reviews .jdgm-write-rev-btn,
+#product-reviews a.jdgm-write-rev-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: var(--primary-button-background) !important;
+  color: var(--primary-button-text-color) !important;
+  border: 2px solid transparent !important;
+  border-radius: 6px !important;
+  padding: 10px 20px !important;
+  font-family: var(--text-font-family) !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px)) !important;
+  font-weight: var(--text-font-bolder-weight) !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+#product-reviews .jdgm-write-rev-link::before,
+#product-reviews .jdgm-write-rev-btn::before {
+  content: '✍' !important;
+  font-size: 14px !important;
+}
+
+#product-reviews .jdgm-write-rev-link:hover,
+#product-reviews .jdgm-write-rev-btn:hover {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(var(--accent-color-rgb), 0.35) !important;
+}
+
+/* ── Individual review cards ─────────────────────────────────────────── */
+#product-reviews .jdgm-rev {
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  padding: 20px 22px !important;
+  margin-bottom: 16px !important;
+  background: var(--background) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  position: relative !important;
+}
+
+#product-reviews .jdgm-rev:hover {
+  border-color: rgba(var(--accent-color-rgb), 0.4) !important;
+  box-shadow: 0 2px 12px rgba(var(--accent-color-rgb), 0.1) !important;
+}
+
+#product-reviews .jdgm-rev__header {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 10px !important;
+}
+
+/* ── Reviewer name ───────────────────────────────────────────────────── */
+#product-reviews .jdgm-rev__author {
+  font-family: var(--heading-font-family) !important;
+  font-weight: var(--heading-font-weight) !important;
+  color: var(--heading-color) !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 15px)) !important;
+}
+
+/* ── Review date ─────────────────────────────────────────────────────── */
+#product-reviews .jdgm-rev__timestamp {
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 12px)) !important;
+  color: var(--text-color) !important;
+  opacity: 0.5 !important;
+}
+
+/* ── Review title ────────────────────────────────────────────────────── */
+#product-reviews .jdgm-rev__title {
+  font-family: var(--heading-font-family) !important;
+  font-weight: var(--heading-font-weight) !important;
+  color: var(--heading-color) !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 15px)) !important;
+  margin-bottom: 6px !important;
+}
+
+/* ── Review body ─────────────────────────────────────────────────────── */
+#product-reviews .jdgm-rev__body {
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 14px)) !important;
+  line-height: 1.75 !important;
+  color: var(--text-color) !important;
+}
+
+/* ── Verified buyer badge (injected by our JS) ───────────────────────── */
+.pr-verified-badge {
+  display: inline-block;
+  margin-left: auto;
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: var(--text-font-bolder-weight);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  color: var(--accent-color);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── No reviews empty state ──────────────────────────────────────────── */
+#product-reviews .jdgm-rev-widg__no-revs,
+#product-reviews .jdgm-no-revs {
+  text-align: center !important;
+  padding: 40px 20px !important;
+  opacity: 0.5 !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 14px)) !important;
+}
+
+/* ── Pagination ──────────────────────────────────────────────────────── */
+#product-reviews .jdgm-paginate {
+  text-align: center !important;
+  margin-top: 24px !important;
+  padding-top: 20px !important;
+  border-top: 1px solid var(--border-color) !important;
+}
+
+#product-reviews .jdgm-paginate__page,
+#product-reviews .jdgm-paginate a {
+  display: inline-block !important;
+  padding: 8px 16px !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px)) !important;
+  color: var(--heading-color) !important;
+  transition: border-color 0.2s, color 0.2s, background 0.2s !important;
+  text-decoration: none !important;
+  margin: 0 3px !important;
+}
+
+#product-reviews .jdgm-paginate__page:hover,
+#product-reviews .jdgm-paginate a:hover,
+#product-reviews .jdgm-paginate__page.jdgm--active {
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+  background: rgba(var(--accent-color-rgb), 0.06) !important;
+}
+
+/* ── Write a Review Form ─────────────────────────────────────────────── */
+#product-reviews .jdgm-rev-widg__form,
+#product-reviews .jdgm-form {
+  border-top: 1px solid var(--border-color) !important;
+  margin-top: 32px !important;
+  padding-top: 28px !important;
+  background: transparent !important;
+}
+
+#product-reviews .jdgm-form__title,
+#product-reviews .jdgm-rev-widg__form-title {
+  font-family: var(--heading-font-family) !important;
+  font-weight: var(--heading-font-weight) !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 18px)) !important;
+  color: var(--heading-color) !important;
+  margin-bottom: 20px !important;
+}
+
+/* ── Form labels ─────────────────────────────────────────────────────── */
+#product-reviews .jdgm-form label,
+#product-reviews .jdgm-rev-widg__form label {
+  display: block !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 12px)) !important;
+  font-weight: var(--text-font-bolder-weight) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--heading-color) !important;
+  margin-bottom: 6px !important;
+}
+
+/* ── Form inputs ─────────────────────────────────────────────────────── */
+#product-reviews .jdgm-form input[type="text"],
+#product-reviews .jdgm-form input[type="email"],
+#product-reviews .jdgm-form textarea,
+#product-reviews .jdgm-rev-widg__form input[type="text"],
+#product-reviews .jdgm-rev-widg__form input[type="email"],
+#product-reviews .jdgm-rev-widg__form textarea {
+  display: block !important;
+  width: 100% !important;
+  padding: 10px 14px !important;
+  border: 1px solid var(--form-border-color) !important;
+  border-radius: 6px !important;
+  background: var(--input-background) !important;
+  color: var(--text-color) !important;
+  font-family: var(--text-font-family) !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 14px)) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  outline: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  margin-bottom: 16px !important;
+}
+
+#product-reviews .jdgm-form input:focus,
+#product-reviews .jdgm-form textarea:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.15) !important;
+}
+
+#product-reviews .jdgm-form textarea {
+  min-height: 120px !important;
+  resize: vertical !important;
+}
+
+/* ── Star selector in form ───────────────────────────────────────────── */
+#product-reviews .jdgm-form .jdgm-star {
+  font-size: 28px !important;
+  cursor: pointer !important;
+  transition: color 0.15s ease, transform 0.1s ease !important;
+}
+
+#product-reviews .jdgm-form .jdgm-star:hover,
+#product-reviews .jdgm-form .jdgm-star.pr-star-hover {
+  color: var(--product-review-star-color, #f5a623) !important;
+  transform: scale(1.2) !important;
+}
+
+/* ── Submit button ───────────────────────────────────────────────────── */
+#product-reviews .jdgm-submit-btn,
+#product-reviews button[type="submit"],
+#product-reviews input[type="submit"] {
+  display: inline-block !important;
+  padding: 12px 28px !important;
+  background: var(--primary-button-background) !important;
+  color: var(--primary-button-text-color) !important;
+  font-family: var(--text-font-family) !important;
+  font-weight: var(--text-font-bolder-weight) !important;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px)) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+  width: auto !important;
+}
+
+#product-reviews .jdgm-submit-btn:hover,
+#product-reviews button[type="submit"]:hover,
+#product-reviews input[type="submit"]:hover {
+  background: var(--accent-color) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(var(--accent-color-rgb), 0.35) !important;
+}
+
+/* ── Success / error alerts ──────────────────────────────────────────── */
+#product-reviews .jdgm-alert-success,
+#product-reviews .jdgm--success {
+  background: var(--success-background) !important;
+  color: var(--success-color) !important;
+  border: 1px solid var(--success-color) !important;
+  border-radius: 6px !important;
+  padding: 14px 18px !important;
+  margin-top: 16px !important;
+}
+
+#product-reviews .jdgm-alert-error,
+#product-reviews .jdgm--error {
+  background: var(--error-background) !important;
+  color: var(--error-color) !important;
+  border: 1px solid var(--error-color) !important;
+  border-radius: 6px !important;
+  padding: 14px 18px !important;
+  margin-bottom: 16px !important;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media screen and (max-width: 640px) {
+  #product-reviews .jdgm-widget,
+  #product-reviews .jdgm-rev-widg {
+    padding: 20px 16px !important;
+  }
+
+  #product-reviews .jdgm-rev-widg__summary {
+    flex-direction: column !important;
+  }
+
+  #product-reviews .jdgm-write-rev-link,
+  #product-reviews .jdgm-write-rev-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  #product-reviews .jdgm-rev__header {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .pr-verified-badge {
+    margin-left: 0 !important;
+  }
+
+  #product-reviews .jdgm-form .jdgm-star {
+    font-size: 34px !important;
+  }
+}

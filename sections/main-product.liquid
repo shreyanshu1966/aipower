@@ -1,4 +1,5 @@
 {%- assign shipping_estimator_block = section.blocks | where: 'type', 'shipping_estimator' | first -%}
+{{ 'product-reviews.css' | asset_url | stylesheet_tag }}
 {%- assign variant_selector_block = section.blocks | where: 'type', 'variant_selector' | first -%}
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
 
@@ -88,6 +89,11 @@
                     </div>
                   </div>
                 {%- endif -%}
+
+              {%- when 'reviews' -%}
+                <div class="product-block-list__item product-block-list__item--reviews" {{ block.shopify_attributes }}>
+                  {%- render 'product-reviews', product: product -%}
+                </div>
 
               {%- when 'delivery_details' -%}
                 <div class="product-block-list__item product-block-list__item--delivery" {{ block.shopify_attributes }}>
@@ -668,6 +674,17 @@ and injected only on quick buy modal
             }
           ],
           "default": "collapse"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "name": "Product Reviews",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Displays reviews from the Shopify Product Reviews app. Install the free app from the Shopify App Store to enable this block. [Learn more](https://apps.shopify.com/product-reviews)"
         }
       ]
     },

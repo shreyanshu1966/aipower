@@ -1,0 +1,96 @@
+{%- comment -%}
+  Product Reviews Snippet — Judge.me Integration
+  Requires: Judge.me Product Reviews app (https://apps.shopify.com/judgeme)
+  After installing Judge.me, enable it in: Online Store → Themes → Customize → App Embeds → Judge.me
+  The app automatically creates the `judgeme_widgets` snippet.
+  CSS overrides live in: assets/product-reviews.css
+{%- endcomment -%}
+
+<div id="product-reviews" class="pr-section product-block-list__item">
+  <div class="card pr-card">
+
+    <div class="pr-card__inner">
+
+      {%- comment -%} ── Judge.me Review Widget ─────────────────────────────────────── {%- endcomment -%}
+      {%- if product != blank -%}
+        {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  function enhanceJudgeMeReviews() {
+    var section = document.getElementById('product-reviews');
+    if (!section) return;
+
+    // ── Add "Verified Buyer" badge to each review that doesn't already have one ──
+    var reviewItems = section.querySelectorAll('.jdgm-rev');
+    reviewItems.forEach(function(item) {
+      if (!item.querySelector('.pr-verified-badge')) {
+        var badge = document.createElement('span');
+        badge.className = 'pr-verified-badge';
+        badge.textContent = '✔ Verified Buyer';
+        var header = item.querySelector('.jdgm-rev__header');
+        if (header) header.appendChild(badge);
+      }
+    });
+
+    // ── Smooth scroll when "Write a Review" button is clicked ───────────
+    var writeBtn = section.querySelector('.jdgm-write-rev-link, .jdgm-write-rev-btn');
+    if (writeBtn && !writeBtn.dataset.prEnhanced) {
+      writeBtn.dataset.prEnhanced = '1';
+      writeBtn.addEventListener('click', function() {
+        setTimeout(function() {
+          var form = section.querySelector('.jdgm-rev-widg__form, .jdgm-form');
+          if (form) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 300);
+      });
+    }
+
+    // ── Star hover effect on write-review form ───────────────────────────
+    var starLabels = section.querySelectorAll('.jdgm-form .jdgm-star');
+    if (starLabels.length && !section.dataset.prStarsInit) {
+      section.dataset.prStarsInit = '1';
+      starLabels.forEach(function(star, idx) {
+        star.addEventListener('mouseenter', function() {
+          starLabels.forEach(function(s, i) {
+            s.classList.toggle('pr-star-hover', i <= idx);
+          });
+        });
+        star.addEventListener('mouseleave', function() {
+          starLabels.forEach(function(s) { s.classList.remove('pr-star-hover'); });
+        });
+      });
+    }
+  }
+
+  // Run immediately + after Judge.me renders (it loads asynchronously)
+  function tryEnhance(retries) {
+    enhanceJudgeMeReviews();
+    if (retries > 0) {
+      setTimeout(function() { tryEnhance(retries - 1); }, 800);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { tryEnhance(4); });
+  } else {
+    tryEnhance(4);
+  }
+
+  // MutationObserver — catches Judge.me's async injection
+  var target = document.getElementById('product-reviews');
+  if (target) {
+    var observer = new MutationObserver(function() { enhanceJudgeMeReviews(); });
+    observer.observe(target, { childList: true, subtree: true });
+  }
+})();
+</script>
