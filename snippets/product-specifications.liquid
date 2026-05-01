@@ -1,0 +1,60 @@
+{%- assign specs = product.metafields.custom.specifications.value -%}
+{%- if specs != blank -%}
+  <style>
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9em;
+    }
+    .specs-table__row:nth-child(odd) {
+      background: rgba(0, 0, 0, 0.03);
+    }
+    .specs-table__label,
+    .specs-table__value {
+      padding: 8px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    }
+    .specs-table__label {
+      font-weight: 600;
+      width: 45%;
+      color: currentColor;
+    }
+    .specs-table__value {
+      color: currentColor;
+      opacity: 0.8;
+    }
+  </style>
+
+  <div class="product-block-list__item product-block-list__item--specifications" {{ block.shopify_attributes }}>
+    <div class="card">
+      <div class="card__header">
+        <h2 class="card__title heading h3">Specifications</h2>
+      </div>
+
+      <div class="card__section">
+        <table class="specs-table">
+          <tbody>
+            {%- for entry in specs -%}
+              {%- assign raw_key = entry[0] -%}
+              {%- assign value = entry[1] -%}
+              {%- if value != blank -%}
+                {%- assign words = raw_key | replace: '_', ' ' | split: ' ' -%}
+                {%- assign label = '' -%}
+                {%- for word in words -%}
+                  {%- assign cap_word = word | capitalize -%}
+                  {%- assign label = label | append: cap_word | append: ' ' -%}
+                {%- endfor -%}
+                <tr class="specs-table__row">
+                  <th class="specs-table__label" scope="row">{{ label | strip }}</th>
+                  <td class="specs-table__value">{{ value }}</td>
+                </tr>
+              {%- endif -%}
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

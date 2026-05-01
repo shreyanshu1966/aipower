@@ -51,6 +51,9 @@
             {%- case block.type -%}
               
 
+              {%- when 'specifications' -%}
+                {%- render 'product-specifications', product: product, block: block -%}
+
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product-block-list__item product-block-list__item--description" {{ block.shopify_attributes }}>
@@ -649,6 +652,12 @@ and injected only on quick buy modal
           "content": "Show customers where they can pick up the product. [Learn more](https://help.shopify.com/en/manual/shipping/setting-up-and-managing-your-shipping/local-methods/local-pickup#show-pickup-availability-to-your-customers)"
         }
       ]
+    },
+    {
+      "type": "specifications",
+      "name": "Specifications",
+      "limit": 1,
+      "settings": []
     },
     {
       "type": "description",

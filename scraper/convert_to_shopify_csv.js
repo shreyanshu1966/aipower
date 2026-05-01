@@ -59,6 +59,7 @@ const SHOPIFY_COLUMNS = [
   'Google Shopping / Custom label 2',
   'Google Shopping / Custom label 3',
   'Google Shopping / Custom label 4',
+  'Metafield: custom.specifications [json]',
 ];
 
 function csvEscape(value) {
@@ -94,16 +95,14 @@ function parseWeightGrams(specifications) {
   return Math.round(parseFloat(match[1]) * 1000);
 }
 
-function cleanDescription(description, specifications) {
-  const desc = String(description || '').trim();
-  if (!specifications || Object.keys(specifications).length === 0) return desc;
-
-  const specLines = Object.entries(specifications)
-    .filter(([, v]) => v != null && String(v).trim() !== '')
-    .map(([k, v]) => `${k.replace(/_/g, ' ')}: ${v}`);
-
-  if (specLines.length === 0) return desc;
-  return `${desc}\n\nSpecifications:\n${specLines.join('\n')}`;
+function getCleanDescription(rawDescription, productName) {
+  const raw = String(rawDescription || '').trim();
+  const name = String(productName || '');
+  // If no "Key :- Value" spec pattern exists, the description has real copy — return it as-is
+  if (!/ :- /.test(raw)) return raw;
+  // Spec-only descriptions: the content is just the product name followed by specs.
+  // Return the product name as the clean description.
+  return name;
 }
 
 function buildMainRow(product, handle, imageUrl) {
@@ -115,7 +114,7 @@ function buildMainRow(product, handle, imageUrl) {
   const row = {
     'Title': product.name || '',
     'URL handle': handle,
-    'Description': cleanDescription(product.description, specs),
+    'Description': getCleanDescription(product.description, product.name),
     'Vendor': 'AIpower Kuwait',
     'Product category': product.categoryName || '',
     'Type': product.subCategoryName || product.categoryName || '',
@@ -170,6 +169,7 @@ function buildMainRow(product, handle, imageUrl) {
     'Google Shopping / Custom label 2': '',
     'Google Shopping / Custom label 3': '',
     'Google Shopping / Custom label 4': '',
+    'Metafield: custom.specifications [json]': Object.keys(specs).length ? JSON.stringify(specs) : '',
   };
 
   return SHOPIFY_COLUMNS.map((col) => csvEscape(row[col]));
