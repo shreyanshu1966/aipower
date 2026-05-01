@@ -202,6 +202,9 @@
                                 {% endunless -%}
 
                                 <a href="{{ routes.cart_change_url }}?quantity=0&line={{ forloop.index }}" data-action="decrease-quantity" data-quantity="0" data-line="{{ forloop.index }}" class="line-item__quantity-remove link">{{ 'cart.items.remove' | t }}</a>
+                                <button type="button" class="line-item__quantity-remove link cart-move-to-wishlist" data-product-handle="{{ line_item.product.handle }}" data-line="{{ forloop.index }}" aria-label="Move to wishlist">
+                                  <svg viewBox="0 0 17 15" style="width:11px;height:10px;fill:currentColor;vertical-align:middle;margin-right:3px" aria-hidden="true"><path d="M15.0349331 1.40485867C14.1287273.49933787 12.9252477 0 11.6443673 0S9.16000731.49933787 8.25448651 1.40417371c-.01164437.01164436-.02328874.02328873-.03493311.03561806-.01164436-.01232933-.02260377-.02328873-.03424813-.0349331C7.2790995.49933787 6.07561989 0 4.79473949 0 3.51385908 0 2.31037947.49933787 1.40417371 1.40485867.49796794 2.31037947 0 3.51385908 0 4.79473949 0 6.07561989.4986529 7.2790995 1.40417371 8.1846203L8.2195534 15l6.8153797-6.8153797c.9055208-.9055208 1.4041737-2.10900041 1.4041737-3.38988081 0-1.28019545-.4986529-2.48436002-1.4041737-3.38988082z"/></svg>Move to Wishlist
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -247,6 +250,9 @@
                           {%- endunless -%}
 
                           <a href="{{ routes.cart_change_url }}?quantity=0&line={{ forloop.index }}" data-action="decrease-quantity" data-quantity="0" data-line="{{ forloop.index }}" class="line-item__quantity-remove link">{{ 'cart.items.remove' | t }}</a>
+                          <button type="button" class="line-item__quantity-remove link cart-move-to-wishlist" data-product-handle="{{ line_item.product.handle }}" data-line="{{ forloop.index }}" aria-label="Move to wishlist">
+                            <svg viewBox="0 0 17 15" style="width:11px;height:10px;fill:currentColor;vertical-align:middle;margin-right:3px" aria-hidden="true"><path d="M15.0349331 1.40485867C14.1287273.49933787 12.9252477 0 11.6443673 0S9.16000731.49933787 8.25448651 1.40417371c-.01164437.01164436-.02328874.02328873-.03493311.03561806-.01164436-.01232933-.02260377-.02328873-.03424813-.0349331C7.2790995.49933787 6.07561989 0 4.79473949 0 3.51385908 0 2.31037947.49933787 1.40417371 1.40485867.49796794 2.31037947 0 3.51385908 0 4.79473949 0 6.07561989.4986529 7.2790995 1.40417371 8.1846203L8.2195534 15l6.8153797-6.8153797c.9055208-.9055208 1.4041737-2.10900041 1.4041737-3.38988081 0-1.28019545-.4986529-2.48436002-1.4041737-3.38988082z"/></svg>Move to Wishlist
+                          </button>
                         </td>
 
                         <td class="line-item__line-price table__cell--right hidden-phone">
@@ -583,6 +589,70 @@
     </div>
   {%- endif -%}
 </section>
+
+<script>
+(function () {
+  const WISHLIST_KEY = 'shopify_wishlist';
+
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.cart-move-to-wishlist');
+    if (!btn) return;
+
+    const handle = btn.getAttribute('data-product-handle');
+    const line   = parseInt(btn.getAttribute('data-line'), 10);
+    if (!handle || !line) return;
+
+    btn.disabled = true;
+
+    // 1. Add to wishlist in localStorage
+    const wishlist = JSON.parse(localStorage.getItem(WISHLIST_KEY) || '[]');
+    if (!wishlist.includes(handle)) {
+      wishlist.push(handle);
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+    }
+
+    // 2. Remove from cart via AJAX
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ line: line, quantity: 0 })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (cart) {
+      // 3. Fade out and remove the row
+      const row = btn.closest('tr.line-item');
+      if (row) {
+        row.style.transition = 'opacity 0.3s, transform 0.3s';
+        row.style.opacity    = '0';
+        row.style.transform  = 'translateX(12px)';
+        setTimeout(function () { row.remove(); }, 300);
+      }
+
+      // 4. Update cart count badge in header
+      document.querySelectorAll('.header__cart-count').forEach(function (el) {
+        el.textContent = cart.item_count;
+        el.style.display = cart.item_count > 0 ? 'inline-flex' : 'none';
+      });
+
+      // 5. Update wishlist counter
+      document.querySelectorAll('.wishlist-count').forEach(function (el) {
+        const wl = JSON.parse(localStorage.getItem(WISHLIST_KEY) || '[]');
+        el.textContent = wl.length;
+        el.style.display = wl.length > 0 ? 'inline-flex' : 'none';
+      });
+
+      // 6. Toast — reuse the one from custom.js if available, else simple alert
+      if (typeof showToast === 'function') {
+        showToast('Moved to wishlist');
+      } else {
+        const ev = new CustomEvent('cart:move-to-wishlist', { detail: { handle: handle } });
+        document.dispatchEvent(ev);
+      }
+    })
+    .catch(function () { btn.disabled = false; });
+  });
+})();
+</script>
 
 {% schema %}
 {

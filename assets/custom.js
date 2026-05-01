@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 3000);
   }
 
+  window.showToast = showToast;
+
   // Toggle wishlist item
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('.wishlist-icon');
