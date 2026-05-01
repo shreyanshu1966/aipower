@@ -129,7 +129,8 @@
           "type": "card",
           "settings": {
             "collection": "tools",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/WhatsApp_Image_2026-05-01_at_7.03.29_PM.jpg"
           }
         },
         "cat-2": {
