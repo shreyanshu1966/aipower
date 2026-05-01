@@ -115,7 +115,7 @@ function buildMainRow(product, handle, imageUrl) {
     'Title': product.name || '',
     'URL handle': handle,
     'Description': getCleanDescription(product.description, product.name),
-    'Vendor': 'AIpower Kuwait',
+    'Vendor': 'AiPower Kuwait',
     'Product category': product.categoryName || '',
     'Type': product.subCategoryName || product.categoryName || '',
     'Tags': tags,
