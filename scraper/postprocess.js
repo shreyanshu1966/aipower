@@ -83,7 +83,36 @@ const SPEC_PATTERNS = [
   { key: 'electrode_diameter',   re: /Electrode Diameter\s*[:-]+\s*([^P\n,]{1,20})/i },
 ];
 
+// Generic "Key: value" parser for products that don't use the " :- " format.
+// Finds any sequence of "Capitalized Word(s): value" pairs.
+function parseSpecsGeneric(description) {
+  const re = /([A-Z][a-zA-Z()\/]*(?:\s+[A-Za-z()\/]+){0,4})\s*:\s*/g;
+  const hits = [];
+  let m;
+  while ((m = re.exec(description)) !== null) {
+    hits.push({ key: m[1].trim(), valStart: m.index + m[0].length, keyStart: m.index });
+  }
+  if (hits.length < 3) return null;
+
+  const specs = {};
+  for (let i = 0; i < hits.length; i++) {
+    const { key, valStart, keyStart } = hits[i];
+    const valEnd = i + 1 < hits.length ? hits[i + 1].keyStart : description.length;
+    const value = description.slice(valStart, valEnd).trim().replace(/\s+/g, ' ').replace(/\.$/, '');
+    if (!value || value.length > 120) continue;
+
+    // Skip prose sentence starters
+    if (/^(The|This|It|We|Our|With|For|And|Or|But|Is|Are|Was|Were|Be|Been|Being)\b/i.test(key)) continue;
+
+    const k = key.toLowerCase().replace(/\s+/g, '_').replace(/[()\/]/g, '').replace(/_+/g, '_').replace(/^_|_$/g, '');
+    if (k.length >= 2 && !specs[k]) specs[k] = value;
+  }
+
+  return Object.keys(specs).length >= 3 ? specs : null;
+}
+
 function parseSpecs(description) {
+  // Try hardcoded " :- " patterns first (MQ/aipower generators)
   const specs = {};
   for (const { key, re } of SPEC_PATTERNS) {
     const m = description.match(re);
@@ -91,7 +120,10 @@ function parseSpecs(description) {
       specs[key] = m[1].trim().replace(/\s+/g, ' ');
     }
   }
-  return Object.keys(specs).length ? specs : null;
+  if (Object.keys(specs).length) return specs;
+
+  // Fall back to generic "Key: value" parser
+  return parseSpecsGeneric(description);
 }
 
 /**
