@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="section-header">
+    <h1 class="section-header__title heading h2">My Wishlist</h1>
+  </div>
+
+  <div id="wishlist-loading" class="wishlist-loading">
+    <p>Loading...</p>
+  </div>
+
+  <div id="wishlist-empty" class="wishlist-empty" hidden>
+    <div class="wishlist-empty__content">
+      <svg focusable="false" viewBox="0 0 17 15" role="presentation" style="width:48px;height:48px;opacity:0.3;margin-bottom:16px">
+        <path d="M8.5 13.4C6.3 11.5 1 7.3 1 4.2 1 2.4 2.4 1 4.2 1c1.3 0 2.4.7 3.1 1.7L8.5 4l1.2-1.3C10.4 1.7 11.5 1 12.8 1 14.6 1 16 2.4 16 4.2c0 3.1-5.3 7.3-7.5 9.2z" stroke="currentColor" stroke-width="2" fill="none"></path>
+      </svg>
+      <p class="wishlist-empty__title heading h3">Your wishlist is empty</p>
+      <p>Save items you love by clicking the heart icon on any product.</p>
+      <a href="{{ routes.root_url }}" class="button button--primary" style="margin-top:20px">Continue Shopping</a>
+    </div>
+  </div>
+
+  <div id="wishlist-grid" class="product-list product-list--cols-3-wide" hidden></div>
+</div>
+
+<style>
+  .wishlist-loading,
+  .wishlist-empty {
+    padding: 60px 0;
+    text-align: center;
+  }
+  .wishlist-empty__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .wishlist-empty__title {
+    margin-bottom: 8px;
+  }
+  #wishlist-grid {
+    padding: 30px 0 60px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Wishlist",
+  "settings": []
+}
+{% endschema %}
