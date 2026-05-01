@@ -101,12 +101,12 @@
               {%- when 'delivery_details' -%}
                 <div class="product-block-list__item product-block-list__item--delivery" {{ block.shopify_attributes }}>
                   <div class="card delivery-details-card">
-                    <button class="card__collapsible-button" data-action="toggle-collapsible" aria-expanded="{{ block.settings.open_by_default | json }}" aria-controls="block-delivery-{{ section.id }}-{{ block.id }}">
-                      <span class="card__title heading h3">🚚 Delivery Details</span>
+                    <button class="card__collapsible-button" data-action="toggle-collapsible" aria-expanded="false" aria-controls="block-delivery-{{ section.id }}-{{ block.id }}">
+                      <span class="card__title heading h3">Delivery Details</span>
                       <span class="plus-button plus-button--large"></span>
                     </button>
 
-                    <div id="block-delivery-{{ section.id }}-{{ block.id }}" class="card__collapsible" {% unless block.settings.open_by_default %}style="display:none"{% endunless %}>
+                    <div id="block-delivery-{{ section.id }}-{{ block.id }}" class="card__collapsible">
                       <div class="card__collapsible-content">
                         <div class="delivery-details">
                           <p class="delivery-details__intro">We offer fast and reliable delivery across Kuwait:</p>
