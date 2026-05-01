@@ -52,7 +52,7 @@
               
 
               {%- when 'specifications' -%}
-                {%- render 'product-specifications', product: product, block: block -%}
+                {%- render 'product-specifications', product: product, block: block, section_id: section.id -%}
 
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
@@ -657,7 +657,28 @@ and injected only on quick buy modal
       "type": "specifications",
       "name": "Specifications",
       "limit": 1,
-      "settings": []
+      "settings": [
+        {
+          "type": "select",
+          "id": "display_mode",
+          "label": "Display mode",
+          "options": [
+            {
+              "value": "collapse",
+              "label": "Collapse"
+            },
+            {
+              "value": "view_more",
+              "label": "Show view more if long"
+            },
+            {
+              "value": "show_all",
+              "label": "Show all"
+            }
+          ],
+          "default": "collapse"
+        }
+      ]
     },
     {
       "type": "description",
