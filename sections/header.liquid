@@ -12,7 +12,7 @@
 {%- assign navigation_mobile_menu_handle = section.settings.navigation_mobile_menu | default: navigation_menu_handle -%}
 {%- assign navigation_mobile_menu = linklists[navigation_mobile_menu_handle] -%}
 
-<section data-section-id="{{ section.id }}" data-section-type="site-header" data-section-settings="{{ section_settings | escape_once }}">
+<section data-section-id="{{ section.id }}" data-section-type="header" data-section-settings="{{ section_settings | escape_once }}">
   <header class="header header--{{ section.settings.desktop_navigation_layout }} {% unless section.settings.show_condensed_search %}header--search-expanded{% endunless %}" role="banner">
     <div class="container">
       <div class="header__inner">
@@ -497,6 +497,11 @@
       color: var(--accent-color);
       background: rgba(0, 0, 0, 0.04);
     }
+  }
+
+  /* Ensure mobile menu draws above the bottom nav (z-index: 200) */
+  .mobile-menu {
+    z-index: 300;
   }
 
   /* Mobile bottom navigation bar */
