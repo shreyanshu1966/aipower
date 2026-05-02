@@ -5,48 +5,23 @@
 
   <div class="mobile-menu__inner">
     <div class="mobile-menu__panel">
+      <div class="mobile-menu__section">
+        <ul class="mobile-menu__nav" data-type="menu" role="list">
+          {%- for link in menu.links -%}
+            <li class="mobile-menu__nav-item">
+              {%- if link.links != blank -%}
+                {%- capture panel_id -%}mobile-panel-{{ forloop.index0 }}{%- endcapture -%}
 
-      {%- comment -%}── All Categories section ──{%- endcomment -%}
-      {%- if categories_menu.links.size > 0 -%}
-        <div class="mobile-menu__section mobile-menu__section--categories">
-          <p class="mobile-menu__section-title heading h5">All Categories</p>
-          <ul class="mobile-menu__nav" data-type="menu" role="list">
-            {%- for link in categories_menu.links -%}
-              <li class="mobile-menu__nav-item">
-                {%- if link.links != blank -%}
-                  {%- capture cat_panel_id -%}mobile-cat-{{ forloop.index0 }}{%- endcapture -%}
-                  <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ cat_panel_id }}" data-action="open-panel">
-                    {{- link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
-                  </button>
-                {%- else -%}
-                  <a href="{{ link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ link.title }}</a>
-                {%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
-        </div>
-      {%- endif -%}
-
-      {%- comment -%}── Mobile-specific menu links ──{%- endcomment -%}
-      {%- if menu.links.size > 0 -%}
-        <div class="mobile-menu__section">
-          <ul class="mobile-menu__nav" data-type="menu" role="list">
-            {%- for link in menu.links -%}
-              <li class="mobile-menu__nav-item">
-                {%- if link.links != blank -%}
-                  {%- capture panel_id -%}mobile-panel-{{ forloop.index0 }}{%- endcapture -%}
-
-                  <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ panel_id }}" data-action="open-panel">
-                    {{- link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
-                  </button>
-                {%- else -%}
-                  <a href="{{ link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ link.title }}</a>
-                {%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
-        </div>
-      {%- endif -%}
+                <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ panel_id }}" data-action="open-panel">
+                  {{- link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
+                </button>
+              {%- else -%}
+                <a href="{{ link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ link.title }}</a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
 
       {%- if section.settings.navigation_phone_number != blank or section.settings.navigation_email != blank -%}
         <div class="mobile-menu__section mobile-menu__section--loose">
@@ -79,34 +54,8 @@
       {%- endif -%}
     </div>
 
-    {%- comment -%}── Nested panels for All Categories ──{%- endcomment -%}
-    {%- for link in categories_menu.links -%}
-      {%- if link.links != blank -%}
-        {%- capture cat_panel_id -%}mobile-cat-{{ forloop.index0 }}{%- endcapture -%}
+    {%- comment -%}We now need to loop again (for the second level) to create the nested panel{%- endcomment -%}
 
-        <div id="{{ cat_panel_id }}" class="mobile-menu__panel is-nested">
-          <div class="mobile-menu__section is-sticky">
-            <button class="mobile-menu__back-button" data-action="close-panel">{% render 'icon', icon: 'arrow-left' %} {{ 'header.navigation.back' | t }}</button>
-          </div>
-
-          <div class="mobile-menu__section">
-            <ul class="mobile-menu__nav" data-type="menu" role="list">
-              <li class="mobile-menu__nav-item">
-                <a href="{{ link.url }}" class="mobile-menu__nav-link text--strong">{{ link.title }}</a>
-              </li>
-
-              {%- for sub_link in link.links -%}
-                <li class="mobile-menu__nav-item">
-                  <a href="{{ sub_link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ sub_link.title }}</a>
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        </div>
-      {%- endif -%}
-    {%- endfor -%}
-
-    {%- comment -%}── Nested panels for mobile-specific menu (second level) ──{%- endcomment -%}
     {%- for link in menu.links -%}
       {%- if link.links != blank -%}
         {%- capture panel_id -%}mobile-panel-{{ forloop.index0 }}{%- endcapture -%}
@@ -242,7 +191,8 @@
       {%- endif -%}
     {%- endfor -%}
 
-    {%- comment -%}── Third-level panels for mobile-specific menu ──{%- endcomment -%}
+    {%- comment -%}Finally we need to do the same to create the third level menus{%- endcomment -%}
+
     {%- for link in menu.links -%}
       {%- if link.links != blank -%}
         {%- assign downcase_title = link.title | downcase -%}
