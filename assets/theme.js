@@ -6742,13 +6742,11 @@ var MobileNavigation = class {
     this.mobileMenuToggleElement.setAttribute("aria-expanded", this.isOpen ? "true" : "false");
     this.mobileMenuElement.setAttribute("aria-hidden", this.isOpen ? "false" : "true");
     if (!this.isOpen) {
-      this.mobileMenuElement.style.maxHeight = "";
       this.element.querySelectorAll(".mobile-menu__panel.is-open").forEach((item) => {
         item.classList.remove("is-open");
       });
       document.documentElement.classList.remove("is-locked");
     } else {
-      this._calculateMaxHeight();
       document.documentElement.classList.add("is-locked");
     }
   }
@@ -6762,12 +6760,7 @@ var MobileNavigation = class {
     this.element.querySelector(`[aria-controls="${panelToClose.id}"]`).setAttribute("aria-expanded", "false");
   }
   _calculateMaxHeight() {
-    if (this.isOpen) {
-      const headerBottom = document.querySelector(".header").getBoundingClientRect().bottom;
-      const bottomNav = document.querySelector(".mobile-bottom-nav");
-      const bottomNavHeight = bottomNav ? bottomNav.offsetHeight : 0;
-      this.mobileMenuElement.style.maxHeight = `${window.innerHeight - headerBottom - bottomNavHeight}px`;
-    }
+    // Max height is now handled by CSS using position:fixed and var(--header-height)
   }
   _onWindowClick(event2) {
     if (this.isOpen && !this.element.contains(event2.target)) {

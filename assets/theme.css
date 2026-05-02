@@ -5098,7 +5098,6 @@ select option {
 .header__mobile-nav {
   margin-right: 20px;
   display: inline-block;
-  position: relative;
 }
 
 .header__desktop-nav {
@@ -6758,19 +6757,20 @@ shopify-account::part(signed-out-avatar) {
 
 .mobile-menu {
   visibility: hidden;
-  z-index: 100;
+  z-index: 300;
   opacity: 0;
   color: var(--text-color);
   font-size: calc(var(--base-text-font-size)  - (var(--default-text-font-size)  - 16px));
   will-change: transform;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - var(--header-height, 60px));
   max-height: 0;
+  overflow: hidden;
   transition: opacity .25s ease-in-out, transform .25s ease-in-out, visibility .25s ease-in-out, max-height 0s linear .25s;
   position: fixed;
   top: var(--header-height, 60px);
   left: 0;
-  transform: scale(.9);
+  transform: scale(.97) translateY(-8px);
 }
 
 .mobile-menu .icon--arrow-right, .mobile-menu .icon--arrow-left {
@@ -6781,9 +6781,10 @@ shopify-account::part(signed-out-avatar) {
 .mobile-menu[aria-hidden="false"] {
   opacity: 1;
   visibility: visible;
-  max-height: none;
+  max-height: calc(100vh - var(--header-height, 60px));
+  overflow: auto;
   transition: opacity .4s cubic-bezier(0, 1, .4, 1), transform .4s cubic-bezier(.18, 1.25, .4, 1), visibility .4s linear;
-  transform: scale(1);
+  transform: scale(1) translateY(0);
 }
 
 .mobile-menu__inner {
