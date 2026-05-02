@@ -175,7 +175,8 @@
           "type": "card",
           "settings": {
             "collection": "accessories",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/7_jpg.jpg"
           }
         }
       },
