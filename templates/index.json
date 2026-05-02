@@ -167,7 +167,8 @@
           "type": "card",
           "settings": {
             "collection": "water-pumps",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/6_jpg.jpg"
           }
         },
         "cat-7": {
