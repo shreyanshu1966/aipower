@@ -25,7 +25,7 @@
               <span class="icon-state__secondary">{%- render 'icon', icon: 'close' -%}</span>
             </button>
 
-            {%- render 'mobile-menu', menu: navigation_mobile_menu -%}
+            {%- render 'mobile-menu', menu: navigation_mobile_menu, categories_menu: navigation_menu -%}
           </nav>
         {%- endif -%}
 
@@ -411,6 +411,27 @@
 </section>
 
 <style>
+  /* ── Mobile menu: All Categories section ── */
+  .mobile-menu__section--categories .mobile-menu__section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .mobile-menu__section--categories .mobile-menu__section-title::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 14' fill='currentColor'%3E%3Cpath d='M0 12h20v2H0v-2zM0 0h20v2H0V0zm0 6h20v2H0V6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.7;
+  }
+  .mobile-menu__section--categories {
+    border-bottom: 2px solid var(--primary-button-background, #000);
+  }
+
   /* ── All Categories dropdown ── */
   .nav-bar__all-categories:hover .nav-bar__categories-dropdown {
     display: block !important;
