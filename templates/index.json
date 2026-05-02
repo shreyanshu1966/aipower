@@ -151,28 +151,32 @@
           "type": "card",
           "settings": {
             "collection": "welding-machine",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/4_jpg.jpg"
           }
         },
         "cat-5": {
           "type": "card",
           "settings": {
             "collection": "cleaning",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/5_jpg.jpg"
           }
         },
         "cat-6": {
           "type": "card",
           "settings": {
             "collection": "water-pumps",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/6_jpg.jpg"
           }
         },
         "cat-7": {
           "type": "card",
           "settings": {
             "collection": "accessories",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/7_jpg.jpg"
           }
         }
       },
