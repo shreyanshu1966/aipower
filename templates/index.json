@@ -159,7 +159,8 @@
           "type": "card",
           "settings": {
             "collection": "cleaning",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/5_jpg.jpg"
           }
         },
         "cat-6": {
