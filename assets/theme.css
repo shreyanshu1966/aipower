@@ -6780,6 +6780,7 @@ shopify-account::part(signed-out-avatar) {
 .mobile-menu[aria-hidden="false"] {
   opacity: 1;
   visibility: visible;
+  max-height: none;
   transition: opacity .4s cubic-bezier(0, 1, .4, 1), transform .4s cubic-bezier(.18, 1.25, .4, 1), visibility .4s linear;
   transform: scale(1);
 }
