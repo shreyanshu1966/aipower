@@ -6763,7 +6763,10 @@ var MobileNavigation = class {
   }
   _calculateMaxHeight() {
     if (this.isOpen) {
-      this.mobileMenuElement.style.maxHeight = `${window.innerHeight - document.querySelector(".header").getBoundingClientRect().bottom}px`;
+      const headerBottom = document.querySelector(".header").getBoundingClientRect().bottom;
+      const bottomNav = document.querySelector(".mobile-bottom-nav");
+      const bottomNavHeight = bottomNav ? bottomNav.offsetHeight : 0;
+      this.mobileMenuElement.style.maxHeight = `${window.innerHeight - headerBottom - bottomNavHeight}px`;
     }
   }
   _onWindowClick(event2) {

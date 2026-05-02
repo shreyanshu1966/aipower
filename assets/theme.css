@@ -5098,6 +5098,7 @@ select option {
 .header__mobile-nav {
   margin-right: 20px;
   display: inline-block;
+  position: relative;
 }
 
 .header__desktop-nav {
@@ -6757,7 +6758,7 @@ shopify-account::part(signed-out-avatar) {
 
 .mobile-menu {
   visibility: hidden;
-  z-index: 1;
+  z-index: 100;
   opacity: 0;
   color: var(--text-color);
   font-size: calc(var(--base-text-font-size)  - (var(--default-text-font-size)  - 16px));
@@ -6766,8 +6767,8 @@ shopify-account::part(signed-out-avatar) {
   height: 100vh;
   max-height: 0;
   transition: opacity .25s ease-in-out, transform .25s ease-in-out, visibility .25s ease-in-out, max-height 0s linear .25s;
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: var(--header-height, 60px);
   left: 0;
   transform: scale(.9);
 }
