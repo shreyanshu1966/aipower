@@ -6742,11 +6742,13 @@ var MobileNavigation = class {
     this.mobileMenuToggleElement.setAttribute("aria-expanded", this.isOpen ? "true" : "false");
     this.mobileMenuElement.setAttribute("aria-hidden", this.isOpen ? "false" : "true");
     if (!this.isOpen) {
+      this.mobileMenuElement.style.maxHeight = "";
       this.element.querySelectorAll(".mobile-menu__panel.is-open").forEach((item) => {
         item.classList.remove("is-open");
       });
       document.documentElement.classList.remove("is-locked");
     } else {
+      this._calculateMaxHeight();
       document.documentElement.classList.add("is-locked");
     }
   }
@@ -6760,7 +6762,9 @@ var MobileNavigation = class {
     this.element.querySelector(`[aria-controls="${panelToClose.id}"]`).setAttribute("aria-expanded", "false");
   }
   _calculateMaxHeight() {
-    // Max height is now handled by CSS using position:fixed and var(--header-height)
+    if (this.isOpen) {
+      this.mobileMenuElement.style.maxHeight = `${window.innerHeight - document.querySelector(".header").getBoundingClientRect().bottom}px`;
+    }
   }
   _onWindowClick(event2) {
     if (this.isOpen && !this.element.contains(event2.target)) {
