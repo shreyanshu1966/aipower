@@ -151,7 +151,8 @@
           "type": "card",
           "settings": {
             "collection": "welding-machine",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/4_jpg.jpg"
           }
         },
         "cat-5": {
