@@ -242,7 +242,7 @@
 
               
               {%- when 'complementary_products' -%}
-                <product-recommendations class="product-block-list__item product-block-list__item--complementary" intent="complementary" product="{{ product.id }}" limit="{{ block.settings.products_count }}" section-id="{{ section.id }}" {{ block.shopify_attributes }}>
+                <product-recommendations id="fbt-recs-{{ section.id }}-{{ block.id }}" class="product-block-list__item product-block-list__item--complementary" intent="complementary" product="{{ product.id }}" limit="{{ block.settings.products_count }}" section-id="{{ section.id }}" {{ block.shopify_attributes }}>
                   {%- if recommendations.performed and recommendations.products_count > 0 -%}
                     <div class="card fbt-card">
                       <div class="card__header">
@@ -304,79 +304,100 @@
                         </div>
                       </div>
                     </div>
-
-                    <script>
-                      (function() {
-                        var card = document.currentScript.closest('.fbt-card');
-                        if (!card) return;
-                        var checkboxes = card.querySelectorAll('.fbt-checkbox');
-                        var totalEl = card.querySelector('.fbt-total__price');
-                        var addBtn = card.querySelector('.fbt-add-btn');
-
-                        function formatMoney(cents) {
-                          return new Intl.NumberFormat('en-IN', {
-                            style: 'currency',
-                            currency: 'INR',
-                            minimumFractionDigits: 0,
-                            maximumFractionDigits: 0
-                          }).format(cents / 100);
-                        }
-
-                        function updateTotal() {
-                          var total = 0;
-                          checkboxes.forEach(function(cb) {
-                            if (cb.checked) total += parseInt(cb.dataset.price, 10);
-                          });
-                          totalEl.textContent = formatMoney(total);
-                        }
-
-                        checkboxes.forEach(function(cb) {
-                          cb.addEventListener('change', updateTotal);
-                        });
-
-                        addBtn.addEventListener('click', function() {
-                          var items = [];
-                          checkboxes.forEach(function(cb) {
-                            if (cb.checked && cb.dataset.variantId) {
-                              items.push({ id: parseInt(cb.dataset.variantId, 10), quantity: 1 });
-                            }
-                          });
-                          if (!items.length) return;
-
-                          addBtn.disabled = true;
-                          var originalText = addBtn.textContent.trim();
-                          addBtn.textContent = 'Adding...';
-
-                          fetch('/cart/add.js', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ items: items })
-                          })
-                          .then(function(res) { return res.json(); })
-                          .then(function(data) {
-                            if (data.items) {
-                              document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
-                              addBtn.textContent = 'Added to Cart!';
-                              setTimeout(function() {
-                                addBtn.disabled = false;
-                                addBtn.textContent = originalText;
-                              }, 2000);
-                            } else {
-                              addBtn.disabled = false;
-                              addBtn.textContent = originalText;
-                            }
-                          })
-                          .catch(function() {
-                            addBtn.disabled = false;
-                            addBtn.textContent = originalText;
-                          });
-                        });
-
-                        updateTotal();
-                      })();
-                    </script>
+                    {%- comment -%}Hidden element so theme.js Flickity init finds a valid node{%- endcomment -%}
+                    <div class="complementary-product-list" aria-hidden="true" style="display:none"></div>
                   {%- endif -%}
                 </product-recommendations>
+
+                <script>
+                  (function() {
+                    function initFBT(card) {
+                      var checkboxes = card.querySelectorAll('.fbt-checkbox');
+                      var totalEl = card.querySelector('.fbt-total__price');
+                      var addBtn = card.querySelector('.fbt-add-btn');
+                      if (!totalEl || !addBtn || card._fbtInitialized) return;
+                      card._fbtInitialized = true;
+
+                      function formatMoney(cents) {
+                        return new Intl.NumberFormat('en-IN', {
+                          style: 'currency',
+                          currency: 'INR',
+                          minimumFractionDigits: 0,
+                          maximumFractionDigits: 0
+                        }).format(cents / 100);
+                      }
+
+                      function updateTotal() {
+                        var total = 0;
+                        checkboxes.forEach(function(cb) {
+                          if (cb.checked) total += parseInt(cb.dataset.price, 10);
+                        });
+                        totalEl.textContent = formatMoney(total);
+                      }
+
+                      checkboxes.forEach(function(cb) {
+                        cb.addEventListener('change', updateTotal);
+                      });
+
+                      addBtn.addEventListener('click', function() {
+                        var items = [];
+                        checkboxes.forEach(function(cb) {
+                          if (cb.checked && cb.dataset.variantId) {
+                            items.push({ id: parseInt(cb.dataset.variantId, 10), quantity: 1 });
+                          }
+                        });
+                        if (!items.length) return;
+
+                        addBtn.disabled = true;
+                        var originalText = addBtn.textContent.trim();
+                        addBtn.textContent = 'Adding...';
+
+                        fetch('/cart/add.js', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ items: items })
+                        })
+                        .then(function(res) { return res.json(); })
+                        .then(function(data) {
+                          if (data.items) {
+                            document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                            addBtn.textContent = 'Added to Cart!';
+                            setTimeout(function() {
+                              addBtn.disabled = false;
+                              addBtn.textContent = originalText;
+                            }, 2000);
+                          } else {
+                            addBtn.disabled = false;
+                            addBtn.textContent = originalText;
+                          }
+                        })
+                        .catch(function() {
+                          addBtn.disabled = false;
+                          addBtn.textContent = originalText;
+                        });
+                      });
+
+                      updateTotal();
+                    }
+
+                    var wrapper = document.getElementById('fbt-recs-{{ section.id }}-{{ block.id }}');
+                    if (!wrapper) return;
+
+                    var existing = wrapper.querySelector('.fbt-card');
+                    if (existing) {
+                      initFBT(existing);
+                    } else {
+                      var observer = new MutationObserver(function() {
+                        var card = wrapper.querySelector('.fbt-card');
+                        if (card) {
+                          observer.disconnect();
+                          initFBT(card);
+                        }
+                      });
+                      observer.observe(wrapper, { childList: true, subtree: true });
+                    }
+                  })();
+                </script>
 
               
 
