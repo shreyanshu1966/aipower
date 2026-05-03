@@ -244,19 +244,137 @@
               {%- when 'complementary_products' -%}
                 <product-recommendations class="product-block-list__item product-block-list__item--complementary" intent="complementary" product="{{ product.id }}" limit="{{ block.settings.products_count }}" section-id="{{ section.id }}" {{ block.shopify_attributes }}>
                   {%- if recommendations.performed and recommendations.products_count > 0 -%}
-                    <div class="card">
+                    <div class="card fbt-card">
                       <div class="card__header">
                         <h2 class="card__title heading h3">{{ block.settings.title | escape }}</h2>
                       </div>
 
-                      <div class="card__section">
-                        <div class="complementary-product-list">
-                          {%- for product in recommendations.products -%}
-                            {%- render 'product-item', product: product, horizontal: true, hide_labels: true, show_add_to_cart: block.settings.show_quick_buy, complementary_products: true -%}
+                      <div class="card__section fbt-card__section">
+                        <div class="fbt-list">
+
+                          <label class="fbt-item fbt-item--current">
+                            <input type="checkbox" class="fbt-checkbox" checked
+                                   data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                                   data-price="{{ product.selected_or_first_available_variant.price }}">
+                            <span class="fbt-checkmark" aria-hidden="true"></span>
+                            {%- if product.featured_image -%}
+                              <span class="fbt-item__image">
+                                <img src="{{ product.featured_image | image_url: width: 64 }}"
+                                     alt="{{ product.title | escape }}"
+                                     width="64" height="64" loading="lazy">
+                              </span>
+                            {%- endif -%}
+                            <span class="fbt-item__info">
+                              <span class="fbt-item__title">{{ product.title | truncate: 48 }}</span>
+                              <span class="fbt-item__price">{{ product.selected_or_first_available_variant.price | money }}</span>
+                            </span>
+                            <span class="fbt-item__badge">This item</span>
+                          </label>
+
+                          {%- for rec_product in recommendations.products -%}
+                            <label class="fbt-item">
+                              <input type="checkbox" class="fbt-checkbox" checked
+                                     data-variant-id="{{ rec_product.selected_or_first_available_variant.id }}"
+                                     data-price="{{ rec_product.selected_or_first_available_variant.price }}">
+                              <span class="fbt-checkmark" aria-hidden="true"></span>
+                              {%- if rec_product.featured_image -%}
+                                <span class="fbt-item__image">
+                                  <img src="{{ rec_product.featured_image | image_url: width: 64 }}"
+                                       alt="{{ rec_product.title | escape }}"
+                                       width="64" height="64" loading="lazy">
+                                </span>
+                              {%- endif -%}
+                              <span class="fbt-item__info">
+                                <span class="fbt-item__title">{{ rec_product.title | truncate: 48 }}</span>
+                                <span class="fbt-item__price">{{ rec_product.selected_or_first_available_variant.price | money }}</span>
+                              </span>
+                            </label>
                           {%- endfor -%}
+
+                        </div>
+
+                        <div class="fbt-footer">
+                          <div class="fbt-total">
+                            <span class="fbt-total__label">Total Price:</span>
+                            <span class="fbt-total__price"></span>
+                          </div>
+                          <button class="fbt-add-btn button button--primary" type="button">
+                            Add Selected to Cart
+                          </button>
                         </div>
                       </div>
                     </div>
+
+                    <script>
+                      (function() {
+                        var card = document.currentScript.closest('.fbt-card');
+                        if (!card) return;
+                        var checkboxes = card.querySelectorAll('.fbt-checkbox');
+                        var totalEl = card.querySelector('.fbt-total__price');
+                        var addBtn = card.querySelector('.fbt-add-btn');
+
+                        function formatMoney(cents) {
+                          return new Intl.NumberFormat('en-IN', {
+                            style: 'currency',
+                            currency: 'INR',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                          }).format(cents / 100);
+                        }
+
+                        function updateTotal() {
+                          var total = 0;
+                          checkboxes.forEach(function(cb) {
+                            if (cb.checked) total += parseInt(cb.dataset.price, 10);
+                          });
+                          totalEl.textContent = formatMoney(total);
+                        }
+
+                        checkboxes.forEach(function(cb) {
+                          cb.addEventListener('change', updateTotal);
+                        });
+
+                        addBtn.addEventListener('click', function() {
+                          var items = [];
+                          checkboxes.forEach(function(cb) {
+                            if (cb.checked && cb.dataset.variantId) {
+                              items.push({ id: parseInt(cb.dataset.variantId, 10), quantity: 1 });
+                            }
+                          });
+                          if (!items.length) return;
+
+                          addBtn.disabled = true;
+                          var originalText = addBtn.textContent.trim();
+                          addBtn.textContent = 'Adding...';
+
+                          fetch('/cart/add.js', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ items: items })
+                          })
+                          .then(function(res) { return res.json(); })
+                          .then(function(data) {
+                            if (data.items) {
+                              document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                              addBtn.textContent = 'Added to Cart!';
+                              setTimeout(function() {
+                                addBtn.disabled = false;
+                                addBtn.textContent = originalText;
+                              }, 2000);
+                            } else {
+                              addBtn.disabled = false;
+                              addBtn.textContent = originalText;
+                            }
+                          })
+                          .catch(function() {
+                            addBtn.disabled = false;
+                            addBtn.textContent = originalText;
+                          });
+                        });
+
+                        updateTotal();
+                      })();
+                    </script>
                   {%- endif -%}
                 </product-recommendations>
 

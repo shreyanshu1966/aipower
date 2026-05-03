@@ -9121,6 +9121,164 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   }
 }
 
+/* Frequently Bought Together */
+.fbt-card__section {
+  padding: 0 !important;
+}
+
+.fbt-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.fbt-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  transition: background 0.15s;
+  user-select: none;
+}
+
+.fbt-item:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.fbt-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.fbt-checkmark {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 3px;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.fbt-checkbox:checked ~ .fbt-checkmark {
+  background: var(--primary-button-background);
+  border-color: var(--primary-button-background);
+}
+
+.fbt-checkbox:checked ~ .fbt-checkmark::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--primary-button-text-color);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+.fbt-item__image {
+  flex-shrink: 0;
+}
+
+.fbt-item__image img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  display: block;
+}
+
+.fbt-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.fbt-item__title {
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
+  font-weight: var(--text-font-bolder-weight);
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-color);
+}
+
+.fbt-item__price {
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
+  color: var(--accent-color);
+}
+
+.fbt-item__badge {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: var(--text-font-bolder-weight);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color);
+  opacity: 0.45;
+}
+
+.fbt-footer {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fbt-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.fbt-total__label {
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
+  font-weight: var(--text-font-bolder-weight);
+  color: var(--text-color);
+}
+
+.fbt-total__price {
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 15px));
+  font-weight: var(--text-font-bolder-weight);
+  color: var(--text-color);
+}
+
+.fbt-add-btn {
+  width: 100%;
+  text-align: center;
+  line-height: 46px;
+  padding: 0 20px;
+}
+
+.fbt-add-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* FBT on desktop: cap list at 3 items with scroll */
+@media screen and (min-width: 641px) {
+  .fbt-list {
+    max-height: 280px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+  }
+}
+
 .promo-block {
   border-radius: 3px;
   min-height: 240px;
