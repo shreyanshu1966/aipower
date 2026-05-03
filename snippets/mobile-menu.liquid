@@ -7,25 +7,7 @@
     <div class="mobile-menu__panel">
 
       {%- comment -%}── All Categories section ──{%- endcomment -%}
-      {%- if categories_menu.links.size > 0 -%}
-        <div class="mobile-menu__section mobile-menu__section--categories">
-          <p class="mobile-menu__section-title heading h5">All Categories</p>
-          <ul class="mobile-menu__nav" data-type="menu" role="list">
-            {%- for link in categories_menu.links -%}
-              <li class="mobile-menu__nav-item">
-                {%- if link.links != blank -%}
-                  {%- capture cat_panel_id -%}mobile-cat-{{ forloop.index0 }}{%- endcapture -%}
-                  <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ cat_panel_id }}" data-action="open-panel">
-                    {{- link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
-                  </button>
-                {%- else -%}
-                  <a href="{{ link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ link.title }}</a>
-                {%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
-        </div>
-      {%- endif -%}
+      
 
       {%- comment -%}── Mobile-specific menu links ──{%- endcomment -%}
       {%- if menu.links.size > 0 -%}
