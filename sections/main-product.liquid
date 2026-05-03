@@ -319,12 +319,12 @@
                       card._fbtInitialized = true;
 
                       function formatMoney(cents) {
-                        return new Intl.NumberFormat('en-IN', {
+                        return new Intl.NumberFormat('en-KW', {
                           style: 'currency',
-                          currency: 'INR',
-                          minimumFractionDigits: 0,
-                          maximumFractionDigits: 0
-                        }).format(cents / 100);
+                          currency: 'KWD',
+                          minimumFractionDigits: 3,
+                          maximumFractionDigits: 3
+                        }).format(cents / 1000);
                       }
 
                       function updateTotal() {
