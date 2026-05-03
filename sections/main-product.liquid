@@ -352,15 +352,27 @@
                         var originalText = addBtn.textContent.trim();
                         addBtn.textContent = 'Adding...';
 
-                        fetch('/cart/add.js', {
+                        fetch(window.routes ? window.routes.cartAddUrl + '.js' : '/cart/add.js', {
                           method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
+                          credentials: 'same-origin',
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                          },
                           body: JSON.stringify({ items: items })
                         })
                         .then(function(res) { return res.json(); })
                         .then(function(data) {
                           if (data.items) {
-                            document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                            addBtn.dispatchEvent(new CustomEvent('product:added', {
+                              bubbles: true,
+                              detail: {
+                                button: addBtn,
+                                variant: null,
+                                quantity: items.length,
+                                productAdded: true
+                              }
+                            }));
                             addBtn.textContent = 'Added to Cart!';
                             setTimeout(function() {
                               addBtn.disabled = false;
