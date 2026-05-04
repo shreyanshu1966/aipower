@@ -145,7 +145,8 @@
           "type": "card",
           "settings": {
             "collection": "air-compressor",
-            "label": "Compressors"
+            "label": "Compressors",
+            "fallback_image": "shopify://shop_images/file_00000000e67c71fa974266da014349e1.png"
           }
         },
         "cat-4": {
