@@ -137,7 +137,8 @@
           "type": "card",
           "settings": {
             "collection": "generator",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/file_00000000069871fa8a1900db06827900.png"
           }
         },
         "cat-3": {
