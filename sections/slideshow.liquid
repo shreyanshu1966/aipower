@@ -50,14 +50,14 @@
 
             {%- if block.settings.title != blank -%}
               <div class="slideshow__elem slideshow__elem--title"
-                style="--elem-x:{{ block.settings.title_pos_x }}%;--elem-y:{{ block.settings.title_pos_y }}%;--elem-mob-x:{{ block.settings.title_mob_x }}%;--elem-mob-y:{{ block.settings.title_mob_y }}%;text-align:{{ block.settings.title_align }};">
+                style="--elem-x:{{ block.settings.title_pos_x }}%;--elem-y:{{ block.settings.title_pos_y }}%;--elem-mob-x:{{ block.settings.title_mob_x }}%;--elem-mob-y:{{ block.settings.title_mob_y }}%;--fs:{{ block.settings.title_size }}px;--fs-mob:{{ block.settings.title_mob_size }}px;text-align:{{ block.settings.title_align }};">
                 <h2 class="slideshow__title heading h1">{{ block.settings.title | escape }}</h2>
               </div>
             {%- endif -%}
 
             {%- if block.settings.content != blank -%}
               <div class="slideshow__elem slideshow__elem--subtext"
-                style="--elem-x:{{ block.settings.text_pos_x }}%;--elem-y:{{ block.settings.text_pos_y }}%;--elem-mob-x:{{ block.settings.text_mob_x }}%;--elem-mob-y:{{ block.settings.text_mob_y }}%;text-align:{{ block.settings.content_align }};">
+                style="--elem-x:{{ block.settings.text_pos_x }}%;--elem-y:{{ block.settings.text_pos_y }}%;--elem-mob-x:{{ block.settings.text_mob_x }}%;--elem-mob-y:{{ block.settings.text_mob_y }}%;--fs:{{ block.settings.text_size }}px;--fs-mob:{{ block.settings.text_mob_size }}px;text-align:{{ block.settings.content_align }};">
                 <p class="slideshow__content">{{ block.settings.content | escape | newline_to_br }}</p>
               </div>
             {%- endif -%}
@@ -65,7 +65,7 @@
             {%- if block.settings.button_text != blank and block.settings.link != blank -%}
               <div class="slideshow__elem slideshow__elem--buttons"
                 style="--elem-x:{{ block.settings.btn_pos_x }}%;--elem-y:{{ block.settings.btn_pos_y }}%;--elem-mob-x:{{ block.settings.btn_mob_x }}%;--elem-mob-y:{{ block.settings.btn_mob_y }}%;">
-                <div class="slideshow__button-group slideshow__button-group--{{ block.settings.btn_align }}">
+                <div class="slideshow__button-group slideshow__button-group--{{ block.settings.btn_align }} slideshow__button-group--{{ block.settings.btn_size }}">
                   <a href="{{ block.settings.link }}" class="slideshow__button button">{{ block.settings.button_text | escape }}</a>
                   {%- if block.settings.secondary_button_text != blank and block.settings.secondary_button_link != blank -%}
                     <a href="{{ block.settings.secondary_button_link }}" class="slideshow__button slideshow__button--ghost">{{ block.settings.secondary_button_text | escape }}</a>
@@ -154,13 +154,14 @@
     letter-spacing: -0.02em;
     line-height: 1.1;
     margin: 0;
+    font-size: var(--fs, 52px);
   }
 
   .slideshow__content {
-    font-size: 16px;
     opacity: 0.88;
     max-width: 560px;
     margin: 0;
+    font-size: var(--fs, 16px);
   }
 
   /* ── Button group ─────────────────────────────────────── */
@@ -173,6 +174,19 @@
   .slideshow__button-group--left   { justify-content: flex-start; }
   .slideshow__button-group--center { justify-content: center; }
   .slideshow__button-group--right  { justify-content: flex-end; }
+
+  /* ── Button sizes ─────────────────────────────────────── */
+  .slideshow__button-group--sm .button,
+  .slideshow__button-group--sm .slideshow__button--ghost {
+    padding: 7px 16px;
+    font-size: 10px;
+  }
+  .slideshow__button-group--lg .button,
+  .slideshow__button-group--lg .slideshow__button--ghost {
+    padding: 16px 38px;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+  }
 
   .slideshow__button--ghost {
     display: inline-block;
@@ -246,11 +260,11 @@
     }
 
     .slideshow__title {
-      font-size: 22px !important;
+      font-size: var(--fs-mob, 22px) !important;
       line-height: 1.2;
     }
     .slideshow__content {
-      font-size: 14px;
+      font-size: var(--fs-mob, 14px);
       line-height: 1.5;
     }
 
@@ -485,6 +499,14 @@
           "visible_if": "{{ block.settings.title != blank }}"
         },
         {
+          "type": "range",
+          "id": "title_size",
+          "label": "Desktop font size",
+          "min": 16, "max": 120, "step": 2, "unit": "px",
+          "default": 52,
+          "visible_if": "{{ block.settings.title != blank }}"
+        },
+        {
           "type": "select",
           "id": "title_align",
           "label": "Heading text align",
@@ -513,6 +535,14 @@
           "visible_if": "{{ block.settings.title != blank }}"
         },
         {
+          "type": "range",
+          "id": "title_mob_size",
+          "label": "Mobile font size",
+          "min": 12, "max": 72, "step": 2, "unit": "px",
+          "default": 22,
+          "visible_if": "{{ block.settings.title != blank }}"
+        },
+        {
           "type": "header",
           "content": "Subtext position"
         },
@@ -530,6 +560,14 @@
           "label": "Desktop — up \/ down",
           "min": 0, "max": 100, "step": 1, "unit": "%",
           "default": 52,
+          "visible_if": "{{ block.settings.content != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "label": "Desktop font size",
+          "min": 10, "max": 48, "step": 1, "unit": "px",
+          "default": 16,
           "visible_if": "{{ block.settings.content != blank }}"
         },
         {
@@ -561,6 +599,14 @@
           "visible_if": "{{ block.settings.content != blank }}"
         },
         {
+          "type": "range",
+          "id": "text_mob_size",
+          "label": "Mobile font size",
+          "min": 10, "max": 32, "step": 1, "unit": "px",
+          "default": 14,
+          "visible_if": "{{ block.settings.content != blank }}"
+        },
+        {
           "type": "header",
           "content": "Buttons position"
         },
@@ -578,6 +624,18 @@
           "label": "Desktop — up \/ down",
           "min": 0, "max": 100, "step": 1, "unit": "%",
           "default": 65,
+          "visible_if": "{{ block.settings.button_text != blank }}"
+        },
+        {
+          "type": "select",
+          "id": "btn_size",
+          "label": "Button size",
+          "options": [
+            { "value": "sm", "label": "Small" },
+            { "value": "md", "label": "Medium" },
+            { "value": "lg", "label": "Large" }
+          ],
+          "default": "md",
           "visible_if": "{{ block.settings.button_text != blank }}"
         },
         {
