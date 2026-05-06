@@ -16,6 +16,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_May_6_2026_02_16_13_PM.png",
+            "mobile_image": "shopify://shop_images/ChatGPT_Image_May_6_2026_02_18_09_PM.png",
             "show_overlay": false,
             "overlay_opacity": 0,
             "text_color": "#ffffff",
@@ -41,7 +42,7 @@
             "btn_align": "center",
             "btn_mob_x": 50,
             "btn_mob_y": 62,
-            "btn_mob_scale": 100,
+            "btn_mob_scale": 55,
             "button_background": "#e60000",
             "button_text_color": "#ffffff",
             "button_text": "Shop Tools",
