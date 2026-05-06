@@ -15,10 +15,9 @@
     <div class="slideshow slideshow--{{ section.settings.section_size | replace: '_', '-' }} {% if section.settings.edge_to_edge %}slideshow--edge2edge{% endif %}" style="color: {{ section.blocks.first.settings.text_color }}">
       {%- for block in section.blocks -%}
         {%- capture slide_inner -%}
-          <div class="slideshow__slide-inner slideshow__slide-inner--{{ block.settings.content_position | replace: '_', '-' }}">
+          <div class="slideshow__slide-inner">
             {%- unless block.settings.image -%}
               {%- capture placeholder -%}{% cycle 'lifestyle-1', 'lifestyle-2' %}{%- endcapture -%}
-
               {%- if section.settings.section_size == 'preserve_ratio' -%}
                 {{- placeholder | placeholder_svg_tag: 'slideshow__image-placeholder' -}}
               {%- else -%}
@@ -38,13 +37,10 @@
                   assign fetch_priority = 'low'
                 endif
               -%}
-
               {%- capture class_attribute -%}slideshow__image {% unless section.settings.section_size == 'preserve_ratio' %}image-background{% endunless %}{%- endcapture -%}
-
               <div class="{% if block.settings.mobile_image %}hidden-phone{% endif %}">
                 {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: loading_strategy, fetchpriority: fetch_priority, widths: '200,300,400,600,800,1000,1200,1400,1600,1800,2000,2200,2400', class: class_attribute -}}
               </div>
-
               {%- if block.settings.mobile_image -%}
                 <div class="hidden-tablet-and-up">
                   {{- block.settings.mobile_image | image_url: width: block.settings.mobile_image.width | image_tag: loading: loading_strategy, fetchpriority: fetch_priority, widths: '200,300,400,600,800,1000,1200,1400,1600,1800,2000,2200,2400', class: class_attribute -}}
@@ -52,55 +48,49 @@
               {%- endif -%}
             {%- endif -%}
 
-            {%- capture slide_content -%}
-              {%- if block.settings.title != blank -%}
+            {%- if block.settings.title != blank -%}
+              <div class="slideshow__elem slideshow__elem--title"
+                style="--elem-x:{{ block.settings.title_pos_x }}%;--elem-y:{{ block.settings.title_pos_y }}%;--elem-mob-x:{{ block.settings.title_mob_x }}%;--elem-mob-y:{{ block.settings.title_mob_y }}%;text-align:{{ block.settings.title_align }};">
                 <h2 class="slideshow__title heading h1">{{ block.settings.title | escape }}</h2>
-              {%- endif -%}
+              </div>
+            {%- endif -%}
 
-              {%- if block.settings.content != blank -%}
+            {%- if block.settings.content != blank -%}
+              <div class="slideshow__elem slideshow__elem--subtext"
+                style="--elem-x:{{ block.settings.text_pos_x }}%;--elem-y:{{ block.settings.text_pos_y }}%;--elem-mob-x:{{ block.settings.text_mob_x }}%;--elem-mob-y:{{ block.settings.text_mob_y }}%;text-align:{{ block.settings.content_align }};">
                 <p class="slideshow__content">{{ block.settings.content | escape | newline_to_br }}</p>
-              {%- endif -%}
+              </div>
+            {%- endif -%}
 
-              {%- if block.settings.button_text != blank and block.settings.link != blank -%}
-                <div class="slideshow__button-group">
+            {%- if block.settings.button_text != blank and block.settings.link != blank -%}
+              <div class="slideshow__elem slideshow__elem--buttons"
+                style="--elem-x:{{ block.settings.btn_pos_x }}%;--elem-y:{{ block.settings.btn_pos_y }}%;--elem-mob-x:{{ block.settings.btn_mob_x }}%;--elem-mob-y:{{ block.settings.btn_mob_y }}%;">
+                <div class="slideshow__button-group slideshow__button-group--{{ block.settings.btn_align }}">
                   <a href="{{ block.settings.link }}" class="slideshow__button button">{{ block.settings.button_text | escape }}</a>
                   {%- if block.settings.secondary_button_text != blank and block.settings.secondary_button_link != blank -%}
                     <a href="{{ block.settings.secondary_button_link }}" class="slideshow__button slideshow__button--ghost">{{ block.settings.secondary_button_text | escape }}</a>
                   {%- endif -%}
                 </div>
-              {%- endif -%}
-            {%- endcapture -%}
-
-            {%- if slide_content != blank -%}
-              <div class="slideshow__content-wrapper">
-                <div class="container">
-                  {{ slide_content }}
-                </div>
               </div>
             {%- endif -%}
-          </div>
 
-          <style>
-            #block-{{ block.id }} {
-              color: {{ block.settings.text_color }};
-            }
-
-            #block-{{ block.id }} .button {
-              color: {{ block.settings.button_text_color }};
-              background: {{ block.settings.button_background }};
-            }
-
-            #block-{{ block.id }} .button:hover {
-              background: {{ block.settings.button_background | color_modify: 'alpha', 0.8 }};
-            }
-
-            {%- if block.settings.show_overlay -%}
-              #block-{{ block.id }}.slideshow__slide--overlay::before {
-                {%- assign overlay_opacity = block.settings.overlay_opacity | divided_by: 100.0 -%}
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0), {{ '#000000' | color_modify: 'alpha', overlay_opacity }});
+            <style>
+              #block-{{ block.id }} { color: {{ block.settings.text_color }}; }
+              #block-{{ block.id }} .button {
+                color: {{ block.settings.button_text_color }};
+                background: {{ block.settings.button_background }};
               }
-            {%- endif -%}
-          </style>
+              #block-{{ block.id }} .button:hover {
+                background: {{ block.settings.button_background | color_modify: 'alpha', 0.8 }};
+              }
+              {%- if block.settings.show_overlay -%}
+                #block-{{ block.id }}.slideshow__slide--overlay::before {
+                  {%- assign overlay_opacity = block.settings.overlay_opacity | divided_by: 100.0 -%}
+                  background: linear-gradient(to bottom, rgba(0,0,0,0), {{ '#000000' | color_modify: 'alpha', overlay_opacity }});
+                }
+              {%- endif -%}
+            </style>
+          </div>
         {%- endcapture -%}
 
         {%- if block.settings.link != blank and block.settings.button_text == blank -%}
@@ -136,38 +126,53 @@
     transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
                 transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
   .reveal--delay-1 { transition-delay: 0.1s; }
   .reveal--delay-2 { transition-delay: 0.2s; }
   .reveal--delay-3 { transition-delay: 0.32s; }
 
   /* ── Slideshow ────────────────────────────────────────── */
-  [data-section-type="hero-slider"] {
-    position: relative;
+  [data-section-type="hero-slider"] { position: relative; }
+
+  /* ── Individual element absolute positioning ──────────── */
+  /* Each element is anchored by its centre at (--elem-x, --elem-y). */
+  /* 0% = left/top edge · 50% = centre · 100% = right/bottom edge   */
+  .slideshow__elem {
+    position: absolute;
+    left: var(--elem-x, 50%);
+    top:  var(--elem-y, 50%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: max-content;
+    max-width: min(82%, 780px);
+    box-sizing: border-box;
+    padding: 0 10px;
   }
 
   .slideshow__title {
     font-weight: 900;
     letter-spacing: -0.02em;
     line-height: 1.1;
+    margin: 0;
   }
 
   .slideshow__content {
     font-size: 16px;
     opacity: 0.88;
-    max-width: 520px;
+    max-width: 560px;
+    margin: 0;
   }
 
+  /* ── Button group ─────────────────────────────────────── */
   .slideshow__button-group {
     display: flex;
     gap: 14px;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 20px;
   }
+  .slideshow__button-group--left   { justify-content: flex-start; }
+  .slideshow__button-group--center { justify-content: center; }
+  .slideshow__button-group--right  { justify-content: flex-end; }
 
   .slideshow__button--ghost {
     display: inline-block;
@@ -182,7 +187,6 @@
     text-decoration: none;
     transition: border-color 0.2s ease, background 0.2s ease;
   }
-
   .slideshow__button--ghost:hover {
     background: rgba(255, 255, 255, 0.14);
     border-color: rgba(255, 255, 255, 0.9);
@@ -205,7 +209,6 @@
     pointer-events: none;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   }
-
   .hero-counter__line {
     display: block;
     width: 24px;
@@ -216,40 +219,47 @@
   /* ── Progress bar ─────────────────────────────────────── */
   .hero-prog {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     height: 2px;
     background: rgba(255, 255, 255, 0.1);
     z-index: 30;
     pointer-events: none;
     overflow: hidden;
   }
-
-  .hero-prog__fill {
-    height: 100%;
-    width: 0%;
-    background: #e60000;
-  }
+  .hero-prog__fill { height: 100%; width: 0%; background: #e60000; }
 
   @keyframes hero-prog-anim {
     from { width: 0%; }
     to   { width: 100%; }
   }
 
+  /* ── Mobile overrides ─────────────────────────────────── */
   @media screen and (max-width: 640px) {
     .hero-counter { top: 14px; right: 16px; }
+
+    /* Switch to mobile-specific positions */
+    .slideshow__elem {
+      left: var(--elem-mob-x, 50%);
+      top:  var(--elem-mob-y, 50%);
+      max-width: 90%;
+      width: 90%;
+    }
+
+    .slideshow__title {
+      font-size: 22px !important;
+      line-height: 1.2;
+    }
+    .slideshow__content {
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
     .slideshow__button-group {
       flex-direction: column;
       align-items: stretch;
       gap: 10px;
       width: 100%;
-      max-width: 280px;
-      margin-left: auto;
-      margin-right: auto;
     }
-
     .slideshow__button-group .button,
     .slideshow__button-group .slideshow__button,
     .slideshow__button-group .slideshow__button--ghost {
@@ -258,28 +268,10 @@
       padding: 13px 16px;
       font-size: 13px;
     }
-
-    .slideshow__content-wrapper {
-      padding-top: 20px;
-      padding-bottom: 18px;
-    }
-
-    .slideshow__title {
-      font-size: 22px !important;
-      line-height: 1.2;
-      margin-bottom: 6px;
-    }
-
-    .slideshow__content {
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
   }
 
   @media screen and (max-width: 480px) {
     .slideshow__title { font-size: 19px !important; }
-    .slideshow__button-group { max-width: 240px; }
   }
 </style>
 
@@ -469,50 +461,153 @@
           "default": "Tell your story"
         },
         {
+          "type": "header",
+          "content": "Heading position"
+        },
+        {
+          "type": "paragraph",
+          "content": "0% = left \/ top edge · 50% = centre · 100% = right \/ bottom edge. Desktop and mobile are set independently."
+        },
+        {
+          "type": "range",
+          "id": "title_pos_x",
+          "label": "Desktop — left \/ right",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 50,
+          "visible_if": "{{ block.settings.title != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "title_pos_y",
+          "label": "Desktop — up \/ down",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 38,
+          "visible_if": "{{ block.settings.title != blank }}"
+        },
+        {
           "type": "select",
-          "id": "content_position",
-          "label": "Content position",
-          "info": "On mobile, content is always centered.",
+          "id": "title_align",
+          "label": "Heading text align",
           "options": [
-            {
-              "value": "top_left",
-              "label": "Top left"
-            },
-            {
-              "value": "top_center",
-              "label": "Top center"
-            },
-            {
-              "value": "top_right",
-              "label": "Top right"
-            },
-            {
-              "value": "middle_left",
-              "label": "Middle left"
-            },
-            {
-              "value": "middle_center",
-              "label": "Middle center"
-            },
-            {
-              "value": "middle_right",
-              "label": "Middle right"
-            },
-            {
-              "value": "bottom_left",
-              "label": "Bottom left"
-            },
-            {
-              "value": "bottom_center",
-              "label": "Bottom center"
-            },
-            {
-              "value": "bottom_right",
-              "label": "Bottom right"
-            }
+            { "value": "left",   "label": "Left" },
+            { "value": "center", "label": "Centre" },
+            { "value": "right",  "label": "Right" }
           ],
-          "default": "middle_center",
-          "visible_if": "{{ block.settings.title != blank or block.settings.content != blank }}"
+          "default": "center",
+          "visible_if": "{{ block.settings.title != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "title_mob_x",
+          "label": "Mobile — left \/ right",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 50,
+          "visible_if": "{{ block.settings.title != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "title_mob_y",
+          "label": "Mobile — up \/ down",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 32,
+          "visible_if": "{{ block.settings.title != blank }}"
+        },
+        {
+          "type": "header",
+          "content": "Subtext position"
+        },
+        {
+          "type": "range",
+          "id": "text_pos_x",
+          "label": "Desktop — left \/ right",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 50,
+          "visible_if": "{{ block.settings.content != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "text_pos_y",
+          "label": "Desktop — up \/ down",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 52,
+          "visible_if": "{{ block.settings.content != blank }}"
+        },
+        {
+          "type": "select",
+          "id": "content_align",
+          "label": "Subtext text align",
+          "options": [
+            { "value": "left",   "label": "Left" },
+            { "value": "center", "label": "Centre" },
+            { "value": "right",  "label": "Right" }
+          ],
+          "default": "center",
+          "visible_if": "{{ block.settings.content != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "text_mob_x",
+          "label": "Mobile — left \/ right",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 50,
+          "visible_if": "{{ block.settings.content != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "text_mob_y",
+          "label": "Mobile — up \/ down",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 46,
+          "visible_if": "{{ block.settings.content != blank }}"
+        },
+        {
+          "type": "header",
+          "content": "Buttons position"
+        },
+        {
+          "type": "range",
+          "id": "btn_pos_x",
+          "label": "Desktop — left \/ right",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 50,
+          "visible_if": "{{ block.settings.button_text != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "btn_pos_y",
+          "label": "Desktop — up \/ down",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 65,
+          "visible_if": "{{ block.settings.button_text != blank }}"
+        },
+        {
+          "type": "select",
+          "id": "btn_align",
+          "label": "Button row align",
+          "info": "How buttons sit relative to each other when there are two.",
+          "options": [
+            { "value": "left",   "label": "Left" },
+            { "value": "center", "label": "Centre" },
+            { "value": "right",  "label": "Right" }
+          ],
+          "default": "center",
+          "visible_if": "{{ block.settings.button_text != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "btn_mob_x",
+          "label": "Mobile — left \/ right",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 50,
+          "visible_if": "{{ block.settings.button_text != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "btn_mob_y",
+          "label": "Mobile — up \/ down",
+          "min": 0, "max": 100, "step": 1, "unit": "%",
+          "default": 62,
+          "visible_if": "{{ block.settings.button_text != blank }}"
         },
         {
           "type": "header",
