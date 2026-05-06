@@ -15,7 +15,7 @@
         "image-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-04-30_at_9.45.12_PM.jpg",
+            "image": "shopify://shop_images/ChatGPT_Image_May_6_2026_11_31_40_AM.png",
             "show_overlay": true,
             "overlay_opacity": 40,
             "text_color": "#ffffff",
@@ -130,29 +130,31 @@
           "settings": {
             "collection": "tools",
             "label": "",
-            "fallback_image": "shopify://shop_images/WhatsApp_Image_2026-05-01_at_7.03.29_PM.jpg"
+            "fallback_image": "shopify://shop_images/IMG-20260504-WA0012.jpg"
           }
         },
         "cat-2": {
           "type": "card",
           "settings": {
             "collection": "generator",
-            "label": ""
+            "label": "",
+            "fallback_image": "shopify://shop_images/file_00000000069871fa8a1900db06827900.png"
           }
         },
         "cat-3": {
           "type": "card",
           "settings": {
             "collection": "air-compressor",
-            "label": "Compressors"
+            "label": "Compressors",
+            "fallback_image": "shopify://shop_images/file_00000000e67c71fa974266da014349e1.png"
           }
         },
         "cat-4": {
           "type": "card",
           "settings": {
             "collection": "welding-machine",
-            "label": "",
-            "fallback_image": "shopify://shop_images/4_jpg.jpg"
+            "label": ".",
+            "fallback_image": "shopify://shop_images/file_00000000500c71fa807aabd63c332d34.png"
           }
         },
         "cat-5": {
@@ -160,7 +162,7 @@
           "settings": {
             "collection": "cleaning",
             "label": "",
-            "fallback_image": "shopify://shop_images/5_jpg.jpg"
+            "fallback_image": "shopify://shop_images/file_00000000d26c71fab0b78a324fa48e3c.png"
           }
         },
         "cat-6": {
