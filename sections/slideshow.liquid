@@ -10,7 +10,7 @@
 }
 {%- endcapture -%}
 
-<section data-section-id="{{ section.id }}" data-section-type="hero-slider" data-section-settings="{{ section_settings | escape_once }}">
+<section data-section-id="{{ section.id }}" data-section-type="slideshow" data-section-settings="{{ section_settings | escape_once }}">
   <div {% unless section.settings.edge_to_edge %}class="container container--flush"{% endunless %}>
     <div class="slideshow slideshow--{{ section.settings.section_size | replace: '_', '-' }} {% if section.settings.edge_to_edge %}slideshow--edge2edge{% endif %}" style="color: {{ section.blocks.first.settings.text_color }}">
       {%- for block in section.blocks -%}
@@ -132,7 +132,7 @@
   .reveal--delay-3 { transition-delay: 0.32s; }
 
   /* ── Slideshow ────────────────────────────────────────── */
-  [data-section-type="hero-slider"] { position: relative; }
+  [data-section-type="slideshow"] { position: relative; }
 
   /* ── Individual element absolute positioning ──────────── */
   /* Each element is anchored by its centre at (--elem-x, --elem-y). */
