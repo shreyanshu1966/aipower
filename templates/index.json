@@ -54,6 +54,7 @@
         "image-2": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_May_6_2026_02_06_43_PM.png",
             "show_overlay": true,
             "overlay_opacity": 40,
             "text_color": "#ffffff",
