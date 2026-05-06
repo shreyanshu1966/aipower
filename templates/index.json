@@ -15,7 +15,7 @@
         "image-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_May_6_2026_11_59_33_AM.png",
+            "image": "shopify://shop_images/Untitled_design_1.jpg",
             "mobile_image": "shopify://shop_images/ChatGPT_Image_May_6_2026_12_01_53_PM.png",
             "show_overlay": true,
             "overlay_opacity": 0,
@@ -37,7 +37,7 @@
             "text_mob_y": 46,
             "text_mob_size": 14,
             "btn_pos_x": 22,
-            "btn_pos_y": 68,
+            "btn_pos_y": 73,
             "btn_scale": 100,
             "btn_align": "center",
             "btn_mob_x": 50,
