@@ -83,8 +83,8 @@
             "btn_mob_scale": 50,
             "button_background": "#e60000",
             "button_text_color": "#ffffff",
-            "button_text": "Shop Power Tools",
-            "link": "shopify://collections/tools",
+            "button_text": "Shop Genrators",
+            "link": "shopify://collections/generator",
             "secondary_button_text": "View All Categories",
             "secondary_button_link": "/collections/all"
           }
