@@ -64,8 +64,8 @@
 
             {%- if block.settings.button_text != blank and block.settings.link != blank -%}
               <div class="slideshow__elem slideshow__elem--buttons"
-                style="--elem-x:{{ block.settings.btn_pos_x }}%;--elem-y:{{ block.settings.btn_pos_y }}%;--elem-mob-x:{{ block.settings.btn_mob_x }}%;--elem-mob-y:{{ block.settings.btn_mob_y }}%;">
-                <div class="slideshow__button-group slideshow__button-group--{{ block.settings.btn_align }} slideshow__button-group--{{ block.settings.btn_size }}">
+                style="--elem-x:{{ block.settings.btn_pos_x }}%;--elem-y:{{ block.settings.btn_pos_y }}%;--elem-mob-x:{{ block.settings.btn_mob_x }}%;--elem-mob-y:{{ block.settings.btn_mob_y }}%;--btn-scale:{{ block.settings.btn_scale | divided_by: 100.0 }};--btn-mob-scale:{{ block.settings.btn_mob_scale | divided_by: 100.0 }};">
+                <div class="slideshow__button-group slideshow__button-group--{{ block.settings.btn_align }}">
                   <a href="{{ block.settings.link }}" class="slideshow__button button">{{ block.settings.button_text | escape }}</a>
                   {%- if block.settings.secondary_button_text != blank and block.settings.secondary_button_link != blank -%}
                     <a href="{{ block.settings.secondary_button_link }}" class="slideshow__button slideshow__button--ghost">{{ block.settings.secondary_button_text | escape }}</a>
@@ -175,17 +175,10 @@
   .slideshow__button-group--center { justify-content: center; }
   .slideshow__button-group--right  { justify-content: flex-end; }
 
-  /* ── Button sizes ─────────────────────────────────────── */
-  .slideshow__button-group--sm .button,
-  .slideshow__button-group--sm .slideshow__button--ghost {
-    padding: 7px 16px;
-    font-size: 10px;
-  }
-  .slideshow__button-group--lg .button,
-  .slideshow__button-group--lg .slideshow__button--ghost {
-    padding: 16px 38px;
-    font-size: 14px;
-    letter-spacing: 0.14em;
+  /* ── Button scale (whole button, not just text) ───────── */
+  .slideshow__elem--buttons {
+    transform: translate(-50%, -50%) scale(var(--btn-scale, 1));
+    transform-origin: center center;
   }
 
   .slideshow__button--ghost {
@@ -257,6 +250,10 @@
       top:  var(--elem-mob-y, 50%);
       max-width: 90%;
       width: 90%;
+    }
+
+    .slideshow__elem--buttons {
+      transform: translate(-50%, -50%) scale(var(--btn-mob-scale, 1));
     }
 
     .slideshow__title {
@@ -627,15 +624,11 @@
           "visible_if": "{{ block.settings.button_text != blank }}"
         },
         {
-          "type": "select",
-          "id": "btn_size",
-          "label": "Button size",
-          "options": [
-            { "value": "sm", "label": "Small" },
-            { "value": "md", "label": "Medium" },
-            { "value": "lg", "label": "Large" }
-          ],
-          "default": "md",
+          "type": "range",
+          "id": "btn_scale",
+          "label": "Desktop button size",
+          "min": 50, "max": 200, "step": 5, "unit": "%",
+          "default": 100,
           "visible_if": "{{ block.settings.button_text != blank }}"
         },
         {
@@ -665,6 +658,14 @@
           "label": "Mobile — up \/ down",
           "min": 0, "max": 100, "step": 1, "unit": "%",
           "default": 62,
+          "visible_if": "{{ block.settings.button_text != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "btn_mob_scale",
+          "label": "Mobile button size",
+          "min": 50, "max": 200, "step": 5, "unit": "%",
+          "default": 100,
           "visible_if": "{{ block.settings.button_text != blank }}"
         },
         {
