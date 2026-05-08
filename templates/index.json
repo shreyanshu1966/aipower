@@ -155,7 +155,7 @@
           "settings": {
             "collection": "tools",
             "label": "",
-            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_8_2026_11_54_50_PM.png"
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_44_19_AM.png"
           }
         },
         "cat-2": {
@@ -219,7 +219,8 @@
       "settings": {
         "title": "What Are You Working On?",
         "link_title": "View all categories",
-        "link": "/collections/all"
+        "link": "/collections/all",
+        "overlay_opacity": 80
       }
     },
     "promo-banner": {
