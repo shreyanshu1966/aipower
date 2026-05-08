@@ -94,7 +94,6 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/ChatGPT_Image_May_9_2026_01_10_09_AM.png",
-            "mobile_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_01_13_45_AM.png",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
