@@ -136,24 +136,7 @@
   }
 
   .category-card__overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, var(--cat-overlay)) 0%,
-      rgba(0, 0, 0, var(--cat-overlay-mid)) 55%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    transition: background 0.4s ease;
-  }
-
-  .category-card:hover .category-card__overlay {
-    background: linear-gradient(
-      to top,
-      rgba(180, 0, 0, 0.92) 0%,
-      rgba(180, 0, 0, 0.5) 45%,
-      rgba(0, 0, 0, 0.08) 100%
-    );
+    display: none;
   }
 
   .category-card__body {
