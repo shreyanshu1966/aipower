@@ -48,7 +48,15 @@
   </div>
 </section>
 
+{%- assign overlay_base = section.settings.overlay_opacity | divided_by: 100.0 -%}
+{%- assign overlay_mid = section.settings.overlay_opacity | times: 0.22 | divided_by: 100.0 -%}
+
 <style>
+  #shopify-section-{{ section.id }} {
+    --cat-overlay: {{ overlay_base }};
+    --cat-overlay-mid: {{ overlay_mid }};
+  }
+
   /* ── Category Cards: header ───────────────────────────── */
   .category-cards__header {
     display: flex;
@@ -132,8 +140,8 @@
     top: 0; left: 0; right: 0; bottom: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.82) 0%,
-      rgba(0, 0, 0, 0.18) 55%,
+      rgba(0, 0, 0, var(--cat-overlay)) 0%,
+      rgba(0, 0, 0, var(--cat-overlay-mid)) 55%,
       rgba(0, 0, 0, 0) 100%
     );
     transition: background 0.4s ease;
@@ -258,6 +266,17 @@
       "type": "url",
       "id": "link",
       "label": "View all link"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Card overlay opacity",
+      "info": "Controls the dark gradient over card images. Set to 0 to remove it.",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 80,
+      "unit": "%"
     }
   ],
   "blocks": [
