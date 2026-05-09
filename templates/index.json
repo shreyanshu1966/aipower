@@ -89,11 +89,50 @@
             "secondary_button_text": "View All Categories",
             "secondary_button_link": "/collections/all"
           }
+        },
+        "image_9QB3ff": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_May_9_2026_01_10_09_AM.png",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "content": "",
+            "title_pos_x": 50,
+            "title_pos_y": 38,
+            "title_size": 52,
+            "title_align": "center",
+            "title_mob_x": 50,
+            "title_mob_y": 32,
+            "title_mob_size": 22,
+            "text_pos_x": 50,
+            "text_pos_y": 52,
+            "text_size": 16,
+            "content_align": "center",
+            "text_mob_x": 50,
+            "text_mob_y": 46,
+            "text_mob_size": 14,
+            "btn_pos_x": 50,
+            "btn_pos_y": 65,
+            "btn_scale": 100,
+            "btn_align": "center",
+            "btn_mob_x": 50,
+            "btn_mob_y": 62,
+            "btn_mob_scale": 100,
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "Button",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": ""
+          }
         }
       },
       "block_order": [
         "image-1",
-        "image-2"
+        "image-2",
+        "image_9QB3ff"
       ],
       "settings": {
         "edge_to_edge": true,
@@ -155,7 +194,7 @@
           "settings": {
             "collection": "tools",
             "label": "",
-            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_8_2026_11_54_50_PM.png"
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_44_19_AM.png"
           }
         },
         "cat-2": {
@@ -163,7 +202,7 @@
           "settings": {
             "collection": "generator",
             "label": "",
-            "fallback_image": "shopify://shop_images/file_00000000069871fa8a1900db06827900.png"
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_44_13_AM.png"
           }
         },
         "cat-3": {
@@ -171,15 +210,15 @@
           "settings": {
             "collection": "air-compressor",
             "label": "Compressors",
-            "fallback_image": "shopify://shop_images/file_00000000e67c71fa974266da014349e1.png"
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_44_25_AM.png"
           }
         },
         "cat-4": {
           "type": "card",
           "settings": {
             "collection": "welding-machine",
-            "label": ".",
-            "fallback_image": "shopify://shop_images/file_00000000500c71fa807aabd63c332d34.png"
+            "label": "Welding Machine",
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_44_33_AM_1.png"
           }
         },
         "cat-5": {
@@ -187,7 +226,7 @@
           "settings": {
             "collection": "cleaning",
             "label": "",
-            "fallback_image": "shopify://shop_images/file_00000000d26c71fab0b78a324fa48e3c.png"
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_44_39_AM.png"
           }
         },
         "cat-6": {
@@ -195,7 +234,7 @@
           "settings": {
             "collection": "water-pumps",
             "label": "",
-            "fallback_image": "shopify://shop_images/6_jpg.jpg"
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_44_45_AM_1.png"
           }
         },
         "cat-7": {
@@ -203,7 +242,7 @@
           "settings": {
             "collection": "accessories",
             "label": "",
-            "fallback_image": "shopify://shop_images/7_jpg.jpg"
+            "fallback_image": "shopify://shop_images/ChatGPT_Image_May_9_2026_12_45_11_AM.png"
           }
         }
       },
@@ -219,7 +258,8 @@
       "settings": {
         "title": "What Are You Working On?",
         "link_title": "View all categories",
-        "link": "/collections/all"
+        "link": "/collections/all",
+        "overlay_opacity": 80
       }
     },
     "promo-banner": {
