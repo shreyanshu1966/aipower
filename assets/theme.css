@@ -9714,20 +9714,20 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   }
 
   .slideshow--preserve-ratio {
-    min-height: 300px;
     height: auto !important;
   }
 
   .slideshow--preserve-ratio .slideshow__slide {
-    min-height: 300px;
+    height: 100%;
   }
 
   .slideshow--preserve-ratio .slideshow__slide-inner {
-    min-height: 300px;
+    height: 100%;
   }
 
   .slideshow--preserve-ratio .slideshow__image {
-    min-height: 300px;
+    height: auto;
+    width: 100%;
     object-fit: cover;
     object-position: center;
   }
@@ -9753,13 +9753,13 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   }
 
   .slideshow--preserve-ratio {
-    min-height: 270px;
+    min-height: 0;
   }
 
   .slideshow--preserve-ratio .slideshow__slide,
   .slideshow--preserve-ratio .slideshow__slide-inner,
   .slideshow--preserve-ratio .slideshow__image {
-    min-height: 270px;
+    min-height: 0;
   }
 }
 
