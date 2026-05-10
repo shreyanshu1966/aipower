@@ -44,9 +44,9 @@
             "btn_mob_scale": 50,
             "button_background": "#e60000",
             "button_text_color": "#ffffff",
-            "button_text": "Shop Genrators",
+            "button_text": "",
             "link": "shopify://collections/generator",
-            "secondary_button_text": "View All Categories",
+            "secondary_button_text": "",
             "secondary_button_link": "/collections/all"
           }
         },
@@ -82,9 +82,9 @@
             "btn_mob_scale": 55,
             "button_background": "#e60000",
             "button_text_color": "#ffffff",
-            "button_text": "Shop Tools",
+            "button_text": "",
             "link": "shopify://collections/tools",
-            "secondary_button_text": "View All Categories",
+            "secondary_button_text": "",
             "secondary_button_link": "/collections/all"
           }
         }
