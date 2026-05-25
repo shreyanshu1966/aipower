@@ -523,6 +523,7 @@
     },
     "blog-posts": {
       "type": "blog-posts",
+      "disabled": true,
       "settings": {
         "blog": "",
         "blog_posts_count": 3,
