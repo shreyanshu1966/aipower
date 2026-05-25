@@ -96,10 +96,18 @@
     {%- endcapture -%}
 
     {%- if section.settings.layout == 'vertical' and section.settings.stack_products == false -%}
-      <div class="scroller">
-        <div class="scroller__inner">
-          {{ product_list }}
+      <div class="product-carousel-outer" data-carousel-id="{{ section.id }}">
+        <button class="product-carousel-arrow product-carousel-arrow--prev" type="button" aria-label="Previous products">
+          {%- render 'icon', icon: 'arrow-left' -%}
+        </button>
+        <div class="scroller">
+          <div class="scroller__inner">
+            {{ product_list }}
+          </div>
         </div>
+        <button class="product-carousel-arrow product-carousel-arrow--next" type="button" aria-label="Next products">
+          {%- render 'icon', icon: 'arrow-right' -%}
+        </button>
       </div>
     {%- else -%}
       {{ product_list }}
@@ -122,6 +130,38 @@
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+  if (!section) return;
+  var outer = section.querySelector('.product-carousel-outer');
+  if (!outer) return;
+  var prevBtn = outer.querySelector('.product-carousel-arrow--prev');
+  var nextBtn = outer.querySelector('.product-carousel-arrow--next');
+  var scrollerInner = outer.querySelector('.scroller__inner');
+  var productList = outer.querySelector('.product-list');
+  if (!prevBtn || !nextBtn) return;
+
+  function doScroll(dir) {
+    if (typeof Flickity !== 'undefined' && productList) {
+      var flkty = Flickity.data(productList);
+      if (flkty) {
+        dir < 0 ? flkty.previous() : flkty.next();
+        return;
+      }
+    }
+    if (scrollerInner) {
+      var card = scrollerInner.querySelector('.product-item');
+      var amount = card ? (card.offsetWidth + 1) * 2 : 560;
+      scrollerInner.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    }
+  }
+
+  prevBtn.addEventListener('click', function() { doScroll(-1); });
+  nextBtn.addEventListener('click', function() { doScroll(1); });
+})();
+</script>
 
 {% schema %}
 {
