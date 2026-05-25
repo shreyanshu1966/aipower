@@ -232,6 +232,20 @@
         "text_color": "#ffffff"
       }
     },
+    "new-arrivals-section": {
+      "type": "featured-collection",
+      "name": "New Arrivals",
+      "settings": {
+        "collection": "new-arrivals",
+        "title": "New Arrivals",
+        "products_count": 8,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all new arrivals",
+        "link_url": "/collections/new-arrivals"
+      }
+    },
     "tabbed-collections": {
       "type": "tabbed-collections",
       "blocks": {
@@ -273,6 +287,31 @@
       "settings": {
         "title": "Most Popular Products",
         "products_count": 8
+      }
+    },
+    "mid-promo-banner": {
+      "type": "promo-banner",
+      "settings": {
+        "label": "Flash Sale",
+        "title": "Up to 30% Off Selected Power Tools & Generators — Limited Stock",
+        "button_text": "Grab the Deal",
+        "button_link": "/collections/sale",
+        "background": "#111111",
+        "text_color": "#ffffff"
+      }
+    },
+    "deals-section": {
+      "type": "featured-collection",
+      "name": "Deals & Offers",
+      "settings": {
+        "collection": "sale",
+        "title": "Deals & Special Offers",
+        "products_count": 8,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all deals",
+        "link_url": "/collections/sale"
       }
     },
     "brand-story": {
@@ -330,6 +369,34 @@
         "link_url": ""
       }
     },
+    "power-tools-section": {
+      "type": "featured-collection",
+      "name": "Power Tools Spotlight",
+      "settings": {
+        "collection": "tools",
+        "title": "Power Tools Spotlight",
+        "products_count": 8,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "Shop all power tools",
+        "link_url": "/collections/tools"
+      }
+    },
+    "generators-section": {
+      "type": "featured-collection",
+      "name": "Generators & Power Solutions",
+      "settings": {
+        "collection": "generator",
+        "title": "Generators & Power Solutions",
+        "products_count": 8,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "Shop all generators",
+        "link_url": "/collections/generator"
+      }
+    },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
@@ -370,6 +437,34 @@
         "title": "What Tradespeople Say",
         "subtitle": "Trusted by electricians, builders and site managers across the country.",
         "background": "#f4f4f4"
+      }
+    },
+    "welding-section": {
+      "type": "featured-collection",
+      "name": "Welding & Fabrication",
+      "settings": {
+        "collection": "welding-machine",
+        "title": "Welding & Fabrication",
+        "products_count": 8,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "Shop welding equipment",
+        "link_url": "/collections/welding-machine"
+      }
+    },
+    "cleaning-section": {
+      "type": "featured-collection",
+      "name": "Cleaning & Pressure Equipment",
+      "settings": {
+        "collection": "cleaning",
+        "title": "Cleaning & Pressure Equipment",
+        "products_count": 8,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "Shop cleaning equipment",
+        "link_url": "/collections/cleaning"
       }
     },
     "logo-list": {
@@ -455,10 +550,17 @@
     "usp-bar",
     "category-cards",
     "promo-banner",
+    "new-arrivals-section",
     "tabbed-collections",
+    "mid-promo-banner",
+    "deals-section",
     "brand-story",
     "featured_collection_hHDaaM",
+    "power-tools-section",
+    "generators-section",
     "testimonials",
+    "welding-section",
+    "cleaning-section",
     "logo-list",
     "blog-posts",
     "newsletter"
