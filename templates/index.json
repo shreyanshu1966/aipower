@@ -236,14 +236,15 @@
       "type": "featured-collection",
       "name": "New Arrivals",
       "settings": {
-        "collection": "new-arrivals",
+        "collection": "all",
         "title": "New Arrivals",
         "products_count": 8,
         "layout": "vertical",
         "stack_products": false,
         "show_quick_buy": false,
+        "sort_by": "created-descending",
         "link_title": "View all new arrivals",
-        "link_url": "/collections/new-arrivals"
+        "link_url": "/collections/all?sort_by=created-descending"
       }
     },
     "tabbed-collections": {

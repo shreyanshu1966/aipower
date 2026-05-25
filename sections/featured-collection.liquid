@@ -28,8 +28,19 @@
         {%- if collection == blank -%}
           {%- assign products = (1..section.settings.products_count) -%}
         {%- else -%}
-          {%- assign products = collection.products -%}
           {%- assign use_placeholder = false -%}
+          {%- case section.settings.sort_by -%}
+            {%- when 'created-descending' -%}
+              {%- assign products = collection.products | sort: 'created_at' | reverse -%}
+            {%- when 'price-ascending' -%}
+              {%- assign products = collection.products | sort: 'price' -%}
+            {%- when 'price-descending' -%}
+              {%- assign products = collection.products | sort: 'price' | reverse -%}
+            {%- when 'title-ascending' -%}
+              {%- assign products = collection.products | sort: 'title' -%}
+            {%- else -%}
+              {%- assign products = collection.products -%}
+          {%- endcase -%}
         {%- endif -%}
 
         {%- for product in products limit: section.settings.products_count -%}
@@ -136,6 +147,19 @@
       "step": 1,
       "default": 12,
       "visible_if": "{{ section.settings.collection != blank }}"
+    },
+    {
+      "type": "select",
+      "id": "sort_by",
+      "label": "Sort products by",
+      "options": [
+        { "value": "default", "label": "Collection default" },
+        { "value": "created-descending", "label": "Newest first" },
+        { "value": "price-ascending", "label": "Price: low to high" },
+        { "value": "price-descending", "label": "Price: high to low" },
+        { "value": "title-ascending", "label": "Alphabetical" }
+      ],
+      "default": "default"
     },
     {
       "type": "select",
