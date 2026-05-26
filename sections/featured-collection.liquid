@@ -138,14 +138,15 @@
 
     function getScrollAmount() {
       var card = track.querySelector('.product-item');
-      return card ? card.offsetWidth : track.offsetWidth * 0.75;
+      return card ? card.offsetWidth : Math.round(track.offsetWidth * 0.72);
     }
 
     function updateArrows() {
+      var scrollable = track.scrollWidth > track.offsetWidth + 8;
       var atStart = track.scrollLeft <= 4;
       var atEnd = track.scrollLeft + track.offsetWidth >= track.scrollWidth - 4;
-      if (prevBtn) prevBtn.classList.toggle('fc-carousel__btn--hidden', atStart);
-      if (nextBtn) nextBtn.classList.toggle('fc-carousel__btn--hidden', atEnd);
+      if (prevBtn) prevBtn.classList.toggle('fc-carousel__btn--hidden', !scrollable || atStart);
+      if (nextBtn) nextBtn.classList.toggle('fc-carousel__btn--hidden', !scrollable || atEnd);
     }
 
     if (prevBtn) {
@@ -161,7 +162,11 @@
     }
 
     track.addEventListener('scroll', updateArrows, { passive: true });
-    updateArrows();
+
+    /* Defer initial check so layout/images have a chance to settle */
+    requestAnimationFrame(function() {
+      requestAnimationFrame(updateArrows);
+    });
   }
 
   function initAll() {
@@ -173,6 +178,21 @@
   } else {
     initAll();
   }
+
+  /* Re-check arrows after all images load (aspect-ratio images affect layout) */
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.fc-carousel').forEach(function(carousel) {
+      var track = carousel.querySelector('[data-fc-track]');
+      var prevBtn = carousel.querySelector('[data-fc-prev]');
+      var nextBtn = carousel.querySelector('[data-fc-next]');
+      if (!track) return;
+      var scrollable = track.scrollWidth > track.offsetWidth + 8;
+      var atStart = track.scrollLeft <= 4;
+      var atEnd = track.scrollLeft + track.offsetWidth >= track.scrollWidth - 4;
+      if (prevBtn) prevBtn.classList.toggle('fc-carousel__btn--hidden', !scrollable || atStart);
+      if (nextBtn) nextBtn.classList.toggle('fc-carousel__btn--hidden', !scrollable || atEnd);
+    });
+  });
 
   document.addEventListener('shopify:section:load', function(e) {
     var carousel = e.target.querySelector('.fc-carousel');
