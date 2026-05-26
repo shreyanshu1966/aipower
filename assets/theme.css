@@ -12933,3 +12933,200 @@ product-rerender {
   }
 }
 
+/* ===== MEGA MENU REDESIGN ===== */
+
+/* Drop shadow + red top accent instead of plain border */
+.mega-menu {
+  background: #ffffff;
+  border-top: 3px solid var(--accent-color, #e60000) !important;
+  border-bottom: none !important;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.13), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Tighter, more generous vertical padding */
+.mega-menu__inner {
+  padding: 36px 0 32px !important;
+  gap: 0;
+}
+
+/* Column dividers via right border */
+.mega-menu__column {
+  padding: 0 32px 16px !important;
+  margin: 0 !important;
+  border-right: 1px solid var(--border-color, #e8e8e8);
+  flex: 1 1 0;
+}
+
+.mega-menu__column:last-child {
+  border-right: none;
+}
+
+/* First column no left padding override */
+.mega-menu:not(.mega-menu--floating) .mega-menu__column:first-child {
+  padding-left: 0 !important;
+}
+
+.mega-menu:not(.mega-menu--floating) .mega-menu__column:last-child {
+  padding-right: 0 !important;
+}
+
+/* Category titles — bold, uppercase, red underline divider */
+.mega-menu__title {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--heading-color, #111) !important;
+  padding-bottom: 14px !important;
+  margin-bottom: 16px !important;
+  border-bottom: 2px solid var(--accent-color, #e60000);
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.mega-menu__title:hover {
+  color: var(--accent-color, #e60000) !important;
+}
+
+/* Arrow indicator on title */
+.mega-menu__title::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e60000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mega-menu__title:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Sub-links — sliding red left-bar on hover */
+.mega-menu__linklist {
+  list-style: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mega-menu__item {
+  list-style: none;
+}
+
+.mega-menu__link {
+  position: relative;
+  padding: 6px 4px 6px 14px !important;
+  line-height: 1.5 !important;
+  font-size: 14px;
+  color: var(--text-color, #444);
+  display: block;
+  transition: color 0.18s ease, padding-left 0.18s ease;
+  border-radius: 4px;
+}
+
+/* Red bar that slides in on hover */
+.mega-menu__link::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--accent-color, #e60000);
+  border-radius: 2px;
+  transition: height 0.18s ease;
+}
+
+.mega-menu__link:hover {
+  color: var(--accent-color, #e60000) !important;
+  padding-left: 20px !important;
+  background: rgba(230, 0, 0, 0.04);
+}
+
+.mega-menu__link:hover::before {
+  height: 18px;
+}
+
+/* "View all" link at column bottom */
+.mega-menu__view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-color, #e60000);
+  text-decoration: none;
+  transition: gap 0.18s ease;
+}
+
+.mega-menu__view-all:hover {
+  gap: 9px;
+}
+
+.mega-menu__view-all svg {
+  transition: transform 0.18s ease;
+}
+
+.mega-menu__view-all:hover svg {
+  transform: translateX(3px);
+}
+
+/* Promo image cards — elevated, rounded, with overlay on hover */
+.mega-menu__promo {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  text-align: left !important;
+  margin: 0 0 0 40px !important;
+}
+
+.mega-menu__promo:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  transform: translateY(-2px);
+}
+
+.mega-menu__image-wrapper {
+  border-radius: 8px 8px 0 0 !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.mega-menu__image-heading {
+  padding: 14px 16px 4px !important;
+  font-size: 15px !important;
+  font-weight: 700;
+  color: var(--heading-color, #111);
+  display: block;
+}
+
+.mega-menu__image-text {
+  padding: 0 16px 16px;
+  font-size: 13px;
+  color: var(--text-color, #666);
+  line-height: 1.5 !important;
+}
+
+/* No border-bottom on heading when inside promo */
+.mega-menu__promo .mega-menu__image-heading {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+
