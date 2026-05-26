@@ -20,7 +20,7 @@
     </header>
   </div>
 
-  <div class="container {% if section.settings.layout != 'vertical' or section.settings.stack_products %}container--flush{% endif %}">
+  <div class="container container--carousel-host {% if section.settings.layout != 'vertical' or section.settings.stack_products %}container--flush{% endif %}">
     {%- capture product_list -%}
       <div class="product-list product-list--{{ section.settings.layout }} {% if section.settings.stack_products %}product-list--stackable{% elsif section.settings.layout == 'vertical' %}product-list--scrollable{% endif %}">
         {%- assign use_placeholder = true -%}
@@ -95,15 +95,17 @@
       </div>
     {%- endcapture -%}
 
-    {%- if section.settings.layout == 'vertical' and section.settings.stack_products == false -%}
-      <div class="scroller">
-        <div class="scroller__inner">
-          {{ product_list }}
-        </div>
+    <div class="fc-carousel" id="fc-{{ section.id }}">
+      <button class="fc-carousel__btn fc-carousel__btn--prev" aria-label="Previous products" data-fc-prev>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="fc-carousel__track" data-fc-track>
+        {{ product_list }}
       </div>
-    {%- else -%}
-      {{ product_list }}
-    {%- endif -%}
+      <button class="fc-carousel__btn fc-carousel__btn--next" aria-label="Next products" data-fc-next>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
   </div>
 
   
@@ -122,6 +124,62 @@
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  if (window.__fcCarouselInit) return;
+  window.__fcCarouselInit = true;
+
+  function initCarousel(carousel) {
+    var track = carousel.querySelector('[data-fc-track]');
+    var prevBtn = carousel.querySelector('[data-fc-prev]');
+    var nextBtn = carousel.querySelector('[data-fc-next]');
+    if (!track) return;
+
+    function getScrollAmount() {
+      var card = track.querySelector('.product-item');
+      return card ? card.offsetWidth : track.offsetWidth * 0.75;
+    }
+
+    function updateArrows() {
+      var atStart = track.scrollLeft <= 4;
+      var atEnd = track.scrollLeft + track.offsetWidth >= track.scrollWidth - 4;
+      if (prevBtn) prevBtn.classList.toggle('fc-carousel__btn--hidden', atStart);
+      if (nextBtn) nextBtn.classList.toggle('fc-carousel__btn--hidden', atEnd);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    updateArrows();
+  }
+
+  function initAll() {
+    document.querySelectorAll('.fc-carousel').forEach(initCarousel);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+
+  document.addEventListener('shopify:section:load', function(e) {
+    var carousel = e.target.querySelector('.fc-carousel');
+    if (carousel) initCarousel(carousel);
+  });
+})();
+</script>
 
 {% schema %}
 {
