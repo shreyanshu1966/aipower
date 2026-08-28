@@ -35,7 +35,7 @@
           "settings": {
             "icon": "bi-shop-pin",
             "title": "Visit us",
-            "value": "Shuwaikh Industrial, Kuwait",
+            "value": "Shuwaikh Industrial 70032, Kuwait",
             "link": "#contact-map"
           }
         }
@@ -76,8 +76,8 @@
           "settings": {
             "icon": "bi-shop-pin",
             "title": "Address",
-            "value": "<p>Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait</p>",
-            "link": ""
+            "value": "<p>Shop No. 8, Infront of Al Ghannam International Hardware, Khalifa Al Jassim Street, Shuwaikh Industrial 70032, Kuwait</p>",
+            "link": "https://www.google.com/maps/place/Al+Muqaddas+Hardware/@29.3278911,47.9469171,17z"
           }
         },
         "hours": {
@@ -112,10 +112,10 @@
           "type": "branch",
           "settings": {
             "title": "Kuwait Branch",
-            "address": "<p>Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait</p>",
+            "address": "<p>Shop No. 8, Infront of Al Ghannam International Hardware, Khalifa Al Jassim Street, Shuwaikh Industrial 70032, Kuwait</p>",
             "hours": "<p>Saturday – Thursday: 07:00 AM – 07:00 PM<br>Friday: Closed</p>",
             "phone": "55000200",
-            "map_query": "Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait"
+            "map_query": "29.3278911,47.9469171"
           }
         }
       },
