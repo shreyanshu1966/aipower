@@ -6342,51 +6342,47 @@ shopify-account::part(signed-out-avatar) {
   }
 }
 
-.nav-dropdown {
-  background: var(--secondary-background);
-  color: var(--text-color);
+/* ==========================================================================
+   Nav dropdown & mega menu — minimal, floating panel
+   ========================================================================== */
+
+.nav-dropdown,
+.mega-menu {
+  background: var(--header-background);
   border: 1px solid var(--border-color);
-  white-space: nowrap;
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, .14), 0 4px 12px rgba(0, 0, 0, .06);
   visibility: hidden;
   opacity: 0;
-  z-index: 1;
-  border-radius: 0 0 3px 3px;
-  padding: 16px 0;
-  list-style: none;
-  transition: opacity .2s ease-in-out, visibility .2s ease-in-out;
+  z-index: 10;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 14px);
+  transition: opacity .3s cubic-bezier(.16, 1, .3, 1), transform .3s cubic-bezier(.16, 1, .3, 1), visibility .3s;
 }
 
-.nav-dropdown:not(.nav-dropdown--floating) {
-  left: -15px;
+.nav-dropdown[aria-hidden="false"],
+.mega-menu[aria-hidden="false"] {
+  visibility: visible;
+  opacity: 1;
 }
 
-.nav-dropdown--floating {
-  border: none;
-  border-radius: 3px;
-  margin-top: 7px;
+.nav-dropdown .icon--nav-triangle-borderless,
+.nav-dropdown .icon--nav-triangle-left {
+  display: none;
 }
 
-.nav-dropdown--floating:before {
-  content: "";
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
+/* ---- simple link-list dropdown ---- */
+
+.nav-dropdown {
   left: 0;
-  box-shadow: 0 5px 5px -2px #0000001a, 5px 0 5px -2px #0000001a, 0 -5px 5px -2px #0000001a;
+  min-width: 240px;
+  padding: 14px;
+  list-style: none;
+  transform: translateY(10px);
 }
 
-.nav-dropdown--glued:not(.nav-dropdown--inverse) {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-}
-
-.nav-dropdown--glued.nav-dropdown--inverse {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
+.nav-dropdown[aria-hidden="false"] {
+  transform: translateY(0);
 }
 
 .nav-dropdown--fixed {
@@ -6407,29 +6403,6 @@ shopify-account::part(signed-out-avatar) {
   }
 }
 
-.nav-dropdown[aria-hidden="false"] {
-  visibility: visible;
-  opacity: 1;
-}
-
-.nav-dropdown .icon--nav-triangle-borderless {
-  z-index: 1;
-  width: 20px;
-  height: 9px;
-  position: absolute;
-  bottom: 100%;
-  left: 16px;
-}
-
-.nav-dropdown .icon--nav-triangle-left {
-  z-index: 1;
-  width: 9px;
-  height: 20px;
-  position: absolute;
-  top: 23px;
-  right: 100%;
-}
-
 .nav-dropdown__item:not(.has-mega-menu) {
   position: relative;
 }
@@ -6438,130 +6411,185 @@ shopify-account::part(signed-out-avatar) {
   cursor: pointer;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 60px 2px 20px;
+  gap: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-color);
   display: flex;
+  transition: background .16s ease, color .16s ease;
+}
+
+.nav-dropdown__link:hover,
+.nav-dropdown__link[aria-expanded="true"] {
+  background: var(--secondary-background);
+  color: var(--heading-color);
 }
 
 .nav-dropdown__link svg {
   width: 8px;
   height: 12px;
-  margin: 0 -40px 0 65px;
-  position: relative;
-  top: 1px;
+  margin: 0;
+  opacity: .35;
+  flex-shrink: 0;
+  position: static;
+  transition: opacity .16s ease, transform .16s ease;
 }
 
-.nav-dropdown__link[aria-expanded="true"] {
-  color: var(--accent-color);
+.nav-dropdown__link:hover svg,
+.nav-dropdown__link[aria-expanded="true"] svg {
+  opacity: .8;
+  transform: translateX(2px);
 }
 
 .nav-dropdown .nav-dropdown {
-  border-radius: 0 3px 3px 0;
-  min-width: 0;
-  margin-top: 0;
-  top: -17px;
-  left: 100%;
+  top: -14px;
+  left: calc(100% + 10px);
 }
 
 .nav-dropdown--inverse .nav-dropdown {
-  border-radius: 3px 0 0 3px;
   left: auto;
-  right: 100%;
+  right: calc(100% + 10px);
 }
 
-.nav-dropdown--inverse .nav-dropdown .icon--nav-triangle-left {
-  left: 100%;
-  right: auto;
-  transform: rotateZ(180deg);
+/* "All Categories" flyout — same panel language, always-expanded sub-lists */
+
+.nav-dropdown--categories {
+  min-width: 280px;
 }
 
-.nav-dropdown .nav-dropdown--floating {
-  border-left: 1px solid var(--border-color);
-  top: -16px;
+.nav-dropdown__categories-list,
+.nav-dropdown__sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
+.nav-dropdown__sublist {
+  padding: 2px 0 10px 14px;
+}
+
+.nav-dropdown__item + .nav-dropdown__item {
+  margin-top: 2px;
+}
+
+.nav-dropdown__link--parent {
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.nav-dropdown__link--child {
+  font-size: 13px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: var(--text-color);
+}
+
+/* ---- mega menu ---- */
 
 .mega-menu {
-  background: var(--secondary-background);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  visibility: hidden;
-  opacity: 0;
-  border-radius: 0 0 3px 3px;
-  width: 100vw;
-  transition: opacity .2s ease-in-out, visibility .2s ease-in-out;
-  position: absolute;
-  top: 100%;
-  left: 0;
-}
-
-.mega-menu--floating {
-  max-width: 0;
+  left: 50%;
+  width: min(920px, calc(100vw - 64px));
+  max-height: calc(100vh - var(--header-height, 0px)  - 40px);
+  overflow: auto;
+  transform: translate(-50%, 10px);
 }
 
 .mega-menu[aria-hidden="false"] {
-  visibility: visible;
-  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.mega-menu .container {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 40px 44px;
 }
 
 .mega-menu__inner {
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  min-height: 100%;
-  max-height: 100%;
-  padding: 25px 0 0;
+  gap: 56px;
   display: flex;
-  overflow: auto;
 }
 
 .mega-menu__inner--center {
   justify-content: center;
 }
 
+.mega-menu__inner--large {
+  gap: 72px;
+}
+
+.mega-menu__column {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.mega-menu__column,
 .mega-menu__promo {
-  white-space: normal;
-  text-align: center;
-  flex: 0 230px;
-  width: 230px;
-  min-width: 200px;
-  margin: 0 0 30px 50px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .28s cubic-bezier(.16, 1, .3, 1), transform .28s cubic-bezier(.16, 1, .3, 1);
+}
+
+.mega-menu[aria-hidden="false"] .mega-menu__column,
+.mega-menu[aria-hidden="false"] .mega-menu__promo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mega-menu__column:nth-child(1) {
+  transition-delay: .02s;
+}
+
+.mega-menu__column:nth-child(2) {
+  transition-delay: .06s;
+}
+
+.mega-menu__column:nth-child(3) {
+  transition-delay: .1s;
+}
+
+.mega-menu__column:nth-child(4) {
+  transition-delay: .14s;
+}
+
+.mega-menu__promo {
+  flex: 0 0 220px;
+  width: 220px;
+  margin-left: auto;
   display: block;
+  transition-delay: .12s;
 }
 
 .mega-menu__promo + .mega-menu__promo {
-  margin-left: 20px;
+  margin-left: 24px;
 }
 
 .mega-menu__column-list {
   flex-wrap: wrap;
   flex: auto;
   min-width: 0;
-  margin: 0 -40px;
+  gap: 40px;
   display: flex;
 }
 
 @supports (display: grid) {
   .mega-menu__column-list {
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     display: grid;
   }
 }
 
-.mega-menu__column {
-  flex: 0 auto;
-  margin: 0 30px 30px;
-  display: block;
-}
-
-.mega-menu:not(.mega-menu--floating) .mega-menu__column:first-child {
-  margin-left: 0 !important;
-}
-
-.mega-menu:not(.mega-menu--floating) .mega-menu__column:last-child {
-  margin-right: 0 !important;
-}
-
 .mega-menu__title {
-  margin-bottom: 10px;
   display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--heading-color);
+  margin-bottom: 18px;
 }
 
 .mega-menu__linklist {
@@ -6569,14 +6597,38 @@ shopify-account::part(signed-out-avatar) {
 }
 
 .mega-menu__link {
-  padding: 5px 0 6px;
-  line-height: 1.4;
-  display: block;
+  display: inline-block;
+  position: relative;
+  line-height: 2.15;
+  font-size: 14.5px;
+  color: var(--text-color);
+  transition: color .18s ease;
+}
+
+.mega-menu__link:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: .3em;
+  height: 1px;
+  background: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s cubic-bezier(.16, 1, .3, 1);
+}
+
+.mega-menu__link:hover {
+  color: var(--heading-color);
+}
+
+.mega-menu__link:hover:after {
+  transform: scaleX(1);
 }
 
 .mega-menu__image-wrapper {
-  border-radius: 3px;
-  margin: 5px 0 22px;
+  border-radius: 10px;
+  margin: 0 0 14px;
   overflow: hidden;
 }
 
@@ -6594,96 +6646,73 @@ shopify-account::part(signed-out-avatar) {
 }
 
 .mega-menu__image-heading {
-  margin-bottom: 7px;
-  transition: color .2s ease-in-out;
   display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  transition: color .2s ease-in-out;
 }
 
 .mega-menu__image-text {
+  font-size: 12.5px;
+  color: var(--text-color);
   line-height: 1.5;
 }
 
-.nav-bar .mega-menu {
-  max-height: calc(100vh - var(--header-height, 0px)  - var(--announcement-bar-height, 0px)  - 40px);
-  overscroll-behavior: contain;
-  overflow: auto;
+.mega-menu__view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: gap .18s ease;
+}
+
+.mega-menu__view-all:hover {
+  gap: 10px;
+}
+
+.mega-menu__view-all svg {
+  transition: transform .18s ease;
+}
+
+.mega-menu__view-all:hover svg {
+  transform: translateX(3px);
 }
 
 @media screen and (min-width: 1280px) {
-  .mega-menu__column {
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-
-  .mega-menu__inner--large .mega-menu__column {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-
   .mega-menu__promo {
-    flex-basis: 290px;
-    width: 290px;
+    flex-basis: 260px;
+    width: 260px;
   }
 }
 
-@media screen and (min-width: 1440px) {
-  .mega-menu__inner--center .mega-menu__column {
-    margin-left: 45px;
-    margin-right: 45px;
-  }
-
-  .mega-menu__inner--large .mega-menu__column {
-    margin-left: 60px;
-    margin-right: 60px;
-  }
-
-  .mega-menu__promo {
-    min-width: 240px;
-  }
-}
-
+/* condensed/floating side-panel variant (desktop layout = "condensed") */
 .mega-menu--floating {
-  border: none;
-  border-left: 1px solid var(--border-color);
-  border-radius: 0 3px 3px 0;
+  max-width: 0;
   width: 100vw;
   height: 100%;
   top: 0;
   left: 100%;
+  border-left: 1px solid var(--border-color);
+  border-radius: 0 16px 16px 0;
+  transform: none;
 }
 
-.mega-menu--floating:before {
-  content: "";
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-shadow: 0 5px 5px -2px #0000001a, 5px 0 5px -2px #0000001a, 0 -5px 5px -2px #0000001a;
+.mega-menu--floating[aria-hidden="false"] {
+  transform: none;
 }
 
 .mega-menu--floating .mega-menu__inner {
   margin: 0;
-  padding-left: 25px;
-  padding-right: 30px;
+  padding: 25px;
 }
 
-.mega-menu--floating .mega-menu__title {
-  margin-bottom: 5px;
-}
-
-.mega-menu--floating .mega-menu__column {
-  white-space: normal;
-  flex: 0 0 170px;
-  margin-left: 30px;
-  margin-right: 30px;
-  display: block;
-}
-
-.mega-menu--floating .mega-menu__column-list {
-  margin: 0 -30px;
-}
+/* ---- nav bar (top-level trigger row) ---- */
 
 .nav-bar {
   display: none;
@@ -6707,6 +6736,63 @@ shopify-account::part(signed-out-avatar) {
     position: absolute;
     top: 0;
     right: 0;
+    pointer-events: none;
+  }
+
+  /* backdrop scrim behind an open panel — pure CSS, driven by classes theme.js already toggles.
+     The header wrapper (#shopify-section-*) already sits at z-index:100, so this pseudo only
+     needs to stay below the z-index:10 panels within that same context — it does, by default,
+     since z-index:auto elements always paint under explicit positive z-index siblings. */
+  .nav-bar:has(.nav-dropdown--glued):before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    top: var(--header-height, 0px);
+    background: rgba(20, 18, 18, .38);
+    opacity: 0;
+    pointer-events: none;
+    animation: nav-scrim-in .3s ease forwards;
+  }
+
+  @keyframes nav-scrim-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .nav-bar__container {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-bar__all-categories {
+    position: relative;
+    margin-right: 30px;
+    padding: 17px 0;
+  }
+
+  .nav-bar__all-categories-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: var(--heading-color);
+    color: var(--header-background);
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity .18s ease;
+  }
+
+  .nav-bar__all-categories-btn:hover {
+    opacity: .85;
+  }
+
+  .nav-bar__linklist {
+    flex: 1;
   }
 
   .nav-bar__item {
@@ -6720,38 +6806,39 @@ shopify-account::part(signed-out-avatar) {
     position: static;
   }
 
-  .nav-bar__item > .nav-dropdown {
-    min-width: calc(100% + 20px);
-  }
-
   .nav-bar__link {
     cursor: pointer;
     display: block;
+    position: relative;
+    transition: color .18s ease;
   }
 
-  .nav-bar__link .icon--arrow-bottom {
-    width: 12px;
-    height: 8px;
-    margin-left: 10px;
-  }
-
-  .nav-bar__link .icon--nav-triangle {
-    opacity: 0;
-    z-index: 2;
-    width: 20px;
-    height: 9px;
-    margin-left: -16px;
-    transition: all .2s ease-in-out;
+  .nav-bar__link:after {
+    content: "";
     position: absolute;
+    left: 0;
+    right: 0;
     bottom: -1px;
+    height: 1px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .22s cubic-bezier(.16, 1, .3, 1);
   }
 
+  .nav-bar__link:hover,
   .nav-bar__link[aria-expanded="true"] {
-    color: var(--accent-color);
+    color: var(--heading-color);
   }
 
-  .nav-bar__link[aria-expanded="true"] .icon--nav-triangle {
-    opacity: 1;
+  .nav-bar__link:hover:after,
+  .nav-bar__link[aria-expanded="true"]:after {
+    transform: scaleX(1);
+  }
+
+  .nav-bar__link .icon--arrow-bottom,
+  .nav-bar__link .icon--nav-triangle {
+    display: none;
   }
 }
 
@@ -12932,264 +13019,3 @@ product-rerender {
     right: 6px;
   }
 }
-
-/* ===== MEGA MENU REDESIGN ===== */
-
-/* Drop shadow + red top accent instead of plain border */
-.mega-menu {
-  background: #ffffff;
-  border-top: 3px solid var(--accent-color, #e60000) !important;
-  border-bottom: none !important;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.13), 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-/* Tighter, more generous vertical padding */
-.mega-menu__inner {
-  padding: 36px 0 32px !important;
-  gap: 0;
-}
-
-/* Column dividers via right border */
-.mega-menu__column {
-  padding: 0 32px 16px !important;
-  margin: 0 !important;
-  border-right: 1px solid var(--border-color, #e8e8e8);
-  flex: 1 1 0;
-}
-
-.mega-menu__column:last-child {
-  border-right: none;
-}
-
-/* First column no left padding override */
-.mega-menu:not(.mega-menu--floating) .mega-menu__column:first-child {
-  padding-left: 0 !important;
-}
-
-.mega-menu:not(.mega-menu--floating) .mega-menu__column:last-child {
-  padding-right: 0 !important;
-}
-
-/* Category titles — bold, uppercase, red underline divider */
-.mega-menu__title {
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--heading-color, #111) !important;
-  padding-bottom: 14px !important;
-  margin-bottom: 16px !important;
-  border-bottom: 2px solid var(--accent-color, #e60000);
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  transition: color 0.2s ease;
-}
-
-.mega-menu__title:hover {
-  color: var(--accent-color, #e60000) !important;
-}
-
-/* Arrow indicator on title */
-.mega-menu__title::after {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e60000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  flex-shrink: 0;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.mega-menu__title:hover::after {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Sub-links — sliding red left-bar on hover */
-.mega-menu__linklist {
-  list-style: none !important;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.mega-menu__item {
-  list-style: none;
-}
-
-.mega-menu__link {
-  position: relative;
-  padding: 6px 4px 6px 14px !important;
-  line-height: 1.5 !important;
-  font-size: 14px;
-  color: var(--text-color, #444);
-  display: block;
-  transition: color 0.18s ease, padding-left 0.18s ease;
-  border-radius: 4px;
-}
-
-/* Red bar that slides in on hover */
-.mega-menu__link::before {
-  content: '';
-  position: absolute;
-  left: 2px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 0;
-  background: var(--accent-color, #e60000);
-  border-radius: 2px;
-  transition: height 0.18s ease;
-}
-
-.mega-menu__link:hover {
-  color: var(--accent-color, #e60000) !important;
-  padding-left: 20px !important;
-  background: rgba(230, 0, 0, 0.04);
-}
-
-.mega-menu__link:hover::before {
-  height: 18px;
-}
-
-/* "View all" link at column bottom */
-.mega-menu__view-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 16px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--accent-color, #e60000);
-  text-decoration: none;
-  transition: gap 0.18s ease;
-}
-
-.mega-menu__view-all:hover {
-  gap: 9px;
-}
-
-.mega-menu__view-all svg {
-  transition: transform 0.18s ease;
-}
-
-.mega-menu__view-all:hover svg {
-  transform: translateX(3px);
-}
-
-/* Promo image cards — elevated, rounded, with overlay on hover */
-.mega-menu__promo {
-  border-radius: 8px;
-  overflow: hidden;
-  background: #f5f5f5;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-  text-align: left !important;
-  margin: 0 0 0 40px !important;
-}
-
-.mega-menu__promo:hover {
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
-  transform: translateY(-2px);
-}
-
-.mega-menu__image-wrapper {
-  border-radius: 8px 8px 0 0 !important;
-  overflow: hidden;
-  position: relative;
-}
-
-.mega-menu__image-heading {
-  padding: 14px 16px 4px !important;
-  font-size: 15px !important;
-  font-weight: 700;
-  color: var(--heading-color, #111);
-  display: block;
-}
-
-.mega-menu__image-text {
-  padding: 0 16px 16px;
-  font-size: 13px;
-  color: var(--text-color, #666);
-  line-height: 1.5 !important;
-}
-
-/* No border-bottom on heading when inside promo */
-.mega-menu__promo .mega-menu__image-heading {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-/* ===== NAV DROPDOWN (CATEGORY MENU) REDESIGN — Minimal Clean ===== */
-
-/* Quiet white card: thin hairline border, gentle radius, subtle lift — no accent bars, no heavy shadow */
-.nav-dropdown {
-  background: #ffffff;
-  border: 1px solid var(--border-color, #e8e8e8);
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  padding: 10px;
-}
-
-.nav-dropdown--floating {
-  border: 1px solid var(--border-color, #e8e8e8);
-}
-
-/* Pointer triangles removed in favor of a plain, evenly-bordered panel */
-.nav-dropdown--floating:before {
-  display: none;
-}
-
-.nav-dropdown .icon--nav-triangle-borderless,
-.nav-dropdown .icon--nav-triangle-left {
-  display: none;
-}
-
-/* Nested (second-level) dropdown gets the same quiet card, offset with breathing room */
-.nav-dropdown .nav-dropdown {
-  border-radius: 10px;
-  left: calc(100% + 10px);
-  top: -11px;
-}
-
-.nav-dropdown--inverse .nav-dropdown {
-  left: auto;
-  right: calc(100% + 10px);
-}
-
-/* Links: generous whitespace, plain rows, quiet gray fill on hover — no color or bar tricks */
-.nav-dropdown__link {
-  padding: 11px 16px;
-  font-size: 14px;
-  color: var(--text-color, #444);
-  border-radius: 6px;
-  transition: background 0.15s ease;
-}
-
-.nav-dropdown__link:hover,
-.nav-dropdown__link[aria-expanded="true"] {
-  background: var(--secondary-background, #f5f5f5);
-  color: var(--heading-color, #111);
-}
-
-.nav-dropdown__link svg {
-  opacity: 0.4;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
-.nav-dropdown__link:hover svg,
-.nav-dropdown__link[aria-expanded="true"] svg {
-  opacity: 0.9;
-  transform: translateX(2px);
-}
-
-
