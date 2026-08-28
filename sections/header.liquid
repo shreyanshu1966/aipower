@@ -55,7 +55,11 @@
                    src="{{ section.settings.logo | img_url: image_size, scale: 2 }}"
                    alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
             {%- else -%}
-              <span class="header__logo-text">{{ shop.name }}</span>
+              <span class="visually-hidden">{{ shop.name }}</span>
+              <img class="header__logo-image"
+                   style="max-width: {{ section.settings.logo_max_width }}px"
+                   src="{{ 'muqaddas-group-logo.svg' | asset_url }}"
+                   alt="{{ shop.name | escape }}">
             {%- endif -%}
           </a>
         {%- endcapture -%}
@@ -642,17 +646,15 @@
     {%- endif -%}
   }
 
-  {%- if section.settings.logo -%}
-    .header__logo-image {
-      max-width: {{ section.settings.mobile_logo_max_width }}px !important;
-    }
+  .header__logo-image {
+    max-width: {{ section.settings.mobile_logo_max_width }}px !important;
+  }
 
-    @media screen and (min-width: 641px) {
-      .header__logo-image {
-        max-width: {{ section.settings.logo_max_width }}px !important;
-      }
+  @media screen and (min-width: 641px) {
+    .header__logo-image {
+      max-width: {{ section.settings.logo_max_width }}px !important;
     }
-  {%- endif -%}
+  }
 
   {%- if settings.header_background == settings.secondary_background -%}
     .search-bar__top {
