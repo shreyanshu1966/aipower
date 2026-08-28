@@ -311,25 +311,28 @@
   {%- if section.settings.desktop_navigation_layout == 'inline' and navigation_menu.links.size > 0 -%}
     <nav class="nav-bar">
       <div class="nav-bar__inner">
-        <div class="container nav-bar__container">
-
-          <div class="nav-bar__all-categories" data-type="menu">
-            <button type="button" class="nav-bar__all-categories-btn" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="nav-all-categories">
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 4h16v2H2zM2 9h16v2H2zM2 14h16v2H2z"/></svg>
-              {{- 'header.navigation.all_categories' | t -}}
+        <div class="container" style="display: flex; align-items: center;">
+          
+          <div class="nav-bar__all-categories" style="position: relative; margin-right: 30px;">
+            <button type="button" class="button button--primary" style="display: flex; align-items: center; gap: 10px; padding: 12px 24px; background: var(--primary-button-background); color: var(--primary-button-text-color); font-weight: bold; cursor: pointer; border: none; border-radius: 4px;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4h16v2H2zM2 9h16v2H2zM2 14h16v2H2z"/></svg>
+              All Categories
             </button>
-
-            <div id="nav-all-categories" class="nav-dropdown nav-dropdown--categories" data-type="menu" aria-hidden="true">
-              <ul class="nav-dropdown__categories-list">
+            <div class="nav-bar__categories-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 260px; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 20; border-radius: 6px; overflow: hidden; max-height: 80vh; overflow-y: auto;">
+              <ul class="list--unstyled" style="margin: 0; padding: 8px 0;">
                 {%- for link in linklists[section.settings.navigation_menu].links -%}
-                  <li class="nav-dropdown__item">
-                    <a href="{{ link.url }}" class="nav-dropdown__link nav-dropdown__link--parent">{{ link.title }}</a>
-
+                  <li style="{% unless forloop.last %}border-bottom: 1px solid #f2f2f2;{% endunless %}">
+                    <a href="{{ link.url }}" class="nav-bar__cat-parent" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; color: var(--text-color); text-decoration: none; font-weight: 600; font-size: 13.5px; transition: background .15s;">
+                      {{ link.title }}
+                      {%- if link.links.size > 0 -%}
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 2l4 4-4 4"/></svg>
+                      {%- endif -%}
+                    </a>
                     {%- if link.links.size > 0 -%}
-                      <ul class="nav-dropdown__sublist">
+                      <ul class="list--unstyled" style="margin: 0; padding: 0 0 8px 0; background: #fafafa;">
                         {%- for sub_link in link.links -%}
                           <li>
-                            <a href="{{ sub_link.url }}" class="nav-dropdown__link nav-dropdown__link--child">{{ sub_link.title }}</a>
+                            <a href="{{ sub_link.url }}" class="nav-bar__cat-child" style="display: block; padding: 6px 16px 6px 28px; color: var(--text-color); text-decoration: none; font-size: 13px; opacity: 0.75; transition: opacity .15s, background .15s;">{{ sub_link.title }}</a>
                           </li>
                         {%- endfor -%}
                       </ul>
@@ -339,8 +342,8 @@
               </ul>
             </div>
           </div>
-
-          <ul class="nav-bar__linklist list--unstyled" role="list" data-type="menu">
+          
+          <ul class="nav-bar__linklist list--unstyled" role="list" style="flex: 1;" data-type="menu">
             {%- assign mega_menu_titles = section.blocks | map: 'settings' | map: 'menu_item' -%}
             {%- for link in navigation_menu.links -%}
               {%- assign is_mega_item = false -%}
@@ -433,7 +436,93 @@
     border-bottom: 2px solid var(--primary-button-background, #000);
   }
 
-  /* Desktop nav-bar / mega-menu / nav-dropdown styling lives in assets/theme.css */
+  /* ── All Categories dropdown ── */
+  .nav-bar__all-categories:hover .nav-bar__categories-dropdown {
+    display: block !important;
+  }
+  .nav-bar__cat-parent:hover {
+    background: #f5f5f5;
+  }
+  .nav-bar__cat-child:hover {
+    background: #efefef;
+    opacity: 1 !important;
+  }
+
+  /* ── Nav-bar link hover effects ── */
+  @media screen and (min-width: 1000px) {
+    .nav-bar__link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    /* animated underline on hover */
+    .nav-bar__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      transition: width 0.25s ease;
+    }
+
+    .nav-bar__link:hover::after,
+    .nav-bar__link[aria-expanded="true"]::after {
+      width: 100%;
+    }
+
+    .nav-bar__link:hover,
+    .nav-bar__link[aria-expanded="true"] {
+      color: var(--accent-color);
+    }
+
+    /* ── CSS-driven hover open (works independently of JS) ── */
+    .nav-bar__item--static:hover > .mega-menu,
+    .nav-bar__item--static:focus-within > .mega-menu {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .nav-bar__item:not(.nav-bar__item--static):hover > .nav-dropdown,
+    .nav-bar__item:not(.nav-bar__item--static):focus-within > .nav-dropdown {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    /* show underline when item is open */
+    .nav-bar__item--static:hover > .nav-bar__link::after,
+    .nav-bar__item:hover > .nav-bar__link::after {
+      width: 100%;
+    }
+
+    /* ── Mega menu link hover effects ── */
+    .mega-menu__title:hover {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .mega-menu__link {
+      position: relative;
+      transition: color 0.15s ease, padding-left 0.2s ease;
+    }
+
+    .mega-menu__link:hover {
+      color: var(--accent-color);
+      padding-left: 8px;
+      text-decoration: none;
+    }
+
+    /* nav-dropdown link hover */
+    .nav-dropdown__link {
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+
+    .nav-dropdown__link:hover {
+      color: var(--accent-color);
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
 
   /* Ensure mobile menu draws above the bottom nav and other overlays */
   .mobile-menu {
