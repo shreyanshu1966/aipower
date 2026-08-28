@@ -1,0 +1,541 @@
+<section class="contact-split" id="contact-form" data-section-id="{{ section.id }}" data-section-type="contact-form-pro">
+  <div class="container">
+    <div class="contact-split__grid">
+
+      <div class="contact-split__form-col">
+        <span class="contact-split__label">
+          {{ section.settings.label | default: '02 — Send a message' | escape }}
+        </span>
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="contact-split__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.content != blank -%}
+          <div class="contact-split__intro rte">{{ section.settings.content }}</div>
+        {%- endif -%}
+
+        {%- form 'contact', class: 'contact-form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="contact-form__alert contact-form__alert--success">{{ 'contact.form.successfully_sent' | t }}</p>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="contact-form__alert contact-form__alert--error" id="contact-form-error">
+              <ul role="list">
+                {%- for field in form.errors -%}
+                  {%- if field == 'form' -%}
+                    <li>{{ form.errors.messages[field] }}</li>
+                  {%- else -%}
+                    <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          <div class="contact-form__row contact-form__row--split">
+            <div class="contact-form__field">
+              <input id="contact-pro-name" type="text" name="contact[name]" class="contact-form__input" placeholder=" " required {% if customer %}value="{{ customer.name }}"{% endif %}>
+              <label for="contact-pro-name">{{ 'contact.form.name' | t }}</label>
+            </div>
+
+            <div class="contact-form__field">
+              <input id="contact-pro-email" type="email" name="contact[email]" class="contact-form__input" placeholder=" " required {% if customer %}value="{{ customer.email }}"{% endif %} {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="contact-form-error"{% endif %}>
+              <label for="contact-pro-email">{{ 'contact.form.email' | t }}</label>
+            </div>
+          </div>
+
+          {%- if section.settings.show_phone_field -%}
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <input id="contact-pro-phone" type="tel" name="contact[phone]" class="contact-form__input" placeholder=" ">
+                <label for="contact-pro-phone">{{ section.settings.phone_field_label | default: 'Phone (optional)' | escape }}</label>
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_subject_field -%}
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <input id="contact-pro-subject" type="text" name="contact[subject]" class="contact-form__input" placeholder=" ">
+                <label for="contact-pro-subject">{{ section.settings.subject_field_label | default: 'Subject' | escape }}</label>
+              </div>
+            </div>
+          {%- endif -%}
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <textarea id="contact-pro-message" name="contact[body]" rows="5" class="contact-form__input contact-form__input--textarea" placeholder=" " required></textarea>
+              <label for="contact-pro-message">{{ 'contact.form.message' | t }}</label>
+            </div>
+          </div>
+
+          <button type="submit" class="contact-form__submit">
+            <span>{{ 'contact.form.submit' | t }}</span>
+            {%- render 'icon', icon: 'arrow-right' -%}
+          </button>
+        {%- endform -%}
+      </div>
+
+      <div class="contact-split__info-col">
+        <div class="contact-split__info-card">
+          {%- if section.settings.info_heading != blank -%}
+            <h3 class="contact-split__info-heading">{{ section.settings.info_heading | escape }}</h3>
+          {%- endif -%}
+
+          {%- if section.blocks.size > 0 -%}
+            <ul class="contact-split__info-list" role="list">
+              {%- for block in section.blocks -%}
+                <li class="contact-split__info-item" {{ block.shopify_attributes }}>
+                  <span class="contact-split__info-icon">
+                    {%- render 'icon', icon: block.settings.icon -%}
+                  </span>
+
+                  <span class="contact-split__info-text">
+                    <span class="contact-split__info-label">{{ block.settings.title | escape }}</span>
+
+                    {%- if block.settings.link != blank -%}
+                      <a href="{{ block.settings.link }}" class="contact-split__info-value">{{ block.settings.value | strip_html }}</a>
+                    {%- else -%}
+                      <div class="contact-split__info-value">{{ block.settings.value }}</div>
+                    {%- endif -%}
+                  </span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          {%- if section.settings.show_social -%}
+            <div class="contact-split__social">
+              {%- render 'social-media' -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background }};
+  }
+
+  .contact-split {
+    padding: 100px 0;
+    color: {{ section.settings.text_color }};
+  }
+
+  .contact-split__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 90px;
+    align-items: start;
+  }
+
+  .contact-split__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #e60000;
+    margin-bottom: 18px;
+  }
+
+  .contact-split__label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: #e60000;
+  }
+
+  .contact-split__heading {
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+
+  .contact-split__intro {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.6;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  /* Form */
+  .contact-form__alert {
+    padding: 14px 18px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    border-left: 3px solid;
+  }
+
+  .contact-form__alert--success {
+    border-color: {{ settings.success_color | default: '#1a7f37' }};
+    background: rgba(26, 127, 55, 0.08);
+  }
+
+  .contact-form__alert--error { border-color: #e60000; background: rgba(230, 0, 0, 0.06); }
+  .contact-form__alert--error ul { margin: 0; padding-left: 18px; }
+
+  .contact-form__row { margin-bottom: 6px; }
+
+  .contact-form__row--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 28px;
+  }
+
+  .contact-form__field {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .contact-form__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.2);
+    color: inherit;
+    font-size: 16px;
+    font-family: inherit;
+    padding: 10px 2px 12px;
+    transition: border-color 0.25s ease;
+  }
+
+  .contact-form__input:focus {
+    outline: none;
+    border-color: #e60000;
+  }
+
+  .contact-form__input--textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .contact-form__field label {
+    position: absolute;
+    left: 2px;
+    top: 12px;
+    font-size: 16px;
+    opacity: 0.45;
+    pointer-events: none;
+    transition: transform 0.2s ease, font-size 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+  }
+
+  .contact-form__input:focus + label,
+  .contact-form__input:not(:placeholder-shown) + label {
+    top: -8px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .contact-form__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 17px 34px;
+    background: #e60000;
+    color: #ffffff;
+    border: 1px solid #e60000;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .contact-form__submit svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.25s ease;
+  }
+
+  .contact-form__submit:hover {
+    background: transparent;
+    color: {{ section.settings.text_color }};
+  }
+
+  .contact-form__submit:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Info card */
+  .contact-split__info-card {
+    background: rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.04);
+    border: 1px solid rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.1);
+    padding: 44px 40px;
+    position: sticky;
+    top: 40px;
+  }
+
+  .contact-split__info-heading {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    opacity: 0.55;
+    margin: 0 0 30px;
+  }
+
+  .contact-split__info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-split__info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.08);
+  }
+
+  .contact-split__info-item:first-child { border-top: none; padding-top: 0; }
+
+  .contact-split__info-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(230, 0, 0, 0.12);
+    color: #e60000;
+  }
+
+  .contact-split__info-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .contact-split__info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+  }
+
+  .contact-split__info-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+
+  .contact-split__info-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  a.contact-split__info-value:hover { color: #e60000; }
+
+  .contact-split__social {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.08);
+  }
+
+  .contact-split__social .social-media__item-list {
+    display: flex;
+    gap: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-split__social .social-media__item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.15);
+    color: inherit;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .contact-split__social .social-media__item a svg { width: 15px; height: 15px; }
+
+  .contact-split__social .social-media__item a:hover {
+    background: #e60000;
+    border-color: #e60000;
+    color: #ffffff;
+  }
+
+  @media screen and (max-width: 999px) {
+    .contact-split { padding: 64px 0; }
+    .contact-split__grid { grid-template-columns: 1fr; gap: 56px; }
+    .contact-form__row--split { grid-template-columns: 1fr; }
+    .contact-split__info-card { position: static; padding: 32px 28px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Contact form (pro)",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Eyebrow label",
+      "default": "02 — Send a message"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tell us what you need"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Intro text",
+      "default": "<p>Fill in the form and our team will get back to you within one business day.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone_field",
+      "label": "Show phone field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_field_label",
+      "label": "Phone field label",
+      "default": "Phone (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subject_field",
+      "label": "Show subject field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "subject_field_label",
+      "label": "Subject field label",
+      "default": "Subject"
+    },
+    {
+      "type": "header",
+      "content": "Info card"
+    },
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Heading",
+      "default": "Contact information"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social icons",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info_item",
+      "name": "Info item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "bi-phone", "label": "Phone" },
+            { "value": "bi-email", "label": "Email" },
+            { "value": "bi-shop-pin", "label": "Location" },
+            { "value": "bi-chat", "label": "Hours / other" }
+          ],
+          "default": "bi-phone"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "Phone"
+        },
+        {
+          "type": "richtext",
+          "id": "value",
+          "label": "Value",
+          "default": "<p>+965 5500 0200</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)",
+          "info": "e.g. tel:+96555000200"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Contact form (pro)",
+      "category": "Call to action",
+      "blocks": [
+        {
+          "type": "info_item",
+          "settings": { "icon": "bi-phone", "title": "Phone", "value": "<p>+965 5500 0200</p>", "link": "tel:+96555000200" }
+        },
+        {
+          "type": "info_item",
+          "settings": { "icon": "bi-email", "title": "Email", "value": "<p>info@muqaddasgroup.com</p>", "link": "mailto:info@muqaddasgroup.com" }
+        },
+        {
+          "type": "info_item",
+          "settings": { "icon": "bi-shop-pin", "title": "Address", "value": "<p>Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait</p>" }
+        },
+        {
+          "type": "info_item",
+          "settings": { "icon": "bi-chat", "title": "Working hours", "value": "<p>Sat – Thu: 7:00 AM – 7:00 PM<br>Friday: Closed</p>" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

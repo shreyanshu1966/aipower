@@ -1,0 +1,336 @@
+<section class="contact-map" id="contact-map" data-section-id="{{ section.id }}" data-section-type="contact-map">
+  <div class="contact-map__frame-wrap">
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.settings.map_query != blank -%}
+          <iframe
+            class="contact-map__iframe {% if forloop.first %}is-active{% endif %}"
+            data-map-frame="{{ block.id }}"
+            src="https://www.google.com/maps?q={{ block.settings.map_query | url_encode }}&z={{ section.settings.zoom }}&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="{{ block.settings.title | escape }}"
+            {% unless forloop.first %}hidden{% endunless %}
+          ></iframe>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    <div class="contact-map__overlay">
+      {%- if section.settings.title != blank -%}
+        <span class="contact-map__label">
+          {{ section.settings.title | default: '03 — Find us' | escape }}
+        </span>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="contact-map__cards">
+          {%- for block in section.blocks -%}
+            <div class="contact-map__card {% if forloop.first %}is-active{% endif %}" data-map-card="{{ block.id }}" {{ block.shopify_attributes }}>
+              {%- if section.blocks.size > 1 -%}
+                <button type="button" class="contact-map__card-toggle" data-map-toggle="{{ block.id }}">
+                  {{- block.settings.title | escape -}}
+                </button>
+              {%- else -%}
+                <span class="contact-map__card-toggle contact-map__card-toggle--single">
+                  {{- block.settings.title | escape -}}
+                </span>
+              {%- endif -%}
+
+              {%- if block.settings.address != blank -%}
+                <div class="contact-map__address rte">{{ block.settings.address }}</div>
+              {%- endif -%}
+
+              {%- if block.settings.hours != blank -%}
+                <div class="contact-map__hours rte">{{ block.settings.hours }}</div>
+              {%- endif -%}
+
+              <div class="contact-map__actions">
+                {%- if block.settings.map_query != blank -%}
+                  <a href="https://maps.google.com/?daddr={{ block.settings.map_query | url_encode }}" target="_blank" rel="nofollow noopener" class="contact-map__button contact-map__button--primary">
+                    {{- section.settings.directions_label | default: 'Get directions' | escape -}}
+                  </a>
+                {%- endif -%}
+
+                {%- if block.settings.phone != blank -%}
+                  <a href="tel:{{ block.settings.phone | remove: ' ' }}" class="contact-map__button contact-map__button--ghost">
+                    {{- section.settings.call_label | default: 'Call branch' | escape -}}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-map {
+    position: relative;
+    height: 640px;
+    background: #111111;
+  }
+
+  .contact-map__frame-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact-map__iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.35) contrast(1.05);
+  }
+
+  .contact-map__iframe:not(.is-active) {
+    display: none;
+  }
+
+  .contact-map__overlay {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 2;
+    max-width: 400px;
+    width: calc(100% - 80px);
+  }
+
+  .contact-map__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    background: rgba(17, 17, 17, 0.85);
+    padding: 10px 16px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(6px);
+  }
+
+  .contact-map__label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #e60000;
+  }
+
+  .contact-map__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  .contact-map__card {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    background: rgba(17, 17, 17, 0.92);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 26px 28px;
+  }
+
+  .contact-map__card.is-active {
+    display: flex;
+  }
+
+  .contact-map__card-toggle {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    cursor: default;
+  }
+
+  .contact-map__address, .contact-map__hours {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .contact-map__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+  }
+
+  .contact-map__button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact-map__button--primary {
+    background: #e60000;
+    color: #ffffff;
+    border: 1px solid #e60000;
+  }
+
+  .contact-map__button--primary:hover {
+    background: transparent;
+    color: #ffffff;
+  }
+
+  .contact-map__button--ghost {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .contact-map__button--ghost:hover {
+    border-color: #ffffff;
+  }
+
+  @media screen and (max-width: 640px) {
+    .contact-map { height: 560px; }
+    .contact-map__overlay {
+      top: auto;
+      bottom: 24px;
+      left: 20px;
+      width: calc(100% - 40px);
+      max-width: none;
+    }
+    .contact-map__card { padding: 22px 22px; }
+  }
+</style>
+
+<script>
+  (function() {
+    var root = document.querySelector('.contact-map[data-section-id="{{ section.id }}"]');
+    if (!root) return;
+
+    var toggles = root.querySelectorAll('[data-map-toggle]');
+
+    toggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function() {
+        var id = toggle.getAttribute('data-map-toggle');
+
+        root.querySelectorAll('[data-map-card]').forEach(function(card) {
+          card.classList.toggle('is-active', card.getAttribute('data-map-card') === id);
+        });
+
+        root.querySelectorAll('[data-map-frame]').forEach(function(frame) {
+          var isMatch = frame.getAttribute('data-map-frame') === id;
+          frame.classList.toggle('is-active', isMatch);
+          frame.hidden = !isMatch;
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Contact map",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Eyebrow label",
+      "default": "03 — Find us"
+    },
+    {
+      "type": "range",
+      "id": "zoom",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "label": "Map zoom",
+      "default": 15
+    },
+    {
+      "type": "text",
+      "id": "directions_label",
+      "label": "Directions button label",
+      "default": "Get directions"
+    },
+    {
+      "type": "text",
+      "id": "call_label",
+      "label": "Call button label",
+      "default": "Call branch"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "branch",
+      "name": "Branch",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Branch name",
+          "default": "Kuwait Branch"
+        },
+        {
+          "type": "richtext",
+          "id": "address",
+          "label": "Address",
+          "default": "<p>Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "hours",
+          "label": "Working hours",
+          "default": "<p>Saturday – Thursday: 07:00 AM – 07:00 PM<br>Friday: Closed</p>"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone",
+          "default": "55000200"
+        },
+        {
+          "type": "text",
+          "id": "map_query",
+          "label": "Map search text",
+          "info": "The address or place name used to place the pin — no API key needed.",
+          "default": "Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact map",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "branch",
+          "settings": {
+            "title": "Kuwait Branch",
+            "address": "<p>Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait</p>",
+            "hours": "<p>Saturday – Thursday: 07:00 AM – 07:00 PM<br>Friday: Closed</p>",
+            "phone": "55000200",
+            "map_query": "Shuwaikh Industrial, Khalifa Al Jassim Street, Kuwait"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

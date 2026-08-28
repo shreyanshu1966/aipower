@@ -1,0 +1,378 @@
+<section class="contact-hero" data-section-id="{{ section.id }}" data-section-type="contact-hero">
+  <div class="container">
+    <div class="contact-hero__top">
+      <span class="contact-hero__label">
+        {{ section.settings.label | default: 'Contact' | escape }}
+      </span>
+
+      <a href="#contact-form" class="contact-hero__scroll" data-scroll-cue>
+        <span>{{ section.settings.scroll_text | default: 'Scroll' | escape }}</span>
+        <i aria-hidden="true"></i>
+      </a>
+    </div>
+
+    {%- if section.settings.heading != blank -%}
+      <h1 class="contact-hero__heading">{{ section.settings.heading | remove: '<p>' | remove: '</p>' }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="contact-hero__subheading">{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="contact-hero__quick-list">
+        {%- for block in section.blocks -%}
+          {%- capture quick_inner -%}
+            <span class="contact-hero__quick-icon">
+              {%- render 'icon', icon: block.settings.icon -%}
+            </span>
+
+            <span class="contact-hero__quick-text">
+              <span class="contact-hero__quick-label">{{ block.settings.title | escape }}</span>
+              <span class="contact-hero__quick-value">{{ block.settings.value | escape }}</span>
+            </span>
+          {%- endcapture -%}
+
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="contact-hero__quick-item" {{ block.shopify_attributes }}>
+              {{- quick_inner -}}
+              <span class="contact-hero__quick-arrow" aria-hidden="true">
+                {%- render 'icon', icon: 'arrow-right' -%}
+              </span>
+            </a>
+          {%- else -%}
+            <div class="contact-hero__quick-item" {{ block.shopify_attributes }}>
+              {{- quick_inner -}}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="contact-hero__glow" aria-hidden="true"></div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background }};
+  }
+
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 64px 0 80px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .contact-hero__glow {
+    position: absolute;
+    top: -220px;
+    right: -160px;
+    width: 560px;
+    height: 560px;
+    background: radial-gradient(circle, rgba(230, 0, 0, 0.16) 0%, rgba(230, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .contact-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-hero__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  .contact-hero__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #e60000;
+  }
+
+  .contact-hero__label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: #e60000;
+  }
+
+  .contact-hero__scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .contact-hero__scroll:hover {
+    opacity: 1;
+  }
+
+  .contact-hero__scroll i {
+    display: block;
+    width: 1px;
+    height: 26px;
+    background: currentColor;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-hero__scroll i::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    background: #e60000;
+    animation: contact-hero-scroll 1.8s ease-in-out infinite;
+  }
+
+  @keyframes contact-hero-scroll {
+    0%   { top: -100%; }
+    60%  { top: 100%; }
+    100% { top: 100%; }
+  }
+
+  .contact-hero__heading {
+    font-size: clamp(40px, 7vw, 96px);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 0 0 28px;
+    max-width: 16ch;
+  }
+
+  .contact-hero__heading em {
+    font-style: normal;
+    color: #e60000;
+  }
+
+  .contact-hero__subheading {
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.6);
+    max-width: 560px;
+    margin: 0 0 56px;
+  }
+
+  .contact-hero__quick-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.12);
+    border: 1px solid rgba({{ section.settings.text_color | color_extract: 'red' }}, {{ section.settings.text_color | color_extract: 'green' }}, {{ section.settings.text_color | color_extract: 'blue' }}, 0.12);
+  }
+
+  .contact-hero__quick-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 26px 24px;
+    background: {{ section.settings.background }};
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  a.contact-hero__quick-item:hover {
+    background: rgba(230, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .contact-hero__quick-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(230, 0, 0, 0.12);
+    color: #e60000;
+  }
+
+  .contact-hero__quick-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .contact-hero__quick-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .contact-hero__quick-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.5;
+  }
+
+  .contact-hero__quick-value {
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-hero__quick-arrow {
+    margin-left: auto;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .contact-hero__quick-arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  a.contact-hero__quick-item:hover .contact-hero__quick-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media screen and (max-width: 999px) {
+    .contact-hero__quick-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .contact-hero { padding: 40px 0 56px; }
+    .contact-hero__top { margin-bottom: 32px; }
+    .contact-hero__subheading { margin-bottom: 36px; }
+    .contact-hero__glow { width: 320px; height: 320px; top: -140px; right: -120px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-hero__scroll i::after { animation: none; top: 0; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Contact hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Eyebrow label",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "scroll_text",
+      "label": "Scroll cue text",
+      "default": "Scroll"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Let's build something <em>reliable</em>, together.</p>",
+      "info": "Wrap a word in <em></em> (via the HTML editor) to highlight it in red."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Questions about a product, a bulk order, or an existing order? Our team in Kuwait replies fast — reach us below or send a message."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quick_contact",
+      "name": "Quick contact item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "bi-phone", "label": "Phone" },
+            { "value": "bi-email", "label": "Email" },
+            { "value": "bi-shop-pin", "label": "Location" },
+            { "value": "bi-chat", "label": "Chat" }
+          ],
+          "default": "bi-phone"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "Call us"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "+965 5500 0200"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "e.g. tel:+96555000200 or mailto:info@example.com"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Contact hero",
+      "category": "Call to action",
+      "blocks": [
+        {
+          "type": "quick_contact",
+          "settings": { "icon": "bi-phone", "title": "Call us", "value": "5500 0200", "link": "tel:+96555000200" }
+        },
+        {
+          "type": "quick_contact",
+          "settings": { "icon": "bi-email", "title": "Email us", "value": "info@muqaddasgroup.com", "link": "mailto:info@muqaddasgroup.com" }
+        },
+        {
+          "type": "quick_contact",
+          "settings": { "icon": "bi-shop-pin", "title": "Visit us", "value": "Shuwaikh Industrial, Kuwait", "link": "#contact-map" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
