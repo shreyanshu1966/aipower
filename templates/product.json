@@ -41,6 +41,10 @@
             "show_gift_card_recipient": true
           }
         },
+        "store_pickup": {
+          "type": "store_pickup",
+          "settings": {}
+        },
         "specifications_z768hn": {
           "type": "specifications",
           "settings": {
@@ -72,6 +76,7 @@
         "product_meta",
         "variant_selector",
         "buy_buttons",
+        "store_pickup",
         "specifications_z768hn",
         "description",
         "delivery_details",
