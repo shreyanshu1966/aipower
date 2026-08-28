@@ -76,6 +76,37 @@
     </div>
   {%- endif -%}
 
+  {%- assign quick_specs = product.metafields.custom.specifications.value -%}
+  {%- if quick_specs != blank -%}
+    <div class="product-quick-specs">
+      {%- assign quick_spec_count = 0 -%}
+      {%- for entry in quick_specs -%}
+        {%- if quick_spec_count >= 4 -%}
+          {%- break -%}
+        {%- endif -%}
+
+        {%- assign raw_key = entry[0] -%}
+        {%- assign value = entry[1] -%}
+
+        {%- if value != blank -%}
+          {%- assign words = raw_key | replace: '_', ' ' | split: ' ' -%}
+          {%- assign label = '' -%}
+          {%- for word in words -%}
+            {%- assign cap_word = word | capitalize -%}
+            {%- assign label = label | append: cap_word | append: ' ' -%}
+          {%- endfor -%}
+
+          <div class="product-quick-specs__item">
+            <span class="product-quick-specs__label">{{ label | strip }}</span>
+            <span class="product-quick-specs__value">{{ value }}</span>
+          </div>
+
+          {%- assign quick_spec_count = quick_spec_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
   {%- if block.settings.show_vendor or block.settings.show_sku -%}
     <div class="product-meta__reference">
       {%- if block.settings.show_vendor -%}

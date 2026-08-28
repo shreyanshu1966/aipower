@@ -1,5 +1,6 @@
 {%- assign shipping_estimator_block = section.blocks | where: 'type', 'shipping_estimator' | first -%}
 {{ 'product-reviews.css' | asset_url | stylesheet_tag }}
+{{ 'product-detail.css' | asset_url | stylesheet_tag }}
 {%- assign variant_selector_block = section.blocks | where: 'type', 'variant_selector' | first -%}
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
 
@@ -112,7 +113,7 @@
                           <p class="delivery-details__intro">We offer fast and reliable delivery across Kuwait:</p>
 
                           <div class="delivery-details__item">
-                            <div class="delivery-details__icon">📦</div>
+                            <div class="delivery-details__icon">{%- render 'icon', icon: 'bi-delivery' -%}</div>
                             <div>
                               <strong>Standard Delivery – 1.350 KD</strong>
                               <p>Delivered within 2 working days.</p>
@@ -120,7 +121,7 @@
                           </div>
 
                           <div class="delivery-details__item">
-                            <div class="delivery-details__icon">⚡</div>
+                            <div class="delivery-details__icon">{%- render 'icon', icon: 'bi-fast-delivery' -%}</div>
                             <div>
                               <strong>Express Delivery – 2 KD</strong>
                               <p>Delivered within 24 hours.</p>
@@ -128,7 +129,7 @@
                           </div>
 
                           <div class="delivery-details__item">
-                            <div class="delivery-details__icon">🏠</div>
+                            <div class="delivery-details__icon">{%- render 'icon', icon: 'address' -%}</div>
                             <div>
                               <strong>Smart Home Products (With Installation)</strong>
                               <p>Installation will be scheduled within 3 working days after order confirmation.</p>
@@ -547,6 +548,74 @@
       </div>
     </product-rerender>
   </div>
+
+  {%- unless template == 'product.quick-view' -%}
+    <div class="product-sticky-bar" id="product-sticky-bar-{{ section.id }}">
+      <div class="product-sticky-bar__info">
+        <span class="product-sticky-bar__title">{{ product.title | truncate: 34 }}</span>
+        <span class="product-sticky-bar__price">{{ product.selected_or_first_available_variant.price | money }}</span>
+      </div>
+
+      {%- if product.template_suffix == 'contact' -%}
+        <a href="mailto:{{ shop.email }}" class="product-sticky-bar__button button button--primary">{{ 'product.form.contact_us' | t }}</a>
+      {%- elsif product.selected_or_first_available_variant == nil -%}
+        <button type="button" class="product-sticky-bar__button button button--disabled" disabled>{{ 'product.form.unavailable' | t }}</button>
+      {%- elsif product.selected_or_first_available_variant.available -%}
+        <button type="submit" form="{{ product_form_id }}" class="product-sticky-bar__button button button--primary">{{ 'product.form.add_to_cart' | t }}</button>
+      {%- else -%}
+        <button type="button" class="product-sticky-bar__button button button--disabled" disabled>{{ 'product.form.sold_out' | t }}</button>
+      {%- endif -%}
+    </div>
+
+    <script>
+      (function () {
+        var section = document.currentScript.closest('section');
+        if (!section) return;
+
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!reduceMotion && 'IntersectionObserver' in window) {
+          var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+          section.querySelectorAll('.product-block-list__item').forEach(function (item) {
+            item.classList.add('pdp-reveal');
+            revealObserver.observe(item);
+          });
+        }
+
+        var stickyBar = document.getElementById('product-sticky-bar-{{ section.id }}');
+        var buyButtons = section.querySelector('.product-form__buy-buttons');
+
+        if (stickyBar && buyButtons && 'IntersectionObserver' in window) {
+          var barObserver = new IntersectionObserver(function (entries) {
+            stickyBar.classList.toggle('is-visible', !entries[0].isIntersecting);
+          }, { threshold: 0 });
+          barObserver.observe(buyButtons);
+        }
+
+        document.addEventListener('product:added', function (event) {
+          var button = event.detail && event.detail.button;
+          if (!button || !section.contains(button) || !button.classList.contains('product-form__add-button')) return;
+
+          var originalText = button.textContent;
+          button.textContent = 'Added';
+          button.classList.add('is-added');
+
+          setTimeout(function () {
+            button.textContent = originalText;
+            button.classList.remove('is-added');
+          }, 1800);
+        });
+      })();
+    </script>
+  {%- endunless -%}
 </section>
 
 {%- comment -%}We display the quick view within the product template so we can re-use the same settings{%- endcomment -%}

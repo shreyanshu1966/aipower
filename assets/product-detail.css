@@ -1,0 +1,573 @@
+/*
+ * Product detail page — premium tech-industrial redesign.
+ * Scoped additive layer on top of theme.css. Reuses the theme's own
+ * design-token variables (see snippets/css-variables.liquid) instead of
+ * hardcoding brand colors, so merchant color/font settings keep working.
+ * Loaded after theme.css (see sections/main-product.liquid), so equal-
+ * specificity rules here win the cascade.
+ */
+
+:root {
+  --pdp-space-2xs: 6px;
+  --pdp-space-xs: clamp(10px, 1vw, 12px);
+  --pdp-space-sm: clamp(14px, 1.6vw, 18px);
+  --pdp-space-md: clamp(22px, 3vw, 32px);
+  --pdp-space-lg: clamp(36px, 5vw, 56px);
+  --pdp-space-xl: clamp(56px, 8vw, 96px);
+
+  --pdp-title-size: clamp(1.75rem, 1.45rem + 1.5vw, 2.75rem);
+  --pdp-price-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+  --pdp-section-title-size: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+
+  --pdp-radius: 2px;
+  --pdp-radius-lg: 4px;
+
+  --pdp-surface: #f4f3f1;
+  --pdp-surface: color-mix(in srgb, var(--text-color) 4%, var(--background) 96%);
+  --pdp-surface-strong: #ececea;
+  --pdp-surface-strong: color-mix(in srgb, var(--text-color) 7%, var(--background) 93%);
+  --pdp-border: var(--border-color);
+  --pdp-border: color-mix(in srgb, var(--border-color) 70%, transparent);
+  --pdp-muted: var(--text-color);
+  --pdp-muted: color-mix(in srgb, var(--text-color) 62%, var(--background) 38%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout rhythm                                                       */
+/* ------------------------------------------------------------------ */
+
+.product-block-list__wrapper {
+  gap: var(--pdp-space-md);
+}
+
+@media screen and (min-width: 1000px) {
+  .product-block-list__wrapper {
+    gap: 0 var(--pdp-space-xl);
+  }
+}
+
+.product-block-list__item {
+  opacity: 1;
+  transform: none;
+}
+
+.product-block-list__item.pdp-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.product-block-list__item.pdp-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-block-list__item.pdp-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Editorial card system (description / delivery / trust / FBT / spec) */
+/* ------------------------------------------------------------------ */
+
+.product-block-list .card {
+  border: 1px solid var(--pdp-border);
+  border-radius: var(--pdp-radius-lg);
+  box-shadow: none;
+  background: var(--background);
+}
+
+.product-block-list .card__header,
+.product-block-list .card__collapsible-button {
+  padding: var(--pdp-space-sm) var(--pdp-space-md);
+}
+
+.product-block-list .card__title {
+  font-size: var(--pdp-section-title-size);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.product-block-list .card__collapsible-button {
+  transition: background-color 0.2s ease;
+}
+
+.product-block-list .card__collapsible-button:hover {
+  background: var(--pdp-surface);
+}
+
+.product-block-list .card__section {
+  padding: var(--pdp-space-md);
+}
+
+/* ------------------------------------------------------------------ */
+/* Gallery — studio-shot backdrop, refined thumbnails                  */
+/* ------------------------------------------------------------------ */
+
+.product-block-list__item--gallery .card {
+  border: none;
+  background: transparent;
+}
+
+.product-block-list__item--gallery .card__section {
+  padding: 0;
+}
+
+.product-gallery__carousel-wrapper {
+  background: var(--pdp-surface);
+  border-radius: var(--pdp-radius-lg);
+  overflow: hidden;
+}
+
+.product-gallery__carousel-item {
+  padding: var(--pdp-space-md);
+}
+
+.product-gallery__image {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .product-gallery__carousel-item:hover .product-gallery__image {
+    transform: scale(1.035);
+  }
+}
+
+.product-gallery__zoom-notice {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.product-gallery__thumbnail-list {
+  gap: var(--pdp-space-xs);
+}
+
+.product-gallery__thumbnail {
+  border-radius: var(--pdp-radius);
+  border: 1px solid transparent;
+  opacity: 0.55;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.product-gallery__thumbnail:hover {
+  opacity: 0.85;
+}
+
+.product-gallery__thumbnail.is-nav-selected {
+  opacity: 1;
+  border-color: var(--accent-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-gallery__image {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Product meta — title, price, labels, quick-spec chips               */
+/* ------------------------------------------------------------------ */
+
+.product-block-list__item--info .card {
+  border: none;
+  box-shadow: none;
+}
+
+.product-meta__title {
+  font-size: var(--pdp-title-size);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-block-end: var(--pdp-space-xs);
+}
+
+.product-meta__label-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pdp-space-2xs);
+  margin-block-end: var(--pdp-space-xs);
+}
+
+.product-block-list .product-label {
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  font-weight: var(--text-font-bolder-weight);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--pdp-surface-strong);
+  border: 1px solid var(--pdp-border);
+}
+
+.product-block-list .product-label--on-sale {
+  background: color-mix(in srgb, var(--accent-color) 12%, transparent);
+  border-color: transparent;
+  color: var(--accent-color);
+}
+
+.product-meta__reference {
+  color: var(--pdp-muted);
+  font-size: 0.85rem;
+}
+
+/* Quick-spec chip strip, injected under the title from key metafield specs */
+.product-quick-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pdp-space-xs);
+  margin-block: var(--pdp-space-sm) var(--pdp-space-md);
+  padding-block-start: var(--pdp-space-sm);
+  border-top: 1px solid var(--pdp-border);
+}
+
+.product-quick-specs__item {
+  min-width: 92px;
+}
+
+.product-quick-specs__label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--pdp-muted);
+  margin-block-end: 2px;
+}
+
+.product-quick-specs__value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: var(--text-font-bolder-weight);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ */
+/* Price emphasis                                                      */
+/* ------------------------------------------------------------------ */
+
+.product-block-list .price-list {
+  display: flex;
+  align-items: baseline;
+  gap: var(--pdp-space-xs);
+}
+
+.product-block-list .price {
+  font-size: var(--pdp-price-size);
+  font-weight: var(--text-font-bolder-weight);
+  color: var(--accent-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.product-block-list .price--compare {
+  font-size: 1rem;
+  font-weight: var(--text-font-weight);
+  color: var(--pdp-muted);
+  text-decoration: line-through;
+}
+
+/* ------------------------------------------------------------------ */
+/* Variant selectors — squared, technical                              */
+/* ------------------------------------------------------------------ */
+
+.product-block-list .product-form__option {
+  margin-block-end: var(--pdp-space-md);
+}
+
+.product-block-list .product-form__option-name {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--pdp-muted);
+  margin-block-end: var(--pdp-space-xs);
+}
+
+.product-block-list .product-form__option-name .product-form__selected-value {
+  color: var(--text-color);
+  font-weight: var(--text-font-bolder-weight);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.product-block-list .block-swatch__item,
+.product-block-list .variant-swatch__item {
+  border-radius: var(--pdp-radius);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.product-block-list .color-swatch__item {
+  transition: box-shadow 0.2s ease;
+}
+
+.product-block-list .block-swatch__item.is-selected,
+.product-block-list .block-swatch .block-swatch__radio:checked + .block-swatch__item {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.product-block-list .variant-swatch__item.is-selected,
+.product-block-list .variant-swatch .variant-swatch__radio:checked + .variant-swatch__item {
+  border-color: var(--accent-color);
+}
+
+.product-block-list .color-swatch__item.is-selected,
+.product-block-list .color-swatch .color-swatch__radio:checked + .color-swatch__item {
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 3px var(--accent-color);
+}
+
+/* Quantity selector */
+.quantity-selector--product {
+  border-radius: var(--pdp-radius);
+  border-color: var(--pdp-border);
+}
+
+.quantity-selector--product .quantity-selector__button {
+  transition: background-color 0.15s ease;
+}
+
+.quantity-selector--product .quantity-selector__button:hover {
+  background: var(--pdp-surface);
+}
+
+/* Inventory bar */
+.inventory-bar {
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--pdp-surface-strong);
+}
+
+/* ------------------------------------------------------------------ */
+/* Buy buttons                                                         */
+/* ------------------------------------------------------------------ */
+
+.product-form__buy-buttons {
+  margin-block-start: var(--pdp-space-sm);
+}
+
+.product-form__add-button {
+  border-radius: var(--pdp-radius);
+  font-weight: var(--text-font-bolder-weight);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding-block: 16px;
+  transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+}
+
+.product-form__add-button:active {
+  transform: scale(0.985);
+}
+
+.product-form__add-button.is-added {
+  background: var(--success-color, #1a7f37);
+  border-color: var(--success-color, #1a7f37);
+  pointer-events: none;
+}
+
+.product-form__payment-container .shopify-payment-button {
+  margin-block-start: var(--pdp-space-xs);
+}
+
+/* ------------------------------------------------------------------ */
+/* Sticky mobile purchase bar                                          */
+/* ------------------------------------------------------------------ */
+
+.product-sticky-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pdp-space-sm);
+  padding: 12px var(--mobile-container-gutter, 20px);
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--background);
+  border-top: 1px solid var(--pdp-border);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+}
+
+.product-sticky-bar.is-visible {
+  transform: translateY(0);
+}
+
+.product-sticky-bar__price {
+  font-size: 1.1rem;
+  font-weight: var(--text-font-bolder-weight);
+  color: var(--accent-color);
+  white-space: nowrap;
+}
+
+.product-sticky-bar__title {
+  display: none;
+}
+
+.product-sticky-bar__button {
+  flex: 1 1 auto;
+  max-width: 240px;
+  border-radius: var(--pdp-radius);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  padding-block: 13px;
+}
+
+@media screen and (min-width: 1000px) {
+  .product-sticky-bar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-sticky-bar {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Specifications — data-sheet table                                   */
+/* ------------------------------------------------------------------ */
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.specs-table__row {
+  border-bottom: 1px solid var(--pdp-border);
+}
+
+.specs-table__row:last-child {
+  border-bottom: none;
+}
+
+.specs-table__label,
+.specs-table__value {
+  padding: 12px 4px;
+  text-align: start;
+  vertical-align: top;
+}
+
+.specs-table__label {
+  font-weight: var(--text-font-weight);
+  color: var(--pdp-muted);
+  width: 45%;
+}
+
+.specs-table__value {
+  font-weight: var(--text-font-bolder-weight);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ */
+/* Delivery details                                                    */
+/* ------------------------------------------------------------------ */
+
+.delivery-details__intro {
+  color: var(--pdp-muted);
+  margin-block-end: var(--pdp-space-sm);
+}
+
+.delivery-details__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pdp-space-sm);
+  padding-block: var(--pdp-space-sm);
+  border-top: 1px solid var(--pdp-border);
+}
+
+.delivery-details__item:first-of-type {
+  border-top: none;
+}
+
+.delivery-details__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--pdp-surface);
+  color: var(--accent-color);
+}
+
+.delivery-details__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.delivery-details__item strong {
+  display: block;
+  margin-block-end: 2px;
+}
+
+.delivery-details__item p {
+  color: var(--pdp-muted);
+  margin: 0;
+}
+
+.delivery-details__notice {
+  margin-block-start: var(--pdp-space-sm);
+  padding-block-start: var(--pdp-space-sm);
+  border-top: 1px solid var(--pdp-border);
+  color: var(--pdp-muted);
+  font-size: 0.85rem;
+}
+
+.delivery-details__notice p {
+  margin: 0 0 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Frequently bought together                                          */
+/* ------------------------------------------------------------------ */
+
+.fbt-item {
+  border-radius: var(--pdp-radius);
+  transition: background-color 0.15s ease;
+}
+
+.fbt-item:hover {
+  background: var(--pdp-surface);
+}
+
+.fbt-item__price {
+  color: var(--accent-color);
+  font-weight: var(--text-font-bolder-weight);
+}
+
+.fbt-footer {
+  border-top: 1px solid var(--pdp-border);
+  padding-block-start: var(--pdp-space-sm);
+}
+
+.fbt-total__price {
+  color: var(--accent-color);
+  font-weight: var(--text-font-bolder-weight);
+  font-size: 1.1rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Trust / payment                                                     */
+/* ------------------------------------------------------------------ */
+
+.product-block-list .payment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pdp-space-xs);
+}
+
+.product-block-list .payment-list__notice {
+  color: var(--pdp-muted);
+  font-size: 0.8rem;
+}
