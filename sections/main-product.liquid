@@ -805,6 +805,46 @@ and injected only on quick buy modal
       ]
     },
     {
+      "type": "pickup_info",
+      "name": "Pickup information (static)",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Always shows this pickup message, regardless of Shopify's local pickup/inventory setup."
+        },
+        {
+          "type": "text",
+          "id": "location_name",
+          "label": "Location name",
+          "default": "Shop location"
+        },
+        {
+          "type": "text",
+          "id": "ready_time",
+          "label": "Ready time text",
+          "default": "Usually ready in 1 hour"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_link",
+          "label": "Show link",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "View store information"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
       "type": "specifications",
       "name": "Specifications",
       "limit": 1,

@@ -39,6 +39,33 @@
                   {%- render 'store-availability', product_variant: product.selected_or_first_available_variant -%}
                 </div>
 
+              {%- when 'pickup_info' -%}
+                {%- comment -%}Static pickup message, independent of Shopify's local pickup/inventory setup{%- endcomment -%}
+                <div class="product-meta__store-availability-container">
+                  <div class="store-availability-container">
+                    <div class="store-availability-information">
+                      {%- render 'icon', icon: 'store-availability-in-stock' -%}
+                      <div class="store-availability-information-container">
+                        <p class="store-availability-information__title text--strong">
+                          {{- 'store_availability.general.pick_up_available_at' | t: location_name: block.settings.location_name -}}
+                        </p>
+                        {%- if block.settings.ready_time != blank -%}
+                          <p class="store-availability-information__stock">{{ block.settings.ready_time }}</p>
+                        {%- endif -%}
+                        {%- if block.settings.show_link and block.settings.link_text != blank -%}
+                          <p class="store-availability-information__stores">
+                            {%- if block.settings.link_url != blank -%}
+                              <a href="{{ block.settings.link_url }}" class="store-availability-information__link link link--accented">{{ block.settings.link_text }}</a>
+                            {%- else -%}
+                              <span class="store-availability-information__link link link--accented">{{ block.settings.link_text }}</span>
+                            {%- endif -%}
+                          </p>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               {%- when 'featured_description' -%}
                 {%- comment -%}This is only shown on the featured product section{%- endcomment -%}
                 {%- if product.description != blank -%}

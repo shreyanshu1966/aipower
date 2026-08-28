@@ -41,9 +41,14 @@
             "show_gift_card_recipient": true
           }
         },
-        "store_pickup": {
-          "type": "store_pickup",
-          "settings": {}
+        "pickup_info": {
+          "type": "pickup_info",
+          "settings": {
+            "location_name": "Shop location",
+            "ready_time": "Usually ready in 1 hour",
+            "show_link": true,
+            "link_text": "View store information"
+          }
         },
         "specifications_z768hn": {
           "type": "specifications",
@@ -76,7 +81,7 @@
         "product_meta",
         "variant_selector",
         "buy_buttons",
-        "store_pickup",
+        "pickup_info",
         "specifications_z768hn",
         "description",
         "delivery_details",
